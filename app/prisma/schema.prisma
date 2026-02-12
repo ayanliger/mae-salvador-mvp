@@ -1,0 +1,158 @@
+// Caderneta da Gestante Digital de Salvador
+// Schema alinhado ao FHIR R4 (Patient, Practitioner, Encounter, Observation, Immunization, etc.)
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// FHIR: Patient
+model Gestante {
+  id              String   @id @default(cuid())
+  cpf             String   @unique
+  cns             String?  // Cartão Nacional de Saúde
+  nome            String
+  nomeSocial      String?
+  dataNascimento  DateTime
+  telefone        String
+  email           String?
+  endereco        String
+  bairro          String?
+  cep             String?
+  ubsVinculada    String?  // Nome/código da UBS
+  dataUltimaMenstruacao DateTime? // DUM - para cálculo da idade gestacional
+  dataProvavelParto     DateTime? // DPP
+  tipoGravidez    String   @default("UNICA") // UNICA, GEMELAR, etc.
+  riscoGestacional String  @default("HABITUAL") // HABITUAL, ALTO
+  senha           String
+  ativo           Boolean  @default(true)
+  criadoEm        DateTime @default(now())
+  atualizadoEm    DateTime @updatedAt
+
+  consultas       Consulta[]
+  exames          Exame[]
+  vacinas         Vacina[]
+  medicacoes      Medicacao[]
+  condicoes       CondicaoClinica[]
+
+  @@map("gestantes")
+}
+
+// FHIR: Practitioner
+model Profissional {
+  id               String   @id @default(cuid())
+  cpf              String   @unique
+  nome             String
+  cargo            String   // Médico(a), Enfermeiro(a), etc.
+  registroConselho String?  // CRM, COREN, etc.
+  ubs              String   // UBS de lotação
+  senha            String
+  ativo            Boolean  @default(true)
+  criadoEm         DateTime @default(now())
+  atualizadoEm     DateTime @updatedAt
+
+  consultas        Consulta[]
+
+  @@map("profissionais")
+}
+
+// FHIR: Encounter
+model Consulta {
+  id              String   @id @default(cuid())
+  data            DateTime
+  tipo            String   // PRE_NATAL, PUERPERIO, URGENCIA
+  semanaGestacional Int?
+  pesoKg          Float?
+  pressaoArterial String?  // ex: "120/80"
+  alturaUterina   Float?   // em cm
+  batimentoCardiacoFetal Int? // BCF
+  notas           String?
+  ubs             String?
+
+  gestanteId      String
+  gestante        Gestante     @relation(fields: [gestanteId], references: [id])
+  profissionalId  String
+  profissional    Profissional @relation(fields: [profissionalId], references: [id])
+
+  criadoEm        DateTime @default(now())
+
+  @@map("consultas")
+}
+
+// FHIR: Observation
+model Exame {
+  id         String   @id @default(cuid())
+  tipo       String   // HEMOGRAMA, GLICEMIA, URINA, ULTRASSOM, HIV, SIFILIS, etc.
+  data       DateTime
+  resultado  String?
+  status     String   @default("SOLICITADO") // SOLICITADO, REALIZADO, RESULTADO_DISPONIVEL
+  observacao String?
+  unidade    String?  // Unidade de medida
+
+  gestanteId String
+  gestante   Gestante @relation(fields: [gestanteId], references: [id])
+
+  criadoEm   DateTime @default(now())
+
+  @@map("exames")
+}
+
+// FHIR: Immunization
+model Vacina {
+  id           String   @id @default(cuid())
+  codigoVacina String   // dTpa, Influenza, Hepatite B, COVID-19, etc.
+  nome         String
+  data         DateTime
+  dose         String   // 1ª dose, 2ª dose, Reforço, etc.
+  lote         String?
+  fabricante   String?
+  localAplicacao String?
+
+  gestanteId   String
+  gestante     Gestante @relation(fields: [gestanteId], references: [id])
+
+  criadoEm     DateTime @default(now())
+
+  @@map("vacinas")
+}
+
+// FHIR: MedicationStatement
+model Medicacao {
+  id          String    @id @default(cuid())
+  medicamento String
+  dosagem     String    // ex: "5mg 1x/dia"
+  via         String?   // ORAL, INJETAVEL, etc.
+  dataInicio  DateTime
+  dataFim     DateTime?
+  ativo       Boolean   @default(true)
+  observacao  String?
+
+  gestanteId  String
+  gestante    Gestante  @relation(fields: [gestanteId], references: [id])
+
+  criadoEm    DateTime  @default(now())
+
+  @@map("medicacoes")
+}
+
+// FHIR: Condition
+model CondicaoClinica {
+  id         String    @id @default(cuid())
+  codigoCid  String    // CID-10, ex: O24.4 (diabetes gestacional)
+  descricao  String
+  dataInicio DateTime
+  dataFim    DateTime?
+  status     String    @default("ATIVO") // ATIVO, RESOLVIDO, CRONICO
+  gravidade  String?   // LEVE, MODERADO, GRAVE
+
+  gestanteId String
+  gestante   Gestante  @relation(fields: [gestanteId], references: [id])
+
+  criadoEm   DateTime  @default(now())
+
+  @@map("condicoes_clinicas")
+}
