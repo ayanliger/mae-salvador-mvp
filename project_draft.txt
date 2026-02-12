@@ -1,0 +1,27 @@
+Estamos iniciando o grupo de trabalho para construção do Modelo Lógico da Carteira da Gestante Digital de Salvador.
+
+A proposta é estruturar uma ferramenta que represente, para a usuária, a caderneta da gestante em formato digital, integrada aos sistemas já existentes e orientada pela lógica do cuidado na APS.
+
+Elementos centrais que precisam ser considerados no desenho:
+
+* Integração com o Prontuário Eletrônico (histórico clínico, comorbidades, diagnósticos e medicações em uso)
+* Autocadastro da gestante (com validação e vinculação ao cadastro da APS)
+* Recuperação automática de dados de vacinação
+* Integração com o Mãe Salvador
+* Registro da linha de cuidado na APS:
+– número e cronologia das consultas
+– exames e procedimentos realizados
+– encaminhamentos para pré-natal de alto risco
+– acompanhamento de condições clínicas associadas
+
+Além disso, devemos avaliar a integração com canal de WhatsApp, permitindo comunicação direta com a usuária (orientações, lembretes e avisos importantes).
+
+Nosso objetivo não é apenas criar uma interface digital, mas um instrumento que:
+– organize a navegação da gestante na rede
+– aumente a adesão ao pré-natal
+– qualifique o acompanhamento clínico
+– fortaleça a coordenação do cuidado pela APS.
+
+Peço que todos entrem no grupo com foco em viabilidade operacional, integração de dados e uso real pela usuária. Precisamos de um modelo simples, funcional e escalável.
+
+Vamos construir isso de forma estruturada e orientada para resultado.
