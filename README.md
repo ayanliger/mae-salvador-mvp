@@ -1,5 +1,13 @@
 # Caderneta da Gestante Digital — Salvador
 
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=nextdotjs)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-7-2D3748?logo=prisma&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)
+
 Aplicação web para acompanhamento pré-natal vinculada à rede municipal de saúde de Salvador (SUS). Digitaliza a caderneta da gestante, permitindo que profissionais de saúde registrem consultas e que gestantes acompanhem sua gestação de forma integrada.
 
 ## Funcionalidades
