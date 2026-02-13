@@ -134,6 +134,22 @@ exports.Prisma.GestanteScalarFieldEnum = {
   dataProvavelParto: 'dataProvavelParto',
   tipoGravidez: 'tipoGravidez',
   riscoGestacional: 'riscoGestacional',
+  temWhatsapp: 'temWhatsapp',
+  comoDescobriuGestacao: 'comoDescobriuGestacao',
+  programaSocial: 'programaSocial',
+  temPlanoSaude: 'temPlanoSaude',
+  desejaSeguimentoUbs: 'desejaSeguimentoUbs',
+  numGestacoesPrevia: 'numGestacoesPrevia',
+  numPartosNormais: 'numPartosNormais',
+  numPartosCesareos: 'numPartosCesareos',
+  numAbortosPrevia: 'numAbortosPrevia',
+  alergias: 'alergias',
+  doencasConhecidas: 'doencasConhecidas',
+  medicacoesPreExistentes: 'medicacoesPreExistentes',
+  pesoPreGestacional: 'pesoPreGestacional',
+  alturaM: 'alturaM',
+  maternidadeVinculacao: 'maternidadeVinculacao',
+  desejoContracepcao: 'desejoContracepcao',
   senha: 'senha',
   ativo: 'ativo',
   criadoEm: 'criadoEm',
@@ -219,6 +235,27 @@ exports.Prisma.CondicaoClinicaScalarFieldEnum = {
   criadoEm: 'criadoEm'
 };
 
+exports.Prisma.CartaoMaeSalvadorScalarFieldEnum = {
+  id: 'id',
+  numeroTranscard: 'numeroTranscard',
+  status: 'status',
+  termoLgpdAceito: 'termoLgpdAceito',
+  etapaAtual: 'etapaAtual',
+  gestanteId: 'gestanteId',
+  criadoEm: 'criadoEm',
+  atualizadoEm: 'atualizadoEm'
+};
+
+exports.Prisma.NotificacaoScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  mensagem: 'mensagem',
+  tipo: 'tipo',
+  lida: 'lida',
+  gestanteId: 'gestanteId',
+  criadoEm: 'criadoEm'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -237,7 +274,9 @@ exports.Prisma.ModelName = {
   Exame: 'Exame',
   Vacina: 'Vacina',
   Medicacao: 'Medicacao',
-  CondicaoClinica: 'CondicaoClinica'
+  CondicaoClinica: 'CondicaoClinica',
+  CartaoMaeSalvador: 'CartaoMaeSalvador',
+  Notificacao: 'Notificacao'
 };
 
 /**

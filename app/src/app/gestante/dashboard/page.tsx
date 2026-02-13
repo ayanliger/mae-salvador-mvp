@@ -2,6 +2,7 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { calcularIdadeGestacional, formatarData } from '@/lib/utils'
 import Link from 'next/link'
+import { MaeSalvadorPopup } from '@/components/MaeSalvadorPopup'
 
 export default async function DashboardGestante() {
   const session = await auth()
@@ -13,6 +14,7 @@ export default async function DashboardGestante() {
       vacinas: { orderBy: { data: 'desc' }, take: 3 },
       medicacoes: { where: { ativo: true } },
       condicoes: { where: { status: 'ATIVO' } },
+      cartaoMaeSalvador: true,
     },
   })
 
@@ -28,8 +30,12 @@ export default async function DashboardGestante() {
     include: { profissional: true },
   })
 
+  const cartao = gestante.cartaoMaeSalvador
+
   return (
     <div className="space-y-6">
+      <MaeSalvadorPopup ubsVinculada={gestante.ubsVinculada} />
+
       {/* Saudação */}
       <div className="animate-fade-in">
         <h1 className="text-2xl font-bold font-display text-surface-800">
@@ -37,6 +43,30 @@ export default async function DashboardGestante() {
         </h1>
         <p className="text-surface-500 mt-1">Acompanhe sua gestação</p>
       </div>
+
+      {/* UBS e Maternidade */}
+      {(gestante.ubsVinculada || gestante.maternidadeVinculacao) && (
+        <div className="animate-fade-in bg-white rounded-2xl p-5 border border-surface-200 shadow-sm flex flex-wrap gap-6">
+          {gestante.ubsVinculada && (
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">🏥</span>
+              <div>
+                <p className="text-xs text-surface-400">Unidade de Saúde</p>
+                <p className="text-sm font-semibold text-surface-800">{gestante.ubsVinculada}</p>
+              </div>
+            </div>
+          )}
+          {gestante.maternidadeVinculacao && (
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">👶</span>
+              <div>
+                <p className="text-xs text-surface-400">Maternidade de Vinculação</p>
+                <p className="text-sm font-semibold text-surface-800">{gestante.maternidadeVinculacao}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Cards de Resumo */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -93,6 +123,31 @@ export default async function DashboardGestante() {
           )}
         </div>
       </div>
+
+      {/* Cartão Mãe Salvador */}
+      {cartao && (
+        <Link href="/gestante/cartao" className="block animate-fade-in stagger-4 opacity-0">
+          <div className="bg-gradient-to-r from-accent-500 to-accent-600 rounded-2xl p-5 text-white shadow-lg shadow-accent-200 hover:shadow-xl transition-all">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-accent-100 text-sm font-medium">Cartão Mãe Salvador</p>
+                <p className="text-lg font-bold font-display mt-1">
+                  {cartao.status === 'ATIVO' ? 'Ativo' : cartao.status === 'BLOQUEADO' ? 'Bloqueado' : 'Pendente'}
+                </p>
+                <p className="text-accent-100 text-xs mt-1">Etapa {cartao.etapaAtual} de 3</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="flex gap-1">
+                  {[1, 2, 3].map((e) => (
+                    <div key={e} className={`w-8 h-2 rounded-full ${e <= cartao.etapaAtual ? 'bg-white' : 'bg-white/30'}`} />
+                  ))}
+                </div>
+                <span className="text-accent-100 text-[10px] mt-1">Ver detalhes →</span>
+              </div>
+            </div>
+          </div>
+        </Link>
+      )}
 
       {/* Seções Rápidas */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

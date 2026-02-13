@@ -9,6 +9,8 @@ async function main() {
   console.log('🌱 Iniciando seed...')
 
   // Limpar dados existentes
+  await prisma.notificacao.deleteMany()
+  await prisma.cartaoMaeSalvador.deleteMany()
   await prisma.condicaoClinica.deleteMany()
   await prisma.medicacao.deleteMany()
   await prisma.vacina.deleteMany()
@@ -49,14 +51,24 @@ async function main() {
       nome: 'Maria da Silva Santos',
       dataNascimento: new Date('1995-03-15'),
       telefone: '71999001122',
+      temWhatsapp: true,
       email: 'maria.silva@email.com',
       endereco: 'Rua da Paz, 123 - Barra',
       bairro: 'Barra',
       cep: '40140-000',
       ubsVinculada: 'UBS Barra',
+      maternidadeVinculacao: 'Maternidade Albert Sabin',
       dataUltimaMenstruacao: new Date('2025-08-01'),
       dataProvavelParto: new Date('2026-05-08'),
       riscoGestacional: 'HABITUAL',
+      comoDescobriuGestacao: 'BETA_HCG',
+      programaSocial: 'Bolsa Família',
+      numGestacoesPrevia: 1,
+      numPartosNormais: 1,
+      numPartosCesareos: 0,
+      numAbortosPrevia: 0,
+      pesoPreGestacional: 60.0,
+      alturaM: 1.62,
       senha: senhaHash,
     },
   })
@@ -69,13 +81,26 @@ async function main() {
       nomeSocial: 'Joana',
       dataNascimento: new Date('1988-11-20'),
       telefone: '71988112233',
+      temWhatsapp: true,
       endereco: 'Av. Oceânica, 456 - Ondina',
       bairro: 'Ondina',
       cep: '40170-010',
       ubsVinculada: 'UBS Barra',
+      maternidadeVinculacao: 'Maternidade Tsylla Balbino',
       dataUltimaMenstruacao: new Date('2025-06-15'),
       dataProvavelParto: new Date('2026-03-22'),
       riscoGestacional: 'ALTO',
+      comoDescobriuGestacao: 'TESTE_RAPIDO',
+      temPlanoSaude: true,
+      desejaSeguimentoUbs: true,
+      numGestacoesPrevia: 2,
+      numPartosNormais: 0,
+      numPartosCesareos: 1,
+      numAbortosPrevia: 1,
+      alergias: 'Dipirona',
+      doencasConhecidas: 'Hipertensão arterial sistêmica',
+      pesoPreGestacional: 76.0,
+      alturaM: 1.58,
       senha: senhaHash,
     },
   })
@@ -87,13 +112,16 @@ async function main() {
       nome: 'Lúcia Ferreira Alves',
       dataNascimento: new Date('1992-07-08'),
       telefone: '71977334455',
+      temWhatsapp: false,
       endereco: 'Rua do Sol, 789 - Pituba',
       bairro: 'Pituba',
       cep: '41810-000',
       ubsVinculada: 'UBS Barra',
+      maternidadeVinculacao: 'Maternidade Albert Sabin',
       dataUltimaMenstruacao: new Date('2025-03-10'),
       dataProvavelParto: new Date('2025-12-15'),
       riscoGestacional: 'HABITUAL',
+      comoDescobriuGestacao: 'ATRASO_MENSTRUAL',
       senha: senhaHash,
     },
   })
@@ -320,6 +348,47 @@ async function main() {
       status: 'ATIVO',
       gravidade: 'MODERADO',
     },
+  })
+
+  // Cartão Mãe Salvador
+  await prisma.cartaoMaeSalvador.create({
+    data: {
+      gestanteId: maria.id,
+      numeroTranscard: '5067 0001 2345 6789',
+      status: 'ATIVO',
+      termoLgpdAceito: true,
+      etapaAtual: 2,
+    },
+  })
+
+  await prisma.cartaoMaeSalvador.create({
+    data: {
+      gestanteId: joana.id,
+      numeroTranscard: '5067 0001 9876 5432',
+      status: 'ATIVO',
+      termoLgpdAceito: true,
+      etapaAtual: 3,
+    },
+  })
+
+  await prisma.cartaoMaeSalvador.create({
+    data: {
+      gestanteId: lucia.id,
+      status: 'PENDENTE',
+      etapaAtual: 1,
+    },
+  })
+
+  // Notificações
+  await prisma.notificacao.createMany({
+    data: [
+      { gestanteId: maria.id, titulo: 'Próxima consulta', mensagem: 'Sua próxima consulta pré-natal está agendada para 15/03/2026 na UBS Barra.', tipo: 'CONSULTA', lida: false },
+      { gestanteId: maria.id, titulo: 'Crédito liberado', mensagem: 'O crédito referente à Etapa 2 do Cartão Mãe Salvador foi creditado no seu cartão.', tipo: 'CARTAO', lida: false },
+      { gestanteId: maria.id, titulo: 'Exames pendentes', mensagem: 'Você tem 2 exames solicitados aguardando realização: TOTG 75g e Hemograma 3º trimestre.', tipo: 'ALERTA', lida: false },
+      { gestanteId: maria.id, titulo: 'Bem-vinda ao Mãe Salvador', mensagem: 'Seu cadastro no programa Mãe Salvador foi realizado com sucesso!', tipo: 'INFO', lida: true },
+      { gestanteId: joana.id, titulo: 'Consulta PNAR agendada', mensagem: 'Sua consulta de pré-natal de alto risco está agendada para 25/02/2026.', tipo: 'CONSULTA', lida: false },
+      { gestanteId: joana.id, titulo: 'Cartão ativo', mensagem: 'Seu Cartão Mãe Salvador está ativo. Etapa 3 concluída.', tipo: 'CARTAO', lida: true },
+    ],
   })
 
   console.log('✅ Seed concluído!')

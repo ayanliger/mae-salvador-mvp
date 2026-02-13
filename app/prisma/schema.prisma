@@ -28,6 +28,22 @@ model Gestante {
   dataProvavelParto     DateTime? // DPP
   tipoGravidez    String   @default("UNICA") // UNICA, GEMELAR, etc.
   riscoGestacional String  @default("HABITUAL") // HABITUAL, ALTO
+  temWhatsapp     Boolean  @default(false)
+  comoDescobriuGestacao String? // TESTE_RAPIDO, BETA_HCG, ATRASO_MENSTRUAL
+  programaSocial  String?  // Bolsa Família, BPC/LOAS, Aluguel social, outros
+  temPlanoSaude   Boolean  @default(false)
+  desejaSeguimentoUbs Boolean @default(true)
+  numGestacoesPrevia Int?
+  numPartosNormais   Int?
+  numPartosCesareos  Int?
+  numAbortosPrevia   Int?
+  alergias        String?
+  doencasConhecidas String?
+  medicacoesPreExistentes String?
+  pesoPreGestacional Float?
+  alturaM         Float?   // altura em metros
+  maternidadeVinculacao String?
+  desejoContracepcao Boolean?
   senha           String
   ativo           Boolean  @default(true)
   criadoEm        DateTime @default(now())
@@ -38,6 +54,8 @@ model Gestante {
   vacinas         Vacina[]
   medicacoes      Medicacao[]
   condicoes       CondicaoClinica[]
+  cartaoMaeSalvador CartaoMaeSalvador?
+  notificacoes    Notificacao[]
 
   @@map("gestantes")
 }
@@ -155,4 +173,37 @@ model CondicaoClinica {
   criadoEm   DateTime  @default(now())
 
   @@map("condicoes_clinicas")
+}
+
+// Cartão Mãe Salvador (programa de transporte)
+model CartaoMaeSalvador {
+  id              String   @id @default(cuid())
+  numeroTranscard String?
+  status          String   @default("PENDENTE") // PENDENTE, ATIVO, BLOQUEADO
+  termoLgpdAceito Boolean  @default(false)
+  etapaAtual      Int      @default(0) // 0=nenhuma, 1, 2, 3
+
+  gestanteId      String   @unique
+  gestante        Gestante @relation(fields: [gestanteId], references: [id])
+
+  criadoEm        DateTime @default(now())
+  atualizadoEm    DateTime @updatedAt
+
+  @@map("cartoes_mae_salvador")
+}
+
+// Notificações in-app
+model Notificacao {
+  id         String   @id @default(cuid())
+  titulo     String
+  mensagem   String
+  tipo       String   // CONSULTA, CARTAO, ALERTA, INFO
+  lida       Boolean  @default(false)
+
+  gestanteId String
+  gestante   Gestante @relation(fields: [gestanteId], references: [id])
+
+  criadoEm   DateTime @default(now())
+
+  @@map("notificacoes")
 }
