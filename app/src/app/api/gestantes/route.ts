@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { hash } from 'bcryptjs'
 import { prisma } from '@/lib/prisma'
 import { validarCPF } from '@/lib/utils'
+import { notificacaoBeneficiosMaeSalvador } from '@/lib/notificacoes-templates'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
@@ -60,6 +61,18 @@ export async function POST(req: NextRequest) {
       medicacoesPreExistentes: body.medicacoesPreExistentes || null,
       desejoContracepcao: body.desejoContracepcao ?? null,
       senha: senhaHash,
+    },
+  })
+
+  // Criar notificação de boas-vindas com benefícios do Mãe Salvador
+  const ubsNome = gestante.ubsVinculada || 'sua unidade de saúde mais próxima'
+  const notif = notificacaoBeneficiosMaeSalvador(ubsNome)
+  await prisma.notificacao.create({
+    data: {
+      gestanteId: gestante.id,
+      titulo: notif.titulo,
+      mensagem: notif.mensagem,
+      tipo: notif.tipo,
     },
   })
 

@@ -12,14 +12,23 @@ const itensMenu = [
   { href: '/gestante/vacinas', label: 'Vacinas', icone: '💉' },
   { href: '/gestante/medicacoes', label: 'Medicações', icone: '💊' },
   { href: '/gestante/cartao', label: 'Cartão Mãe Salvador', icone: '💳' },
+  { href: '/gestante/cadernetas-previas', label: 'Cadernetas Prévias', icone: '📚' },
+  { href: '/gestante/avaliacao', label: 'Avaliação', icone: '⭐' },
   { href: '/gestante/notificacoes', label: 'Notificações', icone: '🔔' },
 ]
 
 const itensCaderneta = [
+  { href: '/gestante/caderneta/gestacao-atual', label: 'Gestação Atual' },
   { href: '/gestante/caderneta/orientacoes', label: 'Orientações' },
   { href: '/gestante/caderneta/peso', label: 'Ganho de Peso' },
   { href: '/gestante/caderneta/antecedentes', label: 'Antecedentes' },
   { href: '/gestante/caderneta/profilaxias', label: 'Profilaxias' },
+  { href: '/gestante/caderneta/sifilis', label: 'Sífilis' },
+  { href: '/gestante/caderneta/pnar', label: 'PNAR' },
+  { href: '/gestante/caderneta/odontologia', label: 'Odontologia' },
+  { href: '/gestante/caderneta/puerperal', label: 'Puerperal' },
+  { href: '/gestante/caderneta/parceiro', label: 'Pré-natal Parceiro' },
+  { href: '/gestante/caderneta/atividades', label: 'Atividades & Visitas' },
 ]
 
 export function NavGestante({ nomeUsuaria, notificacoesNaoLidas = 0 }: { nomeUsuaria: string; notificacoesNaoLidas?: number }) {

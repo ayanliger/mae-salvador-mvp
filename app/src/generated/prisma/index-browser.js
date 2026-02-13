@@ -130,10 +130,13 @@ exports.Prisma.GestanteScalarFieldEnum = {
   bairro: 'bairro',
   cep: 'cep',
   ubsVinculada: 'ubsVinculada',
+  hospitalReferencia: 'hospitalReferencia',
   dataUltimaMenstruacao: 'dataUltimaMenstruacao',
   dataProvavelParto: 'dataProvavelParto',
   tipoGravidez: 'tipoGravidez',
   riscoGestacional: 'riscoGestacional',
+  riscoGestacionalCIAP: 'riscoGestacionalCIAP',
+  gravidezPlanejada: 'gravidezPlanejada',
   temWhatsapp: 'temWhatsapp',
   comoDescobriuGestacao: 'comoDescobriuGestacao',
   programaSocial: 'programaSocial',
@@ -153,7 +156,19 @@ exports.Prisma.GestanteScalarFieldEnum = {
   senha: 'senha',
   ativo: 'ativo',
   criadoEm: 'criadoEm',
-  atualizadoEm: 'atualizadoEm'
+  atualizadoEm: 'atualizadoEm',
+  antecedentesDiabetes: 'antecedentesDiabetes',
+  antecedentesInfeccaoUrinaria: 'antecedentesInfeccaoUrinaria',
+  antecedentesInfertilidade: 'antecedentesInfertilidade',
+  antecedentesDificuldadeAmamentacao: 'antecedentesDificuldadeAmamentacao',
+  antecedentesCardiopatia: 'antecedentesCardiopatia',
+  statusCaderneta: 'statusCaderneta',
+  cadernetaAnteriorId: 'cadernetaAnteriorId',
+  dataDesfecho: 'dataDesfecho',
+  participouAtividadeEducativa: 'participouAtividadeEducativa',
+  dataAtividadeEducativa: 'dataAtividadeEducativa',
+  realizouVisitaMaternidade: 'realizouVisitaMaternidade',
+  dataVisitaMaternidade: 'dataVisitaMaternidade'
 };
 
 exports.Prisma.ProfissionalScalarFieldEnum = {
@@ -178,6 +193,10 @@ exports.Prisma.ConsultaScalarFieldEnum = {
   pressaoArterial: 'pressaoArterial',
   alturaUterina: 'alturaUterina',
   batimentoCardiacoFetal: 'batimentoCardiacoFetal',
+  imcConsulta: 'imcConsulta',
+  movimentacaoFetal: 'movimentacaoFetal',
+  planoTexto: 'planoTexto',
+  ofertaLARC: 'ofertaLARC',
   notas: 'notas',
   ubs: 'ubs',
   gestanteId: 'gestanteId',
@@ -241,6 +260,11 @@ exports.Prisma.CartaoMaeSalvadorScalarFieldEnum = {
   status: 'status',
   termoLgpdAceito: 'termoLgpdAceito',
   etapaAtual: 'etapaAtual',
+  ubsVinculacao: 'ubsVinculacao',
+  profissionalVinculacaoId: 'profissionalVinculacaoId',
+  dataVinculacao: 'dataVinculacao',
+  lgpdMetodoAssinatura: 'lgpdMetodoAssinatura',
+  lgpdDocumentoEnviado: 'lgpdDocumentoEnviado',
   gestanteId: 'gestanteId',
   criadoEm: 'criadoEm',
   atualizadoEm: 'atualizadoEm'
@@ -252,6 +276,62 @@ exports.Prisma.NotificacaoScalarFieldEnum = {
   mensagem: 'mensagem',
   tipo: 'tipo',
   lida: 'lida',
+  gestanteId: 'gestanteId',
+  criadoEm: 'criadoEm'
+};
+
+exports.Prisma.TratamentoSifilisScalarFieldEnum = {
+  id: 'id',
+  classificacaoCID: 'classificacaoCID',
+  tipo: 'tipo',
+  subtipo: 'subtipo',
+  dataDiagnostico: 'dataDiagnostico',
+  statusTratamento: 'statusTratamento',
+  dosesNecessarias: 'dosesNecessarias',
+  gestanteId: 'gestanteId',
+  criadoEm: 'criadoEm',
+  atualizadoEm: 'atualizadoEm'
+};
+
+exports.Prisma.AplicacaoPenicilinaScalarFieldEnum = {
+  id: 'id',
+  data: 'data',
+  dose: 'dose',
+  observacao: 'observacao',
+  tratamentoId: 'tratamentoId',
+  criadoEm: 'criadoEm'
+};
+
+exports.Prisma.EncaminhamentoPNARScalarFieldEnum = {
+  id: 'id',
+  ciap: 'ciap',
+  dataEncaminhamento: 'dataEncaminhamento',
+  dataConsultaPNAR: 'dataConsultaPNAR',
+  horarioConsultaPNAR: 'horarioConsultaPNAR',
+  retornoRecomendado: 'retornoRecomendado',
+  relatorioTexto: 'relatorioTexto',
+  consultaRealizada: 'consultaRealizada',
+  dataConsultaRealizada: 'dataConsultaRealizada',
+  gestanteId: 'gestanteId',
+  criadoEm: 'criadoEm',
+  atualizadoEm: 'atualizadoEm'
+};
+
+exports.Prisma.PreNatalParceiroScalarFieldEnum = {
+  id: 'id',
+  realizado: 'realizado',
+  autoReferido: 'autoReferido',
+  gestanteId: 'gestanteId',
+  criadoEm: 'criadoEm',
+  atualizadoEm: 'atualizadoEm'
+};
+
+exports.Prisma.AvaliacaoScalarFieldEnum = {
+  id: 'id',
+  tipo: 'tipo',
+  nota: 'nota',
+  comentario: 'comentario',
+  consultaId: 'consultaId',
   gestanteId: 'gestanteId',
   criadoEm: 'criadoEm'
 };
@@ -276,7 +356,12 @@ exports.Prisma.ModelName = {
   Medicacao: 'Medicacao',
   CondicaoClinica: 'CondicaoClinica',
   CartaoMaeSalvador: 'CartaoMaeSalvador',
-  Notificacao: 'Notificacao'
+  Notificacao: 'Notificacao',
+  TratamentoSifilis: 'TratamentoSifilis',
+  AplicacaoPenicilina: 'AplicacaoPenicilina',
+  EncaminhamentoPNAR: 'EncaminhamentoPNAR',
+  PreNatalParceiro: 'PreNatalParceiro',
+  Avaliacao: 'Avaliacao'
 };
 
 /**

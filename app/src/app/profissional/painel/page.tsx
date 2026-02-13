@@ -27,8 +27,36 @@ export default async function PainelProfissional() {
     },
   })
 
+  // Pendências: sífilis incompleta + gestantes alto risco sem consulta recente
+  const [sifilisPendentes, altoRiscoTotal] = await Promise.all([
+    prisma.tratamentoSifilis.count({
+      where: { statusTratamento: 'EM_TRATAMENTO' },
+    }),
+    prisma.gestante.count({
+      where: { ativo: true, riscoGestacional: 'ALTO', statusCaderneta: 'ATIVA' },
+    }),
+  ])
+  const totalPendencias = sifilisPendentes + altoRiscoTotal
+
   return (
     <div className="space-y-6">
+      {/* Pendências Alert */}
+      {totalPendencias > 0 && (
+        <div className="animate-fade-in bg-red-50 border border-red-200 rounded-2xl p-4 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-red-200 text-red-700 flex items-center justify-center font-bold font-display text-lg shrink-0">
+            {totalPendencias}
+          </div>
+          <div className="flex-1">
+            <p className="font-semibold text-red-800 text-sm">Pendências que requerem atenção</p>
+            <p className="text-xs text-red-600 mt-0.5">
+              {sifilisPendentes > 0 && `${sifilisPendentes} tratamento(s) sífilis em andamento`}
+              {sifilisPendentes > 0 && altoRiscoTotal > 0 && ' • '}
+              {altoRiscoTotal > 0 && `${altoRiscoTotal} gestante(s) alto risco`}
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="animate-fade-in">
         <h1 className="text-2xl font-bold font-display text-surface-800">
           Olá, {session!.user.name} 👋
