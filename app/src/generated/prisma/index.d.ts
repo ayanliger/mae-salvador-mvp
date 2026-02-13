@@ -48,6 +48,16 @@ export type Medicacao = $Result.DefaultSelection<Prisma.$MedicacaoPayload>
  * 
  */
 export type CondicaoClinica = $Result.DefaultSelection<Prisma.$CondicaoClinicaPayload>
+/**
+ * Model CartaoMaeSalvador
+ * 
+ */
+export type CartaoMaeSalvador = $Result.DefaultSelection<Prisma.$CartaoMaeSalvadorPayload>
+/**
+ * Model Notificacao
+ * 
+ */
+export type Notificacao = $Result.DefaultSelection<Prisma.$NotificacaoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -235,6 +245,26 @@ export class PrismaClient<
     * ```
     */
   get condicaoClinica(): Prisma.CondicaoClinicaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cartaoMaeSalvador`: Exposes CRUD operations for the **CartaoMaeSalvador** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CartaoMaeSalvadors
+    * const cartaoMaeSalvadors = await prisma.cartaoMaeSalvador.findMany()
+    * ```
+    */
+  get cartaoMaeSalvador(): Prisma.CartaoMaeSalvadorDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.notificacao`: Exposes CRUD operations for the **Notificacao** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Notificacaos
+    * const notificacaos = await prisma.notificacao.findMany()
+    * ```
+    */
+  get notificacao(): Prisma.NotificacaoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -675,7 +705,9 @@ export namespace Prisma {
     Exame: 'Exame',
     Vacina: 'Vacina',
     Medicacao: 'Medicacao',
-    CondicaoClinica: 'CondicaoClinica'
+    CondicaoClinica: 'CondicaoClinica',
+    CartaoMaeSalvador: 'CartaoMaeSalvador',
+    Notificacao: 'Notificacao'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -691,7 +723,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "gestante" | "profissional" | "consulta" | "exame" | "vacina" | "medicacao" | "condicaoClinica"
+      modelProps: "gestante" | "profissional" | "consulta" | "exame" | "vacina" | "medicacao" | "condicaoClinica" | "cartaoMaeSalvador" | "notificacao"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1213,6 +1245,154 @@ export namespace Prisma {
           }
         }
       }
+      CartaoMaeSalvador: {
+        payload: Prisma.$CartaoMaeSalvadorPayload<ExtArgs>
+        fields: Prisma.CartaoMaeSalvadorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CartaoMaeSalvadorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CartaoMaeSalvadorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload>
+          }
+          findFirst: {
+            args: Prisma.CartaoMaeSalvadorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CartaoMaeSalvadorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload>
+          }
+          findMany: {
+            args: Prisma.CartaoMaeSalvadorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload>[]
+          }
+          create: {
+            args: Prisma.CartaoMaeSalvadorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload>
+          }
+          createMany: {
+            args: Prisma.CartaoMaeSalvadorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CartaoMaeSalvadorCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload>[]
+          }
+          delete: {
+            args: Prisma.CartaoMaeSalvadorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload>
+          }
+          update: {
+            args: Prisma.CartaoMaeSalvadorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload>
+          }
+          deleteMany: {
+            args: Prisma.CartaoMaeSalvadorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CartaoMaeSalvadorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CartaoMaeSalvadorUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload>[]
+          }
+          upsert: {
+            args: Prisma.CartaoMaeSalvadorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CartaoMaeSalvadorPayload>
+          }
+          aggregate: {
+            args: Prisma.CartaoMaeSalvadorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCartaoMaeSalvador>
+          }
+          groupBy: {
+            args: Prisma.CartaoMaeSalvadorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CartaoMaeSalvadorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CartaoMaeSalvadorCountArgs<ExtArgs>
+            result: $Utils.Optional<CartaoMaeSalvadorCountAggregateOutputType> | number
+          }
+        }
+      }
+      Notificacao: {
+        payload: Prisma.$NotificacaoPayload<ExtArgs>
+        fields: Prisma.NotificacaoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NotificacaoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NotificacaoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload>
+          }
+          findFirst: {
+            args: Prisma.NotificacaoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NotificacaoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload>
+          }
+          findMany: {
+            args: Prisma.NotificacaoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload>[]
+          }
+          create: {
+            args: Prisma.NotificacaoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload>
+          }
+          createMany: {
+            args: Prisma.NotificacaoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NotificacaoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload>[]
+          }
+          delete: {
+            args: Prisma.NotificacaoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload>
+          }
+          update: {
+            args: Prisma.NotificacaoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload>
+          }
+          deleteMany: {
+            args: Prisma.NotificacaoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NotificacaoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NotificacaoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload>[]
+          }
+          upsert: {
+            args: Prisma.NotificacaoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificacaoPayload>
+          }
+          aggregate: {
+            args: Prisma.NotificacaoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNotificacao>
+          }
+          groupBy: {
+            args: Prisma.NotificacaoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NotificacaoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NotificacaoCountArgs<ExtArgs>
+            result: $Utils.Optional<NotificacaoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1328,6 +1508,8 @@ export namespace Prisma {
     vacina?: VacinaOmit
     medicacao?: MedicacaoOmit
     condicaoClinica?: CondicaoClinicaOmit
+    cartaoMaeSalvador?: CartaoMaeSalvadorOmit
+    notificacao?: NotificacaoOmit
   }
 
   /* Types for Logging */
@@ -1413,6 +1595,7 @@ export namespace Prisma {
     vacinas: number
     medicacoes: number
     condicoes: number
+    notificacoes: number
   }
 
   export type GestanteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1421,6 +1604,7 @@ export namespace Prisma {
     vacinas?: boolean | GestanteCountOutputTypeCountVacinasArgs
     medicacoes?: boolean | GestanteCountOutputTypeCountMedicacoesArgs
     condicoes?: boolean | GestanteCountOutputTypeCountCondicoesArgs
+    notificacoes?: boolean | GestanteCountOutputTypeCountNotificacoesArgs
   }
 
   // Custom InputTypes
@@ -1469,6 +1653,13 @@ export namespace Prisma {
     where?: CondicaoClinicaWhereInput
   }
 
+  /**
+   * GestanteCountOutputType without action
+   */
+  export type GestanteCountOutputTypeCountNotificacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificacaoWhereInput
+  }
+
 
   /**
    * Count Type ProfissionalCountOutputType
@@ -1511,8 +1702,28 @@ export namespace Prisma {
 
   export type AggregateGestante = {
     _count: GestanteCountAggregateOutputType | null
+    _avg: GestanteAvgAggregateOutputType | null
+    _sum: GestanteSumAggregateOutputType | null
     _min: GestanteMinAggregateOutputType | null
     _max: GestanteMaxAggregateOutputType | null
+  }
+
+  export type GestanteAvgAggregateOutputType = {
+    numGestacoesPrevia: number | null
+    numPartosNormais: number | null
+    numPartosCesareos: number | null
+    numAbortosPrevia: number | null
+    pesoPreGestacional: number | null
+    alturaM: number | null
+  }
+
+  export type GestanteSumAggregateOutputType = {
+    numGestacoesPrevia: number | null
+    numPartosNormais: number | null
+    numPartosCesareos: number | null
+    numAbortosPrevia: number | null
+    pesoPreGestacional: number | null
+    alturaM: number | null
   }
 
   export type GestanteMinAggregateOutputType = {
@@ -1532,6 +1743,22 @@ export namespace Prisma {
     dataProvavelParto: Date | null
     tipoGravidez: string | null
     riscoGestacional: string | null
+    temWhatsapp: boolean | null
+    comoDescobriuGestacao: string | null
+    programaSocial: string | null
+    temPlanoSaude: boolean | null
+    desejaSeguimentoUbs: boolean | null
+    numGestacoesPrevia: number | null
+    numPartosNormais: number | null
+    numPartosCesareos: number | null
+    numAbortosPrevia: number | null
+    alergias: string | null
+    doencasConhecidas: string | null
+    medicacoesPreExistentes: string | null
+    pesoPreGestacional: number | null
+    alturaM: number | null
+    maternidadeVinculacao: string | null
+    desejoContracepcao: boolean | null
     senha: string | null
     ativo: boolean | null
     criadoEm: Date | null
@@ -1555,6 +1782,22 @@ export namespace Prisma {
     dataProvavelParto: Date | null
     tipoGravidez: string | null
     riscoGestacional: string | null
+    temWhatsapp: boolean | null
+    comoDescobriuGestacao: string | null
+    programaSocial: string | null
+    temPlanoSaude: boolean | null
+    desejaSeguimentoUbs: boolean | null
+    numGestacoesPrevia: number | null
+    numPartosNormais: number | null
+    numPartosCesareos: number | null
+    numAbortosPrevia: number | null
+    alergias: string | null
+    doencasConhecidas: string | null
+    medicacoesPreExistentes: string | null
+    pesoPreGestacional: number | null
+    alturaM: number | null
+    maternidadeVinculacao: string | null
+    desejoContracepcao: boolean | null
     senha: string | null
     ativo: boolean | null
     criadoEm: Date | null
@@ -1578,6 +1821,22 @@ export namespace Prisma {
     dataProvavelParto: number
     tipoGravidez: number
     riscoGestacional: number
+    temWhatsapp: number
+    comoDescobriuGestacao: number
+    programaSocial: number
+    temPlanoSaude: number
+    desejaSeguimentoUbs: number
+    numGestacoesPrevia: number
+    numPartosNormais: number
+    numPartosCesareos: number
+    numAbortosPrevia: number
+    alergias: number
+    doencasConhecidas: number
+    medicacoesPreExistentes: number
+    pesoPreGestacional: number
+    alturaM: number
+    maternidadeVinculacao: number
+    desejoContracepcao: number
     senha: number
     ativo: number
     criadoEm: number
@@ -1585,6 +1844,24 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type GestanteAvgAggregateInputType = {
+    numGestacoesPrevia?: true
+    numPartosNormais?: true
+    numPartosCesareos?: true
+    numAbortosPrevia?: true
+    pesoPreGestacional?: true
+    alturaM?: true
+  }
+
+  export type GestanteSumAggregateInputType = {
+    numGestacoesPrevia?: true
+    numPartosNormais?: true
+    numPartosCesareos?: true
+    numAbortosPrevia?: true
+    pesoPreGestacional?: true
+    alturaM?: true
+  }
 
   export type GestanteMinAggregateInputType = {
     id?: true
@@ -1603,6 +1880,22 @@ export namespace Prisma {
     dataProvavelParto?: true
     tipoGravidez?: true
     riscoGestacional?: true
+    temWhatsapp?: true
+    comoDescobriuGestacao?: true
+    programaSocial?: true
+    temPlanoSaude?: true
+    desejaSeguimentoUbs?: true
+    numGestacoesPrevia?: true
+    numPartosNormais?: true
+    numPartosCesareos?: true
+    numAbortosPrevia?: true
+    alergias?: true
+    doencasConhecidas?: true
+    medicacoesPreExistentes?: true
+    pesoPreGestacional?: true
+    alturaM?: true
+    maternidadeVinculacao?: true
+    desejoContracepcao?: true
     senha?: true
     ativo?: true
     criadoEm?: true
@@ -1626,6 +1919,22 @@ export namespace Prisma {
     dataProvavelParto?: true
     tipoGravidez?: true
     riscoGestacional?: true
+    temWhatsapp?: true
+    comoDescobriuGestacao?: true
+    programaSocial?: true
+    temPlanoSaude?: true
+    desejaSeguimentoUbs?: true
+    numGestacoesPrevia?: true
+    numPartosNormais?: true
+    numPartosCesareos?: true
+    numAbortosPrevia?: true
+    alergias?: true
+    doencasConhecidas?: true
+    medicacoesPreExistentes?: true
+    pesoPreGestacional?: true
+    alturaM?: true
+    maternidadeVinculacao?: true
+    desejoContracepcao?: true
     senha?: true
     ativo?: true
     criadoEm?: true
@@ -1649,6 +1958,22 @@ export namespace Prisma {
     dataProvavelParto?: true
     tipoGravidez?: true
     riscoGestacional?: true
+    temWhatsapp?: true
+    comoDescobriuGestacao?: true
+    programaSocial?: true
+    temPlanoSaude?: true
+    desejaSeguimentoUbs?: true
+    numGestacoesPrevia?: true
+    numPartosNormais?: true
+    numPartosCesareos?: true
+    numAbortosPrevia?: true
+    alergias?: true
+    doencasConhecidas?: true
+    medicacoesPreExistentes?: true
+    pesoPreGestacional?: true
+    alturaM?: true
+    maternidadeVinculacao?: true
+    desejoContracepcao?: true
     senha?: true
     ativo?: true
     criadoEm?: true
@@ -1694,6 +2019,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: GestanteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GestanteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: GestanteMinAggregateInputType
@@ -1724,6 +2061,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: GestanteCountAggregateInputType | true
+    _avg?: GestanteAvgAggregateInputType
+    _sum?: GestanteSumAggregateInputType
     _min?: GestanteMinAggregateInputType
     _max?: GestanteMaxAggregateInputType
   }
@@ -1745,11 +2084,29 @@ export namespace Prisma {
     dataProvavelParto: Date | null
     tipoGravidez: string
     riscoGestacional: string
+    temWhatsapp: boolean
+    comoDescobriuGestacao: string | null
+    programaSocial: string | null
+    temPlanoSaude: boolean
+    desejaSeguimentoUbs: boolean
+    numGestacoesPrevia: number | null
+    numPartosNormais: number | null
+    numPartosCesareos: number | null
+    numAbortosPrevia: number | null
+    alergias: string | null
+    doencasConhecidas: string | null
+    medicacoesPreExistentes: string | null
+    pesoPreGestacional: number | null
+    alturaM: number | null
+    maternidadeVinculacao: string | null
+    desejoContracepcao: boolean | null
     senha: string
     ativo: boolean
     criadoEm: Date
     atualizadoEm: Date
     _count: GestanteCountAggregateOutputType | null
+    _avg: GestanteAvgAggregateOutputType | null
+    _sum: GestanteSumAggregateOutputType | null
     _min: GestanteMinAggregateOutputType | null
     _max: GestanteMaxAggregateOutputType | null
   }
@@ -1785,6 +2142,22 @@ export namespace Prisma {
     dataProvavelParto?: boolean
     tipoGravidez?: boolean
     riscoGestacional?: boolean
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: boolean
+    programaSocial?: boolean
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: boolean
+    numPartosNormais?: boolean
+    numPartosCesareos?: boolean
+    numAbortosPrevia?: boolean
+    alergias?: boolean
+    doencasConhecidas?: boolean
+    medicacoesPreExistentes?: boolean
+    pesoPreGestacional?: boolean
+    alturaM?: boolean
+    maternidadeVinculacao?: boolean
+    desejoContracepcao?: boolean
     senha?: boolean
     ativo?: boolean
     criadoEm?: boolean
@@ -1794,6 +2167,8 @@ export namespace Prisma {
     vacinas?: boolean | Gestante$vacinasArgs<ExtArgs>
     medicacoes?: boolean | Gestante$medicacoesArgs<ExtArgs>
     condicoes?: boolean | Gestante$condicoesArgs<ExtArgs>
+    cartaoMaeSalvador?: boolean | Gestante$cartaoMaeSalvadorArgs<ExtArgs>
+    notificacoes?: boolean | Gestante$notificacoesArgs<ExtArgs>
     _count?: boolean | GestanteCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gestante"]>
 
@@ -1814,6 +2189,22 @@ export namespace Prisma {
     dataProvavelParto?: boolean
     tipoGravidez?: boolean
     riscoGestacional?: boolean
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: boolean
+    programaSocial?: boolean
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: boolean
+    numPartosNormais?: boolean
+    numPartosCesareos?: boolean
+    numAbortosPrevia?: boolean
+    alergias?: boolean
+    doencasConhecidas?: boolean
+    medicacoesPreExistentes?: boolean
+    pesoPreGestacional?: boolean
+    alturaM?: boolean
+    maternidadeVinculacao?: boolean
+    desejoContracepcao?: boolean
     senha?: boolean
     ativo?: boolean
     criadoEm?: boolean
@@ -1837,6 +2228,22 @@ export namespace Prisma {
     dataProvavelParto?: boolean
     tipoGravidez?: boolean
     riscoGestacional?: boolean
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: boolean
+    programaSocial?: boolean
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: boolean
+    numPartosNormais?: boolean
+    numPartosCesareos?: boolean
+    numAbortosPrevia?: boolean
+    alergias?: boolean
+    doencasConhecidas?: boolean
+    medicacoesPreExistentes?: boolean
+    pesoPreGestacional?: boolean
+    alturaM?: boolean
+    maternidadeVinculacao?: boolean
+    desejoContracepcao?: boolean
     senha?: boolean
     ativo?: boolean
     criadoEm?: boolean
@@ -1860,19 +2267,37 @@ export namespace Prisma {
     dataProvavelParto?: boolean
     tipoGravidez?: boolean
     riscoGestacional?: boolean
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: boolean
+    programaSocial?: boolean
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: boolean
+    numPartosNormais?: boolean
+    numPartosCesareos?: boolean
+    numAbortosPrevia?: boolean
+    alergias?: boolean
+    doencasConhecidas?: boolean
+    medicacoesPreExistentes?: boolean
+    pesoPreGestacional?: boolean
+    alturaM?: boolean
+    maternidadeVinculacao?: boolean
+    desejoContracepcao?: boolean
     senha?: boolean
     ativo?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
   }
 
-  export type GestanteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cpf" | "cns" | "nome" | "nomeSocial" | "dataNascimento" | "telefone" | "email" | "endereco" | "bairro" | "cep" | "ubsVinculada" | "dataUltimaMenstruacao" | "dataProvavelParto" | "tipoGravidez" | "riscoGestacional" | "senha" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["gestante"]>
+  export type GestanteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cpf" | "cns" | "nome" | "nomeSocial" | "dataNascimento" | "telefone" | "email" | "endereco" | "bairro" | "cep" | "ubsVinculada" | "dataUltimaMenstruacao" | "dataProvavelParto" | "tipoGravidez" | "riscoGestacional" | "temWhatsapp" | "comoDescobriuGestacao" | "programaSocial" | "temPlanoSaude" | "desejaSeguimentoUbs" | "numGestacoesPrevia" | "numPartosNormais" | "numPartosCesareos" | "numAbortosPrevia" | "alergias" | "doencasConhecidas" | "medicacoesPreExistentes" | "pesoPreGestacional" | "alturaM" | "maternidadeVinculacao" | "desejoContracepcao" | "senha" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["gestante"]>
   export type GestanteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     consultas?: boolean | Gestante$consultasArgs<ExtArgs>
     exames?: boolean | Gestante$examesArgs<ExtArgs>
     vacinas?: boolean | Gestante$vacinasArgs<ExtArgs>
     medicacoes?: boolean | Gestante$medicacoesArgs<ExtArgs>
     condicoes?: boolean | Gestante$condicoesArgs<ExtArgs>
+    cartaoMaeSalvador?: boolean | Gestante$cartaoMaeSalvadorArgs<ExtArgs>
+    notificacoes?: boolean | Gestante$notificacoesArgs<ExtArgs>
     _count?: boolean | GestanteCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type GestanteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1886,6 +2311,8 @@ export namespace Prisma {
       vacinas: Prisma.$VacinaPayload<ExtArgs>[]
       medicacoes: Prisma.$MedicacaoPayload<ExtArgs>[]
       condicoes: Prisma.$CondicaoClinicaPayload<ExtArgs>[]
+      cartaoMaeSalvador: Prisma.$CartaoMaeSalvadorPayload<ExtArgs> | null
+      notificacoes: Prisma.$NotificacaoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1904,6 +2331,22 @@ export namespace Prisma {
       dataProvavelParto: Date | null
       tipoGravidez: string
       riscoGestacional: string
+      temWhatsapp: boolean
+      comoDescobriuGestacao: string | null
+      programaSocial: string | null
+      temPlanoSaude: boolean
+      desejaSeguimentoUbs: boolean
+      numGestacoesPrevia: number | null
+      numPartosNormais: number | null
+      numPartosCesareos: number | null
+      numAbortosPrevia: number | null
+      alergias: string | null
+      doencasConhecidas: string | null
+      medicacoesPreExistentes: string | null
+      pesoPreGestacional: number | null
+      alturaM: number | null
+      maternidadeVinculacao: string | null
+      desejoContracepcao: boolean | null
       senha: string
       ativo: boolean
       criadoEm: Date
@@ -2307,6 +2750,8 @@ export namespace Prisma {
     vacinas<T extends Gestante$vacinasArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$vacinasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VacinaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     medicacoes<T extends Gestante$medicacoesArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$medicacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MedicacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     condicoes<T extends Gestante$condicoesArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$condicoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CondicaoClinicaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    cartaoMaeSalvador<T extends Gestante$cartaoMaeSalvadorArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$cartaoMaeSalvadorArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    notificacoes<T extends Gestante$notificacoesArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$notificacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2352,6 +2797,22 @@ export namespace Prisma {
     readonly dataProvavelParto: FieldRef<"Gestante", 'DateTime'>
     readonly tipoGravidez: FieldRef<"Gestante", 'String'>
     readonly riscoGestacional: FieldRef<"Gestante", 'String'>
+    readonly temWhatsapp: FieldRef<"Gestante", 'Boolean'>
+    readonly comoDescobriuGestacao: FieldRef<"Gestante", 'String'>
+    readonly programaSocial: FieldRef<"Gestante", 'String'>
+    readonly temPlanoSaude: FieldRef<"Gestante", 'Boolean'>
+    readonly desejaSeguimentoUbs: FieldRef<"Gestante", 'Boolean'>
+    readonly numGestacoesPrevia: FieldRef<"Gestante", 'Int'>
+    readonly numPartosNormais: FieldRef<"Gestante", 'Int'>
+    readonly numPartosCesareos: FieldRef<"Gestante", 'Int'>
+    readonly numAbortosPrevia: FieldRef<"Gestante", 'Int'>
+    readonly alergias: FieldRef<"Gestante", 'String'>
+    readonly doencasConhecidas: FieldRef<"Gestante", 'String'>
+    readonly medicacoesPreExistentes: FieldRef<"Gestante", 'String'>
+    readonly pesoPreGestacional: FieldRef<"Gestante", 'Float'>
+    readonly alturaM: FieldRef<"Gestante", 'Float'>
+    readonly maternidadeVinculacao: FieldRef<"Gestante", 'String'>
+    readonly desejoContracepcao: FieldRef<"Gestante", 'Boolean'>
     readonly senha: FieldRef<"Gestante", 'String'>
     readonly ativo: FieldRef<"Gestante", 'Boolean'>
     readonly criadoEm: FieldRef<"Gestante", 'DateTime'>
@@ -2859,6 +3320,49 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CondicaoClinicaScalarFieldEnum | CondicaoClinicaScalarFieldEnum[]
+  }
+
+  /**
+   * Gestante.cartaoMaeSalvador
+   */
+  export type Gestante$cartaoMaeSalvadorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    where?: CartaoMaeSalvadorWhereInput
+  }
+
+  /**
+   * Gestante.notificacoes
+   */
+  export type Gestante$notificacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    where?: NotificacaoWhereInput
+    orderBy?: NotificacaoOrderByWithRelationInput | NotificacaoOrderByWithRelationInput[]
+    cursor?: NotificacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NotificacaoScalarFieldEnum | NotificacaoScalarFieldEnum[]
   }
 
   /**
@@ -9686,6 +10190,2217 @@ export namespace Prisma {
 
 
   /**
+   * Model CartaoMaeSalvador
+   */
+
+  export type AggregateCartaoMaeSalvador = {
+    _count: CartaoMaeSalvadorCountAggregateOutputType | null
+    _avg: CartaoMaeSalvadorAvgAggregateOutputType | null
+    _sum: CartaoMaeSalvadorSumAggregateOutputType | null
+    _min: CartaoMaeSalvadorMinAggregateOutputType | null
+    _max: CartaoMaeSalvadorMaxAggregateOutputType | null
+  }
+
+  export type CartaoMaeSalvadorAvgAggregateOutputType = {
+    etapaAtual: number | null
+  }
+
+  export type CartaoMaeSalvadorSumAggregateOutputType = {
+    etapaAtual: number | null
+  }
+
+  export type CartaoMaeSalvadorMinAggregateOutputType = {
+    id: string | null
+    numeroTranscard: string | null
+    status: string | null
+    termoLgpdAceito: boolean | null
+    etapaAtual: number | null
+    gestanteId: string | null
+    criadoEm: Date | null
+    atualizadoEm: Date | null
+  }
+
+  export type CartaoMaeSalvadorMaxAggregateOutputType = {
+    id: string | null
+    numeroTranscard: string | null
+    status: string | null
+    termoLgpdAceito: boolean | null
+    etapaAtual: number | null
+    gestanteId: string | null
+    criadoEm: Date | null
+    atualizadoEm: Date | null
+  }
+
+  export type CartaoMaeSalvadorCountAggregateOutputType = {
+    id: number
+    numeroTranscard: number
+    status: number
+    termoLgpdAceito: number
+    etapaAtual: number
+    gestanteId: number
+    criadoEm: number
+    atualizadoEm: number
+    _all: number
+  }
+
+
+  export type CartaoMaeSalvadorAvgAggregateInputType = {
+    etapaAtual?: true
+  }
+
+  export type CartaoMaeSalvadorSumAggregateInputType = {
+    etapaAtual?: true
+  }
+
+  export type CartaoMaeSalvadorMinAggregateInputType = {
+    id?: true
+    numeroTranscard?: true
+    status?: true
+    termoLgpdAceito?: true
+    etapaAtual?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+  }
+
+  export type CartaoMaeSalvadorMaxAggregateInputType = {
+    id?: true
+    numeroTranscard?: true
+    status?: true
+    termoLgpdAceito?: true
+    etapaAtual?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+  }
+
+  export type CartaoMaeSalvadorCountAggregateInputType = {
+    id?: true
+    numeroTranscard?: true
+    status?: true
+    termoLgpdAceito?: true
+    etapaAtual?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+    _all?: true
+  }
+
+  export type CartaoMaeSalvadorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CartaoMaeSalvador to aggregate.
+     */
+    where?: CartaoMaeSalvadorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CartaoMaeSalvadors to fetch.
+     */
+    orderBy?: CartaoMaeSalvadorOrderByWithRelationInput | CartaoMaeSalvadorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CartaoMaeSalvadorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CartaoMaeSalvadors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CartaoMaeSalvadors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CartaoMaeSalvadors
+    **/
+    _count?: true | CartaoMaeSalvadorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CartaoMaeSalvadorAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CartaoMaeSalvadorSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CartaoMaeSalvadorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CartaoMaeSalvadorMaxAggregateInputType
+  }
+
+  export type GetCartaoMaeSalvadorAggregateType<T extends CartaoMaeSalvadorAggregateArgs> = {
+        [P in keyof T & keyof AggregateCartaoMaeSalvador]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCartaoMaeSalvador[P]>
+      : GetScalarType<T[P], AggregateCartaoMaeSalvador[P]>
+  }
+
+
+
+
+  export type CartaoMaeSalvadorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CartaoMaeSalvadorWhereInput
+    orderBy?: CartaoMaeSalvadorOrderByWithAggregationInput | CartaoMaeSalvadorOrderByWithAggregationInput[]
+    by: CartaoMaeSalvadorScalarFieldEnum[] | CartaoMaeSalvadorScalarFieldEnum
+    having?: CartaoMaeSalvadorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CartaoMaeSalvadorCountAggregateInputType | true
+    _avg?: CartaoMaeSalvadorAvgAggregateInputType
+    _sum?: CartaoMaeSalvadorSumAggregateInputType
+    _min?: CartaoMaeSalvadorMinAggregateInputType
+    _max?: CartaoMaeSalvadorMaxAggregateInputType
+  }
+
+  export type CartaoMaeSalvadorGroupByOutputType = {
+    id: string
+    numeroTranscard: string | null
+    status: string
+    termoLgpdAceito: boolean
+    etapaAtual: number
+    gestanteId: string
+    criadoEm: Date
+    atualizadoEm: Date
+    _count: CartaoMaeSalvadorCountAggregateOutputType | null
+    _avg: CartaoMaeSalvadorAvgAggregateOutputType | null
+    _sum: CartaoMaeSalvadorSumAggregateOutputType | null
+    _min: CartaoMaeSalvadorMinAggregateOutputType | null
+    _max: CartaoMaeSalvadorMaxAggregateOutputType | null
+  }
+
+  type GetCartaoMaeSalvadorGroupByPayload<T extends CartaoMaeSalvadorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CartaoMaeSalvadorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CartaoMaeSalvadorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CartaoMaeSalvadorGroupByOutputType[P]>
+            : GetScalarType<T[P], CartaoMaeSalvadorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CartaoMaeSalvadorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    numeroTranscard?: boolean
+    status?: boolean
+    termoLgpdAceito?: boolean
+    etapaAtual?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cartaoMaeSalvador"]>
+
+  export type CartaoMaeSalvadorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    numeroTranscard?: boolean
+    status?: boolean
+    termoLgpdAceito?: boolean
+    etapaAtual?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cartaoMaeSalvador"]>
+
+  export type CartaoMaeSalvadorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    numeroTranscard?: boolean
+    status?: boolean
+    termoLgpdAceito?: boolean
+    etapaAtual?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cartaoMaeSalvador"]>
+
+  export type CartaoMaeSalvadorSelectScalar = {
+    id?: boolean
+    numeroTranscard?: boolean
+    status?: boolean
+    termoLgpdAceito?: boolean
+    etapaAtual?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+  }
+
+  export type CartaoMaeSalvadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "numeroTranscard" | "status" | "termoLgpdAceito" | "etapaAtual" | "gestanteId" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["cartaoMaeSalvador"]>
+  export type CartaoMaeSalvadorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type CartaoMaeSalvadorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type CartaoMaeSalvadorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+
+  export type $CartaoMaeSalvadorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CartaoMaeSalvador"
+    objects: {
+      gestante: Prisma.$GestantePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      numeroTranscard: string | null
+      status: string
+      termoLgpdAceito: boolean
+      etapaAtual: number
+      gestanteId: string
+      criadoEm: Date
+      atualizadoEm: Date
+    }, ExtArgs["result"]["cartaoMaeSalvador"]>
+    composites: {}
+  }
+
+  type CartaoMaeSalvadorGetPayload<S extends boolean | null | undefined | CartaoMaeSalvadorDefaultArgs> = $Result.GetResult<Prisma.$CartaoMaeSalvadorPayload, S>
+
+  type CartaoMaeSalvadorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CartaoMaeSalvadorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CartaoMaeSalvadorCountAggregateInputType | true
+    }
+
+  export interface CartaoMaeSalvadorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CartaoMaeSalvador'], meta: { name: 'CartaoMaeSalvador' } }
+    /**
+     * Find zero or one CartaoMaeSalvador that matches the filter.
+     * @param {CartaoMaeSalvadorFindUniqueArgs} args - Arguments to find a CartaoMaeSalvador
+     * @example
+     * // Get one CartaoMaeSalvador
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CartaoMaeSalvadorFindUniqueArgs>(args: SelectSubset<T, CartaoMaeSalvadorFindUniqueArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CartaoMaeSalvador that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CartaoMaeSalvadorFindUniqueOrThrowArgs} args - Arguments to find a CartaoMaeSalvador
+     * @example
+     * // Get one CartaoMaeSalvador
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CartaoMaeSalvadorFindUniqueOrThrowArgs>(args: SelectSubset<T, CartaoMaeSalvadorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CartaoMaeSalvador that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CartaoMaeSalvadorFindFirstArgs} args - Arguments to find a CartaoMaeSalvador
+     * @example
+     * // Get one CartaoMaeSalvador
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CartaoMaeSalvadorFindFirstArgs>(args?: SelectSubset<T, CartaoMaeSalvadorFindFirstArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CartaoMaeSalvador that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CartaoMaeSalvadorFindFirstOrThrowArgs} args - Arguments to find a CartaoMaeSalvador
+     * @example
+     * // Get one CartaoMaeSalvador
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CartaoMaeSalvadorFindFirstOrThrowArgs>(args?: SelectSubset<T, CartaoMaeSalvadorFindFirstOrThrowArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CartaoMaeSalvadors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CartaoMaeSalvadorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CartaoMaeSalvadors
+     * const cartaoMaeSalvadors = await prisma.cartaoMaeSalvador.findMany()
+     * 
+     * // Get first 10 CartaoMaeSalvadors
+     * const cartaoMaeSalvadors = await prisma.cartaoMaeSalvador.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const cartaoMaeSalvadorWithIdOnly = await prisma.cartaoMaeSalvador.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CartaoMaeSalvadorFindManyArgs>(args?: SelectSubset<T, CartaoMaeSalvadorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CartaoMaeSalvador.
+     * @param {CartaoMaeSalvadorCreateArgs} args - Arguments to create a CartaoMaeSalvador.
+     * @example
+     * // Create one CartaoMaeSalvador
+     * const CartaoMaeSalvador = await prisma.cartaoMaeSalvador.create({
+     *   data: {
+     *     // ... data to create a CartaoMaeSalvador
+     *   }
+     * })
+     * 
+     */
+    create<T extends CartaoMaeSalvadorCreateArgs>(args: SelectSubset<T, CartaoMaeSalvadorCreateArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CartaoMaeSalvadors.
+     * @param {CartaoMaeSalvadorCreateManyArgs} args - Arguments to create many CartaoMaeSalvadors.
+     * @example
+     * // Create many CartaoMaeSalvadors
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CartaoMaeSalvadorCreateManyArgs>(args?: SelectSubset<T, CartaoMaeSalvadorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CartaoMaeSalvadors and returns the data saved in the database.
+     * @param {CartaoMaeSalvadorCreateManyAndReturnArgs} args - Arguments to create many CartaoMaeSalvadors.
+     * @example
+     * // Create many CartaoMaeSalvadors
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CartaoMaeSalvadors and only return the `id`
+     * const cartaoMaeSalvadorWithIdOnly = await prisma.cartaoMaeSalvador.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CartaoMaeSalvadorCreateManyAndReturnArgs>(args?: SelectSubset<T, CartaoMaeSalvadorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CartaoMaeSalvador.
+     * @param {CartaoMaeSalvadorDeleteArgs} args - Arguments to delete one CartaoMaeSalvador.
+     * @example
+     * // Delete one CartaoMaeSalvador
+     * const CartaoMaeSalvador = await prisma.cartaoMaeSalvador.delete({
+     *   where: {
+     *     // ... filter to delete one CartaoMaeSalvador
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CartaoMaeSalvadorDeleteArgs>(args: SelectSubset<T, CartaoMaeSalvadorDeleteArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CartaoMaeSalvador.
+     * @param {CartaoMaeSalvadorUpdateArgs} args - Arguments to update one CartaoMaeSalvador.
+     * @example
+     * // Update one CartaoMaeSalvador
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CartaoMaeSalvadorUpdateArgs>(args: SelectSubset<T, CartaoMaeSalvadorUpdateArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CartaoMaeSalvadors.
+     * @param {CartaoMaeSalvadorDeleteManyArgs} args - Arguments to filter CartaoMaeSalvadors to delete.
+     * @example
+     * // Delete a few CartaoMaeSalvadors
+     * const { count } = await prisma.cartaoMaeSalvador.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CartaoMaeSalvadorDeleteManyArgs>(args?: SelectSubset<T, CartaoMaeSalvadorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CartaoMaeSalvadors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CartaoMaeSalvadorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CartaoMaeSalvadors
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CartaoMaeSalvadorUpdateManyArgs>(args: SelectSubset<T, CartaoMaeSalvadorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CartaoMaeSalvadors and returns the data updated in the database.
+     * @param {CartaoMaeSalvadorUpdateManyAndReturnArgs} args - Arguments to update many CartaoMaeSalvadors.
+     * @example
+     * // Update many CartaoMaeSalvadors
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CartaoMaeSalvadors and only return the `id`
+     * const cartaoMaeSalvadorWithIdOnly = await prisma.cartaoMaeSalvador.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CartaoMaeSalvadorUpdateManyAndReturnArgs>(args: SelectSubset<T, CartaoMaeSalvadorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CartaoMaeSalvador.
+     * @param {CartaoMaeSalvadorUpsertArgs} args - Arguments to update or create a CartaoMaeSalvador.
+     * @example
+     * // Update or create a CartaoMaeSalvador
+     * const cartaoMaeSalvador = await prisma.cartaoMaeSalvador.upsert({
+     *   create: {
+     *     // ... data to create a CartaoMaeSalvador
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CartaoMaeSalvador we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CartaoMaeSalvadorUpsertArgs>(args: SelectSubset<T, CartaoMaeSalvadorUpsertArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CartaoMaeSalvadors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CartaoMaeSalvadorCountArgs} args - Arguments to filter CartaoMaeSalvadors to count.
+     * @example
+     * // Count the number of CartaoMaeSalvadors
+     * const count = await prisma.cartaoMaeSalvador.count({
+     *   where: {
+     *     // ... the filter for the CartaoMaeSalvadors we want to count
+     *   }
+     * })
+    **/
+    count<T extends CartaoMaeSalvadorCountArgs>(
+      args?: Subset<T, CartaoMaeSalvadorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CartaoMaeSalvadorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CartaoMaeSalvador.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CartaoMaeSalvadorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CartaoMaeSalvadorAggregateArgs>(args: Subset<T, CartaoMaeSalvadorAggregateArgs>): Prisma.PrismaPromise<GetCartaoMaeSalvadorAggregateType<T>>
+
+    /**
+     * Group by CartaoMaeSalvador.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CartaoMaeSalvadorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CartaoMaeSalvadorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CartaoMaeSalvadorGroupByArgs['orderBy'] }
+        : { orderBy?: CartaoMaeSalvadorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CartaoMaeSalvadorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCartaoMaeSalvadorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CartaoMaeSalvador model
+   */
+  readonly fields: CartaoMaeSalvadorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CartaoMaeSalvador.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CartaoMaeSalvadorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    gestante<T extends GestanteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GestanteDefaultArgs<ExtArgs>>): Prisma__GestanteClient<$Result.GetResult<Prisma.$GestantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CartaoMaeSalvador model
+   */
+  interface CartaoMaeSalvadorFieldRefs {
+    readonly id: FieldRef<"CartaoMaeSalvador", 'String'>
+    readonly numeroTranscard: FieldRef<"CartaoMaeSalvador", 'String'>
+    readonly status: FieldRef<"CartaoMaeSalvador", 'String'>
+    readonly termoLgpdAceito: FieldRef<"CartaoMaeSalvador", 'Boolean'>
+    readonly etapaAtual: FieldRef<"CartaoMaeSalvador", 'Int'>
+    readonly gestanteId: FieldRef<"CartaoMaeSalvador", 'String'>
+    readonly criadoEm: FieldRef<"CartaoMaeSalvador", 'DateTime'>
+    readonly atualizadoEm: FieldRef<"CartaoMaeSalvador", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CartaoMaeSalvador findUnique
+   */
+  export type CartaoMaeSalvadorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    /**
+     * Filter, which CartaoMaeSalvador to fetch.
+     */
+    where: CartaoMaeSalvadorWhereUniqueInput
+  }
+
+  /**
+   * CartaoMaeSalvador findUniqueOrThrow
+   */
+  export type CartaoMaeSalvadorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    /**
+     * Filter, which CartaoMaeSalvador to fetch.
+     */
+    where: CartaoMaeSalvadorWhereUniqueInput
+  }
+
+  /**
+   * CartaoMaeSalvador findFirst
+   */
+  export type CartaoMaeSalvadorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    /**
+     * Filter, which CartaoMaeSalvador to fetch.
+     */
+    where?: CartaoMaeSalvadorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CartaoMaeSalvadors to fetch.
+     */
+    orderBy?: CartaoMaeSalvadorOrderByWithRelationInput | CartaoMaeSalvadorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CartaoMaeSalvadors.
+     */
+    cursor?: CartaoMaeSalvadorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CartaoMaeSalvadors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CartaoMaeSalvadors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CartaoMaeSalvadors.
+     */
+    distinct?: CartaoMaeSalvadorScalarFieldEnum | CartaoMaeSalvadorScalarFieldEnum[]
+  }
+
+  /**
+   * CartaoMaeSalvador findFirstOrThrow
+   */
+  export type CartaoMaeSalvadorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    /**
+     * Filter, which CartaoMaeSalvador to fetch.
+     */
+    where?: CartaoMaeSalvadorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CartaoMaeSalvadors to fetch.
+     */
+    orderBy?: CartaoMaeSalvadorOrderByWithRelationInput | CartaoMaeSalvadorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CartaoMaeSalvadors.
+     */
+    cursor?: CartaoMaeSalvadorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CartaoMaeSalvadors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CartaoMaeSalvadors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CartaoMaeSalvadors.
+     */
+    distinct?: CartaoMaeSalvadorScalarFieldEnum | CartaoMaeSalvadorScalarFieldEnum[]
+  }
+
+  /**
+   * CartaoMaeSalvador findMany
+   */
+  export type CartaoMaeSalvadorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    /**
+     * Filter, which CartaoMaeSalvadors to fetch.
+     */
+    where?: CartaoMaeSalvadorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CartaoMaeSalvadors to fetch.
+     */
+    orderBy?: CartaoMaeSalvadorOrderByWithRelationInput | CartaoMaeSalvadorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CartaoMaeSalvadors.
+     */
+    cursor?: CartaoMaeSalvadorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CartaoMaeSalvadors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CartaoMaeSalvadors.
+     */
+    skip?: number
+    distinct?: CartaoMaeSalvadorScalarFieldEnum | CartaoMaeSalvadorScalarFieldEnum[]
+  }
+
+  /**
+   * CartaoMaeSalvador create
+   */
+  export type CartaoMaeSalvadorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CartaoMaeSalvador.
+     */
+    data: XOR<CartaoMaeSalvadorCreateInput, CartaoMaeSalvadorUncheckedCreateInput>
+  }
+
+  /**
+   * CartaoMaeSalvador createMany
+   */
+  export type CartaoMaeSalvadorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CartaoMaeSalvadors.
+     */
+    data: CartaoMaeSalvadorCreateManyInput | CartaoMaeSalvadorCreateManyInput[]
+  }
+
+  /**
+   * CartaoMaeSalvador createManyAndReturn
+   */
+  export type CartaoMaeSalvadorCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * The data used to create many CartaoMaeSalvadors.
+     */
+    data: CartaoMaeSalvadorCreateManyInput | CartaoMaeSalvadorCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CartaoMaeSalvador update
+   */
+  export type CartaoMaeSalvadorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CartaoMaeSalvador.
+     */
+    data: XOR<CartaoMaeSalvadorUpdateInput, CartaoMaeSalvadorUncheckedUpdateInput>
+    /**
+     * Choose, which CartaoMaeSalvador to update.
+     */
+    where: CartaoMaeSalvadorWhereUniqueInput
+  }
+
+  /**
+   * CartaoMaeSalvador updateMany
+   */
+  export type CartaoMaeSalvadorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CartaoMaeSalvadors.
+     */
+    data: XOR<CartaoMaeSalvadorUpdateManyMutationInput, CartaoMaeSalvadorUncheckedUpdateManyInput>
+    /**
+     * Filter which CartaoMaeSalvadors to update
+     */
+    where?: CartaoMaeSalvadorWhereInput
+    /**
+     * Limit how many CartaoMaeSalvadors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CartaoMaeSalvador updateManyAndReturn
+   */
+  export type CartaoMaeSalvadorUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * The data used to update CartaoMaeSalvadors.
+     */
+    data: XOR<CartaoMaeSalvadorUpdateManyMutationInput, CartaoMaeSalvadorUncheckedUpdateManyInput>
+    /**
+     * Filter which CartaoMaeSalvadors to update
+     */
+    where?: CartaoMaeSalvadorWhereInput
+    /**
+     * Limit how many CartaoMaeSalvadors to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CartaoMaeSalvador upsert
+   */
+  export type CartaoMaeSalvadorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CartaoMaeSalvador to update in case it exists.
+     */
+    where: CartaoMaeSalvadorWhereUniqueInput
+    /**
+     * In case the CartaoMaeSalvador found by the `where` argument doesn't exist, create a new CartaoMaeSalvador with this data.
+     */
+    create: XOR<CartaoMaeSalvadorCreateInput, CartaoMaeSalvadorUncheckedCreateInput>
+    /**
+     * In case the CartaoMaeSalvador was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CartaoMaeSalvadorUpdateInput, CartaoMaeSalvadorUncheckedUpdateInput>
+  }
+
+  /**
+   * CartaoMaeSalvador delete
+   */
+  export type CartaoMaeSalvadorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+    /**
+     * Filter which CartaoMaeSalvador to delete.
+     */
+    where: CartaoMaeSalvadorWhereUniqueInput
+  }
+
+  /**
+   * CartaoMaeSalvador deleteMany
+   */
+  export type CartaoMaeSalvadorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CartaoMaeSalvadors to delete
+     */
+    where?: CartaoMaeSalvadorWhereInput
+    /**
+     * Limit how many CartaoMaeSalvadors to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CartaoMaeSalvador without action
+   */
+  export type CartaoMaeSalvadorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CartaoMaeSalvador
+     */
+    select?: CartaoMaeSalvadorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CartaoMaeSalvador
+     */
+    omit?: CartaoMaeSalvadorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CartaoMaeSalvadorInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Notificacao
+   */
+
+  export type AggregateNotificacao = {
+    _count: NotificacaoCountAggregateOutputType | null
+    _min: NotificacaoMinAggregateOutputType | null
+    _max: NotificacaoMaxAggregateOutputType | null
+  }
+
+  export type NotificacaoMinAggregateOutputType = {
+    id: string | null
+    titulo: string | null
+    mensagem: string | null
+    tipo: string | null
+    lida: boolean | null
+    gestanteId: string | null
+    criadoEm: Date | null
+  }
+
+  export type NotificacaoMaxAggregateOutputType = {
+    id: string | null
+    titulo: string | null
+    mensagem: string | null
+    tipo: string | null
+    lida: boolean | null
+    gestanteId: string | null
+    criadoEm: Date | null
+  }
+
+  export type NotificacaoCountAggregateOutputType = {
+    id: number
+    titulo: number
+    mensagem: number
+    tipo: number
+    lida: number
+    gestanteId: number
+    criadoEm: number
+    _all: number
+  }
+
+
+  export type NotificacaoMinAggregateInputType = {
+    id?: true
+    titulo?: true
+    mensagem?: true
+    tipo?: true
+    lida?: true
+    gestanteId?: true
+    criadoEm?: true
+  }
+
+  export type NotificacaoMaxAggregateInputType = {
+    id?: true
+    titulo?: true
+    mensagem?: true
+    tipo?: true
+    lida?: true
+    gestanteId?: true
+    criadoEm?: true
+  }
+
+  export type NotificacaoCountAggregateInputType = {
+    id?: true
+    titulo?: true
+    mensagem?: true
+    tipo?: true
+    lida?: true
+    gestanteId?: true
+    criadoEm?: true
+    _all?: true
+  }
+
+  export type NotificacaoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notificacao to aggregate.
+     */
+    where?: NotificacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notificacaos to fetch.
+     */
+    orderBy?: NotificacaoOrderByWithRelationInput | NotificacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NotificacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notificacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notificacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Notificacaos
+    **/
+    _count?: true | NotificacaoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NotificacaoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NotificacaoMaxAggregateInputType
+  }
+
+  export type GetNotificacaoAggregateType<T extends NotificacaoAggregateArgs> = {
+        [P in keyof T & keyof AggregateNotificacao]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNotificacao[P]>
+      : GetScalarType<T[P], AggregateNotificacao[P]>
+  }
+
+
+
+
+  export type NotificacaoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NotificacaoWhereInput
+    orderBy?: NotificacaoOrderByWithAggregationInput | NotificacaoOrderByWithAggregationInput[]
+    by: NotificacaoScalarFieldEnum[] | NotificacaoScalarFieldEnum
+    having?: NotificacaoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NotificacaoCountAggregateInputType | true
+    _min?: NotificacaoMinAggregateInputType
+    _max?: NotificacaoMaxAggregateInputType
+  }
+
+  export type NotificacaoGroupByOutputType = {
+    id: string
+    titulo: string
+    mensagem: string
+    tipo: string
+    lida: boolean
+    gestanteId: string
+    criadoEm: Date
+    _count: NotificacaoCountAggregateOutputType | null
+    _min: NotificacaoMinAggregateOutputType | null
+    _max: NotificacaoMaxAggregateOutputType | null
+  }
+
+  type GetNotificacaoGroupByPayload<T extends NotificacaoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NotificacaoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NotificacaoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NotificacaoGroupByOutputType[P]>
+            : GetScalarType<T[P], NotificacaoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NotificacaoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    titulo?: boolean
+    mensagem?: boolean
+    tipo?: boolean
+    lida?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notificacao"]>
+
+  export type NotificacaoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    titulo?: boolean
+    mensagem?: boolean
+    tipo?: boolean
+    lida?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notificacao"]>
+
+  export type NotificacaoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    titulo?: boolean
+    mensagem?: boolean
+    tipo?: boolean
+    lida?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notificacao"]>
+
+  export type NotificacaoSelectScalar = {
+    id?: boolean
+    titulo?: boolean
+    mensagem?: boolean
+    tipo?: boolean
+    lida?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+  }
+
+  export type NotificacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "titulo" | "mensagem" | "tipo" | "lida" | "gestanteId" | "criadoEm", ExtArgs["result"]["notificacao"]>
+  export type NotificacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type NotificacaoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type NotificacaoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+
+  export type $NotificacaoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Notificacao"
+    objects: {
+      gestante: Prisma.$GestantePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      titulo: string
+      mensagem: string
+      tipo: string
+      lida: boolean
+      gestanteId: string
+      criadoEm: Date
+    }, ExtArgs["result"]["notificacao"]>
+    composites: {}
+  }
+
+  type NotificacaoGetPayload<S extends boolean | null | undefined | NotificacaoDefaultArgs> = $Result.GetResult<Prisma.$NotificacaoPayload, S>
+
+  type NotificacaoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NotificacaoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NotificacaoCountAggregateInputType | true
+    }
+
+  export interface NotificacaoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Notificacao'], meta: { name: 'Notificacao' } }
+    /**
+     * Find zero or one Notificacao that matches the filter.
+     * @param {NotificacaoFindUniqueArgs} args - Arguments to find a Notificacao
+     * @example
+     * // Get one Notificacao
+     * const notificacao = await prisma.notificacao.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NotificacaoFindUniqueArgs>(args: SelectSubset<T, NotificacaoFindUniqueArgs<ExtArgs>>): Prisma__NotificacaoClient<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Notificacao that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NotificacaoFindUniqueOrThrowArgs} args - Arguments to find a Notificacao
+     * @example
+     * // Get one Notificacao
+     * const notificacao = await prisma.notificacao.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NotificacaoFindUniqueOrThrowArgs>(args: SelectSubset<T, NotificacaoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NotificacaoClient<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notificacao that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificacaoFindFirstArgs} args - Arguments to find a Notificacao
+     * @example
+     * // Get one Notificacao
+     * const notificacao = await prisma.notificacao.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NotificacaoFindFirstArgs>(args?: SelectSubset<T, NotificacaoFindFirstArgs<ExtArgs>>): Prisma__NotificacaoClient<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Notificacao that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificacaoFindFirstOrThrowArgs} args - Arguments to find a Notificacao
+     * @example
+     * // Get one Notificacao
+     * const notificacao = await prisma.notificacao.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NotificacaoFindFirstOrThrowArgs>(args?: SelectSubset<T, NotificacaoFindFirstOrThrowArgs<ExtArgs>>): Prisma__NotificacaoClient<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Notificacaos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificacaoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Notificacaos
+     * const notificacaos = await prisma.notificacao.findMany()
+     * 
+     * // Get first 10 Notificacaos
+     * const notificacaos = await prisma.notificacao.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const notificacaoWithIdOnly = await prisma.notificacao.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NotificacaoFindManyArgs>(args?: SelectSubset<T, NotificacaoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Notificacao.
+     * @param {NotificacaoCreateArgs} args - Arguments to create a Notificacao.
+     * @example
+     * // Create one Notificacao
+     * const Notificacao = await prisma.notificacao.create({
+     *   data: {
+     *     // ... data to create a Notificacao
+     *   }
+     * })
+     * 
+     */
+    create<T extends NotificacaoCreateArgs>(args: SelectSubset<T, NotificacaoCreateArgs<ExtArgs>>): Prisma__NotificacaoClient<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Notificacaos.
+     * @param {NotificacaoCreateManyArgs} args - Arguments to create many Notificacaos.
+     * @example
+     * // Create many Notificacaos
+     * const notificacao = await prisma.notificacao.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NotificacaoCreateManyArgs>(args?: SelectSubset<T, NotificacaoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Notificacaos and returns the data saved in the database.
+     * @param {NotificacaoCreateManyAndReturnArgs} args - Arguments to create many Notificacaos.
+     * @example
+     * // Create many Notificacaos
+     * const notificacao = await prisma.notificacao.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Notificacaos and only return the `id`
+     * const notificacaoWithIdOnly = await prisma.notificacao.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NotificacaoCreateManyAndReturnArgs>(args?: SelectSubset<T, NotificacaoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Notificacao.
+     * @param {NotificacaoDeleteArgs} args - Arguments to delete one Notificacao.
+     * @example
+     * // Delete one Notificacao
+     * const Notificacao = await prisma.notificacao.delete({
+     *   where: {
+     *     // ... filter to delete one Notificacao
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NotificacaoDeleteArgs>(args: SelectSubset<T, NotificacaoDeleteArgs<ExtArgs>>): Prisma__NotificacaoClient<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Notificacao.
+     * @param {NotificacaoUpdateArgs} args - Arguments to update one Notificacao.
+     * @example
+     * // Update one Notificacao
+     * const notificacao = await prisma.notificacao.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NotificacaoUpdateArgs>(args: SelectSubset<T, NotificacaoUpdateArgs<ExtArgs>>): Prisma__NotificacaoClient<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Notificacaos.
+     * @param {NotificacaoDeleteManyArgs} args - Arguments to filter Notificacaos to delete.
+     * @example
+     * // Delete a few Notificacaos
+     * const { count } = await prisma.notificacao.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NotificacaoDeleteManyArgs>(args?: SelectSubset<T, NotificacaoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notificacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificacaoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Notificacaos
+     * const notificacao = await prisma.notificacao.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NotificacaoUpdateManyArgs>(args: SelectSubset<T, NotificacaoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notificacaos and returns the data updated in the database.
+     * @param {NotificacaoUpdateManyAndReturnArgs} args - Arguments to update many Notificacaos.
+     * @example
+     * // Update many Notificacaos
+     * const notificacao = await prisma.notificacao.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Notificacaos and only return the `id`
+     * const notificacaoWithIdOnly = await prisma.notificacao.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NotificacaoUpdateManyAndReturnArgs>(args: SelectSubset<T, NotificacaoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Notificacao.
+     * @param {NotificacaoUpsertArgs} args - Arguments to update or create a Notificacao.
+     * @example
+     * // Update or create a Notificacao
+     * const notificacao = await prisma.notificacao.upsert({
+     *   create: {
+     *     // ... data to create a Notificacao
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Notificacao we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NotificacaoUpsertArgs>(args: SelectSubset<T, NotificacaoUpsertArgs<ExtArgs>>): Prisma__NotificacaoClient<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Notificacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificacaoCountArgs} args - Arguments to filter Notificacaos to count.
+     * @example
+     * // Count the number of Notificacaos
+     * const count = await prisma.notificacao.count({
+     *   where: {
+     *     // ... the filter for the Notificacaos we want to count
+     *   }
+     * })
+    **/
+    count<T extends NotificacaoCountArgs>(
+      args?: Subset<T, NotificacaoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NotificacaoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Notificacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificacaoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NotificacaoAggregateArgs>(args: Subset<T, NotificacaoAggregateArgs>): Prisma.PrismaPromise<GetNotificacaoAggregateType<T>>
+
+    /**
+     * Group by Notificacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NotificacaoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NotificacaoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NotificacaoGroupByArgs['orderBy'] }
+        : { orderBy?: NotificacaoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NotificacaoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNotificacaoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Notificacao model
+   */
+  readonly fields: NotificacaoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Notificacao.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NotificacaoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    gestante<T extends GestanteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GestanteDefaultArgs<ExtArgs>>): Prisma__GestanteClient<$Result.GetResult<Prisma.$GestantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Notificacao model
+   */
+  interface NotificacaoFieldRefs {
+    readonly id: FieldRef<"Notificacao", 'String'>
+    readonly titulo: FieldRef<"Notificacao", 'String'>
+    readonly mensagem: FieldRef<"Notificacao", 'String'>
+    readonly tipo: FieldRef<"Notificacao", 'String'>
+    readonly lida: FieldRef<"Notificacao", 'Boolean'>
+    readonly gestanteId: FieldRef<"Notificacao", 'String'>
+    readonly criadoEm: FieldRef<"Notificacao", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Notificacao findUnique
+   */
+  export type NotificacaoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Notificacao to fetch.
+     */
+    where: NotificacaoWhereUniqueInput
+  }
+
+  /**
+   * Notificacao findUniqueOrThrow
+   */
+  export type NotificacaoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Notificacao to fetch.
+     */
+    where: NotificacaoWhereUniqueInput
+  }
+
+  /**
+   * Notificacao findFirst
+   */
+  export type NotificacaoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Notificacao to fetch.
+     */
+    where?: NotificacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notificacaos to fetch.
+     */
+    orderBy?: NotificacaoOrderByWithRelationInput | NotificacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notificacaos.
+     */
+    cursor?: NotificacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notificacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notificacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notificacaos.
+     */
+    distinct?: NotificacaoScalarFieldEnum | NotificacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Notificacao findFirstOrThrow
+   */
+  export type NotificacaoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Notificacao to fetch.
+     */
+    where?: NotificacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notificacaos to fetch.
+     */
+    orderBy?: NotificacaoOrderByWithRelationInput | NotificacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Notificacaos.
+     */
+    cursor?: NotificacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notificacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notificacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Notificacaos.
+     */
+    distinct?: NotificacaoScalarFieldEnum | NotificacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Notificacao findMany
+   */
+  export type NotificacaoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Notificacaos to fetch.
+     */
+    where?: NotificacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Notificacaos to fetch.
+     */
+    orderBy?: NotificacaoOrderByWithRelationInput | NotificacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Notificacaos.
+     */
+    cursor?: NotificacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Notificacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Notificacaos.
+     */
+    skip?: number
+    distinct?: NotificacaoScalarFieldEnum | NotificacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Notificacao create
+   */
+  export type NotificacaoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Notificacao.
+     */
+    data: XOR<NotificacaoCreateInput, NotificacaoUncheckedCreateInput>
+  }
+
+  /**
+   * Notificacao createMany
+   */
+  export type NotificacaoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Notificacaos.
+     */
+    data: NotificacaoCreateManyInput | NotificacaoCreateManyInput[]
+  }
+
+  /**
+   * Notificacao createManyAndReturn
+   */
+  export type NotificacaoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Notificacaos.
+     */
+    data: NotificacaoCreateManyInput | NotificacaoCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Notificacao update
+   */
+  export type NotificacaoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Notificacao.
+     */
+    data: XOR<NotificacaoUpdateInput, NotificacaoUncheckedUpdateInput>
+    /**
+     * Choose, which Notificacao to update.
+     */
+    where: NotificacaoWhereUniqueInput
+  }
+
+  /**
+   * Notificacao updateMany
+   */
+  export type NotificacaoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Notificacaos.
+     */
+    data: XOR<NotificacaoUpdateManyMutationInput, NotificacaoUncheckedUpdateManyInput>
+    /**
+     * Filter which Notificacaos to update
+     */
+    where?: NotificacaoWhereInput
+    /**
+     * Limit how many Notificacaos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notificacao updateManyAndReturn
+   */
+  export type NotificacaoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * The data used to update Notificacaos.
+     */
+    data: XOR<NotificacaoUpdateManyMutationInput, NotificacaoUncheckedUpdateManyInput>
+    /**
+     * Filter which Notificacaos to update
+     */
+    where?: NotificacaoWhereInput
+    /**
+     * Limit how many Notificacaos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Notificacao upsert
+   */
+  export type NotificacaoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Notificacao to update in case it exists.
+     */
+    where: NotificacaoWhereUniqueInput
+    /**
+     * In case the Notificacao found by the `where` argument doesn't exist, create a new Notificacao with this data.
+     */
+    create: XOR<NotificacaoCreateInput, NotificacaoUncheckedCreateInput>
+    /**
+     * In case the Notificacao was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NotificacaoUpdateInput, NotificacaoUncheckedUpdateInput>
+  }
+
+  /**
+   * Notificacao delete
+   */
+  export type NotificacaoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+    /**
+     * Filter which Notificacao to delete.
+     */
+    where: NotificacaoWhereUniqueInput
+  }
+
+  /**
+   * Notificacao deleteMany
+   */
+  export type NotificacaoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Notificacaos to delete
+     */
+    where?: NotificacaoWhereInput
+    /**
+     * Limit how many Notificacaos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notificacao without action
+   */
+  export type NotificacaoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notificacao
+     */
+    select?: NotificacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notificacao
+     */
+    omit?: NotificacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificacaoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -9713,6 +12428,22 @@ export namespace Prisma {
     dataProvavelParto: 'dataProvavelParto',
     tipoGravidez: 'tipoGravidez',
     riscoGestacional: 'riscoGestacional',
+    temWhatsapp: 'temWhatsapp',
+    comoDescobriuGestacao: 'comoDescobriuGestacao',
+    programaSocial: 'programaSocial',
+    temPlanoSaude: 'temPlanoSaude',
+    desejaSeguimentoUbs: 'desejaSeguimentoUbs',
+    numGestacoesPrevia: 'numGestacoesPrevia',
+    numPartosNormais: 'numPartosNormais',
+    numPartosCesareos: 'numPartosCesareos',
+    numAbortosPrevia: 'numAbortosPrevia',
+    alergias: 'alergias',
+    doencasConhecidas: 'doencasConhecidas',
+    medicacoesPreExistentes: 'medicacoesPreExistentes',
+    pesoPreGestacional: 'pesoPreGestacional',
+    alturaM: 'alturaM',
+    maternidadeVinculacao: 'maternidadeVinculacao',
+    desejoContracepcao: 'desejoContracepcao',
     senha: 'senha',
     ativo: 'ativo',
     criadoEm: 'criadoEm',
@@ -9819,6 +12550,33 @@ export namespace Prisma {
   export type CondicaoClinicaScalarFieldEnum = (typeof CondicaoClinicaScalarFieldEnum)[keyof typeof CondicaoClinicaScalarFieldEnum]
 
 
+  export const CartaoMaeSalvadorScalarFieldEnum: {
+    id: 'id',
+    numeroTranscard: 'numeroTranscard',
+    status: 'status',
+    termoLgpdAceito: 'termoLgpdAceito',
+    etapaAtual: 'etapaAtual',
+    gestanteId: 'gestanteId',
+    criadoEm: 'criadoEm',
+    atualizadoEm: 'atualizadoEm'
+  };
+
+  export type CartaoMaeSalvadorScalarFieldEnum = (typeof CartaoMaeSalvadorScalarFieldEnum)[keyof typeof CartaoMaeSalvadorScalarFieldEnum]
+
+
+  export const NotificacaoScalarFieldEnum: {
+    id: 'id',
+    titulo: 'titulo',
+    mensagem: 'mensagem',
+    tipo: 'tipo',
+    lida: 'lida',
+    gestanteId: 'gestanteId',
+    criadoEm: 'criadoEm'
+  };
+
+  export type NotificacaoScalarFieldEnum = (typeof NotificacaoScalarFieldEnum)[keyof typeof NotificacaoScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -9898,6 +12656,22 @@ export namespace Prisma {
     dataProvavelParto?: DateTimeNullableFilter<"Gestante"> | Date | string | null
     tipoGravidez?: StringFilter<"Gestante"> | string
     riscoGestacional?: StringFilter<"Gestante"> | string
+    temWhatsapp?: BoolFilter<"Gestante"> | boolean
+    comoDescobriuGestacao?: StringNullableFilter<"Gestante"> | string | null
+    programaSocial?: StringNullableFilter<"Gestante"> | string | null
+    temPlanoSaude?: BoolFilter<"Gestante"> | boolean
+    desejaSeguimentoUbs?: BoolFilter<"Gestante"> | boolean
+    numGestacoesPrevia?: IntNullableFilter<"Gestante"> | number | null
+    numPartosNormais?: IntNullableFilter<"Gestante"> | number | null
+    numPartosCesareos?: IntNullableFilter<"Gestante"> | number | null
+    numAbortosPrevia?: IntNullableFilter<"Gestante"> | number | null
+    alergias?: StringNullableFilter<"Gestante"> | string | null
+    doencasConhecidas?: StringNullableFilter<"Gestante"> | string | null
+    medicacoesPreExistentes?: StringNullableFilter<"Gestante"> | string | null
+    pesoPreGestacional?: FloatNullableFilter<"Gestante"> | number | null
+    alturaM?: FloatNullableFilter<"Gestante"> | number | null
+    maternidadeVinculacao?: StringNullableFilter<"Gestante"> | string | null
+    desejoContracepcao?: BoolNullableFilter<"Gestante"> | boolean | null
     senha?: StringFilter<"Gestante"> | string
     ativo?: BoolFilter<"Gestante"> | boolean
     criadoEm?: DateTimeFilter<"Gestante"> | Date | string
@@ -9907,6 +12681,8 @@ export namespace Prisma {
     vacinas?: VacinaListRelationFilter
     medicacoes?: MedicacaoListRelationFilter
     condicoes?: CondicaoClinicaListRelationFilter
+    cartaoMaeSalvador?: XOR<CartaoMaeSalvadorNullableScalarRelationFilter, CartaoMaeSalvadorWhereInput> | null
+    notificacoes?: NotificacaoListRelationFilter
   }
 
   export type GestanteOrderByWithRelationInput = {
@@ -9926,6 +12702,22 @@ export namespace Prisma {
     dataProvavelParto?: SortOrderInput | SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    temWhatsapp?: SortOrder
+    comoDescobriuGestacao?: SortOrderInput | SortOrder
+    programaSocial?: SortOrderInput | SortOrder
+    temPlanoSaude?: SortOrder
+    desejaSeguimentoUbs?: SortOrder
+    numGestacoesPrevia?: SortOrderInput | SortOrder
+    numPartosNormais?: SortOrderInput | SortOrder
+    numPartosCesareos?: SortOrderInput | SortOrder
+    numAbortosPrevia?: SortOrderInput | SortOrder
+    alergias?: SortOrderInput | SortOrder
+    doencasConhecidas?: SortOrderInput | SortOrder
+    medicacoesPreExistentes?: SortOrderInput | SortOrder
+    pesoPreGestacional?: SortOrderInput | SortOrder
+    alturaM?: SortOrderInput | SortOrder
+    maternidadeVinculacao?: SortOrderInput | SortOrder
+    desejoContracepcao?: SortOrderInput | SortOrder
     senha?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
@@ -9935,6 +12727,8 @@ export namespace Prisma {
     vacinas?: VacinaOrderByRelationAggregateInput
     medicacoes?: MedicacaoOrderByRelationAggregateInput
     condicoes?: CondicaoClinicaOrderByRelationAggregateInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorOrderByWithRelationInput
+    notificacoes?: NotificacaoOrderByRelationAggregateInput
   }
 
   export type GestanteWhereUniqueInput = Prisma.AtLeast<{
@@ -9957,6 +12751,22 @@ export namespace Prisma {
     dataProvavelParto?: DateTimeNullableFilter<"Gestante"> | Date | string | null
     tipoGravidez?: StringFilter<"Gestante"> | string
     riscoGestacional?: StringFilter<"Gestante"> | string
+    temWhatsapp?: BoolFilter<"Gestante"> | boolean
+    comoDescobriuGestacao?: StringNullableFilter<"Gestante"> | string | null
+    programaSocial?: StringNullableFilter<"Gestante"> | string | null
+    temPlanoSaude?: BoolFilter<"Gestante"> | boolean
+    desejaSeguimentoUbs?: BoolFilter<"Gestante"> | boolean
+    numGestacoesPrevia?: IntNullableFilter<"Gestante"> | number | null
+    numPartosNormais?: IntNullableFilter<"Gestante"> | number | null
+    numPartosCesareos?: IntNullableFilter<"Gestante"> | number | null
+    numAbortosPrevia?: IntNullableFilter<"Gestante"> | number | null
+    alergias?: StringNullableFilter<"Gestante"> | string | null
+    doencasConhecidas?: StringNullableFilter<"Gestante"> | string | null
+    medicacoesPreExistentes?: StringNullableFilter<"Gestante"> | string | null
+    pesoPreGestacional?: FloatNullableFilter<"Gestante"> | number | null
+    alturaM?: FloatNullableFilter<"Gestante"> | number | null
+    maternidadeVinculacao?: StringNullableFilter<"Gestante"> | string | null
+    desejoContracepcao?: BoolNullableFilter<"Gestante"> | boolean | null
     senha?: StringFilter<"Gestante"> | string
     ativo?: BoolFilter<"Gestante"> | boolean
     criadoEm?: DateTimeFilter<"Gestante"> | Date | string
@@ -9966,6 +12776,8 @@ export namespace Prisma {
     vacinas?: VacinaListRelationFilter
     medicacoes?: MedicacaoListRelationFilter
     condicoes?: CondicaoClinicaListRelationFilter
+    cartaoMaeSalvador?: XOR<CartaoMaeSalvadorNullableScalarRelationFilter, CartaoMaeSalvadorWhereInput> | null
+    notificacoes?: NotificacaoListRelationFilter
   }, "id" | "cpf">
 
   export type GestanteOrderByWithAggregationInput = {
@@ -9985,13 +12797,31 @@ export namespace Prisma {
     dataProvavelParto?: SortOrderInput | SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    temWhatsapp?: SortOrder
+    comoDescobriuGestacao?: SortOrderInput | SortOrder
+    programaSocial?: SortOrderInput | SortOrder
+    temPlanoSaude?: SortOrder
+    desejaSeguimentoUbs?: SortOrder
+    numGestacoesPrevia?: SortOrderInput | SortOrder
+    numPartosNormais?: SortOrderInput | SortOrder
+    numPartosCesareos?: SortOrderInput | SortOrder
+    numAbortosPrevia?: SortOrderInput | SortOrder
+    alergias?: SortOrderInput | SortOrder
+    doencasConhecidas?: SortOrderInput | SortOrder
+    medicacoesPreExistentes?: SortOrderInput | SortOrder
+    pesoPreGestacional?: SortOrderInput | SortOrder
+    alturaM?: SortOrderInput | SortOrder
+    maternidadeVinculacao?: SortOrderInput | SortOrder
+    desejoContracepcao?: SortOrderInput | SortOrder
     senha?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
     _count?: GestanteCountOrderByAggregateInput
+    _avg?: GestanteAvgOrderByAggregateInput
     _max?: GestanteMaxOrderByAggregateInput
     _min?: GestanteMinOrderByAggregateInput
+    _sum?: GestanteSumOrderByAggregateInput
   }
 
   export type GestanteScalarWhereWithAggregatesInput = {
@@ -10014,6 +12844,22 @@ export namespace Prisma {
     dataProvavelParto?: DateTimeNullableWithAggregatesFilter<"Gestante"> | Date | string | null
     tipoGravidez?: StringWithAggregatesFilter<"Gestante"> | string
     riscoGestacional?: StringWithAggregatesFilter<"Gestante"> | string
+    temWhatsapp?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    comoDescobriuGestacao?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
+    programaSocial?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
+    temPlanoSaude?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    desejaSeguimentoUbs?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    numGestacoesPrevia?: IntNullableWithAggregatesFilter<"Gestante"> | number | null
+    numPartosNormais?: IntNullableWithAggregatesFilter<"Gestante"> | number | null
+    numPartosCesareos?: IntNullableWithAggregatesFilter<"Gestante"> | number | null
+    numAbortosPrevia?: IntNullableWithAggregatesFilter<"Gestante"> | number | null
+    alergias?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
+    doencasConhecidas?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
+    medicacoesPreExistentes?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
+    pesoPreGestacional?: FloatNullableWithAggregatesFilter<"Gestante"> | number | null
+    alturaM?: FloatNullableWithAggregatesFilter<"Gestante"> | number | null
+    maternidadeVinculacao?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
+    desejoContracepcao?: BoolNullableWithAggregatesFilter<"Gestante"> | boolean | null
     senha?: StringWithAggregatesFilter<"Gestante"> | string
     ativo?: BoolWithAggregatesFilter<"Gestante"> | boolean
     criadoEm?: DateTimeWithAggregatesFilter<"Gestante"> | Date | string
@@ -10510,6 +13356,143 @@ export namespace Prisma {
     criadoEm?: DateTimeWithAggregatesFilter<"CondicaoClinica"> | Date | string
   }
 
+  export type CartaoMaeSalvadorWhereInput = {
+    AND?: CartaoMaeSalvadorWhereInput | CartaoMaeSalvadorWhereInput[]
+    OR?: CartaoMaeSalvadorWhereInput[]
+    NOT?: CartaoMaeSalvadorWhereInput | CartaoMaeSalvadorWhereInput[]
+    id?: StringFilter<"CartaoMaeSalvador"> | string
+    numeroTranscard?: StringNullableFilter<"CartaoMaeSalvador"> | string | null
+    status?: StringFilter<"CartaoMaeSalvador"> | string
+    termoLgpdAceito?: BoolFilter<"CartaoMaeSalvador"> | boolean
+    etapaAtual?: IntFilter<"CartaoMaeSalvador"> | number
+    gestanteId?: StringFilter<"CartaoMaeSalvador"> | string
+    criadoEm?: DateTimeFilter<"CartaoMaeSalvador"> | Date | string
+    atualizadoEm?: DateTimeFilter<"CartaoMaeSalvador"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }
+
+  export type CartaoMaeSalvadorOrderByWithRelationInput = {
+    id?: SortOrder
+    numeroTranscard?: SortOrderInput | SortOrder
+    status?: SortOrder
+    termoLgpdAceito?: SortOrder
+    etapaAtual?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+    gestante?: GestanteOrderByWithRelationInput
+  }
+
+  export type CartaoMaeSalvadorWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    gestanteId?: string
+    AND?: CartaoMaeSalvadorWhereInput | CartaoMaeSalvadorWhereInput[]
+    OR?: CartaoMaeSalvadorWhereInput[]
+    NOT?: CartaoMaeSalvadorWhereInput | CartaoMaeSalvadorWhereInput[]
+    numeroTranscard?: StringNullableFilter<"CartaoMaeSalvador"> | string | null
+    status?: StringFilter<"CartaoMaeSalvador"> | string
+    termoLgpdAceito?: BoolFilter<"CartaoMaeSalvador"> | boolean
+    etapaAtual?: IntFilter<"CartaoMaeSalvador"> | number
+    criadoEm?: DateTimeFilter<"CartaoMaeSalvador"> | Date | string
+    atualizadoEm?: DateTimeFilter<"CartaoMaeSalvador"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }, "id" | "gestanteId">
+
+  export type CartaoMaeSalvadorOrderByWithAggregationInput = {
+    id?: SortOrder
+    numeroTranscard?: SortOrderInput | SortOrder
+    status?: SortOrder
+    termoLgpdAceito?: SortOrder
+    etapaAtual?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+    _count?: CartaoMaeSalvadorCountOrderByAggregateInput
+    _avg?: CartaoMaeSalvadorAvgOrderByAggregateInput
+    _max?: CartaoMaeSalvadorMaxOrderByAggregateInput
+    _min?: CartaoMaeSalvadorMinOrderByAggregateInput
+    _sum?: CartaoMaeSalvadorSumOrderByAggregateInput
+  }
+
+  export type CartaoMaeSalvadorScalarWhereWithAggregatesInput = {
+    AND?: CartaoMaeSalvadorScalarWhereWithAggregatesInput | CartaoMaeSalvadorScalarWhereWithAggregatesInput[]
+    OR?: CartaoMaeSalvadorScalarWhereWithAggregatesInput[]
+    NOT?: CartaoMaeSalvadorScalarWhereWithAggregatesInput | CartaoMaeSalvadorScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CartaoMaeSalvador"> | string
+    numeroTranscard?: StringNullableWithAggregatesFilter<"CartaoMaeSalvador"> | string | null
+    status?: StringWithAggregatesFilter<"CartaoMaeSalvador"> | string
+    termoLgpdAceito?: BoolWithAggregatesFilter<"CartaoMaeSalvador"> | boolean
+    etapaAtual?: IntWithAggregatesFilter<"CartaoMaeSalvador"> | number
+    gestanteId?: StringWithAggregatesFilter<"CartaoMaeSalvador"> | string
+    criadoEm?: DateTimeWithAggregatesFilter<"CartaoMaeSalvador"> | Date | string
+    atualizadoEm?: DateTimeWithAggregatesFilter<"CartaoMaeSalvador"> | Date | string
+  }
+
+  export type NotificacaoWhereInput = {
+    AND?: NotificacaoWhereInput | NotificacaoWhereInput[]
+    OR?: NotificacaoWhereInput[]
+    NOT?: NotificacaoWhereInput | NotificacaoWhereInput[]
+    id?: StringFilter<"Notificacao"> | string
+    titulo?: StringFilter<"Notificacao"> | string
+    mensagem?: StringFilter<"Notificacao"> | string
+    tipo?: StringFilter<"Notificacao"> | string
+    lida?: BoolFilter<"Notificacao"> | boolean
+    gestanteId?: StringFilter<"Notificacao"> | string
+    criadoEm?: DateTimeFilter<"Notificacao"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }
+
+  export type NotificacaoOrderByWithRelationInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    mensagem?: SortOrder
+    tipo?: SortOrder
+    lida?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    gestante?: GestanteOrderByWithRelationInput
+  }
+
+  export type NotificacaoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: NotificacaoWhereInput | NotificacaoWhereInput[]
+    OR?: NotificacaoWhereInput[]
+    NOT?: NotificacaoWhereInput | NotificacaoWhereInput[]
+    titulo?: StringFilter<"Notificacao"> | string
+    mensagem?: StringFilter<"Notificacao"> | string
+    tipo?: StringFilter<"Notificacao"> | string
+    lida?: BoolFilter<"Notificacao"> | boolean
+    gestanteId?: StringFilter<"Notificacao"> | string
+    criadoEm?: DateTimeFilter<"Notificacao"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }, "id">
+
+  export type NotificacaoOrderByWithAggregationInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    mensagem?: SortOrder
+    tipo?: SortOrder
+    lida?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    _count?: NotificacaoCountOrderByAggregateInput
+    _max?: NotificacaoMaxOrderByAggregateInput
+    _min?: NotificacaoMinOrderByAggregateInput
+  }
+
+  export type NotificacaoScalarWhereWithAggregatesInput = {
+    AND?: NotificacaoScalarWhereWithAggregatesInput | NotificacaoScalarWhereWithAggregatesInput[]
+    OR?: NotificacaoScalarWhereWithAggregatesInput[]
+    NOT?: NotificacaoScalarWhereWithAggregatesInput | NotificacaoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Notificacao"> | string
+    titulo?: StringWithAggregatesFilter<"Notificacao"> | string
+    mensagem?: StringWithAggregatesFilter<"Notificacao"> | string
+    tipo?: StringWithAggregatesFilter<"Notificacao"> | string
+    lida?: BoolWithAggregatesFilter<"Notificacao"> | boolean
+    gestanteId?: StringWithAggregatesFilter<"Notificacao"> | string
+    criadoEm?: DateTimeWithAggregatesFilter<"Notificacao"> | Date | string
+  }
+
   export type GestanteCreateInput = {
     id?: string
     cpf: string
@@ -10527,6 +13510,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -10536,6 +13535,8 @@ export namespace Prisma {
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateInput = {
@@ -10555,6 +13556,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -10564,6 +13581,8 @@ export namespace Prisma {
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUpdateInput = {
@@ -10583,6 +13602,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10592,6 +13627,8 @@ export namespace Prisma {
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateInput = {
@@ -10611,6 +13648,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10620,6 +13673,8 @@ export namespace Prisma {
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateManyInput = {
@@ -10639,6 +13694,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -10662,6 +13733,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10685,6 +13772,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11242,6 +14345,151 @@ export namespace Prisma {
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type CartaoMaeSalvadorCreateInput = {
+    id?: string
+    numeroTranscard?: string | null
+    status?: string
+    termoLgpdAceito?: boolean
+    etapaAtual?: number
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    gestante: GestanteCreateNestedOneWithoutCartaoMaeSalvadorInput
+  }
+
+  export type CartaoMaeSalvadorUncheckedCreateInput = {
+    id?: string
+    numeroTranscard?: string | null
+    status?: string
+    termoLgpdAceito?: boolean
+    etapaAtual?: number
+    gestanteId: string
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type CartaoMaeSalvadorUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    numeroTranscard?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
+    etapaAtual?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    gestante?: GestanteUpdateOneRequiredWithoutCartaoMaeSalvadorNestedInput
+  }
+
+  export type CartaoMaeSalvadorUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    numeroTranscard?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
+    etapaAtual?: IntFieldUpdateOperationsInput | number
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CartaoMaeSalvadorCreateManyInput = {
+    id?: string
+    numeroTranscard?: string | null
+    status?: string
+    termoLgpdAceito?: boolean
+    etapaAtual?: number
+    gestanteId: string
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type CartaoMaeSalvadorUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    numeroTranscard?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
+    etapaAtual?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CartaoMaeSalvadorUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    numeroTranscard?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
+    etapaAtual?: IntFieldUpdateOperationsInput | number
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificacaoCreateInput = {
+    id?: string
+    titulo: string
+    mensagem: string
+    tipo: string
+    lida?: boolean
+    criadoEm?: Date | string
+    gestante: GestanteCreateNestedOneWithoutNotificacoesInput
+  }
+
+  export type NotificacaoUncheckedCreateInput = {
+    id?: string
+    titulo: string
+    mensagem: string
+    tipo: string
+    lida?: boolean
+    gestanteId: string
+    criadoEm?: Date | string
+  }
+
+  export type NotificacaoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    titulo?: StringFieldUpdateOperationsInput | string
+    mensagem?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    lida?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    gestante?: GestanteUpdateOneRequiredWithoutNotificacoesNestedInput
+  }
+
+  export type NotificacaoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    titulo?: StringFieldUpdateOperationsInput | string
+    mensagem?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    lida?: BoolFieldUpdateOperationsInput | boolean
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificacaoCreateManyInput = {
+    id?: string
+    titulo: string
+    mensagem: string
+    tipo: string
+    lida?: boolean
+    gestanteId: string
+    criadoEm?: Date | string
+  }
+
+  export type NotificacaoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    titulo?: StringFieldUpdateOperationsInput | string
+    mensagem?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    lida?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificacaoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    titulo?: StringFieldUpdateOperationsInput | string
+    mensagem?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    lida?: BoolFieldUpdateOperationsInput | boolean
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -11297,6 +14545,33 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type ConsultaListRelationFilter = {
     every?: ConsultaWhereInput
     some?: ConsultaWhereInput
@@ -11327,6 +14602,17 @@ export namespace Prisma {
     none?: CondicaoClinicaWhereInput
   }
 
+  export type CartaoMaeSalvadorNullableScalarRelationFilter = {
+    is?: CartaoMaeSalvadorWhereInput | null
+    isNot?: CartaoMaeSalvadorWhereInput | null
+  }
+
+  export type NotificacaoListRelationFilter = {
+    every?: NotificacaoWhereInput
+    some?: NotificacaoWhereInput
+    none?: NotificacaoWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -11352,6 +14638,10 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type NotificacaoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type GestanteCountOrderByAggregateInput = {
     id?: SortOrder
     cpf?: SortOrder
@@ -11369,10 +14659,35 @@ export namespace Prisma {
     dataProvavelParto?: SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    temWhatsapp?: SortOrder
+    comoDescobriuGestacao?: SortOrder
+    programaSocial?: SortOrder
+    temPlanoSaude?: SortOrder
+    desejaSeguimentoUbs?: SortOrder
+    numGestacoesPrevia?: SortOrder
+    numPartosNormais?: SortOrder
+    numPartosCesareos?: SortOrder
+    numAbortosPrevia?: SortOrder
+    alergias?: SortOrder
+    doencasConhecidas?: SortOrder
+    medicacoesPreExistentes?: SortOrder
+    pesoPreGestacional?: SortOrder
+    alturaM?: SortOrder
+    maternidadeVinculacao?: SortOrder
+    desejoContracepcao?: SortOrder
     senha?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
+  }
+
+  export type GestanteAvgOrderByAggregateInput = {
+    numGestacoesPrevia?: SortOrder
+    numPartosNormais?: SortOrder
+    numPartosCesareos?: SortOrder
+    numAbortosPrevia?: SortOrder
+    pesoPreGestacional?: SortOrder
+    alturaM?: SortOrder
   }
 
   export type GestanteMaxOrderByAggregateInput = {
@@ -11392,6 +14707,22 @@ export namespace Prisma {
     dataProvavelParto?: SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    temWhatsapp?: SortOrder
+    comoDescobriuGestacao?: SortOrder
+    programaSocial?: SortOrder
+    temPlanoSaude?: SortOrder
+    desejaSeguimentoUbs?: SortOrder
+    numGestacoesPrevia?: SortOrder
+    numPartosNormais?: SortOrder
+    numPartosCesareos?: SortOrder
+    numAbortosPrevia?: SortOrder
+    alergias?: SortOrder
+    doencasConhecidas?: SortOrder
+    medicacoesPreExistentes?: SortOrder
+    pesoPreGestacional?: SortOrder
+    alturaM?: SortOrder
+    maternidadeVinculacao?: SortOrder
+    desejoContracepcao?: SortOrder
     senha?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
@@ -11415,10 +14746,35 @@ export namespace Prisma {
     dataProvavelParto?: SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    temWhatsapp?: SortOrder
+    comoDescobriuGestacao?: SortOrder
+    programaSocial?: SortOrder
+    temPlanoSaude?: SortOrder
+    desejaSeguimentoUbs?: SortOrder
+    numGestacoesPrevia?: SortOrder
+    numPartosNormais?: SortOrder
+    numPartosCesareos?: SortOrder
+    numAbortosPrevia?: SortOrder
+    alergias?: SortOrder
+    doencasConhecidas?: SortOrder
+    medicacoesPreExistentes?: SortOrder
+    pesoPreGestacional?: SortOrder
+    alturaM?: SortOrder
+    maternidadeVinculacao?: SortOrder
+    desejoContracepcao?: SortOrder
     senha?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
+  }
+
+  export type GestanteSumOrderByAggregateInput = {
+    numGestacoesPrevia?: SortOrder
+    numPartosNormais?: SortOrder
+    numPartosCesareos?: SortOrder
+    numAbortosPrevia?: SortOrder
+    pesoPreGestacional?: SortOrder
+    alturaM?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -11491,6 +14847,46 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type ProfissionalCountOrderByAggregateInput = {
     id?: SortOrder
     cpf?: SortOrder
@@ -11528,28 +14924,6 @@ export namespace Prisma {
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type GestanteScalarRelationFilter = {
@@ -11622,38 +14996,6 @@ export namespace Prisma {
     pesoKg?: SortOrder
     alturaUterina?: SortOrder
     batimentoCardiacoFetal?: SortOrder
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type ExameCountOrderByAggregateInput = {
@@ -11806,6 +15148,104 @@ export namespace Prisma {
     criadoEm?: SortOrder
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type CartaoMaeSalvadorCountOrderByAggregateInput = {
+    id?: SortOrder
+    numeroTranscard?: SortOrder
+    status?: SortOrder
+    termoLgpdAceito?: SortOrder
+    etapaAtual?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type CartaoMaeSalvadorAvgOrderByAggregateInput = {
+    etapaAtual?: SortOrder
+  }
+
+  export type CartaoMaeSalvadorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    numeroTranscard?: SortOrder
+    status?: SortOrder
+    termoLgpdAceito?: SortOrder
+    etapaAtual?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type CartaoMaeSalvadorMinOrderByAggregateInput = {
+    id?: SortOrder
+    numeroTranscard?: SortOrder
+    status?: SortOrder
+    termoLgpdAceito?: SortOrder
+    etapaAtual?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type CartaoMaeSalvadorSumOrderByAggregateInput = {
+    etapaAtual?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NotificacaoCountOrderByAggregateInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    mensagem?: SortOrder
+    tipo?: SortOrder
+    lida?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+  }
+
+  export type NotificacaoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    mensagem?: SortOrder
+    tipo?: SortOrder
+    lida?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+  }
+
+  export type NotificacaoMinOrderByAggregateInput = {
+    id?: SortOrder
+    titulo?: SortOrder
+    mensagem?: SortOrder
+    tipo?: SortOrder
+    lida?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+  }
+
   export type ConsultaCreateNestedManyWithoutGestanteInput = {
     create?: XOR<ConsultaCreateWithoutGestanteInput, ConsultaUncheckedCreateWithoutGestanteInput> | ConsultaCreateWithoutGestanteInput[] | ConsultaUncheckedCreateWithoutGestanteInput[]
     connectOrCreate?: ConsultaCreateOrConnectWithoutGestanteInput | ConsultaCreateOrConnectWithoutGestanteInput[]
@@ -11839,6 +15279,19 @@ export namespace Prisma {
     connectOrCreate?: CondicaoClinicaCreateOrConnectWithoutGestanteInput | CondicaoClinicaCreateOrConnectWithoutGestanteInput[]
     createMany?: CondicaoClinicaCreateManyGestanteInputEnvelope
     connect?: CondicaoClinicaWhereUniqueInput | CondicaoClinicaWhereUniqueInput[]
+  }
+
+  export type CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput = {
+    create?: XOR<CartaoMaeSalvadorCreateWithoutGestanteInput, CartaoMaeSalvadorUncheckedCreateWithoutGestanteInput>
+    connectOrCreate?: CartaoMaeSalvadorCreateOrConnectWithoutGestanteInput
+    connect?: CartaoMaeSalvadorWhereUniqueInput
+  }
+
+  export type NotificacaoCreateNestedManyWithoutGestanteInput = {
+    create?: XOR<NotificacaoCreateWithoutGestanteInput, NotificacaoUncheckedCreateWithoutGestanteInput> | NotificacaoCreateWithoutGestanteInput[] | NotificacaoUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: NotificacaoCreateOrConnectWithoutGestanteInput | NotificacaoCreateOrConnectWithoutGestanteInput[]
+    createMany?: NotificacaoCreateManyGestanteInputEnvelope
+    connect?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
   }
 
   export type ConsultaUncheckedCreateNestedManyWithoutGestanteInput = {
@@ -11876,6 +15329,19 @@ export namespace Prisma {
     connect?: CondicaoClinicaWhereUniqueInput | CondicaoClinicaWhereUniqueInput[]
   }
 
+  export type CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput = {
+    create?: XOR<CartaoMaeSalvadorCreateWithoutGestanteInput, CartaoMaeSalvadorUncheckedCreateWithoutGestanteInput>
+    connectOrCreate?: CartaoMaeSalvadorCreateOrConnectWithoutGestanteInput
+    connect?: CartaoMaeSalvadorWhereUniqueInput
+  }
+
+  export type NotificacaoUncheckedCreateNestedManyWithoutGestanteInput = {
+    create?: XOR<NotificacaoCreateWithoutGestanteInput, NotificacaoUncheckedCreateWithoutGestanteInput> | NotificacaoCreateWithoutGestanteInput[] | NotificacaoUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: NotificacaoCreateOrConnectWithoutGestanteInput | NotificacaoCreateOrConnectWithoutGestanteInput[]
+    createMany?: NotificacaoCreateManyGestanteInputEnvelope
+    connect?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -11894,6 +15360,26 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type ConsultaUpdateManyWithoutGestanteNestedInput = {
@@ -11966,6 +15452,30 @@ export namespace Prisma {
     deleteMany?: CondicaoClinicaScalarWhereInput | CondicaoClinicaScalarWhereInput[]
   }
 
+  export type CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput = {
+    create?: XOR<CartaoMaeSalvadorCreateWithoutGestanteInput, CartaoMaeSalvadorUncheckedCreateWithoutGestanteInput>
+    connectOrCreate?: CartaoMaeSalvadorCreateOrConnectWithoutGestanteInput
+    upsert?: CartaoMaeSalvadorUpsertWithoutGestanteInput
+    disconnect?: CartaoMaeSalvadorWhereInput | boolean
+    delete?: CartaoMaeSalvadorWhereInput | boolean
+    connect?: CartaoMaeSalvadorWhereUniqueInput
+    update?: XOR<XOR<CartaoMaeSalvadorUpdateToOneWithWhereWithoutGestanteInput, CartaoMaeSalvadorUpdateWithoutGestanteInput>, CartaoMaeSalvadorUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type NotificacaoUpdateManyWithoutGestanteNestedInput = {
+    create?: XOR<NotificacaoCreateWithoutGestanteInput, NotificacaoUncheckedCreateWithoutGestanteInput> | NotificacaoCreateWithoutGestanteInput[] | NotificacaoUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: NotificacaoCreateOrConnectWithoutGestanteInput | NotificacaoCreateOrConnectWithoutGestanteInput[]
+    upsert?: NotificacaoUpsertWithWhereUniqueWithoutGestanteInput | NotificacaoUpsertWithWhereUniqueWithoutGestanteInput[]
+    createMany?: NotificacaoCreateManyGestanteInputEnvelope
+    set?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+    disconnect?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+    delete?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+    connect?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+    update?: NotificacaoUpdateWithWhereUniqueWithoutGestanteInput | NotificacaoUpdateWithWhereUniqueWithoutGestanteInput[]
+    updateMany?: NotificacaoUpdateManyWithWhereWithoutGestanteInput | NotificacaoUpdateManyWithWhereWithoutGestanteInput[]
+    deleteMany?: NotificacaoScalarWhereInput | NotificacaoScalarWhereInput[]
+  }
+
   export type ConsultaUncheckedUpdateManyWithoutGestanteNestedInput = {
     create?: XOR<ConsultaCreateWithoutGestanteInput, ConsultaUncheckedCreateWithoutGestanteInput> | ConsultaCreateWithoutGestanteInput[] | ConsultaUncheckedCreateWithoutGestanteInput[]
     connectOrCreate?: ConsultaCreateOrConnectWithoutGestanteInput | ConsultaCreateOrConnectWithoutGestanteInput[]
@@ -12036,6 +15546,30 @@ export namespace Prisma {
     deleteMany?: CondicaoClinicaScalarWhereInput | CondicaoClinicaScalarWhereInput[]
   }
 
+  export type CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput = {
+    create?: XOR<CartaoMaeSalvadorCreateWithoutGestanteInput, CartaoMaeSalvadorUncheckedCreateWithoutGestanteInput>
+    connectOrCreate?: CartaoMaeSalvadorCreateOrConnectWithoutGestanteInput
+    upsert?: CartaoMaeSalvadorUpsertWithoutGestanteInput
+    disconnect?: CartaoMaeSalvadorWhereInput | boolean
+    delete?: CartaoMaeSalvadorWhereInput | boolean
+    connect?: CartaoMaeSalvadorWhereUniqueInput
+    update?: XOR<XOR<CartaoMaeSalvadorUpdateToOneWithWhereWithoutGestanteInput, CartaoMaeSalvadorUpdateWithoutGestanteInput>, CartaoMaeSalvadorUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput = {
+    create?: XOR<NotificacaoCreateWithoutGestanteInput, NotificacaoUncheckedCreateWithoutGestanteInput> | NotificacaoCreateWithoutGestanteInput[] | NotificacaoUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: NotificacaoCreateOrConnectWithoutGestanteInput | NotificacaoCreateOrConnectWithoutGestanteInput[]
+    upsert?: NotificacaoUpsertWithWhereUniqueWithoutGestanteInput | NotificacaoUpsertWithWhereUniqueWithoutGestanteInput[]
+    createMany?: NotificacaoCreateManyGestanteInputEnvelope
+    set?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+    disconnect?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+    delete?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+    connect?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+    update?: NotificacaoUpdateWithWhereUniqueWithoutGestanteInput | NotificacaoUpdateWithWhereUniqueWithoutGestanteInput[]
+    updateMany?: NotificacaoUpdateManyWithWhereWithoutGestanteInput | NotificacaoUpdateManyWithWhereWithoutGestanteInput[]
+    deleteMany?: NotificacaoScalarWhereInput | NotificacaoScalarWhereInput[]
+  }
+
   export type ConsultaCreateNestedManyWithoutProfissionalInput = {
     create?: XOR<ConsultaCreateWithoutProfissionalInput, ConsultaUncheckedCreateWithoutProfissionalInput> | ConsultaCreateWithoutProfissionalInput[] | ConsultaUncheckedCreateWithoutProfissionalInput[]
     connectOrCreate?: ConsultaCreateOrConnectWithoutProfissionalInput | ConsultaCreateOrConnectWithoutProfissionalInput[]
@@ -12088,22 +15622,6 @@ export namespace Prisma {
     create?: XOR<ProfissionalCreateWithoutConsultasInput, ProfissionalUncheckedCreateWithoutConsultasInput>
     connectOrCreate?: ProfissionalCreateOrConnectWithoutConsultasInput
     connect?: ProfissionalWhereUniqueInput
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type GestanteUpdateOneRequiredWithoutConsultasNestedInput = {
@@ -12178,6 +15696,42 @@ export namespace Prisma {
     update?: XOR<XOR<GestanteUpdateToOneWithWhereWithoutCondicoesInput, GestanteUpdateWithoutCondicoesInput>, GestanteUncheckedUpdateWithoutCondicoesInput>
   }
 
+  export type GestanteCreateNestedOneWithoutCartaoMaeSalvadorInput = {
+    create?: XOR<GestanteCreateWithoutCartaoMaeSalvadorInput, GestanteUncheckedCreateWithoutCartaoMaeSalvadorInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutCartaoMaeSalvadorInput
+    connect?: GestanteWhereUniqueInput
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type GestanteUpdateOneRequiredWithoutCartaoMaeSalvadorNestedInput = {
+    create?: XOR<GestanteCreateWithoutCartaoMaeSalvadorInput, GestanteUncheckedCreateWithoutCartaoMaeSalvadorInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutCartaoMaeSalvadorInput
+    upsert?: GestanteUpsertWithoutCartaoMaeSalvadorInput
+    connect?: GestanteWhereUniqueInput
+    update?: XOR<XOR<GestanteUpdateToOneWithWhereWithoutCartaoMaeSalvadorInput, GestanteUpdateWithoutCartaoMaeSalvadorInput>, GestanteUncheckedUpdateWithoutCartaoMaeSalvadorInput>
+  }
+
+  export type GestanteCreateNestedOneWithoutNotificacoesInput = {
+    create?: XOR<GestanteCreateWithoutNotificacoesInput, GestanteUncheckedCreateWithoutNotificacoesInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutNotificacoesInput
+    connect?: GestanteWhereUniqueInput
+  }
+
+  export type GestanteUpdateOneRequiredWithoutNotificacoesNestedInput = {
+    create?: XOR<GestanteCreateWithoutNotificacoesInput, GestanteUncheckedCreateWithoutNotificacoesInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutNotificacoesInput
+    upsert?: GestanteUpsertWithoutNotificacoesInput
+    connect?: GestanteWhereUniqueInput
+    update?: XOR<XOR<GestanteUpdateToOneWithWhereWithoutNotificacoesInput, GestanteUpdateWithoutNotificacoesInput>, GestanteUncheckedUpdateWithoutNotificacoesInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -12233,6 +15787,33 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -12278,17 +15859,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
@@ -12325,17 +15895,6 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | null
-    notIn?: number[] | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | null
@@ -12366,6 +15925,41 @@ export namespace Prisma {
     _sum?: NestedFloatNullableFilter<$PrismaModel>
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type ConsultaCreateWithoutGestanteInput = {
@@ -12535,6 +16129,58 @@ export namespace Prisma {
     data: CondicaoClinicaCreateManyGestanteInput | CondicaoClinicaCreateManyGestanteInput[]
   }
 
+  export type CartaoMaeSalvadorCreateWithoutGestanteInput = {
+    id?: string
+    numeroTranscard?: string | null
+    status?: string
+    termoLgpdAceito?: boolean
+    etapaAtual?: number
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type CartaoMaeSalvadorUncheckedCreateWithoutGestanteInput = {
+    id?: string
+    numeroTranscard?: string | null
+    status?: string
+    termoLgpdAceito?: boolean
+    etapaAtual?: number
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type CartaoMaeSalvadorCreateOrConnectWithoutGestanteInput = {
+    where: CartaoMaeSalvadorWhereUniqueInput
+    create: XOR<CartaoMaeSalvadorCreateWithoutGestanteInput, CartaoMaeSalvadorUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type NotificacaoCreateWithoutGestanteInput = {
+    id?: string
+    titulo: string
+    mensagem: string
+    tipo: string
+    lida?: boolean
+    criadoEm?: Date | string
+  }
+
+  export type NotificacaoUncheckedCreateWithoutGestanteInput = {
+    id?: string
+    titulo: string
+    mensagem: string
+    tipo: string
+    lida?: boolean
+    criadoEm?: Date | string
+  }
+
+  export type NotificacaoCreateOrConnectWithoutGestanteInput = {
+    where: NotificacaoWhereUniqueInput
+    create: XOR<NotificacaoCreateWithoutGestanteInput, NotificacaoUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type NotificacaoCreateManyGestanteInputEnvelope = {
+    data: NotificacaoCreateManyGestanteInput | NotificacaoCreateManyGestanteInput[]
+  }
+
   export type ConsultaUpsertWithWhereUniqueWithoutGestanteInput = {
     where: ConsultaWhereUniqueInput
     update: XOR<ConsultaUpdateWithoutGestanteInput, ConsultaUncheckedUpdateWithoutGestanteInput>
@@ -12696,6 +16342,66 @@ export namespace Prisma {
     criadoEm?: DateTimeFilter<"CondicaoClinica"> | Date | string
   }
 
+  export type CartaoMaeSalvadorUpsertWithoutGestanteInput = {
+    update: XOR<CartaoMaeSalvadorUpdateWithoutGestanteInput, CartaoMaeSalvadorUncheckedUpdateWithoutGestanteInput>
+    create: XOR<CartaoMaeSalvadorCreateWithoutGestanteInput, CartaoMaeSalvadorUncheckedCreateWithoutGestanteInput>
+    where?: CartaoMaeSalvadorWhereInput
+  }
+
+  export type CartaoMaeSalvadorUpdateToOneWithWhereWithoutGestanteInput = {
+    where?: CartaoMaeSalvadorWhereInput
+    data: XOR<CartaoMaeSalvadorUpdateWithoutGestanteInput, CartaoMaeSalvadorUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type CartaoMaeSalvadorUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    numeroTranscard?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
+    etapaAtual?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CartaoMaeSalvadorUncheckedUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    numeroTranscard?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
+    etapaAtual?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificacaoUpsertWithWhereUniqueWithoutGestanteInput = {
+    where: NotificacaoWhereUniqueInput
+    update: XOR<NotificacaoUpdateWithoutGestanteInput, NotificacaoUncheckedUpdateWithoutGestanteInput>
+    create: XOR<NotificacaoCreateWithoutGestanteInput, NotificacaoUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type NotificacaoUpdateWithWhereUniqueWithoutGestanteInput = {
+    where: NotificacaoWhereUniqueInput
+    data: XOR<NotificacaoUpdateWithoutGestanteInput, NotificacaoUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type NotificacaoUpdateManyWithWhereWithoutGestanteInput = {
+    where: NotificacaoScalarWhereInput
+    data: XOR<NotificacaoUpdateManyMutationInput, NotificacaoUncheckedUpdateManyWithoutGestanteInput>
+  }
+
+  export type NotificacaoScalarWhereInput = {
+    AND?: NotificacaoScalarWhereInput | NotificacaoScalarWhereInput[]
+    OR?: NotificacaoScalarWhereInput[]
+    NOT?: NotificacaoScalarWhereInput | NotificacaoScalarWhereInput[]
+    id?: StringFilter<"Notificacao"> | string
+    titulo?: StringFilter<"Notificacao"> | string
+    mensagem?: StringFilter<"Notificacao"> | string
+    tipo?: StringFilter<"Notificacao"> | string
+    lida?: BoolFilter<"Notificacao"> | boolean
+    gestanteId?: StringFilter<"Notificacao"> | string
+    criadoEm?: DateTimeFilter<"Notificacao"> | Date | string
+  }
+
   export type ConsultaCreateWithoutProfissionalInput = {
     id?: string
     data: Date | string
@@ -12768,6 +16474,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -12776,6 +16498,8 @@ export namespace Prisma {
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutConsultasInput = {
@@ -12795,6 +16519,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -12803,6 +16543,8 @@ export namespace Prisma {
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutConsultasInput = {
@@ -12869,6 +16611,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12877,6 +16635,8 @@ export namespace Prisma {
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutConsultasInput = {
@@ -12896,6 +16656,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12904,6 +16680,8 @@ export namespace Prisma {
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type ProfissionalUpsertWithoutConsultasInput = {
@@ -12960,6 +16738,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -12968,6 +16762,8 @@ export namespace Prisma {
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutExamesInput = {
@@ -12987,6 +16783,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -12995,6 +16807,8 @@ export namespace Prisma {
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutExamesInput = {
@@ -13030,6 +16844,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13038,6 +16868,8 @@ export namespace Prisma {
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutExamesInput = {
@@ -13057,6 +16889,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13065,6 +16913,8 @@ export namespace Prisma {
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateWithoutVacinasInput = {
@@ -13084,6 +16934,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -13092,6 +16958,8 @@ export namespace Prisma {
     exames?: ExameCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutVacinasInput = {
@@ -13111,6 +16979,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -13119,6 +17003,8 @@ export namespace Prisma {
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutVacinasInput = {
@@ -13154,6 +17040,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13162,6 +17064,8 @@ export namespace Prisma {
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutVacinasInput = {
@@ -13181,6 +17085,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13189,6 +17109,8 @@ export namespace Prisma {
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateWithoutMedicacoesInput = {
@@ -13208,6 +17130,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -13216,6 +17154,8 @@ export namespace Prisma {
     exames?: ExameCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutMedicacoesInput = {
@@ -13235,6 +17175,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -13243,6 +17199,8 @@ export namespace Prisma {
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutMedicacoesInput = {
@@ -13278,6 +17236,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13286,6 +17260,8 @@ export namespace Prisma {
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutMedicacoesInput = {
@@ -13305,6 +17281,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13313,6 +17305,8 @@ export namespace Prisma {
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateWithoutCondicoesInput = {
@@ -13332,6 +17326,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -13340,6 +17350,8 @@ export namespace Prisma {
     exames?: ExameCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutCondicoesInput = {
@@ -13359,6 +17371,22 @@ export namespace Prisma {
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
     senha: string
     ativo?: boolean
     criadoEm?: Date | string
@@ -13367,6 +17395,8 @@ export namespace Prisma {
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutCondicoesInput = {
@@ -13402,6 +17432,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13410,6 +17456,8 @@ export namespace Prisma {
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutCondicoesInput = {
@@ -13429,6 +17477,22 @@ export namespace Prisma {
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
     senha?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13437,6 +17501,400 @@ export namespace Prisma {
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type GestanteCreateWithoutCartaoMaeSalvadorInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    consultas?: ConsultaCreateNestedManyWithoutGestanteInput
+    exames?: ExameCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+  }
+
+  export type GestanteUncheckedCreateWithoutCartaoMaeSalvadorInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
+    exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+  }
+
+  export type GestanteCreateOrConnectWithoutCartaoMaeSalvadorInput = {
+    where: GestanteWhereUniqueInput
+    create: XOR<GestanteCreateWithoutCartaoMaeSalvadorInput, GestanteUncheckedCreateWithoutCartaoMaeSalvadorInput>
+  }
+
+  export type GestanteUpsertWithoutCartaoMaeSalvadorInput = {
+    update: XOR<GestanteUpdateWithoutCartaoMaeSalvadorInput, GestanteUncheckedUpdateWithoutCartaoMaeSalvadorInput>
+    create: XOR<GestanteCreateWithoutCartaoMaeSalvadorInput, GestanteUncheckedCreateWithoutCartaoMaeSalvadorInput>
+    where?: GestanteWhereInput
+  }
+
+  export type GestanteUpdateToOneWithWhereWithoutCartaoMaeSalvadorInput = {
+    where?: GestanteWhereInput
+    data: XOR<GestanteUpdateWithoutCartaoMaeSalvadorInput, GestanteUncheckedUpdateWithoutCartaoMaeSalvadorInput>
+  }
+
+  export type GestanteUpdateWithoutCartaoMaeSalvadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type GestanteUncheckedUpdateWithoutCartaoMaeSalvadorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type GestanteCreateWithoutNotificacoesInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    consultas?: ConsultaCreateNestedManyWithoutGestanteInput
+    exames?: ExameCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+  }
+
+  export type GestanteUncheckedCreateWithoutNotificacoesInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
+    exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+  }
+
+  export type GestanteCreateOrConnectWithoutNotificacoesInput = {
+    where: GestanteWhereUniqueInput
+    create: XOR<GestanteCreateWithoutNotificacoesInput, GestanteUncheckedCreateWithoutNotificacoesInput>
+  }
+
+  export type GestanteUpsertWithoutNotificacoesInput = {
+    update: XOR<GestanteUpdateWithoutNotificacoesInput, GestanteUncheckedUpdateWithoutNotificacoesInput>
+    create: XOR<GestanteCreateWithoutNotificacoesInput, GestanteUncheckedCreateWithoutNotificacoesInput>
+    where?: GestanteWhereInput
+  }
+
+  export type GestanteUpdateToOneWithWhereWithoutNotificacoesInput = {
+    where?: GestanteWhereInput
+    data: XOR<GestanteUpdateWithoutNotificacoesInput, GestanteUncheckedUpdateWithoutNotificacoesInput>
+  }
+
+  export type GestanteUpdateWithoutNotificacoesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+  }
+
+  export type GestanteUncheckedUpdateWithoutNotificacoesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
   }
 
   export type ConsultaCreateManyGestanteInput = {
@@ -13497,6 +17955,15 @@ export namespace Prisma {
     dataFim?: Date | string | null
     status?: string
     gravidade?: string | null
+    criadoEm?: Date | string
+  }
+
+  export type NotificacaoCreateManyGestanteInput = {
+    id?: string
+    titulo: string
+    mensagem: string
+    tipo: string
+    lida?: boolean
     criadoEm?: Date | string
   }
 
@@ -13680,6 +18147,33 @@ export namespace Prisma {
     dataFim?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
     gravidade?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificacaoUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    titulo?: StringFieldUpdateOperationsInput | string
+    mensagem?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    lida?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificacaoUncheckedUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    titulo?: StringFieldUpdateOperationsInput | string
+    mensagem?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    lida?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NotificacaoUncheckedUpdateManyWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    titulo?: StringFieldUpdateOperationsInput | string
+    mensagem?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    lida?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
