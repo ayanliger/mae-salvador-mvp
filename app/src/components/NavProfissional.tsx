@@ -8,6 +8,7 @@ const itensMenu = [
   { href: '/profissional/painel', label: 'Painel', icone: '📊' },
   { href: '/profissional/buscar', label: 'Buscar Gestante', icone: '🔍' },
   { href: '/profissional/registrar', label: 'Registrar', icone: '📝' },
+  { href: '/profissional/relatorios', label: 'Relatórios', icone: '📈' },
 ]
 
 export function NavProfissional({ nomeUsuario }: { nomeUsuario: string }) {

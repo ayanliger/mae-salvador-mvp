@@ -85,3 +85,52 @@ h1, h2, h3, h4, h5, h6 {
 .stagger-3 { animation-delay: 0.15s; }
 .stagger-4 { animation-delay: 0.2s; }
 .stagger-5 { animation-delay: 0.25s; }
+
+/* Print styles for "Impressão em Folheto" */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+  }
+
+  nav, .no-print, button {
+    display: none !important;
+  }
+
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .max-w-4xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .rounded-2xl, .rounded-xl, .rounded-lg {
+    border-radius: 0 !important;
+  }
+
+  .shadow-sm, .shadow-lg {
+    box-shadow: none !important;
+  }
+
+  .animate-fade-in, .animate-slide-in {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .bg-white, .bg-surface-50, .bg-surface-100 {
+    background: white !important;
+  }
+
+  .border {
+    border-color: #ccc !important;
+  }
+
+  @page {
+    margin: 1.5cm;
+    size: A4;
+  }
+}

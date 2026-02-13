@@ -49,8 +49,33 @@ export default async function AntecedentesPage() {
         )}
       </div>
 
-      {/* Alergias */}
+      {/* Antecedentes Clínicos Obstétricos (v2: structured yes/no) */}
       <div className="animate-fade-in stagger-2 opacity-0 bg-white rounded-2xl p-5 border border-surface-200 shadow-sm">
+        <h2 className="font-display font-semibold text-surface-800 mb-3">Antecedentes Clínicos Obstétricos</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {[
+            { label: 'Diabetes', valor: gestante.antecedentesDiabetes },
+            { label: 'Infecção urinária', valor: gestante.antecedentesInfeccaoUrinaria },
+            { label: 'Infertilidade', valor: gestante.antecedentesInfertilidade },
+            { label: 'Dificuldade de amamentação', valor: gestante.antecedentesDificuldadeAmamentacao },
+            { label: 'Cardiopatia', valor: gestante.antecedentesCardiopatia },
+          ].map((a) => (
+            <div key={a.label} className={`flex items-center justify-between px-4 py-2.5 rounded-xl border ${
+              a.valor ? 'bg-red-50 border-red-100' : 'bg-surface-50 border-surface-100'
+            }`}>
+              <span className={`text-sm ${a.valor ? 'text-red-800 font-medium' : 'text-surface-500'}`}>{a.label}</span>
+              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                a.valor ? 'bg-red-100 text-red-700' : 'bg-surface-200 text-surface-500'
+              }`}>
+                {a.valor ? 'Sim' : 'Não'}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Alergias */}
+      <div className="animate-fade-in stagger-3 opacity-0 bg-white rounded-2xl p-5 border border-surface-200 shadow-sm">
         <h2 className="font-display font-semibold text-surface-800 mb-3">Alergias</h2>
         {gestante.alergias ? (
           <div className="flex flex-wrap gap-2">

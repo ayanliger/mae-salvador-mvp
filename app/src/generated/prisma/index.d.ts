@@ -58,6 +58,31 @@ export type CartaoMaeSalvador = $Result.DefaultSelection<Prisma.$CartaoMaeSalvad
  * 
  */
 export type Notificacao = $Result.DefaultSelection<Prisma.$NotificacaoPayload>
+/**
+ * Model TratamentoSifilis
+ * 
+ */
+export type TratamentoSifilis = $Result.DefaultSelection<Prisma.$TratamentoSifilisPayload>
+/**
+ * Model AplicacaoPenicilina
+ * 
+ */
+export type AplicacaoPenicilina = $Result.DefaultSelection<Prisma.$AplicacaoPenicilinaPayload>
+/**
+ * Model EncaminhamentoPNAR
+ * 
+ */
+export type EncaminhamentoPNAR = $Result.DefaultSelection<Prisma.$EncaminhamentoPNARPayload>
+/**
+ * Model PreNatalParceiro
+ * 
+ */
+export type PreNatalParceiro = $Result.DefaultSelection<Prisma.$PreNatalParceiroPayload>
+/**
+ * Model Avaliacao
+ * 
+ */
+export type Avaliacao = $Result.DefaultSelection<Prisma.$AvaliacaoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -265,6 +290,56 @@ export class PrismaClient<
     * ```
     */
   get notificacao(): Prisma.NotificacaoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tratamentoSifilis`: Exposes CRUD operations for the **TratamentoSifilis** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TratamentoSifilis
+    * const tratamentoSifilis = await prisma.tratamentoSifilis.findMany()
+    * ```
+    */
+  get tratamentoSifilis(): Prisma.TratamentoSifilisDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.aplicacaoPenicilina`: Exposes CRUD operations for the **AplicacaoPenicilina** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AplicacaoPenicilinas
+    * const aplicacaoPenicilinas = await prisma.aplicacaoPenicilina.findMany()
+    * ```
+    */
+  get aplicacaoPenicilina(): Prisma.AplicacaoPenicilinaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.encaminhamentoPNAR`: Exposes CRUD operations for the **EncaminhamentoPNAR** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EncaminhamentoPNARS
+    * const encaminhamentoPNARS = await prisma.encaminhamentoPNAR.findMany()
+    * ```
+    */
+  get encaminhamentoPNAR(): Prisma.EncaminhamentoPNARDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.preNatalParceiro`: Exposes CRUD operations for the **PreNatalParceiro** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PreNatalParceiros
+    * const preNatalParceiros = await prisma.preNatalParceiro.findMany()
+    * ```
+    */
+  get preNatalParceiro(): Prisma.PreNatalParceiroDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.avaliacao`: Exposes CRUD operations for the **Avaliacao** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Avaliacaos
+    * const avaliacaos = await prisma.avaliacao.findMany()
+    * ```
+    */
+  get avaliacao(): Prisma.AvaliacaoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -707,7 +782,12 @@ export namespace Prisma {
     Medicacao: 'Medicacao',
     CondicaoClinica: 'CondicaoClinica',
     CartaoMaeSalvador: 'CartaoMaeSalvador',
-    Notificacao: 'Notificacao'
+    Notificacao: 'Notificacao',
+    TratamentoSifilis: 'TratamentoSifilis',
+    AplicacaoPenicilina: 'AplicacaoPenicilina',
+    EncaminhamentoPNAR: 'EncaminhamentoPNAR',
+    PreNatalParceiro: 'PreNatalParceiro',
+    Avaliacao: 'Avaliacao'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -723,7 +803,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "gestante" | "profissional" | "consulta" | "exame" | "vacina" | "medicacao" | "condicaoClinica" | "cartaoMaeSalvador" | "notificacao"
+      modelProps: "gestante" | "profissional" | "consulta" | "exame" | "vacina" | "medicacao" | "condicaoClinica" | "cartaoMaeSalvador" | "notificacao" | "tratamentoSifilis" | "aplicacaoPenicilina" | "encaminhamentoPNAR" | "preNatalParceiro" | "avaliacao"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1393,6 +1473,376 @@ export namespace Prisma {
           }
         }
       }
+      TratamentoSifilis: {
+        payload: Prisma.$TratamentoSifilisPayload<ExtArgs>
+        fields: Prisma.TratamentoSifilisFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TratamentoSifilisFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TratamentoSifilisFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload>
+          }
+          findFirst: {
+            args: Prisma.TratamentoSifilisFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TratamentoSifilisFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload>
+          }
+          findMany: {
+            args: Prisma.TratamentoSifilisFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload>[]
+          }
+          create: {
+            args: Prisma.TratamentoSifilisCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload>
+          }
+          createMany: {
+            args: Prisma.TratamentoSifilisCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TratamentoSifilisCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload>[]
+          }
+          delete: {
+            args: Prisma.TratamentoSifilisDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload>
+          }
+          update: {
+            args: Prisma.TratamentoSifilisUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload>
+          }
+          deleteMany: {
+            args: Prisma.TratamentoSifilisDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TratamentoSifilisUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TratamentoSifilisUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload>[]
+          }
+          upsert: {
+            args: Prisma.TratamentoSifilisUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TratamentoSifilisPayload>
+          }
+          aggregate: {
+            args: Prisma.TratamentoSifilisAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTratamentoSifilis>
+          }
+          groupBy: {
+            args: Prisma.TratamentoSifilisGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TratamentoSifilisGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TratamentoSifilisCountArgs<ExtArgs>
+            result: $Utils.Optional<TratamentoSifilisCountAggregateOutputType> | number
+          }
+        }
+      }
+      AplicacaoPenicilina: {
+        payload: Prisma.$AplicacaoPenicilinaPayload<ExtArgs>
+        fields: Prisma.AplicacaoPenicilinaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AplicacaoPenicilinaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AplicacaoPenicilinaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload>
+          }
+          findFirst: {
+            args: Prisma.AplicacaoPenicilinaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AplicacaoPenicilinaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload>
+          }
+          findMany: {
+            args: Prisma.AplicacaoPenicilinaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload>[]
+          }
+          create: {
+            args: Prisma.AplicacaoPenicilinaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload>
+          }
+          createMany: {
+            args: Prisma.AplicacaoPenicilinaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AplicacaoPenicilinaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload>[]
+          }
+          delete: {
+            args: Prisma.AplicacaoPenicilinaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload>
+          }
+          update: {
+            args: Prisma.AplicacaoPenicilinaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload>
+          }
+          deleteMany: {
+            args: Prisma.AplicacaoPenicilinaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AplicacaoPenicilinaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AplicacaoPenicilinaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload>[]
+          }
+          upsert: {
+            args: Prisma.AplicacaoPenicilinaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AplicacaoPenicilinaPayload>
+          }
+          aggregate: {
+            args: Prisma.AplicacaoPenicilinaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAplicacaoPenicilina>
+          }
+          groupBy: {
+            args: Prisma.AplicacaoPenicilinaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AplicacaoPenicilinaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AplicacaoPenicilinaCountArgs<ExtArgs>
+            result: $Utils.Optional<AplicacaoPenicilinaCountAggregateOutputType> | number
+          }
+        }
+      }
+      EncaminhamentoPNAR: {
+        payload: Prisma.$EncaminhamentoPNARPayload<ExtArgs>
+        fields: Prisma.EncaminhamentoPNARFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EncaminhamentoPNARFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EncaminhamentoPNARFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload>
+          }
+          findFirst: {
+            args: Prisma.EncaminhamentoPNARFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EncaminhamentoPNARFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload>
+          }
+          findMany: {
+            args: Prisma.EncaminhamentoPNARFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload>[]
+          }
+          create: {
+            args: Prisma.EncaminhamentoPNARCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload>
+          }
+          createMany: {
+            args: Prisma.EncaminhamentoPNARCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EncaminhamentoPNARCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload>[]
+          }
+          delete: {
+            args: Prisma.EncaminhamentoPNARDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload>
+          }
+          update: {
+            args: Prisma.EncaminhamentoPNARUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload>
+          }
+          deleteMany: {
+            args: Prisma.EncaminhamentoPNARDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EncaminhamentoPNARUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EncaminhamentoPNARUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload>[]
+          }
+          upsert: {
+            args: Prisma.EncaminhamentoPNARUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EncaminhamentoPNARPayload>
+          }
+          aggregate: {
+            args: Prisma.EncaminhamentoPNARAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEncaminhamentoPNAR>
+          }
+          groupBy: {
+            args: Prisma.EncaminhamentoPNARGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EncaminhamentoPNARGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EncaminhamentoPNARCountArgs<ExtArgs>
+            result: $Utils.Optional<EncaminhamentoPNARCountAggregateOutputType> | number
+          }
+        }
+      }
+      PreNatalParceiro: {
+        payload: Prisma.$PreNatalParceiroPayload<ExtArgs>
+        fields: Prisma.PreNatalParceiroFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PreNatalParceiroFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PreNatalParceiroFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload>
+          }
+          findFirst: {
+            args: Prisma.PreNatalParceiroFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PreNatalParceiroFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload>
+          }
+          findMany: {
+            args: Prisma.PreNatalParceiroFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload>[]
+          }
+          create: {
+            args: Prisma.PreNatalParceiroCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload>
+          }
+          createMany: {
+            args: Prisma.PreNatalParceiroCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PreNatalParceiroCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload>[]
+          }
+          delete: {
+            args: Prisma.PreNatalParceiroDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload>
+          }
+          update: {
+            args: Prisma.PreNatalParceiroUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload>
+          }
+          deleteMany: {
+            args: Prisma.PreNatalParceiroDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PreNatalParceiroUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PreNatalParceiroUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload>[]
+          }
+          upsert: {
+            args: Prisma.PreNatalParceiroUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PreNatalParceiroPayload>
+          }
+          aggregate: {
+            args: Prisma.PreNatalParceiroAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePreNatalParceiro>
+          }
+          groupBy: {
+            args: Prisma.PreNatalParceiroGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PreNatalParceiroGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PreNatalParceiroCountArgs<ExtArgs>
+            result: $Utils.Optional<PreNatalParceiroCountAggregateOutputType> | number
+          }
+        }
+      }
+      Avaliacao: {
+        payload: Prisma.$AvaliacaoPayload<ExtArgs>
+        fields: Prisma.AvaliacaoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AvaliacaoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AvaliacaoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          findFirst: {
+            args: Prisma.AvaliacaoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AvaliacaoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          findMany: {
+            args: Prisma.AvaliacaoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>[]
+          }
+          create: {
+            args: Prisma.AvaliacaoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          createMany: {
+            args: Prisma.AvaliacaoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AvaliacaoCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>[]
+          }
+          delete: {
+            args: Prisma.AvaliacaoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          update: {
+            args: Prisma.AvaliacaoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          deleteMany: {
+            args: Prisma.AvaliacaoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AvaliacaoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AvaliacaoUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>[]
+          }
+          upsert: {
+            args: Prisma.AvaliacaoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AvaliacaoPayload>
+          }
+          aggregate: {
+            args: Prisma.AvaliacaoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAvaliacao>
+          }
+          groupBy: {
+            args: Prisma.AvaliacaoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AvaliacaoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AvaliacaoCountArgs<ExtArgs>
+            result: $Utils.Optional<AvaliacaoCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1510,6 +1960,11 @@ export namespace Prisma {
     condicaoClinica?: CondicaoClinicaOmit
     cartaoMaeSalvador?: CartaoMaeSalvadorOmit
     notificacao?: NotificacaoOmit
+    tratamentoSifilis?: TratamentoSifilisOmit
+    aplicacaoPenicilina?: AplicacaoPenicilinaOmit
+    encaminhamentoPNAR?: EncaminhamentoPNAROmit
+    preNatalParceiro?: PreNatalParceiroOmit
+    avaliacao?: AvaliacaoOmit
   }
 
   /* Types for Logging */
@@ -1596,6 +2051,9 @@ export namespace Prisma {
     medicacoes: number
     condicoes: number
     notificacoes: number
+    tratamentosSifilis: number
+    encaminhamentosPNAR: number
+    avaliacoes: number
   }
 
   export type GestanteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1605,6 +2063,9 @@ export namespace Prisma {
     medicacoes?: boolean | GestanteCountOutputTypeCountMedicacoesArgs
     condicoes?: boolean | GestanteCountOutputTypeCountCondicoesArgs
     notificacoes?: boolean | GestanteCountOutputTypeCountNotificacoesArgs
+    tratamentosSifilis?: boolean | GestanteCountOutputTypeCountTratamentosSifilisArgs
+    encaminhamentosPNAR?: boolean | GestanteCountOutputTypeCountEncaminhamentosPNARArgs
+    avaliacoes?: boolean | GestanteCountOutputTypeCountAvaliacoesArgs
   }
 
   // Custom InputTypes
@@ -1660,6 +2121,27 @@ export namespace Prisma {
     where?: NotificacaoWhereInput
   }
 
+  /**
+   * GestanteCountOutputType without action
+   */
+  export type GestanteCountOutputTypeCountTratamentosSifilisArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TratamentoSifilisWhereInput
+  }
+
+  /**
+   * GestanteCountOutputType without action
+   */
+  export type GestanteCountOutputTypeCountEncaminhamentosPNARArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EncaminhamentoPNARWhereInput
+  }
+
+  /**
+   * GestanteCountOutputType without action
+   */
+  export type GestanteCountOutputTypeCountAvaliacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
+  }
+
 
   /**
    * Count Type ProfissionalCountOutputType
@@ -1689,6 +2171,37 @@ export namespace Prisma {
    */
   export type ProfissionalCountOutputTypeCountConsultasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ConsultaWhereInput
+  }
+
+
+  /**
+   * Count Type TratamentoSifilisCountOutputType
+   */
+
+  export type TratamentoSifilisCountOutputType = {
+    aplicacoes: number
+  }
+
+  export type TratamentoSifilisCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    aplicacoes?: boolean | TratamentoSifilisCountOutputTypeCountAplicacoesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * TratamentoSifilisCountOutputType without action
+   */
+  export type TratamentoSifilisCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilisCountOutputType
+     */
+    select?: TratamentoSifilisCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * TratamentoSifilisCountOutputType without action
+   */
+  export type TratamentoSifilisCountOutputTypeCountAplicacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AplicacaoPenicilinaWhereInput
   }
 
 
@@ -1739,10 +2252,13 @@ export namespace Prisma {
     bairro: string | null
     cep: string | null
     ubsVinculada: string | null
+    hospitalReferencia: string | null
     dataUltimaMenstruacao: Date | null
     dataProvavelParto: Date | null
     tipoGravidez: string | null
     riscoGestacional: string | null
+    riscoGestacionalCIAP: string | null
+    gravidezPlanejada: boolean | null
     temWhatsapp: boolean | null
     comoDescobriuGestacao: string | null
     programaSocial: string | null
@@ -1763,6 +2279,18 @@ export namespace Prisma {
     ativo: boolean | null
     criadoEm: Date | null
     atualizadoEm: Date | null
+    antecedentesDiabetes: boolean | null
+    antecedentesInfeccaoUrinaria: boolean | null
+    antecedentesInfertilidade: boolean | null
+    antecedentesDificuldadeAmamentacao: boolean | null
+    antecedentesCardiopatia: boolean | null
+    statusCaderneta: string | null
+    cadernetaAnteriorId: string | null
+    dataDesfecho: Date | null
+    participouAtividadeEducativa: boolean | null
+    dataAtividadeEducativa: Date | null
+    realizouVisitaMaternidade: boolean | null
+    dataVisitaMaternidade: Date | null
   }
 
   export type GestanteMaxAggregateOutputType = {
@@ -1778,10 +2306,13 @@ export namespace Prisma {
     bairro: string | null
     cep: string | null
     ubsVinculada: string | null
+    hospitalReferencia: string | null
     dataUltimaMenstruacao: Date | null
     dataProvavelParto: Date | null
     tipoGravidez: string | null
     riscoGestacional: string | null
+    riscoGestacionalCIAP: string | null
+    gravidezPlanejada: boolean | null
     temWhatsapp: boolean | null
     comoDescobriuGestacao: string | null
     programaSocial: string | null
@@ -1802,6 +2333,18 @@ export namespace Prisma {
     ativo: boolean | null
     criadoEm: Date | null
     atualizadoEm: Date | null
+    antecedentesDiabetes: boolean | null
+    antecedentesInfeccaoUrinaria: boolean | null
+    antecedentesInfertilidade: boolean | null
+    antecedentesDificuldadeAmamentacao: boolean | null
+    antecedentesCardiopatia: boolean | null
+    statusCaderneta: string | null
+    cadernetaAnteriorId: string | null
+    dataDesfecho: Date | null
+    participouAtividadeEducativa: boolean | null
+    dataAtividadeEducativa: Date | null
+    realizouVisitaMaternidade: boolean | null
+    dataVisitaMaternidade: Date | null
   }
 
   export type GestanteCountAggregateOutputType = {
@@ -1817,10 +2360,13 @@ export namespace Prisma {
     bairro: number
     cep: number
     ubsVinculada: number
+    hospitalReferencia: number
     dataUltimaMenstruacao: number
     dataProvavelParto: number
     tipoGravidez: number
     riscoGestacional: number
+    riscoGestacionalCIAP: number
+    gravidezPlanejada: number
     temWhatsapp: number
     comoDescobriuGestacao: number
     programaSocial: number
@@ -1841,6 +2387,18 @@ export namespace Prisma {
     ativo: number
     criadoEm: number
     atualizadoEm: number
+    antecedentesDiabetes: number
+    antecedentesInfeccaoUrinaria: number
+    antecedentesInfertilidade: number
+    antecedentesDificuldadeAmamentacao: number
+    antecedentesCardiopatia: number
+    statusCaderneta: number
+    cadernetaAnteriorId: number
+    dataDesfecho: number
+    participouAtividadeEducativa: number
+    dataAtividadeEducativa: number
+    realizouVisitaMaternidade: number
+    dataVisitaMaternidade: number
     _all: number
   }
 
@@ -1876,10 +2434,13 @@ export namespace Prisma {
     bairro?: true
     cep?: true
     ubsVinculada?: true
+    hospitalReferencia?: true
     dataUltimaMenstruacao?: true
     dataProvavelParto?: true
     tipoGravidez?: true
     riscoGestacional?: true
+    riscoGestacionalCIAP?: true
+    gravidezPlanejada?: true
     temWhatsapp?: true
     comoDescobriuGestacao?: true
     programaSocial?: true
@@ -1900,6 +2461,18 @@ export namespace Prisma {
     ativo?: true
     criadoEm?: true
     atualizadoEm?: true
+    antecedentesDiabetes?: true
+    antecedentesInfeccaoUrinaria?: true
+    antecedentesInfertilidade?: true
+    antecedentesDificuldadeAmamentacao?: true
+    antecedentesCardiopatia?: true
+    statusCaderneta?: true
+    cadernetaAnteriorId?: true
+    dataDesfecho?: true
+    participouAtividadeEducativa?: true
+    dataAtividadeEducativa?: true
+    realizouVisitaMaternidade?: true
+    dataVisitaMaternidade?: true
   }
 
   export type GestanteMaxAggregateInputType = {
@@ -1915,10 +2488,13 @@ export namespace Prisma {
     bairro?: true
     cep?: true
     ubsVinculada?: true
+    hospitalReferencia?: true
     dataUltimaMenstruacao?: true
     dataProvavelParto?: true
     tipoGravidez?: true
     riscoGestacional?: true
+    riscoGestacionalCIAP?: true
+    gravidezPlanejada?: true
     temWhatsapp?: true
     comoDescobriuGestacao?: true
     programaSocial?: true
@@ -1939,6 +2515,18 @@ export namespace Prisma {
     ativo?: true
     criadoEm?: true
     atualizadoEm?: true
+    antecedentesDiabetes?: true
+    antecedentesInfeccaoUrinaria?: true
+    antecedentesInfertilidade?: true
+    antecedentesDificuldadeAmamentacao?: true
+    antecedentesCardiopatia?: true
+    statusCaderneta?: true
+    cadernetaAnteriorId?: true
+    dataDesfecho?: true
+    participouAtividadeEducativa?: true
+    dataAtividadeEducativa?: true
+    realizouVisitaMaternidade?: true
+    dataVisitaMaternidade?: true
   }
 
   export type GestanteCountAggregateInputType = {
@@ -1954,10 +2542,13 @@ export namespace Prisma {
     bairro?: true
     cep?: true
     ubsVinculada?: true
+    hospitalReferencia?: true
     dataUltimaMenstruacao?: true
     dataProvavelParto?: true
     tipoGravidez?: true
     riscoGestacional?: true
+    riscoGestacionalCIAP?: true
+    gravidezPlanejada?: true
     temWhatsapp?: true
     comoDescobriuGestacao?: true
     programaSocial?: true
@@ -1978,6 +2569,18 @@ export namespace Prisma {
     ativo?: true
     criadoEm?: true
     atualizadoEm?: true
+    antecedentesDiabetes?: true
+    antecedentesInfeccaoUrinaria?: true
+    antecedentesInfertilidade?: true
+    antecedentesDificuldadeAmamentacao?: true
+    antecedentesCardiopatia?: true
+    statusCaderneta?: true
+    cadernetaAnteriorId?: true
+    dataDesfecho?: true
+    participouAtividadeEducativa?: true
+    dataAtividadeEducativa?: true
+    realizouVisitaMaternidade?: true
+    dataVisitaMaternidade?: true
     _all?: true
   }
 
@@ -2080,10 +2683,13 @@ export namespace Prisma {
     bairro: string | null
     cep: string | null
     ubsVinculada: string | null
+    hospitalReferencia: string | null
     dataUltimaMenstruacao: Date | null
     dataProvavelParto: Date | null
     tipoGravidez: string
     riscoGestacional: string
+    riscoGestacionalCIAP: string | null
+    gravidezPlanejada: boolean | null
     temWhatsapp: boolean
     comoDescobriuGestacao: string | null
     programaSocial: string | null
@@ -2104,6 +2710,18 @@ export namespace Prisma {
     ativo: boolean
     criadoEm: Date
     atualizadoEm: Date
+    antecedentesDiabetes: boolean
+    antecedentesInfeccaoUrinaria: boolean
+    antecedentesInfertilidade: boolean
+    antecedentesDificuldadeAmamentacao: boolean
+    antecedentesCardiopatia: boolean
+    statusCaderneta: string
+    cadernetaAnteriorId: string | null
+    dataDesfecho: Date | null
+    participouAtividadeEducativa: boolean
+    dataAtividadeEducativa: Date | null
+    realizouVisitaMaternidade: boolean
+    dataVisitaMaternidade: Date | null
     _count: GestanteCountAggregateOutputType | null
     _avg: GestanteAvgAggregateOutputType | null
     _sum: GestanteSumAggregateOutputType | null
@@ -2138,10 +2756,13 @@ export namespace Prisma {
     bairro?: boolean
     cep?: boolean
     ubsVinculada?: boolean
+    hospitalReferencia?: boolean
     dataUltimaMenstruacao?: boolean
     dataProvavelParto?: boolean
     tipoGravidez?: boolean
     riscoGestacional?: boolean
+    riscoGestacionalCIAP?: boolean
+    gravidezPlanejada?: boolean
     temWhatsapp?: boolean
     comoDescobriuGestacao?: boolean
     programaSocial?: boolean
@@ -2162,6 +2783,18 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: boolean
+    cadernetaAnteriorId?: boolean
+    dataDesfecho?: boolean
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: boolean
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: boolean
     consultas?: boolean | Gestante$consultasArgs<ExtArgs>
     exames?: boolean | Gestante$examesArgs<ExtArgs>
     vacinas?: boolean | Gestante$vacinasArgs<ExtArgs>
@@ -2169,6 +2802,10 @@ export namespace Prisma {
     condicoes?: boolean | Gestante$condicoesArgs<ExtArgs>
     cartaoMaeSalvador?: boolean | Gestante$cartaoMaeSalvadorArgs<ExtArgs>
     notificacoes?: boolean | Gestante$notificacoesArgs<ExtArgs>
+    tratamentosSifilis?: boolean | Gestante$tratamentosSifilisArgs<ExtArgs>
+    encaminhamentosPNAR?: boolean | Gestante$encaminhamentosPNARArgs<ExtArgs>
+    preNatalParceiro?: boolean | Gestante$preNatalParceiroArgs<ExtArgs>
+    avaliacoes?: boolean | Gestante$avaliacoesArgs<ExtArgs>
     _count?: boolean | GestanteCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gestante"]>
 
@@ -2185,10 +2822,13 @@ export namespace Prisma {
     bairro?: boolean
     cep?: boolean
     ubsVinculada?: boolean
+    hospitalReferencia?: boolean
     dataUltimaMenstruacao?: boolean
     dataProvavelParto?: boolean
     tipoGravidez?: boolean
     riscoGestacional?: boolean
+    riscoGestacionalCIAP?: boolean
+    gravidezPlanejada?: boolean
     temWhatsapp?: boolean
     comoDescobriuGestacao?: boolean
     programaSocial?: boolean
@@ -2209,6 +2849,18 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: boolean
+    cadernetaAnteriorId?: boolean
+    dataDesfecho?: boolean
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: boolean
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: boolean
   }, ExtArgs["result"]["gestante"]>
 
   export type GestanteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2224,10 +2876,13 @@ export namespace Prisma {
     bairro?: boolean
     cep?: boolean
     ubsVinculada?: boolean
+    hospitalReferencia?: boolean
     dataUltimaMenstruacao?: boolean
     dataProvavelParto?: boolean
     tipoGravidez?: boolean
     riscoGestacional?: boolean
+    riscoGestacionalCIAP?: boolean
+    gravidezPlanejada?: boolean
     temWhatsapp?: boolean
     comoDescobriuGestacao?: boolean
     programaSocial?: boolean
@@ -2248,6 +2903,18 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: boolean
+    cadernetaAnteriorId?: boolean
+    dataDesfecho?: boolean
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: boolean
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: boolean
   }, ExtArgs["result"]["gestante"]>
 
   export type GestanteSelectScalar = {
@@ -2263,10 +2930,13 @@ export namespace Prisma {
     bairro?: boolean
     cep?: boolean
     ubsVinculada?: boolean
+    hospitalReferencia?: boolean
     dataUltimaMenstruacao?: boolean
     dataProvavelParto?: boolean
     tipoGravidez?: boolean
     riscoGestacional?: boolean
+    riscoGestacionalCIAP?: boolean
+    gravidezPlanejada?: boolean
     temWhatsapp?: boolean
     comoDescobriuGestacao?: boolean
     programaSocial?: boolean
@@ -2287,9 +2957,21 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: boolean
+    cadernetaAnteriorId?: boolean
+    dataDesfecho?: boolean
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: boolean
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: boolean
   }
 
-  export type GestanteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cpf" | "cns" | "nome" | "nomeSocial" | "dataNascimento" | "telefone" | "email" | "endereco" | "bairro" | "cep" | "ubsVinculada" | "dataUltimaMenstruacao" | "dataProvavelParto" | "tipoGravidez" | "riscoGestacional" | "temWhatsapp" | "comoDescobriuGestacao" | "programaSocial" | "temPlanoSaude" | "desejaSeguimentoUbs" | "numGestacoesPrevia" | "numPartosNormais" | "numPartosCesareos" | "numAbortosPrevia" | "alergias" | "doencasConhecidas" | "medicacoesPreExistentes" | "pesoPreGestacional" | "alturaM" | "maternidadeVinculacao" | "desejoContracepcao" | "senha" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["gestante"]>
+  export type GestanteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "cpf" | "cns" | "nome" | "nomeSocial" | "dataNascimento" | "telefone" | "email" | "endereco" | "bairro" | "cep" | "ubsVinculada" | "hospitalReferencia" | "dataUltimaMenstruacao" | "dataProvavelParto" | "tipoGravidez" | "riscoGestacional" | "riscoGestacionalCIAP" | "gravidezPlanejada" | "temWhatsapp" | "comoDescobriuGestacao" | "programaSocial" | "temPlanoSaude" | "desejaSeguimentoUbs" | "numGestacoesPrevia" | "numPartosNormais" | "numPartosCesareos" | "numAbortosPrevia" | "alergias" | "doencasConhecidas" | "medicacoesPreExistentes" | "pesoPreGestacional" | "alturaM" | "maternidadeVinculacao" | "desejoContracepcao" | "senha" | "ativo" | "criadoEm" | "atualizadoEm" | "antecedentesDiabetes" | "antecedentesInfeccaoUrinaria" | "antecedentesInfertilidade" | "antecedentesDificuldadeAmamentacao" | "antecedentesCardiopatia" | "statusCaderneta" | "cadernetaAnteriorId" | "dataDesfecho" | "participouAtividadeEducativa" | "dataAtividadeEducativa" | "realizouVisitaMaternidade" | "dataVisitaMaternidade", ExtArgs["result"]["gestante"]>
   export type GestanteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     consultas?: boolean | Gestante$consultasArgs<ExtArgs>
     exames?: boolean | Gestante$examesArgs<ExtArgs>
@@ -2298,6 +2980,10 @@ export namespace Prisma {
     condicoes?: boolean | Gestante$condicoesArgs<ExtArgs>
     cartaoMaeSalvador?: boolean | Gestante$cartaoMaeSalvadorArgs<ExtArgs>
     notificacoes?: boolean | Gestante$notificacoesArgs<ExtArgs>
+    tratamentosSifilis?: boolean | Gestante$tratamentosSifilisArgs<ExtArgs>
+    encaminhamentosPNAR?: boolean | Gestante$encaminhamentosPNARArgs<ExtArgs>
+    preNatalParceiro?: boolean | Gestante$preNatalParceiroArgs<ExtArgs>
+    avaliacoes?: boolean | Gestante$avaliacoesArgs<ExtArgs>
     _count?: boolean | GestanteCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type GestanteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2313,6 +2999,10 @@ export namespace Prisma {
       condicoes: Prisma.$CondicaoClinicaPayload<ExtArgs>[]
       cartaoMaeSalvador: Prisma.$CartaoMaeSalvadorPayload<ExtArgs> | null
       notificacoes: Prisma.$NotificacaoPayload<ExtArgs>[]
+      tratamentosSifilis: Prisma.$TratamentoSifilisPayload<ExtArgs>[]
+      encaminhamentosPNAR: Prisma.$EncaminhamentoPNARPayload<ExtArgs>[]
+      preNatalParceiro: Prisma.$PreNatalParceiroPayload<ExtArgs> | null
+      avaliacoes: Prisma.$AvaliacaoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2327,10 +3017,13 @@ export namespace Prisma {
       bairro: string | null
       cep: string | null
       ubsVinculada: string | null
+      hospitalReferencia: string | null
       dataUltimaMenstruacao: Date | null
       dataProvavelParto: Date | null
       tipoGravidez: string
       riscoGestacional: string
+      riscoGestacionalCIAP: string | null
+      gravidezPlanejada: boolean | null
       temWhatsapp: boolean
       comoDescobriuGestacao: string | null
       programaSocial: string | null
@@ -2351,6 +3044,18 @@ export namespace Prisma {
       ativo: boolean
       criadoEm: Date
       atualizadoEm: Date
+      antecedentesDiabetes: boolean
+      antecedentesInfeccaoUrinaria: boolean
+      antecedentesInfertilidade: boolean
+      antecedentesDificuldadeAmamentacao: boolean
+      antecedentesCardiopatia: boolean
+      statusCaderneta: string
+      cadernetaAnteriorId: string | null
+      dataDesfecho: Date | null
+      participouAtividadeEducativa: boolean
+      dataAtividadeEducativa: Date | null
+      realizouVisitaMaternidade: boolean
+      dataVisitaMaternidade: Date | null
     }, ExtArgs["result"]["gestante"]>
     composites: {}
   }
@@ -2752,6 +3457,10 @@ export namespace Prisma {
     condicoes<T extends Gestante$condicoesArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$condicoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CondicaoClinicaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     cartaoMaeSalvador<T extends Gestante$cartaoMaeSalvadorArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$cartaoMaeSalvadorArgs<ExtArgs>>): Prisma__CartaoMaeSalvadorClient<$Result.GetResult<Prisma.$CartaoMaeSalvadorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     notificacoes<T extends Gestante$notificacoesArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$notificacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tratamentosSifilis<T extends Gestante$tratamentosSifilisArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$tratamentosSifilisArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    encaminhamentosPNAR<T extends Gestante$encaminhamentosPNARArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$encaminhamentosPNARArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    preNatalParceiro<T extends Gestante$preNatalParceiroArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$preNatalParceiroArgs<ExtArgs>>): Prisma__PreNatalParceiroClient<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    avaliacoes<T extends Gestante$avaliacoesArgs<ExtArgs> = {}>(args?: Subset<T, Gestante$avaliacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2793,10 +3502,13 @@ export namespace Prisma {
     readonly bairro: FieldRef<"Gestante", 'String'>
     readonly cep: FieldRef<"Gestante", 'String'>
     readonly ubsVinculada: FieldRef<"Gestante", 'String'>
+    readonly hospitalReferencia: FieldRef<"Gestante", 'String'>
     readonly dataUltimaMenstruacao: FieldRef<"Gestante", 'DateTime'>
     readonly dataProvavelParto: FieldRef<"Gestante", 'DateTime'>
     readonly tipoGravidez: FieldRef<"Gestante", 'String'>
     readonly riscoGestacional: FieldRef<"Gestante", 'String'>
+    readonly riscoGestacionalCIAP: FieldRef<"Gestante", 'String'>
+    readonly gravidezPlanejada: FieldRef<"Gestante", 'Boolean'>
     readonly temWhatsapp: FieldRef<"Gestante", 'Boolean'>
     readonly comoDescobriuGestacao: FieldRef<"Gestante", 'String'>
     readonly programaSocial: FieldRef<"Gestante", 'String'>
@@ -2817,6 +3529,18 @@ export namespace Prisma {
     readonly ativo: FieldRef<"Gestante", 'Boolean'>
     readonly criadoEm: FieldRef<"Gestante", 'DateTime'>
     readonly atualizadoEm: FieldRef<"Gestante", 'DateTime'>
+    readonly antecedentesDiabetes: FieldRef<"Gestante", 'Boolean'>
+    readonly antecedentesInfeccaoUrinaria: FieldRef<"Gestante", 'Boolean'>
+    readonly antecedentesInfertilidade: FieldRef<"Gestante", 'Boolean'>
+    readonly antecedentesDificuldadeAmamentacao: FieldRef<"Gestante", 'Boolean'>
+    readonly antecedentesCardiopatia: FieldRef<"Gestante", 'Boolean'>
+    readonly statusCaderneta: FieldRef<"Gestante", 'String'>
+    readonly cadernetaAnteriorId: FieldRef<"Gestante", 'String'>
+    readonly dataDesfecho: FieldRef<"Gestante", 'DateTime'>
+    readonly participouAtividadeEducativa: FieldRef<"Gestante", 'Boolean'>
+    readonly dataAtividadeEducativa: FieldRef<"Gestante", 'DateTime'>
+    readonly realizouVisitaMaternidade: FieldRef<"Gestante", 'Boolean'>
+    readonly dataVisitaMaternidade: FieldRef<"Gestante", 'DateTime'>
   }
     
 
@@ -3363,6 +4087,97 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: NotificacaoScalarFieldEnum | NotificacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Gestante.tratamentosSifilis
+   */
+  export type Gestante$tratamentosSifilisArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    where?: TratamentoSifilisWhereInput
+    orderBy?: TratamentoSifilisOrderByWithRelationInput | TratamentoSifilisOrderByWithRelationInput[]
+    cursor?: TratamentoSifilisWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TratamentoSifilisScalarFieldEnum | TratamentoSifilisScalarFieldEnum[]
+  }
+
+  /**
+   * Gestante.encaminhamentosPNAR
+   */
+  export type Gestante$encaminhamentosPNARArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    where?: EncaminhamentoPNARWhereInput
+    orderBy?: EncaminhamentoPNAROrderByWithRelationInput | EncaminhamentoPNAROrderByWithRelationInput[]
+    cursor?: EncaminhamentoPNARWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EncaminhamentoPNARScalarFieldEnum | EncaminhamentoPNARScalarFieldEnum[]
+  }
+
+  /**
+   * Gestante.preNatalParceiro
+   */
+  export type Gestante$preNatalParceiroArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    where?: PreNatalParceiroWhereInput
+  }
+
+  /**
+   * Gestante.avaliacoes
+   */
+  export type Gestante$avaliacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    cursor?: AvaliacaoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
   }
 
   /**
@@ -4534,6 +5349,7 @@ export namespace Prisma {
     pesoKg: number | null
     alturaUterina: number | null
     batimentoCardiacoFetal: number | null
+    imcConsulta: number | null
   }
 
   export type ConsultaSumAggregateOutputType = {
@@ -4541,6 +5357,7 @@ export namespace Prisma {
     pesoKg: number | null
     alturaUterina: number | null
     batimentoCardiacoFetal: number | null
+    imcConsulta: number | null
   }
 
   export type ConsultaMinAggregateOutputType = {
@@ -4552,6 +5369,10 @@ export namespace Prisma {
     pressaoArterial: string | null
     alturaUterina: number | null
     batimentoCardiacoFetal: number | null
+    imcConsulta: number | null
+    movimentacaoFetal: string | null
+    planoTexto: string | null
+    ofertaLARC: boolean | null
     notas: string | null
     ubs: string | null
     gestanteId: string | null
@@ -4568,6 +5389,10 @@ export namespace Prisma {
     pressaoArterial: string | null
     alturaUterina: number | null
     batimentoCardiacoFetal: number | null
+    imcConsulta: number | null
+    movimentacaoFetal: string | null
+    planoTexto: string | null
+    ofertaLARC: boolean | null
     notas: string | null
     ubs: string | null
     gestanteId: string | null
@@ -4584,6 +5409,10 @@ export namespace Prisma {
     pressaoArterial: number
     alturaUterina: number
     batimentoCardiacoFetal: number
+    imcConsulta: number
+    movimentacaoFetal: number
+    planoTexto: number
+    ofertaLARC: number
     notas: number
     ubs: number
     gestanteId: number
@@ -4598,6 +5427,7 @@ export namespace Prisma {
     pesoKg?: true
     alturaUterina?: true
     batimentoCardiacoFetal?: true
+    imcConsulta?: true
   }
 
   export type ConsultaSumAggregateInputType = {
@@ -4605,6 +5435,7 @@ export namespace Prisma {
     pesoKg?: true
     alturaUterina?: true
     batimentoCardiacoFetal?: true
+    imcConsulta?: true
   }
 
   export type ConsultaMinAggregateInputType = {
@@ -4616,6 +5447,10 @@ export namespace Prisma {
     pressaoArterial?: true
     alturaUterina?: true
     batimentoCardiacoFetal?: true
+    imcConsulta?: true
+    movimentacaoFetal?: true
+    planoTexto?: true
+    ofertaLARC?: true
     notas?: true
     ubs?: true
     gestanteId?: true
@@ -4632,6 +5467,10 @@ export namespace Prisma {
     pressaoArterial?: true
     alturaUterina?: true
     batimentoCardiacoFetal?: true
+    imcConsulta?: true
+    movimentacaoFetal?: true
+    planoTexto?: true
+    ofertaLARC?: true
     notas?: true
     ubs?: true
     gestanteId?: true
@@ -4648,6 +5487,10 @@ export namespace Prisma {
     pressaoArterial?: true
     alturaUterina?: true
     batimentoCardiacoFetal?: true
+    imcConsulta?: true
+    movimentacaoFetal?: true
+    planoTexto?: true
+    ofertaLARC?: true
     notas?: true
     ubs?: true
     gestanteId?: true
@@ -4751,6 +5594,10 @@ export namespace Prisma {
     pressaoArterial: string | null
     alturaUterina: number | null
     batimentoCardiacoFetal: number | null
+    imcConsulta: number | null
+    movimentacaoFetal: string | null
+    planoTexto: string | null
+    ofertaLARC: boolean
     notas: string | null
     ubs: string | null
     gestanteId: string
@@ -4786,6 +5633,10 @@ export namespace Prisma {
     pressaoArterial?: boolean
     alturaUterina?: boolean
     batimentoCardiacoFetal?: boolean
+    imcConsulta?: boolean
+    movimentacaoFetal?: boolean
+    planoTexto?: boolean
+    ofertaLARC?: boolean
     notas?: boolean
     ubs?: boolean
     gestanteId?: boolean
@@ -4804,6 +5655,10 @@ export namespace Prisma {
     pressaoArterial?: boolean
     alturaUterina?: boolean
     batimentoCardiacoFetal?: boolean
+    imcConsulta?: boolean
+    movimentacaoFetal?: boolean
+    planoTexto?: boolean
+    ofertaLARC?: boolean
     notas?: boolean
     ubs?: boolean
     gestanteId?: boolean
@@ -4822,6 +5677,10 @@ export namespace Prisma {
     pressaoArterial?: boolean
     alturaUterina?: boolean
     batimentoCardiacoFetal?: boolean
+    imcConsulta?: boolean
+    movimentacaoFetal?: boolean
+    planoTexto?: boolean
+    ofertaLARC?: boolean
     notas?: boolean
     ubs?: boolean
     gestanteId?: boolean
@@ -4840,6 +5699,10 @@ export namespace Prisma {
     pressaoArterial?: boolean
     alturaUterina?: boolean
     batimentoCardiacoFetal?: boolean
+    imcConsulta?: boolean
+    movimentacaoFetal?: boolean
+    planoTexto?: boolean
+    ofertaLARC?: boolean
     notas?: boolean
     ubs?: boolean
     gestanteId?: boolean
@@ -4847,7 +5710,7 @@ export namespace Prisma {
     criadoEm?: boolean
   }
 
-  export type ConsultaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "data" | "tipo" | "semanaGestacional" | "pesoKg" | "pressaoArterial" | "alturaUterina" | "batimentoCardiacoFetal" | "notas" | "ubs" | "gestanteId" | "profissionalId" | "criadoEm", ExtArgs["result"]["consulta"]>
+  export type ConsultaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "data" | "tipo" | "semanaGestacional" | "pesoKg" | "pressaoArterial" | "alturaUterina" | "batimentoCardiacoFetal" | "imcConsulta" | "movimentacaoFetal" | "planoTexto" | "ofertaLARC" | "notas" | "ubs" | "gestanteId" | "profissionalId" | "criadoEm", ExtArgs["result"]["consulta"]>
   export type ConsultaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     gestante?: boolean | GestanteDefaultArgs<ExtArgs>
     profissional?: boolean | ProfissionalDefaultArgs<ExtArgs>
@@ -4876,6 +5739,10 @@ export namespace Prisma {
       pressaoArterial: string | null
       alturaUterina: number | null
       batimentoCardiacoFetal: number | null
+      imcConsulta: number | null
+      movimentacaoFetal: string | null
+      planoTexto: string | null
+      ofertaLARC: boolean
       notas: string | null
       ubs: string | null
       gestanteId: string
@@ -5314,6 +6181,10 @@ export namespace Prisma {
     readonly pressaoArterial: FieldRef<"Consulta", 'String'>
     readonly alturaUterina: FieldRef<"Consulta", 'Float'>
     readonly batimentoCardiacoFetal: FieldRef<"Consulta", 'Int'>
+    readonly imcConsulta: FieldRef<"Consulta", 'Float'>
+    readonly movimentacaoFetal: FieldRef<"Consulta", 'String'>
+    readonly planoTexto: FieldRef<"Consulta", 'String'>
+    readonly ofertaLARC: FieldRef<"Consulta", 'Boolean'>
     readonly notas: FieldRef<"Consulta", 'String'>
     readonly ubs: FieldRef<"Consulta", 'String'>
     readonly gestanteId: FieldRef<"Consulta", 'String'>
@@ -10215,6 +11086,11 @@ export namespace Prisma {
     status: string | null
     termoLgpdAceito: boolean | null
     etapaAtual: number | null
+    ubsVinculacao: string | null
+    profissionalVinculacaoId: string | null
+    dataVinculacao: Date | null
+    lgpdMetodoAssinatura: string | null
+    lgpdDocumentoEnviado: boolean | null
     gestanteId: string | null
     criadoEm: Date | null
     atualizadoEm: Date | null
@@ -10226,6 +11102,11 @@ export namespace Prisma {
     status: string | null
     termoLgpdAceito: boolean | null
     etapaAtual: number | null
+    ubsVinculacao: string | null
+    profissionalVinculacaoId: string | null
+    dataVinculacao: Date | null
+    lgpdMetodoAssinatura: string | null
+    lgpdDocumentoEnviado: boolean | null
     gestanteId: string | null
     criadoEm: Date | null
     atualizadoEm: Date | null
@@ -10237,6 +11118,11 @@ export namespace Prisma {
     status: number
     termoLgpdAceito: number
     etapaAtual: number
+    ubsVinculacao: number
+    profissionalVinculacaoId: number
+    dataVinculacao: number
+    lgpdMetodoAssinatura: number
+    lgpdDocumentoEnviado: number
     gestanteId: number
     criadoEm: number
     atualizadoEm: number
@@ -10258,6 +11144,11 @@ export namespace Prisma {
     status?: true
     termoLgpdAceito?: true
     etapaAtual?: true
+    ubsVinculacao?: true
+    profissionalVinculacaoId?: true
+    dataVinculacao?: true
+    lgpdMetodoAssinatura?: true
+    lgpdDocumentoEnviado?: true
     gestanteId?: true
     criadoEm?: true
     atualizadoEm?: true
@@ -10269,6 +11160,11 @@ export namespace Prisma {
     status?: true
     termoLgpdAceito?: true
     etapaAtual?: true
+    ubsVinculacao?: true
+    profissionalVinculacaoId?: true
+    dataVinculacao?: true
+    lgpdMetodoAssinatura?: true
+    lgpdDocumentoEnviado?: true
     gestanteId?: true
     criadoEm?: true
     atualizadoEm?: true
@@ -10280,6 +11176,11 @@ export namespace Prisma {
     status?: true
     termoLgpdAceito?: true
     etapaAtual?: true
+    ubsVinculacao?: true
+    profissionalVinculacaoId?: true
+    dataVinculacao?: true
+    lgpdMetodoAssinatura?: true
+    lgpdDocumentoEnviado?: true
     gestanteId?: true
     criadoEm?: true
     atualizadoEm?: true
@@ -10378,6 +11279,11 @@ export namespace Prisma {
     status: string
     termoLgpdAceito: boolean
     etapaAtual: number
+    ubsVinculacao: string | null
+    profissionalVinculacaoId: string | null
+    dataVinculacao: Date | null
+    lgpdMetodoAssinatura: string | null
+    lgpdDocumentoEnviado: boolean
     gestanteId: string
     criadoEm: Date
     atualizadoEm: Date
@@ -10408,6 +11314,11 @@ export namespace Prisma {
     status?: boolean
     termoLgpdAceito?: boolean
     etapaAtual?: boolean
+    ubsVinculacao?: boolean
+    profissionalVinculacaoId?: boolean
+    dataVinculacao?: boolean
+    lgpdMetodoAssinatura?: boolean
+    lgpdDocumentoEnviado?: boolean
     gestanteId?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
@@ -10420,6 +11331,11 @@ export namespace Prisma {
     status?: boolean
     termoLgpdAceito?: boolean
     etapaAtual?: boolean
+    ubsVinculacao?: boolean
+    profissionalVinculacaoId?: boolean
+    dataVinculacao?: boolean
+    lgpdMetodoAssinatura?: boolean
+    lgpdDocumentoEnviado?: boolean
     gestanteId?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
@@ -10432,6 +11348,11 @@ export namespace Prisma {
     status?: boolean
     termoLgpdAceito?: boolean
     etapaAtual?: boolean
+    ubsVinculacao?: boolean
+    profissionalVinculacaoId?: boolean
+    dataVinculacao?: boolean
+    lgpdMetodoAssinatura?: boolean
+    lgpdDocumentoEnviado?: boolean
     gestanteId?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
@@ -10444,12 +11365,17 @@ export namespace Prisma {
     status?: boolean
     termoLgpdAceito?: boolean
     etapaAtual?: boolean
+    ubsVinculacao?: boolean
+    profissionalVinculacaoId?: boolean
+    dataVinculacao?: boolean
+    lgpdMetodoAssinatura?: boolean
+    lgpdDocumentoEnviado?: boolean
     gestanteId?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
   }
 
-  export type CartaoMaeSalvadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "numeroTranscard" | "status" | "termoLgpdAceito" | "etapaAtual" | "gestanteId" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["cartaoMaeSalvador"]>
+  export type CartaoMaeSalvadorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "numeroTranscard" | "status" | "termoLgpdAceito" | "etapaAtual" | "ubsVinculacao" | "profissionalVinculacaoId" | "dataVinculacao" | "lgpdMetodoAssinatura" | "lgpdDocumentoEnviado" | "gestanteId" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["cartaoMaeSalvador"]>
   export type CartaoMaeSalvadorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     gestante?: boolean | GestanteDefaultArgs<ExtArgs>
   }
@@ -10471,6 +11397,11 @@ export namespace Prisma {
       status: string
       termoLgpdAceito: boolean
       etapaAtual: number
+      ubsVinculacao: string | null
+      profissionalVinculacaoId: string | null
+      dataVinculacao: Date | null
+      lgpdMetodoAssinatura: string | null
+      lgpdDocumentoEnviado: boolean
       gestanteId: string
       criadoEm: Date
       atualizadoEm: Date
@@ -10903,6 +11834,11 @@ export namespace Prisma {
     readonly status: FieldRef<"CartaoMaeSalvador", 'String'>
     readonly termoLgpdAceito: FieldRef<"CartaoMaeSalvador", 'Boolean'>
     readonly etapaAtual: FieldRef<"CartaoMaeSalvador", 'Int'>
+    readonly ubsVinculacao: FieldRef<"CartaoMaeSalvador", 'String'>
+    readonly profissionalVinculacaoId: FieldRef<"CartaoMaeSalvador", 'String'>
+    readonly dataVinculacao: FieldRef<"CartaoMaeSalvador", 'DateTime'>
+    readonly lgpdMetodoAssinatura: FieldRef<"CartaoMaeSalvador", 'String'>
+    readonly lgpdDocumentoEnviado: FieldRef<"CartaoMaeSalvador", 'Boolean'>
     readonly gestanteId: FieldRef<"CartaoMaeSalvador", 'String'>
     readonly criadoEm: FieldRef<"CartaoMaeSalvador", 'DateTime'>
     readonly atualizadoEm: FieldRef<"CartaoMaeSalvador", 'DateTime'>
@@ -12401,6 +13337,5626 @@ export namespace Prisma {
 
 
   /**
+   * Model TratamentoSifilis
+   */
+
+  export type AggregateTratamentoSifilis = {
+    _count: TratamentoSifilisCountAggregateOutputType | null
+    _avg: TratamentoSifilisAvgAggregateOutputType | null
+    _sum: TratamentoSifilisSumAggregateOutputType | null
+    _min: TratamentoSifilisMinAggregateOutputType | null
+    _max: TratamentoSifilisMaxAggregateOutputType | null
+  }
+
+  export type TratamentoSifilisAvgAggregateOutputType = {
+    dosesNecessarias: number | null
+  }
+
+  export type TratamentoSifilisSumAggregateOutputType = {
+    dosesNecessarias: number | null
+  }
+
+  export type TratamentoSifilisMinAggregateOutputType = {
+    id: string | null
+    classificacaoCID: string | null
+    tipo: string | null
+    subtipo: string | null
+    dataDiagnostico: Date | null
+    statusTratamento: string | null
+    dosesNecessarias: number | null
+    gestanteId: string | null
+    criadoEm: Date | null
+    atualizadoEm: Date | null
+  }
+
+  export type TratamentoSifilisMaxAggregateOutputType = {
+    id: string | null
+    classificacaoCID: string | null
+    tipo: string | null
+    subtipo: string | null
+    dataDiagnostico: Date | null
+    statusTratamento: string | null
+    dosesNecessarias: number | null
+    gestanteId: string | null
+    criadoEm: Date | null
+    atualizadoEm: Date | null
+  }
+
+  export type TratamentoSifilisCountAggregateOutputType = {
+    id: number
+    classificacaoCID: number
+    tipo: number
+    subtipo: number
+    dataDiagnostico: number
+    statusTratamento: number
+    dosesNecessarias: number
+    gestanteId: number
+    criadoEm: number
+    atualizadoEm: number
+    _all: number
+  }
+
+
+  export type TratamentoSifilisAvgAggregateInputType = {
+    dosesNecessarias?: true
+  }
+
+  export type TratamentoSifilisSumAggregateInputType = {
+    dosesNecessarias?: true
+  }
+
+  export type TratamentoSifilisMinAggregateInputType = {
+    id?: true
+    classificacaoCID?: true
+    tipo?: true
+    subtipo?: true
+    dataDiagnostico?: true
+    statusTratamento?: true
+    dosesNecessarias?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+  }
+
+  export type TratamentoSifilisMaxAggregateInputType = {
+    id?: true
+    classificacaoCID?: true
+    tipo?: true
+    subtipo?: true
+    dataDiagnostico?: true
+    statusTratamento?: true
+    dosesNecessarias?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+  }
+
+  export type TratamentoSifilisCountAggregateInputType = {
+    id?: true
+    classificacaoCID?: true
+    tipo?: true
+    subtipo?: true
+    dataDiagnostico?: true
+    statusTratamento?: true
+    dosesNecessarias?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+    _all?: true
+  }
+
+  export type TratamentoSifilisAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TratamentoSifilis to aggregate.
+     */
+    where?: TratamentoSifilisWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TratamentoSifilis to fetch.
+     */
+    orderBy?: TratamentoSifilisOrderByWithRelationInput | TratamentoSifilisOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TratamentoSifilisWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TratamentoSifilis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TratamentoSifilis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TratamentoSifilis
+    **/
+    _count?: true | TratamentoSifilisCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TratamentoSifilisAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TratamentoSifilisSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TratamentoSifilisMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TratamentoSifilisMaxAggregateInputType
+  }
+
+  export type GetTratamentoSifilisAggregateType<T extends TratamentoSifilisAggregateArgs> = {
+        [P in keyof T & keyof AggregateTratamentoSifilis]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTratamentoSifilis[P]>
+      : GetScalarType<T[P], AggregateTratamentoSifilis[P]>
+  }
+
+
+
+
+  export type TratamentoSifilisGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TratamentoSifilisWhereInput
+    orderBy?: TratamentoSifilisOrderByWithAggregationInput | TratamentoSifilisOrderByWithAggregationInput[]
+    by: TratamentoSifilisScalarFieldEnum[] | TratamentoSifilisScalarFieldEnum
+    having?: TratamentoSifilisScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TratamentoSifilisCountAggregateInputType | true
+    _avg?: TratamentoSifilisAvgAggregateInputType
+    _sum?: TratamentoSifilisSumAggregateInputType
+    _min?: TratamentoSifilisMinAggregateInputType
+    _max?: TratamentoSifilisMaxAggregateInputType
+  }
+
+  export type TratamentoSifilisGroupByOutputType = {
+    id: string
+    classificacaoCID: string
+    tipo: string
+    subtipo: string | null
+    dataDiagnostico: Date
+    statusTratamento: string
+    dosesNecessarias: number
+    gestanteId: string
+    criadoEm: Date
+    atualizadoEm: Date
+    _count: TratamentoSifilisCountAggregateOutputType | null
+    _avg: TratamentoSifilisAvgAggregateOutputType | null
+    _sum: TratamentoSifilisSumAggregateOutputType | null
+    _min: TratamentoSifilisMinAggregateOutputType | null
+    _max: TratamentoSifilisMaxAggregateOutputType | null
+  }
+
+  type GetTratamentoSifilisGroupByPayload<T extends TratamentoSifilisGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TratamentoSifilisGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TratamentoSifilisGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TratamentoSifilisGroupByOutputType[P]>
+            : GetScalarType<T[P], TratamentoSifilisGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TratamentoSifilisSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classificacaoCID?: boolean
+    tipo?: boolean
+    subtipo?: boolean
+    dataDiagnostico?: boolean
+    statusTratamento?: boolean
+    dosesNecessarias?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+    aplicacoes?: boolean | TratamentoSifilis$aplicacoesArgs<ExtArgs>
+    _count?: boolean | TratamentoSifilisCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tratamentoSifilis"]>
+
+  export type TratamentoSifilisSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classificacaoCID?: boolean
+    tipo?: boolean
+    subtipo?: boolean
+    dataDiagnostico?: boolean
+    statusTratamento?: boolean
+    dosesNecessarias?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tratamentoSifilis"]>
+
+  export type TratamentoSifilisSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    classificacaoCID?: boolean
+    tipo?: boolean
+    subtipo?: boolean
+    dataDiagnostico?: boolean
+    statusTratamento?: boolean
+    dosesNecessarias?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tratamentoSifilis"]>
+
+  export type TratamentoSifilisSelectScalar = {
+    id?: boolean
+    classificacaoCID?: boolean
+    tipo?: boolean
+    subtipo?: boolean
+    dataDiagnostico?: boolean
+    statusTratamento?: boolean
+    dosesNecessarias?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+  }
+
+  export type TratamentoSifilisOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "classificacaoCID" | "tipo" | "subtipo" | "dataDiagnostico" | "statusTratamento" | "dosesNecessarias" | "gestanteId" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["tratamentoSifilis"]>
+  export type TratamentoSifilisInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+    aplicacoes?: boolean | TratamentoSifilis$aplicacoesArgs<ExtArgs>
+    _count?: boolean | TratamentoSifilisCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type TratamentoSifilisIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type TratamentoSifilisIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+
+  export type $TratamentoSifilisPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TratamentoSifilis"
+    objects: {
+      gestante: Prisma.$GestantePayload<ExtArgs>
+      aplicacoes: Prisma.$AplicacaoPenicilinaPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      classificacaoCID: string
+      tipo: string
+      subtipo: string | null
+      dataDiagnostico: Date
+      statusTratamento: string
+      dosesNecessarias: number
+      gestanteId: string
+      criadoEm: Date
+      atualizadoEm: Date
+    }, ExtArgs["result"]["tratamentoSifilis"]>
+    composites: {}
+  }
+
+  type TratamentoSifilisGetPayload<S extends boolean | null | undefined | TratamentoSifilisDefaultArgs> = $Result.GetResult<Prisma.$TratamentoSifilisPayload, S>
+
+  type TratamentoSifilisCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TratamentoSifilisFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TratamentoSifilisCountAggregateInputType | true
+    }
+
+  export interface TratamentoSifilisDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TratamentoSifilis'], meta: { name: 'TratamentoSifilis' } }
+    /**
+     * Find zero or one TratamentoSifilis that matches the filter.
+     * @param {TratamentoSifilisFindUniqueArgs} args - Arguments to find a TratamentoSifilis
+     * @example
+     * // Get one TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TratamentoSifilisFindUniqueArgs>(args: SelectSubset<T, TratamentoSifilisFindUniqueArgs<ExtArgs>>): Prisma__TratamentoSifilisClient<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TratamentoSifilis that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TratamentoSifilisFindUniqueOrThrowArgs} args - Arguments to find a TratamentoSifilis
+     * @example
+     * // Get one TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TratamentoSifilisFindUniqueOrThrowArgs>(args: SelectSubset<T, TratamentoSifilisFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TratamentoSifilisClient<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TratamentoSifilis that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TratamentoSifilisFindFirstArgs} args - Arguments to find a TratamentoSifilis
+     * @example
+     * // Get one TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TratamentoSifilisFindFirstArgs>(args?: SelectSubset<T, TratamentoSifilisFindFirstArgs<ExtArgs>>): Prisma__TratamentoSifilisClient<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TratamentoSifilis that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TratamentoSifilisFindFirstOrThrowArgs} args - Arguments to find a TratamentoSifilis
+     * @example
+     * // Get one TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TratamentoSifilisFindFirstOrThrowArgs>(args?: SelectSubset<T, TratamentoSifilisFindFirstOrThrowArgs<ExtArgs>>): Prisma__TratamentoSifilisClient<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TratamentoSifilis that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TratamentoSifilisFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.findMany()
+     * 
+     * // Get first 10 TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tratamentoSifilisWithIdOnly = await prisma.tratamentoSifilis.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TratamentoSifilisFindManyArgs>(args?: SelectSubset<T, TratamentoSifilisFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TratamentoSifilis.
+     * @param {TratamentoSifilisCreateArgs} args - Arguments to create a TratamentoSifilis.
+     * @example
+     * // Create one TratamentoSifilis
+     * const TratamentoSifilis = await prisma.tratamentoSifilis.create({
+     *   data: {
+     *     // ... data to create a TratamentoSifilis
+     *   }
+     * })
+     * 
+     */
+    create<T extends TratamentoSifilisCreateArgs>(args: SelectSubset<T, TratamentoSifilisCreateArgs<ExtArgs>>): Prisma__TratamentoSifilisClient<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TratamentoSifilis.
+     * @param {TratamentoSifilisCreateManyArgs} args - Arguments to create many TratamentoSifilis.
+     * @example
+     * // Create many TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TratamentoSifilisCreateManyArgs>(args?: SelectSubset<T, TratamentoSifilisCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TratamentoSifilis and returns the data saved in the database.
+     * @param {TratamentoSifilisCreateManyAndReturnArgs} args - Arguments to create many TratamentoSifilis.
+     * @example
+     * // Create many TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TratamentoSifilis and only return the `id`
+     * const tratamentoSifilisWithIdOnly = await prisma.tratamentoSifilis.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TratamentoSifilisCreateManyAndReturnArgs>(args?: SelectSubset<T, TratamentoSifilisCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TratamentoSifilis.
+     * @param {TratamentoSifilisDeleteArgs} args - Arguments to delete one TratamentoSifilis.
+     * @example
+     * // Delete one TratamentoSifilis
+     * const TratamentoSifilis = await prisma.tratamentoSifilis.delete({
+     *   where: {
+     *     // ... filter to delete one TratamentoSifilis
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TratamentoSifilisDeleteArgs>(args: SelectSubset<T, TratamentoSifilisDeleteArgs<ExtArgs>>): Prisma__TratamentoSifilisClient<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TratamentoSifilis.
+     * @param {TratamentoSifilisUpdateArgs} args - Arguments to update one TratamentoSifilis.
+     * @example
+     * // Update one TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TratamentoSifilisUpdateArgs>(args: SelectSubset<T, TratamentoSifilisUpdateArgs<ExtArgs>>): Prisma__TratamentoSifilisClient<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TratamentoSifilis.
+     * @param {TratamentoSifilisDeleteManyArgs} args - Arguments to filter TratamentoSifilis to delete.
+     * @example
+     * // Delete a few TratamentoSifilis
+     * const { count } = await prisma.tratamentoSifilis.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TratamentoSifilisDeleteManyArgs>(args?: SelectSubset<T, TratamentoSifilisDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TratamentoSifilis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TratamentoSifilisUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TratamentoSifilisUpdateManyArgs>(args: SelectSubset<T, TratamentoSifilisUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TratamentoSifilis and returns the data updated in the database.
+     * @param {TratamentoSifilisUpdateManyAndReturnArgs} args - Arguments to update many TratamentoSifilis.
+     * @example
+     * // Update many TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TratamentoSifilis and only return the `id`
+     * const tratamentoSifilisWithIdOnly = await prisma.tratamentoSifilis.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TratamentoSifilisUpdateManyAndReturnArgs>(args: SelectSubset<T, TratamentoSifilisUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TratamentoSifilis.
+     * @param {TratamentoSifilisUpsertArgs} args - Arguments to update or create a TratamentoSifilis.
+     * @example
+     * // Update or create a TratamentoSifilis
+     * const tratamentoSifilis = await prisma.tratamentoSifilis.upsert({
+     *   create: {
+     *     // ... data to create a TratamentoSifilis
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TratamentoSifilis we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TratamentoSifilisUpsertArgs>(args: SelectSubset<T, TratamentoSifilisUpsertArgs<ExtArgs>>): Prisma__TratamentoSifilisClient<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TratamentoSifilis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TratamentoSifilisCountArgs} args - Arguments to filter TratamentoSifilis to count.
+     * @example
+     * // Count the number of TratamentoSifilis
+     * const count = await prisma.tratamentoSifilis.count({
+     *   where: {
+     *     // ... the filter for the TratamentoSifilis we want to count
+     *   }
+     * })
+    **/
+    count<T extends TratamentoSifilisCountArgs>(
+      args?: Subset<T, TratamentoSifilisCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TratamentoSifilisCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TratamentoSifilis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TratamentoSifilisAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TratamentoSifilisAggregateArgs>(args: Subset<T, TratamentoSifilisAggregateArgs>): Prisma.PrismaPromise<GetTratamentoSifilisAggregateType<T>>
+
+    /**
+     * Group by TratamentoSifilis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TratamentoSifilisGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TratamentoSifilisGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TratamentoSifilisGroupByArgs['orderBy'] }
+        : { orderBy?: TratamentoSifilisGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TratamentoSifilisGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTratamentoSifilisGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TratamentoSifilis model
+   */
+  readonly fields: TratamentoSifilisFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TratamentoSifilis.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TratamentoSifilisClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    gestante<T extends GestanteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GestanteDefaultArgs<ExtArgs>>): Prisma__GestanteClient<$Result.GetResult<Prisma.$GestantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    aplicacoes<T extends TratamentoSifilis$aplicacoesArgs<ExtArgs> = {}>(args?: Subset<T, TratamentoSifilis$aplicacoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TratamentoSifilis model
+   */
+  interface TratamentoSifilisFieldRefs {
+    readonly id: FieldRef<"TratamentoSifilis", 'String'>
+    readonly classificacaoCID: FieldRef<"TratamentoSifilis", 'String'>
+    readonly tipo: FieldRef<"TratamentoSifilis", 'String'>
+    readonly subtipo: FieldRef<"TratamentoSifilis", 'String'>
+    readonly dataDiagnostico: FieldRef<"TratamentoSifilis", 'DateTime'>
+    readonly statusTratamento: FieldRef<"TratamentoSifilis", 'String'>
+    readonly dosesNecessarias: FieldRef<"TratamentoSifilis", 'Int'>
+    readonly gestanteId: FieldRef<"TratamentoSifilis", 'String'>
+    readonly criadoEm: FieldRef<"TratamentoSifilis", 'DateTime'>
+    readonly atualizadoEm: FieldRef<"TratamentoSifilis", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TratamentoSifilis findUnique
+   */
+  export type TratamentoSifilisFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    /**
+     * Filter, which TratamentoSifilis to fetch.
+     */
+    where: TratamentoSifilisWhereUniqueInput
+  }
+
+  /**
+   * TratamentoSifilis findUniqueOrThrow
+   */
+  export type TratamentoSifilisFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    /**
+     * Filter, which TratamentoSifilis to fetch.
+     */
+    where: TratamentoSifilisWhereUniqueInput
+  }
+
+  /**
+   * TratamentoSifilis findFirst
+   */
+  export type TratamentoSifilisFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    /**
+     * Filter, which TratamentoSifilis to fetch.
+     */
+    where?: TratamentoSifilisWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TratamentoSifilis to fetch.
+     */
+    orderBy?: TratamentoSifilisOrderByWithRelationInput | TratamentoSifilisOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TratamentoSifilis.
+     */
+    cursor?: TratamentoSifilisWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TratamentoSifilis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TratamentoSifilis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TratamentoSifilis.
+     */
+    distinct?: TratamentoSifilisScalarFieldEnum | TratamentoSifilisScalarFieldEnum[]
+  }
+
+  /**
+   * TratamentoSifilis findFirstOrThrow
+   */
+  export type TratamentoSifilisFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    /**
+     * Filter, which TratamentoSifilis to fetch.
+     */
+    where?: TratamentoSifilisWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TratamentoSifilis to fetch.
+     */
+    orderBy?: TratamentoSifilisOrderByWithRelationInput | TratamentoSifilisOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TratamentoSifilis.
+     */
+    cursor?: TratamentoSifilisWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TratamentoSifilis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TratamentoSifilis.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TratamentoSifilis.
+     */
+    distinct?: TratamentoSifilisScalarFieldEnum | TratamentoSifilisScalarFieldEnum[]
+  }
+
+  /**
+   * TratamentoSifilis findMany
+   */
+  export type TratamentoSifilisFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    /**
+     * Filter, which TratamentoSifilis to fetch.
+     */
+    where?: TratamentoSifilisWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TratamentoSifilis to fetch.
+     */
+    orderBy?: TratamentoSifilisOrderByWithRelationInput | TratamentoSifilisOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TratamentoSifilis.
+     */
+    cursor?: TratamentoSifilisWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TratamentoSifilis from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TratamentoSifilis.
+     */
+    skip?: number
+    distinct?: TratamentoSifilisScalarFieldEnum | TratamentoSifilisScalarFieldEnum[]
+  }
+
+  /**
+   * TratamentoSifilis create
+   */
+  export type TratamentoSifilisCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TratamentoSifilis.
+     */
+    data: XOR<TratamentoSifilisCreateInput, TratamentoSifilisUncheckedCreateInput>
+  }
+
+  /**
+   * TratamentoSifilis createMany
+   */
+  export type TratamentoSifilisCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TratamentoSifilis.
+     */
+    data: TratamentoSifilisCreateManyInput | TratamentoSifilisCreateManyInput[]
+  }
+
+  /**
+   * TratamentoSifilis createManyAndReturn
+   */
+  export type TratamentoSifilisCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * The data used to create many TratamentoSifilis.
+     */
+    data: TratamentoSifilisCreateManyInput | TratamentoSifilisCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TratamentoSifilis update
+   */
+  export type TratamentoSifilisUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TratamentoSifilis.
+     */
+    data: XOR<TratamentoSifilisUpdateInput, TratamentoSifilisUncheckedUpdateInput>
+    /**
+     * Choose, which TratamentoSifilis to update.
+     */
+    where: TratamentoSifilisWhereUniqueInput
+  }
+
+  /**
+   * TratamentoSifilis updateMany
+   */
+  export type TratamentoSifilisUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TratamentoSifilis.
+     */
+    data: XOR<TratamentoSifilisUpdateManyMutationInput, TratamentoSifilisUncheckedUpdateManyInput>
+    /**
+     * Filter which TratamentoSifilis to update
+     */
+    where?: TratamentoSifilisWhereInput
+    /**
+     * Limit how many TratamentoSifilis to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TratamentoSifilis updateManyAndReturn
+   */
+  export type TratamentoSifilisUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * The data used to update TratamentoSifilis.
+     */
+    data: XOR<TratamentoSifilisUpdateManyMutationInput, TratamentoSifilisUncheckedUpdateManyInput>
+    /**
+     * Filter which TratamentoSifilis to update
+     */
+    where?: TratamentoSifilisWhereInput
+    /**
+     * Limit how many TratamentoSifilis to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TratamentoSifilis upsert
+   */
+  export type TratamentoSifilisUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TratamentoSifilis to update in case it exists.
+     */
+    where: TratamentoSifilisWhereUniqueInput
+    /**
+     * In case the TratamentoSifilis found by the `where` argument doesn't exist, create a new TratamentoSifilis with this data.
+     */
+    create: XOR<TratamentoSifilisCreateInput, TratamentoSifilisUncheckedCreateInput>
+    /**
+     * In case the TratamentoSifilis was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TratamentoSifilisUpdateInput, TratamentoSifilisUncheckedUpdateInput>
+  }
+
+  /**
+   * TratamentoSifilis delete
+   */
+  export type TratamentoSifilisDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+    /**
+     * Filter which TratamentoSifilis to delete.
+     */
+    where: TratamentoSifilisWhereUniqueInput
+  }
+
+  /**
+   * TratamentoSifilis deleteMany
+   */
+  export type TratamentoSifilisDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TratamentoSifilis to delete
+     */
+    where?: TratamentoSifilisWhereInput
+    /**
+     * Limit how many TratamentoSifilis to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TratamentoSifilis.aplicacoes
+   */
+  export type TratamentoSifilis$aplicacoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    where?: AplicacaoPenicilinaWhereInput
+    orderBy?: AplicacaoPenicilinaOrderByWithRelationInput | AplicacaoPenicilinaOrderByWithRelationInput[]
+    cursor?: AplicacaoPenicilinaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AplicacaoPenicilinaScalarFieldEnum | AplicacaoPenicilinaScalarFieldEnum[]
+  }
+
+  /**
+   * TratamentoSifilis without action
+   */
+  export type TratamentoSifilisDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TratamentoSifilis
+     */
+    select?: TratamentoSifilisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TratamentoSifilis
+     */
+    omit?: TratamentoSifilisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TratamentoSifilisInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AplicacaoPenicilina
+   */
+
+  export type AggregateAplicacaoPenicilina = {
+    _count: AplicacaoPenicilinaCountAggregateOutputType | null
+    _avg: AplicacaoPenicilinaAvgAggregateOutputType | null
+    _sum: AplicacaoPenicilinaSumAggregateOutputType | null
+    _min: AplicacaoPenicilinaMinAggregateOutputType | null
+    _max: AplicacaoPenicilinaMaxAggregateOutputType | null
+  }
+
+  export type AplicacaoPenicilinaAvgAggregateOutputType = {
+    dose: number | null
+  }
+
+  export type AplicacaoPenicilinaSumAggregateOutputType = {
+    dose: number | null
+  }
+
+  export type AplicacaoPenicilinaMinAggregateOutputType = {
+    id: string | null
+    data: Date | null
+    dose: number | null
+    observacao: string | null
+    tratamentoId: string | null
+    criadoEm: Date | null
+  }
+
+  export type AplicacaoPenicilinaMaxAggregateOutputType = {
+    id: string | null
+    data: Date | null
+    dose: number | null
+    observacao: string | null
+    tratamentoId: string | null
+    criadoEm: Date | null
+  }
+
+  export type AplicacaoPenicilinaCountAggregateOutputType = {
+    id: number
+    data: number
+    dose: number
+    observacao: number
+    tratamentoId: number
+    criadoEm: number
+    _all: number
+  }
+
+
+  export type AplicacaoPenicilinaAvgAggregateInputType = {
+    dose?: true
+  }
+
+  export type AplicacaoPenicilinaSumAggregateInputType = {
+    dose?: true
+  }
+
+  export type AplicacaoPenicilinaMinAggregateInputType = {
+    id?: true
+    data?: true
+    dose?: true
+    observacao?: true
+    tratamentoId?: true
+    criadoEm?: true
+  }
+
+  export type AplicacaoPenicilinaMaxAggregateInputType = {
+    id?: true
+    data?: true
+    dose?: true
+    observacao?: true
+    tratamentoId?: true
+    criadoEm?: true
+  }
+
+  export type AplicacaoPenicilinaCountAggregateInputType = {
+    id?: true
+    data?: true
+    dose?: true
+    observacao?: true
+    tratamentoId?: true
+    criadoEm?: true
+    _all?: true
+  }
+
+  export type AplicacaoPenicilinaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AplicacaoPenicilina to aggregate.
+     */
+    where?: AplicacaoPenicilinaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AplicacaoPenicilinas to fetch.
+     */
+    orderBy?: AplicacaoPenicilinaOrderByWithRelationInput | AplicacaoPenicilinaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AplicacaoPenicilinaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AplicacaoPenicilinas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AplicacaoPenicilinas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AplicacaoPenicilinas
+    **/
+    _count?: true | AplicacaoPenicilinaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AplicacaoPenicilinaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AplicacaoPenicilinaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AplicacaoPenicilinaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AplicacaoPenicilinaMaxAggregateInputType
+  }
+
+  export type GetAplicacaoPenicilinaAggregateType<T extends AplicacaoPenicilinaAggregateArgs> = {
+        [P in keyof T & keyof AggregateAplicacaoPenicilina]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAplicacaoPenicilina[P]>
+      : GetScalarType<T[P], AggregateAplicacaoPenicilina[P]>
+  }
+
+
+
+
+  export type AplicacaoPenicilinaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AplicacaoPenicilinaWhereInput
+    orderBy?: AplicacaoPenicilinaOrderByWithAggregationInput | AplicacaoPenicilinaOrderByWithAggregationInput[]
+    by: AplicacaoPenicilinaScalarFieldEnum[] | AplicacaoPenicilinaScalarFieldEnum
+    having?: AplicacaoPenicilinaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AplicacaoPenicilinaCountAggregateInputType | true
+    _avg?: AplicacaoPenicilinaAvgAggregateInputType
+    _sum?: AplicacaoPenicilinaSumAggregateInputType
+    _min?: AplicacaoPenicilinaMinAggregateInputType
+    _max?: AplicacaoPenicilinaMaxAggregateInputType
+  }
+
+  export type AplicacaoPenicilinaGroupByOutputType = {
+    id: string
+    data: Date
+    dose: number
+    observacao: string | null
+    tratamentoId: string
+    criadoEm: Date
+    _count: AplicacaoPenicilinaCountAggregateOutputType | null
+    _avg: AplicacaoPenicilinaAvgAggregateOutputType | null
+    _sum: AplicacaoPenicilinaSumAggregateOutputType | null
+    _min: AplicacaoPenicilinaMinAggregateOutputType | null
+    _max: AplicacaoPenicilinaMaxAggregateOutputType | null
+  }
+
+  type GetAplicacaoPenicilinaGroupByPayload<T extends AplicacaoPenicilinaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AplicacaoPenicilinaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AplicacaoPenicilinaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AplicacaoPenicilinaGroupByOutputType[P]>
+            : GetScalarType<T[P], AplicacaoPenicilinaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AplicacaoPenicilinaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    data?: boolean
+    dose?: boolean
+    observacao?: boolean
+    tratamentoId?: boolean
+    criadoEm?: boolean
+    tratamento?: boolean | TratamentoSifilisDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["aplicacaoPenicilina"]>
+
+  export type AplicacaoPenicilinaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    data?: boolean
+    dose?: boolean
+    observacao?: boolean
+    tratamentoId?: boolean
+    criadoEm?: boolean
+    tratamento?: boolean | TratamentoSifilisDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["aplicacaoPenicilina"]>
+
+  export type AplicacaoPenicilinaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    data?: boolean
+    dose?: boolean
+    observacao?: boolean
+    tratamentoId?: boolean
+    criadoEm?: boolean
+    tratamento?: boolean | TratamentoSifilisDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["aplicacaoPenicilina"]>
+
+  export type AplicacaoPenicilinaSelectScalar = {
+    id?: boolean
+    data?: boolean
+    dose?: boolean
+    observacao?: boolean
+    tratamentoId?: boolean
+    criadoEm?: boolean
+  }
+
+  export type AplicacaoPenicilinaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "data" | "dose" | "observacao" | "tratamentoId" | "criadoEm", ExtArgs["result"]["aplicacaoPenicilina"]>
+  export type AplicacaoPenicilinaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tratamento?: boolean | TratamentoSifilisDefaultArgs<ExtArgs>
+  }
+  export type AplicacaoPenicilinaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tratamento?: boolean | TratamentoSifilisDefaultArgs<ExtArgs>
+  }
+  export type AplicacaoPenicilinaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tratamento?: boolean | TratamentoSifilisDefaultArgs<ExtArgs>
+  }
+
+  export type $AplicacaoPenicilinaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AplicacaoPenicilina"
+    objects: {
+      tratamento: Prisma.$TratamentoSifilisPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      data: Date
+      dose: number
+      observacao: string | null
+      tratamentoId: string
+      criadoEm: Date
+    }, ExtArgs["result"]["aplicacaoPenicilina"]>
+    composites: {}
+  }
+
+  type AplicacaoPenicilinaGetPayload<S extends boolean | null | undefined | AplicacaoPenicilinaDefaultArgs> = $Result.GetResult<Prisma.$AplicacaoPenicilinaPayload, S>
+
+  type AplicacaoPenicilinaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AplicacaoPenicilinaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AplicacaoPenicilinaCountAggregateInputType | true
+    }
+
+  export interface AplicacaoPenicilinaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AplicacaoPenicilina'], meta: { name: 'AplicacaoPenicilina' } }
+    /**
+     * Find zero or one AplicacaoPenicilina that matches the filter.
+     * @param {AplicacaoPenicilinaFindUniqueArgs} args - Arguments to find a AplicacaoPenicilina
+     * @example
+     * // Get one AplicacaoPenicilina
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AplicacaoPenicilinaFindUniqueArgs>(args: SelectSubset<T, AplicacaoPenicilinaFindUniqueArgs<ExtArgs>>): Prisma__AplicacaoPenicilinaClient<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AplicacaoPenicilina that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AplicacaoPenicilinaFindUniqueOrThrowArgs} args - Arguments to find a AplicacaoPenicilina
+     * @example
+     * // Get one AplicacaoPenicilina
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AplicacaoPenicilinaFindUniqueOrThrowArgs>(args: SelectSubset<T, AplicacaoPenicilinaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AplicacaoPenicilinaClient<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AplicacaoPenicilina that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AplicacaoPenicilinaFindFirstArgs} args - Arguments to find a AplicacaoPenicilina
+     * @example
+     * // Get one AplicacaoPenicilina
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AplicacaoPenicilinaFindFirstArgs>(args?: SelectSubset<T, AplicacaoPenicilinaFindFirstArgs<ExtArgs>>): Prisma__AplicacaoPenicilinaClient<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AplicacaoPenicilina that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AplicacaoPenicilinaFindFirstOrThrowArgs} args - Arguments to find a AplicacaoPenicilina
+     * @example
+     * // Get one AplicacaoPenicilina
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AplicacaoPenicilinaFindFirstOrThrowArgs>(args?: SelectSubset<T, AplicacaoPenicilinaFindFirstOrThrowArgs<ExtArgs>>): Prisma__AplicacaoPenicilinaClient<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AplicacaoPenicilinas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AplicacaoPenicilinaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AplicacaoPenicilinas
+     * const aplicacaoPenicilinas = await prisma.aplicacaoPenicilina.findMany()
+     * 
+     * // Get first 10 AplicacaoPenicilinas
+     * const aplicacaoPenicilinas = await prisma.aplicacaoPenicilina.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const aplicacaoPenicilinaWithIdOnly = await prisma.aplicacaoPenicilina.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AplicacaoPenicilinaFindManyArgs>(args?: SelectSubset<T, AplicacaoPenicilinaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AplicacaoPenicilina.
+     * @param {AplicacaoPenicilinaCreateArgs} args - Arguments to create a AplicacaoPenicilina.
+     * @example
+     * // Create one AplicacaoPenicilina
+     * const AplicacaoPenicilina = await prisma.aplicacaoPenicilina.create({
+     *   data: {
+     *     // ... data to create a AplicacaoPenicilina
+     *   }
+     * })
+     * 
+     */
+    create<T extends AplicacaoPenicilinaCreateArgs>(args: SelectSubset<T, AplicacaoPenicilinaCreateArgs<ExtArgs>>): Prisma__AplicacaoPenicilinaClient<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AplicacaoPenicilinas.
+     * @param {AplicacaoPenicilinaCreateManyArgs} args - Arguments to create many AplicacaoPenicilinas.
+     * @example
+     * // Create many AplicacaoPenicilinas
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AplicacaoPenicilinaCreateManyArgs>(args?: SelectSubset<T, AplicacaoPenicilinaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AplicacaoPenicilinas and returns the data saved in the database.
+     * @param {AplicacaoPenicilinaCreateManyAndReturnArgs} args - Arguments to create many AplicacaoPenicilinas.
+     * @example
+     * // Create many AplicacaoPenicilinas
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AplicacaoPenicilinas and only return the `id`
+     * const aplicacaoPenicilinaWithIdOnly = await prisma.aplicacaoPenicilina.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AplicacaoPenicilinaCreateManyAndReturnArgs>(args?: SelectSubset<T, AplicacaoPenicilinaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AplicacaoPenicilina.
+     * @param {AplicacaoPenicilinaDeleteArgs} args - Arguments to delete one AplicacaoPenicilina.
+     * @example
+     * // Delete one AplicacaoPenicilina
+     * const AplicacaoPenicilina = await prisma.aplicacaoPenicilina.delete({
+     *   where: {
+     *     // ... filter to delete one AplicacaoPenicilina
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AplicacaoPenicilinaDeleteArgs>(args: SelectSubset<T, AplicacaoPenicilinaDeleteArgs<ExtArgs>>): Prisma__AplicacaoPenicilinaClient<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AplicacaoPenicilina.
+     * @param {AplicacaoPenicilinaUpdateArgs} args - Arguments to update one AplicacaoPenicilina.
+     * @example
+     * // Update one AplicacaoPenicilina
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AplicacaoPenicilinaUpdateArgs>(args: SelectSubset<T, AplicacaoPenicilinaUpdateArgs<ExtArgs>>): Prisma__AplicacaoPenicilinaClient<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AplicacaoPenicilinas.
+     * @param {AplicacaoPenicilinaDeleteManyArgs} args - Arguments to filter AplicacaoPenicilinas to delete.
+     * @example
+     * // Delete a few AplicacaoPenicilinas
+     * const { count } = await prisma.aplicacaoPenicilina.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AplicacaoPenicilinaDeleteManyArgs>(args?: SelectSubset<T, AplicacaoPenicilinaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AplicacaoPenicilinas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AplicacaoPenicilinaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AplicacaoPenicilinas
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AplicacaoPenicilinaUpdateManyArgs>(args: SelectSubset<T, AplicacaoPenicilinaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AplicacaoPenicilinas and returns the data updated in the database.
+     * @param {AplicacaoPenicilinaUpdateManyAndReturnArgs} args - Arguments to update many AplicacaoPenicilinas.
+     * @example
+     * // Update many AplicacaoPenicilinas
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AplicacaoPenicilinas and only return the `id`
+     * const aplicacaoPenicilinaWithIdOnly = await prisma.aplicacaoPenicilina.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AplicacaoPenicilinaUpdateManyAndReturnArgs>(args: SelectSubset<T, AplicacaoPenicilinaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AplicacaoPenicilina.
+     * @param {AplicacaoPenicilinaUpsertArgs} args - Arguments to update or create a AplicacaoPenicilina.
+     * @example
+     * // Update or create a AplicacaoPenicilina
+     * const aplicacaoPenicilina = await prisma.aplicacaoPenicilina.upsert({
+     *   create: {
+     *     // ... data to create a AplicacaoPenicilina
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AplicacaoPenicilina we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AplicacaoPenicilinaUpsertArgs>(args: SelectSubset<T, AplicacaoPenicilinaUpsertArgs<ExtArgs>>): Prisma__AplicacaoPenicilinaClient<$Result.GetResult<Prisma.$AplicacaoPenicilinaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AplicacaoPenicilinas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AplicacaoPenicilinaCountArgs} args - Arguments to filter AplicacaoPenicilinas to count.
+     * @example
+     * // Count the number of AplicacaoPenicilinas
+     * const count = await prisma.aplicacaoPenicilina.count({
+     *   where: {
+     *     // ... the filter for the AplicacaoPenicilinas we want to count
+     *   }
+     * })
+    **/
+    count<T extends AplicacaoPenicilinaCountArgs>(
+      args?: Subset<T, AplicacaoPenicilinaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AplicacaoPenicilinaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AplicacaoPenicilina.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AplicacaoPenicilinaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AplicacaoPenicilinaAggregateArgs>(args: Subset<T, AplicacaoPenicilinaAggregateArgs>): Prisma.PrismaPromise<GetAplicacaoPenicilinaAggregateType<T>>
+
+    /**
+     * Group by AplicacaoPenicilina.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AplicacaoPenicilinaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AplicacaoPenicilinaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AplicacaoPenicilinaGroupByArgs['orderBy'] }
+        : { orderBy?: AplicacaoPenicilinaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AplicacaoPenicilinaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAplicacaoPenicilinaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AplicacaoPenicilina model
+   */
+  readonly fields: AplicacaoPenicilinaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AplicacaoPenicilina.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AplicacaoPenicilinaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tratamento<T extends TratamentoSifilisDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TratamentoSifilisDefaultArgs<ExtArgs>>): Prisma__TratamentoSifilisClient<$Result.GetResult<Prisma.$TratamentoSifilisPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AplicacaoPenicilina model
+   */
+  interface AplicacaoPenicilinaFieldRefs {
+    readonly id: FieldRef<"AplicacaoPenicilina", 'String'>
+    readonly data: FieldRef<"AplicacaoPenicilina", 'DateTime'>
+    readonly dose: FieldRef<"AplicacaoPenicilina", 'Int'>
+    readonly observacao: FieldRef<"AplicacaoPenicilina", 'String'>
+    readonly tratamentoId: FieldRef<"AplicacaoPenicilina", 'String'>
+    readonly criadoEm: FieldRef<"AplicacaoPenicilina", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AplicacaoPenicilina findUnique
+   */
+  export type AplicacaoPenicilinaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    /**
+     * Filter, which AplicacaoPenicilina to fetch.
+     */
+    where: AplicacaoPenicilinaWhereUniqueInput
+  }
+
+  /**
+   * AplicacaoPenicilina findUniqueOrThrow
+   */
+  export type AplicacaoPenicilinaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    /**
+     * Filter, which AplicacaoPenicilina to fetch.
+     */
+    where: AplicacaoPenicilinaWhereUniqueInput
+  }
+
+  /**
+   * AplicacaoPenicilina findFirst
+   */
+  export type AplicacaoPenicilinaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    /**
+     * Filter, which AplicacaoPenicilina to fetch.
+     */
+    where?: AplicacaoPenicilinaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AplicacaoPenicilinas to fetch.
+     */
+    orderBy?: AplicacaoPenicilinaOrderByWithRelationInput | AplicacaoPenicilinaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AplicacaoPenicilinas.
+     */
+    cursor?: AplicacaoPenicilinaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AplicacaoPenicilinas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AplicacaoPenicilinas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AplicacaoPenicilinas.
+     */
+    distinct?: AplicacaoPenicilinaScalarFieldEnum | AplicacaoPenicilinaScalarFieldEnum[]
+  }
+
+  /**
+   * AplicacaoPenicilina findFirstOrThrow
+   */
+  export type AplicacaoPenicilinaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    /**
+     * Filter, which AplicacaoPenicilina to fetch.
+     */
+    where?: AplicacaoPenicilinaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AplicacaoPenicilinas to fetch.
+     */
+    orderBy?: AplicacaoPenicilinaOrderByWithRelationInput | AplicacaoPenicilinaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AplicacaoPenicilinas.
+     */
+    cursor?: AplicacaoPenicilinaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AplicacaoPenicilinas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AplicacaoPenicilinas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AplicacaoPenicilinas.
+     */
+    distinct?: AplicacaoPenicilinaScalarFieldEnum | AplicacaoPenicilinaScalarFieldEnum[]
+  }
+
+  /**
+   * AplicacaoPenicilina findMany
+   */
+  export type AplicacaoPenicilinaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    /**
+     * Filter, which AplicacaoPenicilinas to fetch.
+     */
+    where?: AplicacaoPenicilinaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AplicacaoPenicilinas to fetch.
+     */
+    orderBy?: AplicacaoPenicilinaOrderByWithRelationInput | AplicacaoPenicilinaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AplicacaoPenicilinas.
+     */
+    cursor?: AplicacaoPenicilinaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AplicacaoPenicilinas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AplicacaoPenicilinas.
+     */
+    skip?: number
+    distinct?: AplicacaoPenicilinaScalarFieldEnum | AplicacaoPenicilinaScalarFieldEnum[]
+  }
+
+  /**
+   * AplicacaoPenicilina create
+   */
+  export type AplicacaoPenicilinaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AplicacaoPenicilina.
+     */
+    data: XOR<AplicacaoPenicilinaCreateInput, AplicacaoPenicilinaUncheckedCreateInput>
+  }
+
+  /**
+   * AplicacaoPenicilina createMany
+   */
+  export type AplicacaoPenicilinaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AplicacaoPenicilinas.
+     */
+    data: AplicacaoPenicilinaCreateManyInput | AplicacaoPenicilinaCreateManyInput[]
+  }
+
+  /**
+   * AplicacaoPenicilina createManyAndReturn
+   */
+  export type AplicacaoPenicilinaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * The data used to create many AplicacaoPenicilinas.
+     */
+    data: AplicacaoPenicilinaCreateManyInput | AplicacaoPenicilinaCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AplicacaoPenicilina update
+   */
+  export type AplicacaoPenicilinaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AplicacaoPenicilina.
+     */
+    data: XOR<AplicacaoPenicilinaUpdateInput, AplicacaoPenicilinaUncheckedUpdateInput>
+    /**
+     * Choose, which AplicacaoPenicilina to update.
+     */
+    where: AplicacaoPenicilinaWhereUniqueInput
+  }
+
+  /**
+   * AplicacaoPenicilina updateMany
+   */
+  export type AplicacaoPenicilinaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AplicacaoPenicilinas.
+     */
+    data: XOR<AplicacaoPenicilinaUpdateManyMutationInput, AplicacaoPenicilinaUncheckedUpdateManyInput>
+    /**
+     * Filter which AplicacaoPenicilinas to update
+     */
+    where?: AplicacaoPenicilinaWhereInput
+    /**
+     * Limit how many AplicacaoPenicilinas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AplicacaoPenicilina updateManyAndReturn
+   */
+  export type AplicacaoPenicilinaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * The data used to update AplicacaoPenicilinas.
+     */
+    data: XOR<AplicacaoPenicilinaUpdateManyMutationInput, AplicacaoPenicilinaUncheckedUpdateManyInput>
+    /**
+     * Filter which AplicacaoPenicilinas to update
+     */
+    where?: AplicacaoPenicilinaWhereInput
+    /**
+     * Limit how many AplicacaoPenicilinas to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AplicacaoPenicilina upsert
+   */
+  export type AplicacaoPenicilinaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AplicacaoPenicilina to update in case it exists.
+     */
+    where: AplicacaoPenicilinaWhereUniqueInput
+    /**
+     * In case the AplicacaoPenicilina found by the `where` argument doesn't exist, create a new AplicacaoPenicilina with this data.
+     */
+    create: XOR<AplicacaoPenicilinaCreateInput, AplicacaoPenicilinaUncheckedCreateInput>
+    /**
+     * In case the AplicacaoPenicilina was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AplicacaoPenicilinaUpdateInput, AplicacaoPenicilinaUncheckedUpdateInput>
+  }
+
+  /**
+   * AplicacaoPenicilina delete
+   */
+  export type AplicacaoPenicilinaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+    /**
+     * Filter which AplicacaoPenicilina to delete.
+     */
+    where: AplicacaoPenicilinaWhereUniqueInput
+  }
+
+  /**
+   * AplicacaoPenicilina deleteMany
+   */
+  export type AplicacaoPenicilinaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AplicacaoPenicilinas to delete
+     */
+    where?: AplicacaoPenicilinaWhereInput
+    /**
+     * Limit how many AplicacaoPenicilinas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AplicacaoPenicilina without action
+   */
+  export type AplicacaoPenicilinaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AplicacaoPenicilina
+     */
+    select?: AplicacaoPenicilinaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AplicacaoPenicilina
+     */
+    omit?: AplicacaoPenicilinaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AplicacaoPenicilinaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EncaminhamentoPNAR
+   */
+
+  export type AggregateEncaminhamentoPNAR = {
+    _count: EncaminhamentoPNARCountAggregateOutputType | null
+    _min: EncaminhamentoPNARMinAggregateOutputType | null
+    _max: EncaminhamentoPNARMaxAggregateOutputType | null
+  }
+
+  export type EncaminhamentoPNARMinAggregateOutputType = {
+    id: string | null
+    ciap: string | null
+    dataEncaminhamento: Date | null
+    dataConsultaPNAR: Date | null
+    horarioConsultaPNAR: string | null
+    retornoRecomendado: Date | null
+    relatorioTexto: string | null
+    consultaRealizada: boolean | null
+    dataConsultaRealizada: Date | null
+    gestanteId: string | null
+    criadoEm: Date | null
+    atualizadoEm: Date | null
+  }
+
+  export type EncaminhamentoPNARMaxAggregateOutputType = {
+    id: string | null
+    ciap: string | null
+    dataEncaminhamento: Date | null
+    dataConsultaPNAR: Date | null
+    horarioConsultaPNAR: string | null
+    retornoRecomendado: Date | null
+    relatorioTexto: string | null
+    consultaRealizada: boolean | null
+    dataConsultaRealizada: Date | null
+    gestanteId: string | null
+    criadoEm: Date | null
+    atualizadoEm: Date | null
+  }
+
+  export type EncaminhamentoPNARCountAggregateOutputType = {
+    id: number
+    ciap: number
+    dataEncaminhamento: number
+    dataConsultaPNAR: number
+    horarioConsultaPNAR: number
+    retornoRecomendado: number
+    relatorioTexto: number
+    consultaRealizada: number
+    dataConsultaRealizada: number
+    gestanteId: number
+    criadoEm: number
+    atualizadoEm: number
+    _all: number
+  }
+
+
+  export type EncaminhamentoPNARMinAggregateInputType = {
+    id?: true
+    ciap?: true
+    dataEncaminhamento?: true
+    dataConsultaPNAR?: true
+    horarioConsultaPNAR?: true
+    retornoRecomendado?: true
+    relatorioTexto?: true
+    consultaRealizada?: true
+    dataConsultaRealizada?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+  }
+
+  export type EncaminhamentoPNARMaxAggregateInputType = {
+    id?: true
+    ciap?: true
+    dataEncaminhamento?: true
+    dataConsultaPNAR?: true
+    horarioConsultaPNAR?: true
+    retornoRecomendado?: true
+    relatorioTexto?: true
+    consultaRealizada?: true
+    dataConsultaRealizada?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+  }
+
+  export type EncaminhamentoPNARCountAggregateInputType = {
+    id?: true
+    ciap?: true
+    dataEncaminhamento?: true
+    dataConsultaPNAR?: true
+    horarioConsultaPNAR?: true
+    retornoRecomendado?: true
+    relatorioTexto?: true
+    consultaRealizada?: true
+    dataConsultaRealizada?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+    _all?: true
+  }
+
+  export type EncaminhamentoPNARAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EncaminhamentoPNAR to aggregate.
+     */
+    where?: EncaminhamentoPNARWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EncaminhamentoPNARS to fetch.
+     */
+    orderBy?: EncaminhamentoPNAROrderByWithRelationInput | EncaminhamentoPNAROrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EncaminhamentoPNARWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EncaminhamentoPNARS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EncaminhamentoPNARS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EncaminhamentoPNARS
+    **/
+    _count?: true | EncaminhamentoPNARCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EncaminhamentoPNARMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EncaminhamentoPNARMaxAggregateInputType
+  }
+
+  export type GetEncaminhamentoPNARAggregateType<T extends EncaminhamentoPNARAggregateArgs> = {
+        [P in keyof T & keyof AggregateEncaminhamentoPNAR]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEncaminhamentoPNAR[P]>
+      : GetScalarType<T[P], AggregateEncaminhamentoPNAR[P]>
+  }
+
+
+
+
+  export type EncaminhamentoPNARGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EncaminhamentoPNARWhereInput
+    orderBy?: EncaminhamentoPNAROrderByWithAggregationInput | EncaminhamentoPNAROrderByWithAggregationInput[]
+    by: EncaminhamentoPNARScalarFieldEnum[] | EncaminhamentoPNARScalarFieldEnum
+    having?: EncaminhamentoPNARScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EncaminhamentoPNARCountAggregateInputType | true
+    _min?: EncaminhamentoPNARMinAggregateInputType
+    _max?: EncaminhamentoPNARMaxAggregateInputType
+  }
+
+  export type EncaminhamentoPNARGroupByOutputType = {
+    id: string
+    ciap: string
+    dataEncaminhamento: Date
+    dataConsultaPNAR: Date | null
+    horarioConsultaPNAR: string | null
+    retornoRecomendado: Date | null
+    relatorioTexto: string | null
+    consultaRealizada: boolean
+    dataConsultaRealizada: Date | null
+    gestanteId: string
+    criadoEm: Date
+    atualizadoEm: Date
+    _count: EncaminhamentoPNARCountAggregateOutputType | null
+    _min: EncaminhamentoPNARMinAggregateOutputType | null
+    _max: EncaminhamentoPNARMaxAggregateOutputType | null
+  }
+
+  type GetEncaminhamentoPNARGroupByPayload<T extends EncaminhamentoPNARGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EncaminhamentoPNARGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EncaminhamentoPNARGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EncaminhamentoPNARGroupByOutputType[P]>
+            : GetScalarType<T[P], EncaminhamentoPNARGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EncaminhamentoPNARSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ciap?: boolean
+    dataEncaminhamento?: boolean
+    dataConsultaPNAR?: boolean
+    horarioConsultaPNAR?: boolean
+    retornoRecomendado?: boolean
+    relatorioTexto?: boolean
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["encaminhamentoPNAR"]>
+
+  export type EncaminhamentoPNARSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ciap?: boolean
+    dataEncaminhamento?: boolean
+    dataConsultaPNAR?: boolean
+    horarioConsultaPNAR?: boolean
+    retornoRecomendado?: boolean
+    relatorioTexto?: boolean
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["encaminhamentoPNAR"]>
+
+  export type EncaminhamentoPNARSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ciap?: boolean
+    dataEncaminhamento?: boolean
+    dataConsultaPNAR?: boolean
+    horarioConsultaPNAR?: boolean
+    retornoRecomendado?: boolean
+    relatorioTexto?: boolean
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["encaminhamentoPNAR"]>
+
+  export type EncaminhamentoPNARSelectScalar = {
+    id?: boolean
+    ciap?: boolean
+    dataEncaminhamento?: boolean
+    dataConsultaPNAR?: boolean
+    horarioConsultaPNAR?: boolean
+    retornoRecomendado?: boolean
+    relatorioTexto?: boolean
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+  }
+
+  export type EncaminhamentoPNAROmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ciap" | "dataEncaminhamento" | "dataConsultaPNAR" | "horarioConsultaPNAR" | "retornoRecomendado" | "relatorioTexto" | "consultaRealizada" | "dataConsultaRealizada" | "gestanteId" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["encaminhamentoPNAR"]>
+  export type EncaminhamentoPNARInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type EncaminhamentoPNARIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type EncaminhamentoPNARIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+
+  export type $EncaminhamentoPNARPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EncaminhamentoPNAR"
+    objects: {
+      gestante: Prisma.$GestantePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      ciap: string
+      dataEncaminhamento: Date
+      dataConsultaPNAR: Date | null
+      horarioConsultaPNAR: string | null
+      retornoRecomendado: Date | null
+      relatorioTexto: string | null
+      consultaRealizada: boolean
+      dataConsultaRealizada: Date | null
+      gestanteId: string
+      criadoEm: Date
+      atualizadoEm: Date
+    }, ExtArgs["result"]["encaminhamentoPNAR"]>
+    composites: {}
+  }
+
+  type EncaminhamentoPNARGetPayload<S extends boolean | null | undefined | EncaminhamentoPNARDefaultArgs> = $Result.GetResult<Prisma.$EncaminhamentoPNARPayload, S>
+
+  type EncaminhamentoPNARCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EncaminhamentoPNARFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EncaminhamentoPNARCountAggregateInputType | true
+    }
+
+  export interface EncaminhamentoPNARDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EncaminhamentoPNAR'], meta: { name: 'EncaminhamentoPNAR' } }
+    /**
+     * Find zero or one EncaminhamentoPNAR that matches the filter.
+     * @param {EncaminhamentoPNARFindUniqueArgs} args - Arguments to find a EncaminhamentoPNAR
+     * @example
+     * // Get one EncaminhamentoPNAR
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EncaminhamentoPNARFindUniqueArgs>(args: SelectSubset<T, EncaminhamentoPNARFindUniqueArgs<ExtArgs>>): Prisma__EncaminhamentoPNARClient<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EncaminhamentoPNAR that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EncaminhamentoPNARFindUniqueOrThrowArgs} args - Arguments to find a EncaminhamentoPNAR
+     * @example
+     * // Get one EncaminhamentoPNAR
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EncaminhamentoPNARFindUniqueOrThrowArgs>(args: SelectSubset<T, EncaminhamentoPNARFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EncaminhamentoPNARClient<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EncaminhamentoPNAR that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoPNARFindFirstArgs} args - Arguments to find a EncaminhamentoPNAR
+     * @example
+     * // Get one EncaminhamentoPNAR
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EncaminhamentoPNARFindFirstArgs>(args?: SelectSubset<T, EncaminhamentoPNARFindFirstArgs<ExtArgs>>): Prisma__EncaminhamentoPNARClient<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EncaminhamentoPNAR that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoPNARFindFirstOrThrowArgs} args - Arguments to find a EncaminhamentoPNAR
+     * @example
+     * // Get one EncaminhamentoPNAR
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EncaminhamentoPNARFindFirstOrThrowArgs>(args?: SelectSubset<T, EncaminhamentoPNARFindFirstOrThrowArgs<ExtArgs>>): Prisma__EncaminhamentoPNARClient<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EncaminhamentoPNARS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoPNARFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EncaminhamentoPNARS
+     * const encaminhamentoPNARS = await prisma.encaminhamentoPNAR.findMany()
+     * 
+     * // Get first 10 EncaminhamentoPNARS
+     * const encaminhamentoPNARS = await prisma.encaminhamentoPNAR.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const encaminhamentoPNARWithIdOnly = await prisma.encaminhamentoPNAR.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EncaminhamentoPNARFindManyArgs>(args?: SelectSubset<T, EncaminhamentoPNARFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EncaminhamentoPNAR.
+     * @param {EncaminhamentoPNARCreateArgs} args - Arguments to create a EncaminhamentoPNAR.
+     * @example
+     * // Create one EncaminhamentoPNAR
+     * const EncaminhamentoPNAR = await prisma.encaminhamentoPNAR.create({
+     *   data: {
+     *     // ... data to create a EncaminhamentoPNAR
+     *   }
+     * })
+     * 
+     */
+    create<T extends EncaminhamentoPNARCreateArgs>(args: SelectSubset<T, EncaminhamentoPNARCreateArgs<ExtArgs>>): Prisma__EncaminhamentoPNARClient<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EncaminhamentoPNARS.
+     * @param {EncaminhamentoPNARCreateManyArgs} args - Arguments to create many EncaminhamentoPNARS.
+     * @example
+     * // Create many EncaminhamentoPNARS
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EncaminhamentoPNARCreateManyArgs>(args?: SelectSubset<T, EncaminhamentoPNARCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EncaminhamentoPNARS and returns the data saved in the database.
+     * @param {EncaminhamentoPNARCreateManyAndReturnArgs} args - Arguments to create many EncaminhamentoPNARS.
+     * @example
+     * // Create many EncaminhamentoPNARS
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EncaminhamentoPNARS and only return the `id`
+     * const encaminhamentoPNARWithIdOnly = await prisma.encaminhamentoPNAR.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EncaminhamentoPNARCreateManyAndReturnArgs>(args?: SelectSubset<T, EncaminhamentoPNARCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EncaminhamentoPNAR.
+     * @param {EncaminhamentoPNARDeleteArgs} args - Arguments to delete one EncaminhamentoPNAR.
+     * @example
+     * // Delete one EncaminhamentoPNAR
+     * const EncaminhamentoPNAR = await prisma.encaminhamentoPNAR.delete({
+     *   where: {
+     *     // ... filter to delete one EncaminhamentoPNAR
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EncaminhamentoPNARDeleteArgs>(args: SelectSubset<T, EncaminhamentoPNARDeleteArgs<ExtArgs>>): Prisma__EncaminhamentoPNARClient<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EncaminhamentoPNAR.
+     * @param {EncaminhamentoPNARUpdateArgs} args - Arguments to update one EncaminhamentoPNAR.
+     * @example
+     * // Update one EncaminhamentoPNAR
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EncaminhamentoPNARUpdateArgs>(args: SelectSubset<T, EncaminhamentoPNARUpdateArgs<ExtArgs>>): Prisma__EncaminhamentoPNARClient<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EncaminhamentoPNARS.
+     * @param {EncaminhamentoPNARDeleteManyArgs} args - Arguments to filter EncaminhamentoPNARS to delete.
+     * @example
+     * // Delete a few EncaminhamentoPNARS
+     * const { count } = await prisma.encaminhamentoPNAR.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EncaminhamentoPNARDeleteManyArgs>(args?: SelectSubset<T, EncaminhamentoPNARDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EncaminhamentoPNARS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoPNARUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EncaminhamentoPNARS
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EncaminhamentoPNARUpdateManyArgs>(args: SelectSubset<T, EncaminhamentoPNARUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EncaminhamentoPNARS and returns the data updated in the database.
+     * @param {EncaminhamentoPNARUpdateManyAndReturnArgs} args - Arguments to update many EncaminhamentoPNARS.
+     * @example
+     * // Update many EncaminhamentoPNARS
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EncaminhamentoPNARS and only return the `id`
+     * const encaminhamentoPNARWithIdOnly = await prisma.encaminhamentoPNAR.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EncaminhamentoPNARUpdateManyAndReturnArgs>(args: SelectSubset<T, EncaminhamentoPNARUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EncaminhamentoPNAR.
+     * @param {EncaminhamentoPNARUpsertArgs} args - Arguments to update or create a EncaminhamentoPNAR.
+     * @example
+     * // Update or create a EncaminhamentoPNAR
+     * const encaminhamentoPNAR = await prisma.encaminhamentoPNAR.upsert({
+     *   create: {
+     *     // ... data to create a EncaminhamentoPNAR
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EncaminhamentoPNAR we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EncaminhamentoPNARUpsertArgs>(args: SelectSubset<T, EncaminhamentoPNARUpsertArgs<ExtArgs>>): Prisma__EncaminhamentoPNARClient<$Result.GetResult<Prisma.$EncaminhamentoPNARPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EncaminhamentoPNARS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoPNARCountArgs} args - Arguments to filter EncaminhamentoPNARS to count.
+     * @example
+     * // Count the number of EncaminhamentoPNARS
+     * const count = await prisma.encaminhamentoPNAR.count({
+     *   where: {
+     *     // ... the filter for the EncaminhamentoPNARS we want to count
+     *   }
+     * })
+    **/
+    count<T extends EncaminhamentoPNARCountArgs>(
+      args?: Subset<T, EncaminhamentoPNARCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EncaminhamentoPNARCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EncaminhamentoPNAR.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoPNARAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EncaminhamentoPNARAggregateArgs>(args: Subset<T, EncaminhamentoPNARAggregateArgs>): Prisma.PrismaPromise<GetEncaminhamentoPNARAggregateType<T>>
+
+    /**
+     * Group by EncaminhamentoPNAR.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EncaminhamentoPNARGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EncaminhamentoPNARGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EncaminhamentoPNARGroupByArgs['orderBy'] }
+        : { orderBy?: EncaminhamentoPNARGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EncaminhamentoPNARGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEncaminhamentoPNARGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EncaminhamentoPNAR model
+   */
+  readonly fields: EncaminhamentoPNARFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EncaminhamentoPNAR.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EncaminhamentoPNARClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    gestante<T extends GestanteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GestanteDefaultArgs<ExtArgs>>): Prisma__GestanteClient<$Result.GetResult<Prisma.$GestantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EncaminhamentoPNAR model
+   */
+  interface EncaminhamentoPNARFieldRefs {
+    readonly id: FieldRef<"EncaminhamentoPNAR", 'String'>
+    readonly ciap: FieldRef<"EncaminhamentoPNAR", 'String'>
+    readonly dataEncaminhamento: FieldRef<"EncaminhamentoPNAR", 'DateTime'>
+    readonly dataConsultaPNAR: FieldRef<"EncaminhamentoPNAR", 'DateTime'>
+    readonly horarioConsultaPNAR: FieldRef<"EncaminhamentoPNAR", 'String'>
+    readonly retornoRecomendado: FieldRef<"EncaminhamentoPNAR", 'DateTime'>
+    readonly relatorioTexto: FieldRef<"EncaminhamentoPNAR", 'String'>
+    readonly consultaRealizada: FieldRef<"EncaminhamentoPNAR", 'Boolean'>
+    readonly dataConsultaRealizada: FieldRef<"EncaminhamentoPNAR", 'DateTime'>
+    readonly gestanteId: FieldRef<"EncaminhamentoPNAR", 'String'>
+    readonly criadoEm: FieldRef<"EncaminhamentoPNAR", 'DateTime'>
+    readonly atualizadoEm: FieldRef<"EncaminhamentoPNAR", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EncaminhamentoPNAR findUnique
+   */
+  export type EncaminhamentoPNARFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoPNAR to fetch.
+     */
+    where: EncaminhamentoPNARWhereUniqueInput
+  }
+
+  /**
+   * EncaminhamentoPNAR findUniqueOrThrow
+   */
+  export type EncaminhamentoPNARFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoPNAR to fetch.
+     */
+    where: EncaminhamentoPNARWhereUniqueInput
+  }
+
+  /**
+   * EncaminhamentoPNAR findFirst
+   */
+  export type EncaminhamentoPNARFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoPNAR to fetch.
+     */
+    where?: EncaminhamentoPNARWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EncaminhamentoPNARS to fetch.
+     */
+    orderBy?: EncaminhamentoPNAROrderByWithRelationInput | EncaminhamentoPNAROrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EncaminhamentoPNARS.
+     */
+    cursor?: EncaminhamentoPNARWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EncaminhamentoPNARS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EncaminhamentoPNARS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EncaminhamentoPNARS.
+     */
+    distinct?: EncaminhamentoPNARScalarFieldEnum | EncaminhamentoPNARScalarFieldEnum[]
+  }
+
+  /**
+   * EncaminhamentoPNAR findFirstOrThrow
+   */
+  export type EncaminhamentoPNARFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoPNAR to fetch.
+     */
+    where?: EncaminhamentoPNARWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EncaminhamentoPNARS to fetch.
+     */
+    orderBy?: EncaminhamentoPNAROrderByWithRelationInput | EncaminhamentoPNAROrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EncaminhamentoPNARS.
+     */
+    cursor?: EncaminhamentoPNARWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EncaminhamentoPNARS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EncaminhamentoPNARS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EncaminhamentoPNARS.
+     */
+    distinct?: EncaminhamentoPNARScalarFieldEnum | EncaminhamentoPNARScalarFieldEnum[]
+  }
+
+  /**
+   * EncaminhamentoPNAR findMany
+   */
+  export type EncaminhamentoPNARFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    /**
+     * Filter, which EncaminhamentoPNARS to fetch.
+     */
+    where?: EncaminhamentoPNARWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EncaminhamentoPNARS to fetch.
+     */
+    orderBy?: EncaminhamentoPNAROrderByWithRelationInput | EncaminhamentoPNAROrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EncaminhamentoPNARS.
+     */
+    cursor?: EncaminhamentoPNARWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EncaminhamentoPNARS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EncaminhamentoPNARS.
+     */
+    skip?: number
+    distinct?: EncaminhamentoPNARScalarFieldEnum | EncaminhamentoPNARScalarFieldEnum[]
+  }
+
+  /**
+   * EncaminhamentoPNAR create
+   */
+  export type EncaminhamentoPNARCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EncaminhamentoPNAR.
+     */
+    data: XOR<EncaminhamentoPNARCreateInput, EncaminhamentoPNARUncheckedCreateInput>
+  }
+
+  /**
+   * EncaminhamentoPNAR createMany
+   */
+  export type EncaminhamentoPNARCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EncaminhamentoPNARS.
+     */
+    data: EncaminhamentoPNARCreateManyInput | EncaminhamentoPNARCreateManyInput[]
+  }
+
+  /**
+   * EncaminhamentoPNAR createManyAndReturn
+   */
+  export type EncaminhamentoPNARCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * The data used to create many EncaminhamentoPNARS.
+     */
+    data: EncaminhamentoPNARCreateManyInput | EncaminhamentoPNARCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EncaminhamentoPNAR update
+   */
+  export type EncaminhamentoPNARUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EncaminhamentoPNAR.
+     */
+    data: XOR<EncaminhamentoPNARUpdateInput, EncaminhamentoPNARUncheckedUpdateInput>
+    /**
+     * Choose, which EncaminhamentoPNAR to update.
+     */
+    where: EncaminhamentoPNARWhereUniqueInput
+  }
+
+  /**
+   * EncaminhamentoPNAR updateMany
+   */
+  export type EncaminhamentoPNARUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EncaminhamentoPNARS.
+     */
+    data: XOR<EncaminhamentoPNARUpdateManyMutationInput, EncaminhamentoPNARUncheckedUpdateManyInput>
+    /**
+     * Filter which EncaminhamentoPNARS to update
+     */
+    where?: EncaminhamentoPNARWhereInput
+    /**
+     * Limit how many EncaminhamentoPNARS to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EncaminhamentoPNAR updateManyAndReturn
+   */
+  export type EncaminhamentoPNARUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * The data used to update EncaminhamentoPNARS.
+     */
+    data: XOR<EncaminhamentoPNARUpdateManyMutationInput, EncaminhamentoPNARUncheckedUpdateManyInput>
+    /**
+     * Filter which EncaminhamentoPNARS to update
+     */
+    where?: EncaminhamentoPNARWhereInput
+    /**
+     * Limit how many EncaminhamentoPNARS to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EncaminhamentoPNAR upsert
+   */
+  export type EncaminhamentoPNARUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EncaminhamentoPNAR to update in case it exists.
+     */
+    where: EncaminhamentoPNARWhereUniqueInput
+    /**
+     * In case the EncaminhamentoPNAR found by the `where` argument doesn't exist, create a new EncaminhamentoPNAR with this data.
+     */
+    create: XOR<EncaminhamentoPNARCreateInput, EncaminhamentoPNARUncheckedCreateInput>
+    /**
+     * In case the EncaminhamentoPNAR was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EncaminhamentoPNARUpdateInput, EncaminhamentoPNARUncheckedUpdateInput>
+  }
+
+  /**
+   * EncaminhamentoPNAR delete
+   */
+  export type EncaminhamentoPNARDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+    /**
+     * Filter which EncaminhamentoPNAR to delete.
+     */
+    where: EncaminhamentoPNARWhereUniqueInput
+  }
+
+  /**
+   * EncaminhamentoPNAR deleteMany
+   */
+  export type EncaminhamentoPNARDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EncaminhamentoPNARS to delete
+     */
+    where?: EncaminhamentoPNARWhereInput
+    /**
+     * Limit how many EncaminhamentoPNARS to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EncaminhamentoPNAR without action
+   */
+  export type EncaminhamentoPNARDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EncaminhamentoPNAR
+     */
+    select?: EncaminhamentoPNARSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EncaminhamentoPNAR
+     */
+    omit?: EncaminhamentoPNAROmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EncaminhamentoPNARInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PreNatalParceiro
+   */
+
+  export type AggregatePreNatalParceiro = {
+    _count: PreNatalParceiroCountAggregateOutputType | null
+    _min: PreNatalParceiroMinAggregateOutputType | null
+    _max: PreNatalParceiroMaxAggregateOutputType | null
+  }
+
+  export type PreNatalParceiroMinAggregateOutputType = {
+    id: string | null
+    realizado: boolean | null
+    autoReferido: boolean | null
+    gestanteId: string | null
+    criadoEm: Date | null
+    atualizadoEm: Date | null
+  }
+
+  export type PreNatalParceiroMaxAggregateOutputType = {
+    id: string | null
+    realizado: boolean | null
+    autoReferido: boolean | null
+    gestanteId: string | null
+    criadoEm: Date | null
+    atualizadoEm: Date | null
+  }
+
+  export type PreNatalParceiroCountAggregateOutputType = {
+    id: number
+    realizado: number
+    autoReferido: number
+    gestanteId: number
+    criadoEm: number
+    atualizadoEm: number
+    _all: number
+  }
+
+
+  export type PreNatalParceiroMinAggregateInputType = {
+    id?: true
+    realizado?: true
+    autoReferido?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+  }
+
+  export type PreNatalParceiroMaxAggregateInputType = {
+    id?: true
+    realizado?: true
+    autoReferido?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+  }
+
+  export type PreNatalParceiroCountAggregateInputType = {
+    id?: true
+    realizado?: true
+    autoReferido?: true
+    gestanteId?: true
+    criadoEm?: true
+    atualizadoEm?: true
+    _all?: true
+  }
+
+  export type PreNatalParceiroAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PreNatalParceiro to aggregate.
+     */
+    where?: PreNatalParceiroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PreNatalParceiros to fetch.
+     */
+    orderBy?: PreNatalParceiroOrderByWithRelationInput | PreNatalParceiroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PreNatalParceiroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PreNatalParceiros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PreNatalParceiros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PreNatalParceiros
+    **/
+    _count?: true | PreNatalParceiroCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PreNatalParceiroMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PreNatalParceiroMaxAggregateInputType
+  }
+
+  export type GetPreNatalParceiroAggregateType<T extends PreNatalParceiroAggregateArgs> = {
+        [P in keyof T & keyof AggregatePreNatalParceiro]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePreNatalParceiro[P]>
+      : GetScalarType<T[P], AggregatePreNatalParceiro[P]>
+  }
+
+
+
+
+  export type PreNatalParceiroGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PreNatalParceiroWhereInput
+    orderBy?: PreNatalParceiroOrderByWithAggregationInput | PreNatalParceiroOrderByWithAggregationInput[]
+    by: PreNatalParceiroScalarFieldEnum[] | PreNatalParceiroScalarFieldEnum
+    having?: PreNatalParceiroScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PreNatalParceiroCountAggregateInputType | true
+    _min?: PreNatalParceiroMinAggregateInputType
+    _max?: PreNatalParceiroMaxAggregateInputType
+  }
+
+  export type PreNatalParceiroGroupByOutputType = {
+    id: string
+    realizado: boolean
+    autoReferido: boolean
+    gestanteId: string
+    criadoEm: Date
+    atualizadoEm: Date
+    _count: PreNatalParceiroCountAggregateOutputType | null
+    _min: PreNatalParceiroMinAggregateOutputType | null
+    _max: PreNatalParceiroMaxAggregateOutputType | null
+  }
+
+  type GetPreNatalParceiroGroupByPayload<T extends PreNatalParceiroGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PreNatalParceiroGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PreNatalParceiroGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PreNatalParceiroGroupByOutputType[P]>
+            : GetScalarType<T[P], PreNatalParceiroGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PreNatalParceiroSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    realizado?: boolean
+    autoReferido?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["preNatalParceiro"]>
+
+  export type PreNatalParceiroSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    realizado?: boolean
+    autoReferido?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["preNatalParceiro"]>
+
+  export type PreNatalParceiroSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    realizado?: boolean
+    autoReferido?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["preNatalParceiro"]>
+
+  export type PreNatalParceiroSelectScalar = {
+    id?: boolean
+    realizado?: boolean
+    autoReferido?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    atualizadoEm?: boolean
+  }
+
+  export type PreNatalParceiroOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "realizado" | "autoReferido" | "gestanteId" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["preNatalParceiro"]>
+  export type PreNatalParceiroInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type PreNatalParceiroIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type PreNatalParceiroIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+
+  export type $PreNatalParceiroPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PreNatalParceiro"
+    objects: {
+      gestante: Prisma.$GestantePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      realizado: boolean
+      autoReferido: boolean
+      gestanteId: string
+      criadoEm: Date
+      atualizadoEm: Date
+    }, ExtArgs["result"]["preNatalParceiro"]>
+    composites: {}
+  }
+
+  type PreNatalParceiroGetPayload<S extends boolean | null | undefined | PreNatalParceiroDefaultArgs> = $Result.GetResult<Prisma.$PreNatalParceiroPayload, S>
+
+  type PreNatalParceiroCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PreNatalParceiroFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PreNatalParceiroCountAggregateInputType | true
+    }
+
+  export interface PreNatalParceiroDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PreNatalParceiro'], meta: { name: 'PreNatalParceiro' } }
+    /**
+     * Find zero or one PreNatalParceiro that matches the filter.
+     * @param {PreNatalParceiroFindUniqueArgs} args - Arguments to find a PreNatalParceiro
+     * @example
+     * // Get one PreNatalParceiro
+     * const preNatalParceiro = await prisma.preNatalParceiro.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PreNatalParceiroFindUniqueArgs>(args: SelectSubset<T, PreNatalParceiroFindUniqueArgs<ExtArgs>>): Prisma__PreNatalParceiroClient<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PreNatalParceiro that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PreNatalParceiroFindUniqueOrThrowArgs} args - Arguments to find a PreNatalParceiro
+     * @example
+     * // Get one PreNatalParceiro
+     * const preNatalParceiro = await prisma.preNatalParceiro.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PreNatalParceiroFindUniqueOrThrowArgs>(args: SelectSubset<T, PreNatalParceiroFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PreNatalParceiroClient<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PreNatalParceiro that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PreNatalParceiroFindFirstArgs} args - Arguments to find a PreNatalParceiro
+     * @example
+     * // Get one PreNatalParceiro
+     * const preNatalParceiro = await prisma.preNatalParceiro.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PreNatalParceiroFindFirstArgs>(args?: SelectSubset<T, PreNatalParceiroFindFirstArgs<ExtArgs>>): Prisma__PreNatalParceiroClient<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PreNatalParceiro that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PreNatalParceiroFindFirstOrThrowArgs} args - Arguments to find a PreNatalParceiro
+     * @example
+     * // Get one PreNatalParceiro
+     * const preNatalParceiro = await prisma.preNatalParceiro.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PreNatalParceiroFindFirstOrThrowArgs>(args?: SelectSubset<T, PreNatalParceiroFindFirstOrThrowArgs<ExtArgs>>): Prisma__PreNatalParceiroClient<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PreNatalParceiros that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PreNatalParceiroFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PreNatalParceiros
+     * const preNatalParceiros = await prisma.preNatalParceiro.findMany()
+     * 
+     * // Get first 10 PreNatalParceiros
+     * const preNatalParceiros = await prisma.preNatalParceiro.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const preNatalParceiroWithIdOnly = await prisma.preNatalParceiro.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PreNatalParceiroFindManyArgs>(args?: SelectSubset<T, PreNatalParceiroFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PreNatalParceiro.
+     * @param {PreNatalParceiroCreateArgs} args - Arguments to create a PreNatalParceiro.
+     * @example
+     * // Create one PreNatalParceiro
+     * const PreNatalParceiro = await prisma.preNatalParceiro.create({
+     *   data: {
+     *     // ... data to create a PreNatalParceiro
+     *   }
+     * })
+     * 
+     */
+    create<T extends PreNatalParceiroCreateArgs>(args: SelectSubset<T, PreNatalParceiroCreateArgs<ExtArgs>>): Prisma__PreNatalParceiroClient<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PreNatalParceiros.
+     * @param {PreNatalParceiroCreateManyArgs} args - Arguments to create many PreNatalParceiros.
+     * @example
+     * // Create many PreNatalParceiros
+     * const preNatalParceiro = await prisma.preNatalParceiro.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PreNatalParceiroCreateManyArgs>(args?: SelectSubset<T, PreNatalParceiroCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PreNatalParceiros and returns the data saved in the database.
+     * @param {PreNatalParceiroCreateManyAndReturnArgs} args - Arguments to create many PreNatalParceiros.
+     * @example
+     * // Create many PreNatalParceiros
+     * const preNatalParceiro = await prisma.preNatalParceiro.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PreNatalParceiros and only return the `id`
+     * const preNatalParceiroWithIdOnly = await prisma.preNatalParceiro.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PreNatalParceiroCreateManyAndReturnArgs>(args?: SelectSubset<T, PreNatalParceiroCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PreNatalParceiro.
+     * @param {PreNatalParceiroDeleteArgs} args - Arguments to delete one PreNatalParceiro.
+     * @example
+     * // Delete one PreNatalParceiro
+     * const PreNatalParceiro = await prisma.preNatalParceiro.delete({
+     *   where: {
+     *     // ... filter to delete one PreNatalParceiro
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PreNatalParceiroDeleteArgs>(args: SelectSubset<T, PreNatalParceiroDeleteArgs<ExtArgs>>): Prisma__PreNatalParceiroClient<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PreNatalParceiro.
+     * @param {PreNatalParceiroUpdateArgs} args - Arguments to update one PreNatalParceiro.
+     * @example
+     * // Update one PreNatalParceiro
+     * const preNatalParceiro = await prisma.preNatalParceiro.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PreNatalParceiroUpdateArgs>(args: SelectSubset<T, PreNatalParceiroUpdateArgs<ExtArgs>>): Prisma__PreNatalParceiroClient<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PreNatalParceiros.
+     * @param {PreNatalParceiroDeleteManyArgs} args - Arguments to filter PreNatalParceiros to delete.
+     * @example
+     * // Delete a few PreNatalParceiros
+     * const { count } = await prisma.preNatalParceiro.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PreNatalParceiroDeleteManyArgs>(args?: SelectSubset<T, PreNatalParceiroDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PreNatalParceiros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PreNatalParceiroUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PreNatalParceiros
+     * const preNatalParceiro = await prisma.preNatalParceiro.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PreNatalParceiroUpdateManyArgs>(args: SelectSubset<T, PreNatalParceiroUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PreNatalParceiros and returns the data updated in the database.
+     * @param {PreNatalParceiroUpdateManyAndReturnArgs} args - Arguments to update many PreNatalParceiros.
+     * @example
+     * // Update many PreNatalParceiros
+     * const preNatalParceiro = await prisma.preNatalParceiro.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PreNatalParceiros and only return the `id`
+     * const preNatalParceiroWithIdOnly = await prisma.preNatalParceiro.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PreNatalParceiroUpdateManyAndReturnArgs>(args: SelectSubset<T, PreNatalParceiroUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PreNatalParceiro.
+     * @param {PreNatalParceiroUpsertArgs} args - Arguments to update or create a PreNatalParceiro.
+     * @example
+     * // Update or create a PreNatalParceiro
+     * const preNatalParceiro = await prisma.preNatalParceiro.upsert({
+     *   create: {
+     *     // ... data to create a PreNatalParceiro
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PreNatalParceiro we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PreNatalParceiroUpsertArgs>(args: SelectSubset<T, PreNatalParceiroUpsertArgs<ExtArgs>>): Prisma__PreNatalParceiroClient<$Result.GetResult<Prisma.$PreNatalParceiroPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PreNatalParceiros.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PreNatalParceiroCountArgs} args - Arguments to filter PreNatalParceiros to count.
+     * @example
+     * // Count the number of PreNatalParceiros
+     * const count = await prisma.preNatalParceiro.count({
+     *   where: {
+     *     // ... the filter for the PreNatalParceiros we want to count
+     *   }
+     * })
+    **/
+    count<T extends PreNatalParceiroCountArgs>(
+      args?: Subset<T, PreNatalParceiroCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PreNatalParceiroCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PreNatalParceiro.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PreNatalParceiroAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PreNatalParceiroAggregateArgs>(args: Subset<T, PreNatalParceiroAggregateArgs>): Prisma.PrismaPromise<GetPreNatalParceiroAggregateType<T>>
+
+    /**
+     * Group by PreNatalParceiro.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PreNatalParceiroGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PreNatalParceiroGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PreNatalParceiroGroupByArgs['orderBy'] }
+        : { orderBy?: PreNatalParceiroGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PreNatalParceiroGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPreNatalParceiroGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PreNatalParceiro model
+   */
+  readonly fields: PreNatalParceiroFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PreNatalParceiro.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PreNatalParceiroClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    gestante<T extends GestanteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GestanteDefaultArgs<ExtArgs>>): Prisma__GestanteClient<$Result.GetResult<Prisma.$GestantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PreNatalParceiro model
+   */
+  interface PreNatalParceiroFieldRefs {
+    readonly id: FieldRef<"PreNatalParceiro", 'String'>
+    readonly realizado: FieldRef<"PreNatalParceiro", 'Boolean'>
+    readonly autoReferido: FieldRef<"PreNatalParceiro", 'Boolean'>
+    readonly gestanteId: FieldRef<"PreNatalParceiro", 'String'>
+    readonly criadoEm: FieldRef<"PreNatalParceiro", 'DateTime'>
+    readonly atualizadoEm: FieldRef<"PreNatalParceiro", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PreNatalParceiro findUnique
+   */
+  export type PreNatalParceiroFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    /**
+     * Filter, which PreNatalParceiro to fetch.
+     */
+    where: PreNatalParceiroWhereUniqueInput
+  }
+
+  /**
+   * PreNatalParceiro findUniqueOrThrow
+   */
+  export type PreNatalParceiroFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    /**
+     * Filter, which PreNatalParceiro to fetch.
+     */
+    where: PreNatalParceiroWhereUniqueInput
+  }
+
+  /**
+   * PreNatalParceiro findFirst
+   */
+  export type PreNatalParceiroFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    /**
+     * Filter, which PreNatalParceiro to fetch.
+     */
+    where?: PreNatalParceiroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PreNatalParceiros to fetch.
+     */
+    orderBy?: PreNatalParceiroOrderByWithRelationInput | PreNatalParceiroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PreNatalParceiros.
+     */
+    cursor?: PreNatalParceiroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PreNatalParceiros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PreNatalParceiros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PreNatalParceiros.
+     */
+    distinct?: PreNatalParceiroScalarFieldEnum | PreNatalParceiroScalarFieldEnum[]
+  }
+
+  /**
+   * PreNatalParceiro findFirstOrThrow
+   */
+  export type PreNatalParceiroFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    /**
+     * Filter, which PreNatalParceiro to fetch.
+     */
+    where?: PreNatalParceiroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PreNatalParceiros to fetch.
+     */
+    orderBy?: PreNatalParceiroOrderByWithRelationInput | PreNatalParceiroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PreNatalParceiros.
+     */
+    cursor?: PreNatalParceiroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PreNatalParceiros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PreNatalParceiros.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PreNatalParceiros.
+     */
+    distinct?: PreNatalParceiroScalarFieldEnum | PreNatalParceiroScalarFieldEnum[]
+  }
+
+  /**
+   * PreNatalParceiro findMany
+   */
+  export type PreNatalParceiroFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    /**
+     * Filter, which PreNatalParceiros to fetch.
+     */
+    where?: PreNatalParceiroWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PreNatalParceiros to fetch.
+     */
+    orderBy?: PreNatalParceiroOrderByWithRelationInput | PreNatalParceiroOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PreNatalParceiros.
+     */
+    cursor?: PreNatalParceiroWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PreNatalParceiros from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PreNatalParceiros.
+     */
+    skip?: number
+    distinct?: PreNatalParceiroScalarFieldEnum | PreNatalParceiroScalarFieldEnum[]
+  }
+
+  /**
+   * PreNatalParceiro create
+   */
+  export type PreNatalParceiroCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PreNatalParceiro.
+     */
+    data: XOR<PreNatalParceiroCreateInput, PreNatalParceiroUncheckedCreateInput>
+  }
+
+  /**
+   * PreNatalParceiro createMany
+   */
+  export type PreNatalParceiroCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PreNatalParceiros.
+     */
+    data: PreNatalParceiroCreateManyInput | PreNatalParceiroCreateManyInput[]
+  }
+
+  /**
+   * PreNatalParceiro createManyAndReturn
+   */
+  export type PreNatalParceiroCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * The data used to create many PreNatalParceiros.
+     */
+    data: PreNatalParceiroCreateManyInput | PreNatalParceiroCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PreNatalParceiro update
+   */
+  export type PreNatalParceiroUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PreNatalParceiro.
+     */
+    data: XOR<PreNatalParceiroUpdateInput, PreNatalParceiroUncheckedUpdateInput>
+    /**
+     * Choose, which PreNatalParceiro to update.
+     */
+    where: PreNatalParceiroWhereUniqueInput
+  }
+
+  /**
+   * PreNatalParceiro updateMany
+   */
+  export type PreNatalParceiroUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PreNatalParceiros.
+     */
+    data: XOR<PreNatalParceiroUpdateManyMutationInput, PreNatalParceiroUncheckedUpdateManyInput>
+    /**
+     * Filter which PreNatalParceiros to update
+     */
+    where?: PreNatalParceiroWhereInput
+    /**
+     * Limit how many PreNatalParceiros to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PreNatalParceiro updateManyAndReturn
+   */
+  export type PreNatalParceiroUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * The data used to update PreNatalParceiros.
+     */
+    data: XOR<PreNatalParceiroUpdateManyMutationInput, PreNatalParceiroUncheckedUpdateManyInput>
+    /**
+     * Filter which PreNatalParceiros to update
+     */
+    where?: PreNatalParceiroWhereInput
+    /**
+     * Limit how many PreNatalParceiros to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PreNatalParceiro upsert
+   */
+  export type PreNatalParceiroUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PreNatalParceiro to update in case it exists.
+     */
+    where: PreNatalParceiroWhereUniqueInput
+    /**
+     * In case the PreNatalParceiro found by the `where` argument doesn't exist, create a new PreNatalParceiro with this data.
+     */
+    create: XOR<PreNatalParceiroCreateInput, PreNatalParceiroUncheckedCreateInput>
+    /**
+     * In case the PreNatalParceiro was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PreNatalParceiroUpdateInput, PreNatalParceiroUncheckedUpdateInput>
+  }
+
+  /**
+   * PreNatalParceiro delete
+   */
+  export type PreNatalParceiroDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+    /**
+     * Filter which PreNatalParceiro to delete.
+     */
+    where: PreNatalParceiroWhereUniqueInput
+  }
+
+  /**
+   * PreNatalParceiro deleteMany
+   */
+  export type PreNatalParceiroDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PreNatalParceiros to delete
+     */
+    where?: PreNatalParceiroWhereInput
+    /**
+     * Limit how many PreNatalParceiros to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PreNatalParceiro without action
+   */
+  export type PreNatalParceiroDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PreNatalParceiro
+     */
+    select?: PreNatalParceiroSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PreNatalParceiro
+     */
+    omit?: PreNatalParceiroOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PreNatalParceiroInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Avaliacao
+   */
+
+  export type AggregateAvaliacao = {
+    _count: AvaliacaoCountAggregateOutputType | null
+    _avg: AvaliacaoAvgAggregateOutputType | null
+    _sum: AvaliacaoSumAggregateOutputType | null
+    _min: AvaliacaoMinAggregateOutputType | null
+    _max: AvaliacaoMaxAggregateOutputType | null
+  }
+
+  export type AvaliacaoAvgAggregateOutputType = {
+    nota: number | null
+  }
+
+  export type AvaliacaoSumAggregateOutputType = {
+    nota: number | null
+  }
+
+  export type AvaliacaoMinAggregateOutputType = {
+    id: string | null
+    tipo: string | null
+    nota: number | null
+    comentario: string | null
+    consultaId: string | null
+    gestanteId: string | null
+    criadoEm: Date | null
+  }
+
+  export type AvaliacaoMaxAggregateOutputType = {
+    id: string | null
+    tipo: string | null
+    nota: number | null
+    comentario: string | null
+    consultaId: string | null
+    gestanteId: string | null
+    criadoEm: Date | null
+  }
+
+  export type AvaliacaoCountAggregateOutputType = {
+    id: number
+    tipo: number
+    nota: number
+    comentario: number
+    consultaId: number
+    gestanteId: number
+    criadoEm: number
+    _all: number
+  }
+
+
+  export type AvaliacaoAvgAggregateInputType = {
+    nota?: true
+  }
+
+  export type AvaliacaoSumAggregateInputType = {
+    nota?: true
+  }
+
+  export type AvaliacaoMinAggregateInputType = {
+    id?: true
+    tipo?: true
+    nota?: true
+    comentario?: true
+    consultaId?: true
+    gestanteId?: true
+    criadoEm?: true
+  }
+
+  export type AvaliacaoMaxAggregateInputType = {
+    id?: true
+    tipo?: true
+    nota?: true
+    comentario?: true
+    consultaId?: true
+    gestanteId?: true
+    criadoEm?: true
+  }
+
+  export type AvaliacaoCountAggregateInputType = {
+    id?: true
+    tipo?: true
+    nota?: true
+    comentario?: true
+    consultaId?: true
+    gestanteId?: true
+    criadoEm?: true
+    _all?: true
+  }
+
+  export type AvaliacaoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Avaliacao to aggregate.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Avaliacaos
+    **/
+    _count?: true | AvaliacaoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AvaliacaoAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AvaliacaoSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AvaliacaoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AvaliacaoMaxAggregateInputType
+  }
+
+  export type GetAvaliacaoAggregateType<T extends AvaliacaoAggregateArgs> = {
+        [P in keyof T & keyof AggregateAvaliacao]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAvaliacao[P]>
+      : GetScalarType<T[P], AggregateAvaliacao[P]>
+  }
+
+
+
+
+  export type AvaliacaoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AvaliacaoWhereInput
+    orderBy?: AvaliacaoOrderByWithAggregationInput | AvaliacaoOrderByWithAggregationInput[]
+    by: AvaliacaoScalarFieldEnum[] | AvaliacaoScalarFieldEnum
+    having?: AvaliacaoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AvaliacaoCountAggregateInputType | true
+    _avg?: AvaliacaoAvgAggregateInputType
+    _sum?: AvaliacaoSumAggregateInputType
+    _min?: AvaliacaoMinAggregateInputType
+    _max?: AvaliacaoMaxAggregateInputType
+  }
+
+  export type AvaliacaoGroupByOutputType = {
+    id: string
+    tipo: string
+    nota: number
+    comentario: string | null
+    consultaId: string | null
+    gestanteId: string
+    criadoEm: Date
+    _count: AvaliacaoCountAggregateOutputType | null
+    _avg: AvaliacaoAvgAggregateOutputType | null
+    _sum: AvaliacaoSumAggregateOutputType | null
+    _min: AvaliacaoMinAggregateOutputType | null
+    _max: AvaliacaoMaxAggregateOutputType | null
+  }
+
+  type GetAvaliacaoGroupByPayload<T extends AvaliacaoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AvaliacaoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AvaliacaoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AvaliacaoGroupByOutputType[P]>
+            : GetScalarType<T[P], AvaliacaoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AvaliacaoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tipo?: boolean
+    nota?: boolean
+    comentario?: boolean
+    consultaId?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avaliacao"]>
+
+  export type AvaliacaoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tipo?: boolean
+    nota?: boolean
+    comentario?: boolean
+    consultaId?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avaliacao"]>
+
+  export type AvaliacaoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    tipo?: boolean
+    nota?: boolean
+    comentario?: boolean
+    consultaId?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["avaliacao"]>
+
+  export type AvaliacaoSelectScalar = {
+    id?: boolean
+    tipo?: boolean
+    nota?: boolean
+    comentario?: boolean
+    consultaId?: boolean
+    gestanteId?: boolean
+    criadoEm?: boolean
+  }
+
+  export type AvaliacaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tipo" | "nota" | "comentario" | "consultaId" | "gestanteId" | "criadoEm", ExtArgs["result"]["avaliacao"]>
+  export type AvaliacaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type AvaliacaoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+  export type AvaliacaoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gestante?: boolean | GestanteDefaultArgs<ExtArgs>
+  }
+
+  export type $AvaliacaoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Avaliacao"
+    objects: {
+      gestante: Prisma.$GestantePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      tipo: string
+      nota: number
+      comentario: string | null
+      consultaId: string | null
+      gestanteId: string
+      criadoEm: Date
+    }, ExtArgs["result"]["avaliacao"]>
+    composites: {}
+  }
+
+  type AvaliacaoGetPayload<S extends boolean | null | undefined | AvaliacaoDefaultArgs> = $Result.GetResult<Prisma.$AvaliacaoPayload, S>
+
+  type AvaliacaoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AvaliacaoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AvaliacaoCountAggregateInputType | true
+    }
+
+  export interface AvaliacaoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Avaliacao'], meta: { name: 'Avaliacao' } }
+    /**
+     * Find zero or one Avaliacao that matches the filter.
+     * @param {AvaliacaoFindUniqueArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AvaliacaoFindUniqueArgs>(args: SelectSubset<T, AvaliacaoFindUniqueArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Avaliacao that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AvaliacaoFindUniqueOrThrowArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AvaliacaoFindUniqueOrThrowArgs>(args: SelectSubset<T, AvaliacaoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avaliacao that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindFirstArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AvaliacaoFindFirstArgs>(args?: SelectSubset<T, AvaliacaoFindFirstArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Avaliacao that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindFirstOrThrowArgs} args - Arguments to find a Avaliacao
+     * @example
+     * // Get one Avaliacao
+     * const avaliacao = await prisma.avaliacao.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AvaliacaoFindFirstOrThrowArgs>(args?: SelectSubset<T, AvaliacaoFindFirstOrThrowArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Avaliacaos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Avaliacaos
+     * const avaliacaos = await prisma.avaliacao.findMany()
+     * 
+     * // Get first 10 Avaliacaos
+     * const avaliacaos = await prisma.avaliacao.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const avaliacaoWithIdOnly = await prisma.avaliacao.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AvaliacaoFindManyArgs>(args?: SelectSubset<T, AvaliacaoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Avaliacao.
+     * @param {AvaliacaoCreateArgs} args - Arguments to create a Avaliacao.
+     * @example
+     * // Create one Avaliacao
+     * const Avaliacao = await prisma.avaliacao.create({
+     *   data: {
+     *     // ... data to create a Avaliacao
+     *   }
+     * })
+     * 
+     */
+    create<T extends AvaliacaoCreateArgs>(args: SelectSubset<T, AvaliacaoCreateArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Avaliacaos.
+     * @param {AvaliacaoCreateManyArgs} args - Arguments to create many Avaliacaos.
+     * @example
+     * // Create many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AvaliacaoCreateManyArgs>(args?: SelectSubset<T, AvaliacaoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Avaliacaos and returns the data saved in the database.
+     * @param {AvaliacaoCreateManyAndReturnArgs} args - Arguments to create many Avaliacaos.
+     * @example
+     * // Create many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Avaliacaos and only return the `id`
+     * const avaliacaoWithIdOnly = await prisma.avaliacao.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AvaliacaoCreateManyAndReturnArgs>(args?: SelectSubset<T, AvaliacaoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Avaliacao.
+     * @param {AvaliacaoDeleteArgs} args - Arguments to delete one Avaliacao.
+     * @example
+     * // Delete one Avaliacao
+     * const Avaliacao = await prisma.avaliacao.delete({
+     *   where: {
+     *     // ... filter to delete one Avaliacao
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AvaliacaoDeleteArgs>(args: SelectSubset<T, AvaliacaoDeleteArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Avaliacao.
+     * @param {AvaliacaoUpdateArgs} args - Arguments to update one Avaliacao.
+     * @example
+     * // Update one Avaliacao
+     * const avaliacao = await prisma.avaliacao.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AvaliacaoUpdateArgs>(args: SelectSubset<T, AvaliacaoUpdateArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Avaliacaos.
+     * @param {AvaliacaoDeleteManyArgs} args - Arguments to filter Avaliacaos to delete.
+     * @example
+     * // Delete a few Avaliacaos
+     * const { count } = await prisma.avaliacao.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AvaliacaoDeleteManyArgs>(args?: SelectSubset<T, AvaliacaoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Avaliacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AvaliacaoUpdateManyArgs>(args: SelectSubset<T, AvaliacaoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Avaliacaos and returns the data updated in the database.
+     * @param {AvaliacaoUpdateManyAndReturnArgs} args - Arguments to update many Avaliacaos.
+     * @example
+     * // Update many Avaliacaos
+     * const avaliacao = await prisma.avaliacao.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Avaliacaos and only return the `id`
+     * const avaliacaoWithIdOnly = await prisma.avaliacao.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AvaliacaoUpdateManyAndReturnArgs>(args: SelectSubset<T, AvaliacaoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Avaliacao.
+     * @param {AvaliacaoUpsertArgs} args - Arguments to update or create a Avaliacao.
+     * @example
+     * // Update or create a Avaliacao
+     * const avaliacao = await prisma.avaliacao.upsert({
+     *   create: {
+     *     // ... data to create a Avaliacao
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Avaliacao we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AvaliacaoUpsertArgs>(args: SelectSubset<T, AvaliacaoUpsertArgs<ExtArgs>>): Prisma__AvaliacaoClient<$Result.GetResult<Prisma.$AvaliacaoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Avaliacaos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoCountArgs} args - Arguments to filter Avaliacaos to count.
+     * @example
+     * // Count the number of Avaliacaos
+     * const count = await prisma.avaliacao.count({
+     *   where: {
+     *     // ... the filter for the Avaliacaos we want to count
+     *   }
+     * })
+    **/
+    count<T extends AvaliacaoCountArgs>(
+      args?: Subset<T, AvaliacaoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AvaliacaoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Avaliacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AvaliacaoAggregateArgs>(args: Subset<T, AvaliacaoAggregateArgs>): Prisma.PrismaPromise<GetAvaliacaoAggregateType<T>>
+
+    /**
+     * Group by Avaliacao.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AvaliacaoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AvaliacaoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AvaliacaoGroupByArgs['orderBy'] }
+        : { orderBy?: AvaliacaoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AvaliacaoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAvaliacaoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Avaliacao model
+   */
+  readonly fields: AvaliacaoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Avaliacao.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AvaliacaoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    gestante<T extends GestanteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GestanteDefaultArgs<ExtArgs>>): Prisma__GestanteClient<$Result.GetResult<Prisma.$GestantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Avaliacao model
+   */
+  interface AvaliacaoFieldRefs {
+    readonly id: FieldRef<"Avaliacao", 'String'>
+    readonly tipo: FieldRef<"Avaliacao", 'String'>
+    readonly nota: FieldRef<"Avaliacao", 'Int'>
+    readonly comentario: FieldRef<"Avaliacao", 'String'>
+    readonly consultaId: FieldRef<"Avaliacao", 'String'>
+    readonly gestanteId: FieldRef<"Avaliacao", 'String'>
+    readonly criadoEm: FieldRef<"Avaliacao", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Avaliacao findUnique
+   */
+  export type AvaliacaoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao findUniqueOrThrow
+   */
+  export type AvaliacaoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao findFirst
+   */
+  export type AvaliacaoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Avaliacaos.
+     */
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao findFirstOrThrow
+   */
+  export type AvaliacaoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacao to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Avaliacaos.
+     */
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao findMany
+   */
+  export type AvaliacaoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter, which Avaliacaos to fetch.
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Avaliacaos to fetch.
+     */
+    orderBy?: AvaliacaoOrderByWithRelationInput | AvaliacaoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Avaliacaos.
+     */
+    cursor?: AvaliacaoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Avaliacaos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Avaliacaos.
+     */
+    skip?: number
+    distinct?: AvaliacaoScalarFieldEnum | AvaliacaoScalarFieldEnum[]
+  }
+
+  /**
+   * Avaliacao create
+   */
+  export type AvaliacaoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Avaliacao.
+     */
+    data: XOR<AvaliacaoCreateInput, AvaliacaoUncheckedCreateInput>
+  }
+
+  /**
+   * Avaliacao createMany
+   */
+  export type AvaliacaoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Avaliacaos.
+     */
+    data: AvaliacaoCreateManyInput | AvaliacaoCreateManyInput[]
+  }
+
+  /**
+   * Avaliacao createManyAndReturn
+   */
+  export type AvaliacaoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * The data used to create many Avaliacaos.
+     */
+    data: AvaliacaoCreateManyInput | AvaliacaoCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Avaliacao update
+   */
+  export type AvaliacaoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Avaliacao.
+     */
+    data: XOR<AvaliacaoUpdateInput, AvaliacaoUncheckedUpdateInput>
+    /**
+     * Choose, which Avaliacao to update.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao updateMany
+   */
+  export type AvaliacaoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Avaliacaos.
+     */
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyInput>
+    /**
+     * Filter which Avaliacaos to update
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Avaliacao updateManyAndReturn
+   */
+  export type AvaliacaoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * The data used to update Avaliacaos.
+     */
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyInput>
+    /**
+     * Filter which Avaliacaos to update
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Avaliacao upsert
+   */
+  export type AvaliacaoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Avaliacao to update in case it exists.
+     */
+    where: AvaliacaoWhereUniqueInput
+    /**
+     * In case the Avaliacao found by the `where` argument doesn't exist, create a new Avaliacao with this data.
+     */
+    create: XOR<AvaliacaoCreateInput, AvaliacaoUncheckedCreateInput>
+    /**
+     * In case the Avaliacao was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AvaliacaoUpdateInput, AvaliacaoUncheckedUpdateInput>
+  }
+
+  /**
+   * Avaliacao delete
+   */
+  export type AvaliacaoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+    /**
+     * Filter which Avaliacao to delete.
+     */
+    where: AvaliacaoWhereUniqueInput
+  }
+
+  /**
+   * Avaliacao deleteMany
+   */
+  export type AvaliacaoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Avaliacaos to delete
+     */
+    where?: AvaliacaoWhereInput
+    /**
+     * Limit how many Avaliacaos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Avaliacao without action
+   */
+  export type AvaliacaoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Avaliacao
+     */
+    select?: AvaliacaoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Avaliacao
+     */
+    omit?: AvaliacaoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AvaliacaoInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12424,10 +18980,13 @@ export namespace Prisma {
     bairro: 'bairro',
     cep: 'cep',
     ubsVinculada: 'ubsVinculada',
+    hospitalReferencia: 'hospitalReferencia',
     dataUltimaMenstruacao: 'dataUltimaMenstruacao',
     dataProvavelParto: 'dataProvavelParto',
     tipoGravidez: 'tipoGravidez',
     riscoGestacional: 'riscoGestacional',
+    riscoGestacionalCIAP: 'riscoGestacionalCIAP',
+    gravidezPlanejada: 'gravidezPlanejada',
     temWhatsapp: 'temWhatsapp',
     comoDescobriuGestacao: 'comoDescobriuGestacao',
     programaSocial: 'programaSocial',
@@ -12447,7 +19006,19 @@ export namespace Prisma {
     senha: 'senha',
     ativo: 'ativo',
     criadoEm: 'criadoEm',
-    atualizadoEm: 'atualizadoEm'
+    atualizadoEm: 'atualizadoEm',
+    antecedentesDiabetes: 'antecedentesDiabetes',
+    antecedentesInfeccaoUrinaria: 'antecedentesInfeccaoUrinaria',
+    antecedentesInfertilidade: 'antecedentesInfertilidade',
+    antecedentesDificuldadeAmamentacao: 'antecedentesDificuldadeAmamentacao',
+    antecedentesCardiopatia: 'antecedentesCardiopatia',
+    statusCaderneta: 'statusCaderneta',
+    cadernetaAnteriorId: 'cadernetaAnteriorId',
+    dataDesfecho: 'dataDesfecho',
+    participouAtividadeEducativa: 'participouAtividadeEducativa',
+    dataAtividadeEducativa: 'dataAtividadeEducativa',
+    realizouVisitaMaternidade: 'realizouVisitaMaternidade',
+    dataVisitaMaternidade: 'dataVisitaMaternidade'
   };
 
   export type GestanteScalarFieldEnum = (typeof GestanteScalarFieldEnum)[keyof typeof GestanteScalarFieldEnum]
@@ -12478,6 +19049,10 @@ export namespace Prisma {
     pressaoArterial: 'pressaoArterial',
     alturaUterina: 'alturaUterina',
     batimentoCardiacoFetal: 'batimentoCardiacoFetal',
+    imcConsulta: 'imcConsulta',
+    movimentacaoFetal: 'movimentacaoFetal',
+    planoTexto: 'planoTexto',
+    ofertaLARC: 'ofertaLARC',
     notas: 'notas',
     ubs: 'ubs',
     gestanteId: 'gestanteId',
@@ -12556,6 +19131,11 @@ export namespace Prisma {
     status: 'status',
     termoLgpdAceito: 'termoLgpdAceito',
     etapaAtual: 'etapaAtual',
+    ubsVinculacao: 'ubsVinculacao',
+    profissionalVinculacaoId: 'profissionalVinculacaoId',
+    dataVinculacao: 'dataVinculacao',
+    lgpdMetodoAssinatura: 'lgpdMetodoAssinatura',
+    lgpdDocumentoEnviado: 'lgpdDocumentoEnviado',
     gestanteId: 'gestanteId',
     criadoEm: 'criadoEm',
     atualizadoEm: 'atualizadoEm'
@@ -12575,6 +19155,77 @@ export namespace Prisma {
   };
 
   export type NotificacaoScalarFieldEnum = (typeof NotificacaoScalarFieldEnum)[keyof typeof NotificacaoScalarFieldEnum]
+
+
+  export const TratamentoSifilisScalarFieldEnum: {
+    id: 'id',
+    classificacaoCID: 'classificacaoCID',
+    tipo: 'tipo',
+    subtipo: 'subtipo',
+    dataDiagnostico: 'dataDiagnostico',
+    statusTratamento: 'statusTratamento',
+    dosesNecessarias: 'dosesNecessarias',
+    gestanteId: 'gestanteId',
+    criadoEm: 'criadoEm',
+    atualizadoEm: 'atualizadoEm'
+  };
+
+  export type TratamentoSifilisScalarFieldEnum = (typeof TratamentoSifilisScalarFieldEnum)[keyof typeof TratamentoSifilisScalarFieldEnum]
+
+
+  export const AplicacaoPenicilinaScalarFieldEnum: {
+    id: 'id',
+    data: 'data',
+    dose: 'dose',
+    observacao: 'observacao',
+    tratamentoId: 'tratamentoId',
+    criadoEm: 'criadoEm'
+  };
+
+  export type AplicacaoPenicilinaScalarFieldEnum = (typeof AplicacaoPenicilinaScalarFieldEnum)[keyof typeof AplicacaoPenicilinaScalarFieldEnum]
+
+
+  export const EncaminhamentoPNARScalarFieldEnum: {
+    id: 'id',
+    ciap: 'ciap',
+    dataEncaminhamento: 'dataEncaminhamento',
+    dataConsultaPNAR: 'dataConsultaPNAR',
+    horarioConsultaPNAR: 'horarioConsultaPNAR',
+    retornoRecomendado: 'retornoRecomendado',
+    relatorioTexto: 'relatorioTexto',
+    consultaRealizada: 'consultaRealizada',
+    dataConsultaRealizada: 'dataConsultaRealizada',
+    gestanteId: 'gestanteId',
+    criadoEm: 'criadoEm',
+    atualizadoEm: 'atualizadoEm'
+  };
+
+  export type EncaminhamentoPNARScalarFieldEnum = (typeof EncaminhamentoPNARScalarFieldEnum)[keyof typeof EncaminhamentoPNARScalarFieldEnum]
+
+
+  export const PreNatalParceiroScalarFieldEnum: {
+    id: 'id',
+    realizado: 'realizado',
+    autoReferido: 'autoReferido',
+    gestanteId: 'gestanteId',
+    criadoEm: 'criadoEm',
+    atualizadoEm: 'atualizadoEm'
+  };
+
+  export type PreNatalParceiroScalarFieldEnum = (typeof PreNatalParceiroScalarFieldEnum)[keyof typeof PreNatalParceiroScalarFieldEnum]
+
+
+  export const AvaliacaoScalarFieldEnum: {
+    id: 'id',
+    tipo: 'tipo',
+    nota: 'nota',
+    comentario: 'comentario',
+    consultaId: 'consultaId',
+    gestanteId: 'gestanteId',
+    criadoEm: 'criadoEm'
+  };
+
+  export type AvaliacaoScalarFieldEnum = (typeof AvaliacaoScalarFieldEnum)[keyof typeof AvaliacaoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12652,10 +19303,13 @@ export namespace Prisma {
     bairro?: StringNullableFilter<"Gestante"> | string | null
     cep?: StringNullableFilter<"Gestante"> | string | null
     ubsVinculada?: StringNullableFilter<"Gestante"> | string | null
+    hospitalReferencia?: StringNullableFilter<"Gestante"> | string | null
     dataUltimaMenstruacao?: DateTimeNullableFilter<"Gestante"> | Date | string | null
     dataProvavelParto?: DateTimeNullableFilter<"Gestante"> | Date | string | null
     tipoGravidez?: StringFilter<"Gestante"> | string
     riscoGestacional?: StringFilter<"Gestante"> | string
+    riscoGestacionalCIAP?: StringNullableFilter<"Gestante"> | string | null
+    gravidezPlanejada?: BoolNullableFilter<"Gestante"> | boolean | null
     temWhatsapp?: BoolFilter<"Gestante"> | boolean
     comoDescobriuGestacao?: StringNullableFilter<"Gestante"> | string | null
     programaSocial?: StringNullableFilter<"Gestante"> | string | null
@@ -12676,6 +19330,18 @@ export namespace Prisma {
     ativo?: BoolFilter<"Gestante"> | boolean
     criadoEm?: DateTimeFilter<"Gestante"> | Date | string
     atualizadoEm?: DateTimeFilter<"Gestante"> | Date | string
+    antecedentesDiabetes?: BoolFilter<"Gestante"> | boolean
+    antecedentesInfeccaoUrinaria?: BoolFilter<"Gestante"> | boolean
+    antecedentesInfertilidade?: BoolFilter<"Gestante"> | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFilter<"Gestante"> | boolean
+    antecedentesCardiopatia?: BoolFilter<"Gestante"> | boolean
+    statusCaderneta?: StringFilter<"Gestante"> | string
+    cadernetaAnteriorId?: StringNullableFilter<"Gestante"> | string | null
+    dataDesfecho?: DateTimeNullableFilter<"Gestante"> | Date | string | null
+    participouAtividadeEducativa?: BoolFilter<"Gestante"> | boolean
+    dataAtividadeEducativa?: DateTimeNullableFilter<"Gestante"> | Date | string | null
+    realizouVisitaMaternidade?: BoolFilter<"Gestante"> | boolean
+    dataVisitaMaternidade?: DateTimeNullableFilter<"Gestante"> | Date | string | null
     consultas?: ConsultaListRelationFilter
     exames?: ExameListRelationFilter
     vacinas?: VacinaListRelationFilter
@@ -12683,6 +19349,10 @@ export namespace Prisma {
     condicoes?: CondicaoClinicaListRelationFilter
     cartaoMaeSalvador?: XOR<CartaoMaeSalvadorNullableScalarRelationFilter, CartaoMaeSalvadorWhereInput> | null
     notificacoes?: NotificacaoListRelationFilter
+    tratamentosSifilis?: TratamentoSifilisListRelationFilter
+    encaminhamentosPNAR?: EncaminhamentoPNARListRelationFilter
+    preNatalParceiro?: XOR<PreNatalParceiroNullableScalarRelationFilter, PreNatalParceiroWhereInput> | null
+    avaliacoes?: AvaliacaoListRelationFilter
   }
 
   export type GestanteOrderByWithRelationInput = {
@@ -12698,10 +19368,13 @@ export namespace Prisma {
     bairro?: SortOrderInput | SortOrder
     cep?: SortOrderInput | SortOrder
     ubsVinculada?: SortOrderInput | SortOrder
+    hospitalReferencia?: SortOrderInput | SortOrder
     dataUltimaMenstruacao?: SortOrderInput | SortOrder
     dataProvavelParto?: SortOrderInput | SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    riscoGestacionalCIAP?: SortOrderInput | SortOrder
+    gravidezPlanejada?: SortOrderInput | SortOrder
     temWhatsapp?: SortOrder
     comoDescobriuGestacao?: SortOrderInput | SortOrder
     programaSocial?: SortOrderInput | SortOrder
@@ -12722,6 +19395,18 @@ export namespace Prisma {
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
+    antecedentesDiabetes?: SortOrder
+    antecedentesInfeccaoUrinaria?: SortOrder
+    antecedentesInfertilidade?: SortOrder
+    antecedentesDificuldadeAmamentacao?: SortOrder
+    antecedentesCardiopatia?: SortOrder
+    statusCaderneta?: SortOrder
+    cadernetaAnteriorId?: SortOrderInput | SortOrder
+    dataDesfecho?: SortOrderInput | SortOrder
+    participouAtividadeEducativa?: SortOrder
+    dataAtividadeEducativa?: SortOrderInput | SortOrder
+    realizouVisitaMaternidade?: SortOrder
+    dataVisitaMaternidade?: SortOrderInput | SortOrder
     consultas?: ConsultaOrderByRelationAggregateInput
     exames?: ExameOrderByRelationAggregateInput
     vacinas?: VacinaOrderByRelationAggregateInput
@@ -12729,6 +19414,10 @@ export namespace Prisma {
     condicoes?: CondicaoClinicaOrderByRelationAggregateInput
     cartaoMaeSalvador?: CartaoMaeSalvadorOrderByWithRelationInput
     notificacoes?: NotificacaoOrderByRelationAggregateInput
+    tratamentosSifilis?: TratamentoSifilisOrderByRelationAggregateInput
+    encaminhamentosPNAR?: EncaminhamentoPNAROrderByRelationAggregateInput
+    preNatalParceiro?: PreNatalParceiroOrderByWithRelationInput
+    avaliacoes?: AvaliacaoOrderByRelationAggregateInput
   }
 
   export type GestanteWhereUniqueInput = Prisma.AtLeast<{
@@ -12747,10 +19436,13 @@ export namespace Prisma {
     bairro?: StringNullableFilter<"Gestante"> | string | null
     cep?: StringNullableFilter<"Gestante"> | string | null
     ubsVinculada?: StringNullableFilter<"Gestante"> | string | null
+    hospitalReferencia?: StringNullableFilter<"Gestante"> | string | null
     dataUltimaMenstruacao?: DateTimeNullableFilter<"Gestante"> | Date | string | null
     dataProvavelParto?: DateTimeNullableFilter<"Gestante"> | Date | string | null
     tipoGravidez?: StringFilter<"Gestante"> | string
     riscoGestacional?: StringFilter<"Gestante"> | string
+    riscoGestacionalCIAP?: StringNullableFilter<"Gestante"> | string | null
+    gravidezPlanejada?: BoolNullableFilter<"Gestante"> | boolean | null
     temWhatsapp?: BoolFilter<"Gestante"> | boolean
     comoDescobriuGestacao?: StringNullableFilter<"Gestante"> | string | null
     programaSocial?: StringNullableFilter<"Gestante"> | string | null
@@ -12771,6 +19463,18 @@ export namespace Prisma {
     ativo?: BoolFilter<"Gestante"> | boolean
     criadoEm?: DateTimeFilter<"Gestante"> | Date | string
     atualizadoEm?: DateTimeFilter<"Gestante"> | Date | string
+    antecedentesDiabetes?: BoolFilter<"Gestante"> | boolean
+    antecedentesInfeccaoUrinaria?: BoolFilter<"Gestante"> | boolean
+    antecedentesInfertilidade?: BoolFilter<"Gestante"> | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFilter<"Gestante"> | boolean
+    antecedentesCardiopatia?: BoolFilter<"Gestante"> | boolean
+    statusCaderneta?: StringFilter<"Gestante"> | string
+    cadernetaAnteriorId?: StringNullableFilter<"Gestante"> | string | null
+    dataDesfecho?: DateTimeNullableFilter<"Gestante"> | Date | string | null
+    participouAtividadeEducativa?: BoolFilter<"Gestante"> | boolean
+    dataAtividadeEducativa?: DateTimeNullableFilter<"Gestante"> | Date | string | null
+    realizouVisitaMaternidade?: BoolFilter<"Gestante"> | boolean
+    dataVisitaMaternidade?: DateTimeNullableFilter<"Gestante"> | Date | string | null
     consultas?: ConsultaListRelationFilter
     exames?: ExameListRelationFilter
     vacinas?: VacinaListRelationFilter
@@ -12778,6 +19482,10 @@ export namespace Prisma {
     condicoes?: CondicaoClinicaListRelationFilter
     cartaoMaeSalvador?: XOR<CartaoMaeSalvadorNullableScalarRelationFilter, CartaoMaeSalvadorWhereInput> | null
     notificacoes?: NotificacaoListRelationFilter
+    tratamentosSifilis?: TratamentoSifilisListRelationFilter
+    encaminhamentosPNAR?: EncaminhamentoPNARListRelationFilter
+    preNatalParceiro?: XOR<PreNatalParceiroNullableScalarRelationFilter, PreNatalParceiroWhereInput> | null
+    avaliacoes?: AvaliacaoListRelationFilter
   }, "id" | "cpf">
 
   export type GestanteOrderByWithAggregationInput = {
@@ -12793,10 +19501,13 @@ export namespace Prisma {
     bairro?: SortOrderInput | SortOrder
     cep?: SortOrderInput | SortOrder
     ubsVinculada?: SortOrderInput | SortOrder
+    hospitalReferencia?: SortOrderInput | SortOrder
     dataUltimaMenstruacao?: SortOrderInput | SortOrder
     dataProvavelParto?: SortOrderInput | SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    riscoGestacionalCIAP?: SortOrderInput | SortOrder
+    gravidezPlanejada?: SortOrderInput | SortOrder
     temWhatsapp?: SortOrder
     comoDescobriuGestacao?: SortOrderInput | SortOrder
     programaSocial?: SortOrderInput | SortOrder
@@ -12817,6 +19528,18 @@ export namespace Prisma {
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
+    antecedentesDiabetes?: SortOrder
+    antecedentesInfeccaoUrinaria?: SortOrder
+    antecedentesInfertilidade?: SortOrder
+    antecedentesDificuldadeAmamentacao?: SortOrder
+    antecedentesCardiopatia?: SortOrder
+    statusCaderneta?: SortOrder
+    cadernetaAnteriorId?: SortOrderInput | SortOrder
+    dataDesfecho?: SortOrderInput | SortOrder
+    participouAtividadeEducativa?: SortOrder
+    dataAtividadeEducativa?: SortOrderInput | SortOrder
+    realizouVisitaMaternidade?: SortOrder
+    dataVisitaMaternidade?: SortOrderInput | SortOrder
     _count?: GestanteCountOrderByAggregateInput
     _avg?: GestanteAvgOrderByAggregateInput
     _max?: GestanteMaxOrderByAggregateInput
@@ -12840,10 +19563,13 @@ export namespace Prisma {
     bairro?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
     cep?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
     ubsVinculada?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
+    hospitalReferencia?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
     dataUltimaMenstruacao?: DateTimeNullableWithAggregatesFilter<"Gestante"> | Date | string | null
     dataProvavelParto?: DateTimeNullableWithAggregatesFilter<"Gestante"> | Date | string | null
     tipoGravidez?: StringWithAggregatesFilter<"Gestante"> | string
     riscoGestacional?: StringWithAggregatesFilter<"Gestante"> | string
+    riscoGestacionalCIAP?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
+    gravidezPlanejada?: BoolNullableWithAggregatesFilter<"Gestante"> | boolean | null
     temWhatsapp?: BoolWithAggregatesFilter<"Gestante"> | boolean
     comoDescobriuGestacao?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
     programaSocial?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
@@ -12864,6 +19590,18 @@ export namespace Prisma {
     ativo?: BoolWithAggregatesFilter<"Gestante"> | boolean
     criadoEm?: DateTimeWithAggregatesFilter<"Gestante"> | Date | string
     atualizadoEm?: DateTimeWithAggregatesFilter<"Gestante"> | Date | string
+    antecedentesDiabetes?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    antecedentesInfeccaoUrinaria?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    antecedentesInfertilidade?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    antecedentesDificuldadeAmamentacao?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    antecedentesCardiopatia?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    statusCaderneta?: StringWithAggregatesFilter<"Gestante"> | string
+    cadernetaAnteriorId?: StringNullableWithAggregatesFilter<"Gestante"> | string | null
+    dataDesfecho?: DateTimeNullableWithAggregatesFilter<"Gestante"> | Date | string | null
+    participouAtividadeEducativa?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    dataAtividadeEducativa?: DateTimeNullableWithAggregatesFilter<"Gestante"> | Date | string | null
+    realizouVisitaMaternidade?: BoolWithAggregatesFilter<"Gestante"> | boolean
+    dataVisitaMaternidade?: DateTimeNullableWithAggregatesFilter<"Gestante"> | Date | string | null
   }
 
   export type ProfissionalWhereInput = {
@@ -12958,6 +19696,10 @@ export namespace Prisma {
     pressaoArterial?: StringNullableFilter<"Consulta"> | string | null
     alturaUterina?: FloatNullableFilter<"Consulta"> | number | null
     batimentoCardiacoFetal?: IntNullableFilter<"Consulta"> | number | null
+    imcConsulta?: FloatNullableFilter<"Consulta"> | number | null
+    movimentacaoFetal?: StringNullableFilter<"Consulta"> | string | null
+    planoTexto?: StringNullableFilter<"Consulta"> | string | null
+    ofertaLARC?: BoolFilter<"Consulta"> | boolean
     notas?: StringNullableFilter<"Consulta"> | string | null
     ubs?: StringNullableFilter<"Consulta"> | string | null
     gestanteId?: StringFilter<"Consulta"> | string
@@ -12976,6 +19718,10 @@ export namespace Prisma {
     pressaoArterial?: SortOrderInput | SortOrder
     alturaUterina?: SortOrderInput | SortOrder
     batimentoCardiacoFetal?: SortOrderInput | SortOrder
+    imcConsulta?: SortOrderInput | SortOrder
+    movimentacaoFetal?: SortOrderInput | SortOrder
+    planoTexto?: SortOrderInput | SortOrder
+    ofertaLARC?: SortOrder
     notas?: SortOrderInput | SortOrder
     ubs?: SortOrderInput | SortOrder
     gestanteId?: SortOrder
@@ -12997,6 +19743,10 @@ export namespace Prisma {
     pressaoArterial?: StringNullableFilter<"Consulta"> | string | null
     alturaUterina?: FloatNullableFilter<"Consulta"> | number | null
     batimentoCardiacoFetal?: IntNullableFilter<"Consulta"> | number | null
+    imcConsulta?: FloatNullableFilter<"Consulta"> | number | null
+    movimentacaoFetal?: StringNullableFilter<"Consulta"> | string | null
+    planoTexto?: StringNullableFilter<"Consulta"> | string | null
+    ofertaLARC?: BoolFilter<"Consulta"> | boolean
     notas?: StringNullableFilter<"Consulta"> | string | null
     ubs?: StringNullableFilter<"Consulta"> | string | null
     gestanteId?: StringFilter<"Consulta"> | string
@@ -13015,6 +19765,10 @@ export namespace Prisma {
     pressaoArterial?: SortOrderInput | SortOrder
     alturaUterina?: SortOrderInput | SortOrder
     batimentoCardiacoFetal?: SortOrderInput | SortOrder
+    imcConsulta?: SortOrderInput | SortOrder
+    movimentacaoFetal?: SortOrderInput | SortOrder
+    planoTexto?: SortOrderInput | SortOrder
+    ofertaLARC?: SortOrder
     notas?: SortOrderInput | SortOrder
     ubs?: SortOrderInput | SortOrder
     gestanteId?: SortOrder
@@ -13039,6 +19793,10 @@ export namespace Prisma {
     pressaoArterial?: StringNullableWithAggregatesFilter<"Consulta"> | string | null
     alturaUterina?: FloatNullableWithAggregatesFilter<"Consulta"> | number | null
     batimentoCardiacoFetal?: IntNullableWithAggregatesFilter<"Consulta"> | number | null
+    imcConsulta?: FloatNullableWithAggregatesFilter<"Consulta"> | number | null
+    movimentacaoFetal?: StringNullableWithAggregatesFilter<"Consulta"> | string | null
+    planoTexto?: StringNullableWithAggregatesFilter<"Consulta"> | string | null
+    ofertaLARC?: BoolWithAggregatesFilter<"Consulta"> | boolean
     notas?: StringNullableWithAggregatesFilter<"Consulta"> | string | null
     ubs?: StringNullableWithAggregatesFilter<"Consulta"> | string | null
     gestanteId?: StringWithAggregatesFilter<"Consulta"> | string
@@ -13365,6 +20123,11 @@ export namespace Prisma {
     status?: StringFilter<"CartaoMaeSalvador"> | string
     termoLgpdAceito?: BoolFilter<"CartaoMaeSalvador"> | boolean
     etapaAtual?: IntFilter<"CartaoMaeSalvador"> | number
+    ubsVinculacao?: StringNullableFilter<"CartaoMaeSalvador"> | string | null
+    profissionalVinculacaoId?: StringNullableFilter<"CartaoMaeSalvador"> | string | null
+    dataVinculacao?: DateTimeNullableFilter<"CartaoMaeSalvador"> | Date | string | null
+    lgpdMetodoAssinatura?: StringNullableFilter<"CartaoMaeSalvador"> | string | null
+    lgpdDocumentoEnviado?: BoolFilter<"CartaoMaeSalvador"> | boolean
     gestanteId?: StringFilter<"CartaoMaeSalvador"> | string
     criadoEm?: DateTimeFilter<"CartaoMaeSalvador"> | Date | string
     atualizadoEm?: DateTimeFilter<"CartaoMaeSalvador"> | Date | string
@@ -13377,6 +20140,11 @@ export namespace Prisma {
     status?: SortOrder
     termoLgpdAceito?: SortOrder
     etapaAtual?: SortOrder
+    ubsVinculacao?: SortOrderInput | SortOrder
+    profissionalVinculacaoId?: SortOrderInput | SortOrder
+    dataVinculacao?: SortOrderInput | SortOrder
+    lgpdMetodoAssinatura?: SortOrderInput | SortOrder
+    lgpdDocumentoEnviado?: SortOrder
     gestanteId?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -13393,6 +20161,11 @@ export namespace Prisma {
     status?: StringFilter<"CartaoMaeSalvador"> | string
     termoLgpdAceito?: BoolFilter<"CartaoMaeSalvador"> | boolean
     etapaAtual?: IntFilter<"CartaoMaeSalvador"> | number
+    ubsVinculacao?: StringNullableFilter<"CartaoMaeSalvador"> | string | null
+    profissionalVinculacaoId?: StringNullableFilter<"CartaoMaeSalvador"> | string | null
+    dataVinculacao?: DateTimeNullableFilter<"CartaoMaeSalvador"> | Date | string | null
+    lgpdMetodoAssinatura?: StringNullableFilter<"CartaoMaeSalvador"> | string | null
+    lgpdDocumentoEnviado?: BoolFilter<"CartaoMaeSalvador"> | boolean
     criadoEm?: DateTimeFilter<"CartaoMaeSalvador"> | Date | string
     atualizadoEm?: DateTimeFilter<"CartaoMaeSalvador"> | Date | string
     gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
@@ -13404,6 +20177,11 @@ export namespace Prisma {
     status?: SortOrder
     termoLgpdAceito?: SortOrder
     etapaAtual?: SortOrder
+    ubsVinculacao?: SortOrderInput | SortOrder
+    profissionalVinculacaoId?: SortOrderInput | SortOrder
+    dataVinculacao?: SortOrderInput | SortOrder
+    lgpdMetodoAssinatura?: SortOrderInput | SortOrder
+    lgpdDocumentoEnviado?: SortOrder
     gestanteId?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -13423,6 +20201,11 @@ export namespace Prisma {
     status?: StringWithAggregatesFilter<"CartaoMaeSalvador"> | string
     termoLgpdAceito?: BoolWithAggregatesFilter<"CartaoMaeSalvador"> | boolean
     etapaAtual?: IntWithAggregatesFilter<"CartaoMaeSalvador"> | number
+    ubsVinculacao?: StringNullableWithAggregatesFilter<"CartaoMaeSalvador"> | string | null
+    profissionalVinculacaoId?: StringNullableWithAggregatesFilter<"CartaoMaeSalvador"> | string | null
+    dataVinculacao?: DateTimeNullableWithAggregatesFilter<"CartaoMaeSalvador"> | Date | string | null
+    lgpdMetodoAssinatura?: StringNullableWithAggregatesFilter<"CartaoMaeSalvador"> | string | null
+    lgpdDocumentoEnviado?: BoolWithAggregatesFilter<"CartaoMaeSalvador"> | boolean
     gestanteId?: StringWithAggregatesFilter<"CartaoMaeSalvador"> | string
     criadoEm?: DateTimeWithAggregatesFilter<"CartaoMaeSalvador"> | Date | string
     atualizadoEm?: DateTimeWithAggregatesFilter<"CartaoMaeSalvador"> | Date | string
@@ -13493,6 +20276,370 @@ export namespace Prisma {
     criadoEm?: DateTimeWithAggregatesFilter<"Notificacao"> | Date | string
   }
 
+  export type TratamentoSifilisWhereInput = {
+    AND?: TratamentoSifilisWhereInput | TratamentoSifilisWhereInput[]
+    OR?: TratamentoSifilisWhereInput[]
+    NOT?: TratamentoSifilisWhereInput | TratamentoSifilisWhereInput[]
+    id?: StringFilter<"TratamentoSifilis"> | string
+    classificacaoCID?: StringFilter<"TratamentoSifilis"> | string
+    tipo?: StringFilter<"TratamentoSifilis"> | string
+    subtipo?: StringNullableFilter<"TratamentoSifilis"> | string | null
+    dataDiagnostico?: DateTimeFilter<"TratamentoSifilis"> | Date | string
+    statusTratamento?: StringFilter<"TratamentoSifilis"> | string
+    dosesNecessarias?: IntFilter<"TratamentoSifilis"> | number
+    gestanteId?: StringFilter<"TratamentoSifilis"> | string
+    criadoEm?: DateTimeFilter<"TratamentoSifilis"> | Date | string
+    atualizadoEm?: DateTimeFilter<"TratamentoSifilis"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+    aplicacoes?: AplicacaoPenicilinaListRelationFilter
+  }
+
+  export type TratamentoSifilisOrderByWithRelationInput = {
+    id?: SortOrder
+    classificacaoCID?: SortOrder
+    tipo?: SortOrder
+    subtipo?: SortOrderInput | SortOrder
+    dataDiagnostico?: SortOrder
+    statusTratamento?: SortOrder
+    dosesNecessarias?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+    gestante?: GestanteOrderByWithRelationInput
+    aplicacoes?: AplicacaoPenicilinaOrderByRelationAggregateInput
+  }
+
+  export type TratamentoSifilisWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TratamentoSifilisWhereInput | TratamentoSifilisWhereInput[]
+    OR?: TratamentoSifilisWhereInput[]
+    NOT?: TratamentoSifilisWhereInput | TratamentoSifilisWhereInput[]
+    classificacaoCID?: StringFilter<"TratamentoSifilis"> | string
+    tipo?: StringFilter<"TratamentoSifilis"> | string
+    subtipo?: StringNullableFilter<"TratamentoSifilis"> | string | null
+    dataDiagnostico?: DateTimeFilter<"TratamentoSifilis"> | Date | string
+    statusTratamento?: StringFilter<"TratamentoSifilis"> | string
+    dosesNecessarias?: IntFilter<"TratamentoSifilis"> | number
+    gestanteId?: StringFilter<"TratamentoSifilis"> | string
+    criadoEm?: DateTimeFilter<"TratamentoSifilis"> | Date | string
+    atualizadoEm?: DateTimeFilter<"TratamentoSifilis"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+    aplicacoes?: AplicacaoPenicilinaListRelationFilter
+  }, "id">
+
+  export type TratamentoSifilisOrderByWithAggregationInput = {
+    id?: SortOrder
+    classificacaoCID?: SortOrder
+    tipo?: SortOrder
+    subtipo?: SortOrderInput | SortOrder
+    dataDiagnostico?: SortOrder
+    statusTratamento?: SortOrder
+    dosesNecessarias?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+    _count?: TratamentoSifilisCountOrderByAggregateInput
+    _avg?: TratamentoSifilisAvgOrderByAggregateInput
+    _max?: TratamentoSifilisMaxOrderByAggregateInput
+    _min?: TratamentoSifilisMinOrderByAggregateInput
+    _sum?: TratamentoSifilisSumOrderByAggregateInput
+  }
+
+  export type TratamentoSifilisScalarWhereWithAggregatesInput = {
+    AND?: TratamentoSifilisScalarWhereWithAggregatesInput | TratamentoSifilisScalarWhereWithAggregatesInput[]
+    OR?: TratamentoSifilisScalarWhereWithAggregatesInput[]
+    NOT?: TratamentoSifilisScalarWhereWithAggregatesInput | TratamentoSifilisScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TratamentoSifilis"> | string
+    classificacaoCID?: StringWithAggregatesFilter<"TratamentoSifilis"> | string
+    tipo?: StringWithAggregatesFilter<"TratamentoSifilis"> | string
+    subtipo?: StringNullableWithAggregatesFilter<"TratamentoSifilis"> | string | null
+    dataDiagnostico?: DateTimeWithAggregatesFilter<"TratamentoSifilis"> | Date | string
+    statusTratamento?: StringWithAggregatesFilter<"TratamentoSifilis"> | string
+    dosesNecessarias?: IntWithAggregatesFilter<"TratamentoSifilis"> | number
+    gestanteId?: StringWithAggregatesFilter<"TratamentoSifilis"> | string
+    criadoEm?: DateTimeWithAggregatesFilter<"TratamentoSifilis"> | Date | string
+    atualizadoEm?: DateTimeWithAggregatesFilter<"TratamentoSifilis"> | Date | string
+  }
+
+  export type AplicacaoPenicilinaWhereInput = {
+    AND?: AplicacaoPenicilinaWhereInput | AplicacaoPenicilinaWhereInput[]
+    OR?: AplicacaoPenicilinaWhereInput[]
+    NOT?: AplicacaoPenicilinaWhereInput | AplicacaoPenicilinaWhereInput[]
+    id?: StringFilter<"AplicacaoPenicilina"> | string
+    data?: DateTimeFilter<"AplicacaoPenicilina"> | Date | string
+    dose?: IntFilter<"AplicacaoPenicilina"> | number
+    observacao?: StringNullableFilter<"AplicacaoPenicilina"> | string | null
+    tratamentoId?: StringFilter<"AplicacaoPenicilina"> | string
+    criadoEm?: DateTimeFilter<"AplicacaoPenicilina"> | Date | string
+    tratamento?: XOR<TratamentoSifilisScalarRelationFilter, TratamentoSifilisWhereInput>
+  }
+
+  export type AplicacaoPenicilinaOrderByWithRelationInput = {
+    id?: SortOrder
+    data?: SortOrder
+    dose?: SortOrder
+    observacao?: SortOrderInput | SortOrder
+    tratamentoId?: SortOrder
+    criadoEm?: SortOrder
+    tratamento?: TratamentoSifilisOrderByWithRelationInput
+  }
+
+  export type AplicacaoPenicilinaWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AplicacaoPenicilinaWhereInput | AplicacaoPenicilinaWhereInput[]
+    OR?: AplicacaoPenicilinaWhereInput[]
+    NOT?: AplicacaoPenicilinaWhereInput | AplicacaoPenicilinaWhereInput[]
+    data?: DateTimeFilter<"AplicacaoPenicilina"> | Date | string
+    dose?: IntFilter<"AplicacaoPenicilina"> | number
+    observacao?: StringNullableFilter<"AplicacaoPenicilina"> | string | null
+    tratamentoId?: StringFilter<"AplicacaoPenicilina"> | string
+    criadoEm?: DateTimeFilter<"AplicacaoPenicilina"> | Date | string
+    tratamento?: XOR<TratamentoSifilisScalarRelationFilter, TratamentoSifilisWhereInput>
+  }, "id">
+
+  export type AplicacaoPenicilinaOrderByWithAggregationInput = {
+    id?: SortOrder
+    data?: SortOrder
+    dose?: SortOrder
+    observacao?: SortOrderInput | SortOrder
+    tratamentoId?: SortOrder
+    criadoEm?: SortOrder
+    _count?: AplicacaoPenicilinaCountOrderByAggregateInput
+    _avg?: AplicacaoPenicilinaAvgOrderByAggregateInput
+    _max?: AplicacaoPenicilinaMaxOrderByAggregateInput
+    _min?: AplicacaoPenicilinaMinOrderByAggregateInput
+    _sum?: AplicacaoPenicilinaSumOrderByAggregateInput
+  }
+
+  export type AplicacaoPenicilinaScalarWhereWithAggregatesInput = {
+    AND?: AplicacaoPenicilinaScalarWhereWithAggregatesInput | AplicacaoPenicilinaScalarWhereWithAggregatesInput[]
+    OR?: AplicacaoPenicilinaScalarWhereWithAggregatesInput[]
+    NOT?: AplicacaoPenicilinaScalarWhereWithAggregatesInput | AplicacaoPenicilinaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AplicacaoPenicilina"> | string
+    data?: DateTimeWithAggregatesFilter<"AplicacaoPenicilina"> | Date | string
+    dose?: IntWithAggregatesFilter<"AplicacaoPenicilina"> | number
+    observacao?: StringNullableWithAggregatesFilter<"AplicacaoPenicilina"> | string | null
+    tratamentoId?: StringWithAggregatesFilter<"AplicacaoPenicilina"> | string
+    criadoEm?: DateTimeWithAggregatesFilter<"AplicacaoPenicilina"> | Date | string
+  }
+
+  export type EncaminhamentoPNARWhereInput = {
+    AND?: EncaminhamentoPNARWhereInput | EncaminhamentoPNARWhereInput[]
+    OR?: EncaminhamentoPNARWhereInput[]
+    NOT?: EncaminhamentoPNARWhereInput | EncaminhamentoPNARWhereInput[]
+    id?: StringFilter<"EncaminhamentoPNAR"> | string
+    ciap?: StringFilter<"EncaminhamentoPNAR"> | string
+    dataEncaminhamento?: DateTimeFilter<"EncaminhamentoPNAR"> | Date | string
+    dataConsultaPNAR?: DateTimeNullableFilter<"EncaminhamentoPNAR"> | Date | string | null
+    horarioConsultaPNAR?: StringNullableFilter<"EncaminhamentoPNAR"> | string | null
+    retornoRecomendado?: DateTimeNullableFilter<"EncaminhamentoPNAR"> | Date | string | null
+    relatorioTexto?: StringNullableFilter<"EncaminhamentoPNAR"> | string | null
+    consultaRealizada?: BoolFilter<"EncaminhamentoPNAR"> | boolean
+    dataConsultaRealizada?: DateTimeNullableFilter<"EncaminhamentoPNAR"> | Date | string | null
+    gestanteId?: StringFilter<"EncaminhamentoPNAR"> | string
+    criadoEm?: DateTimeFilter<"EncaminhamentoPNAR"> | Date | string
+    atualizadoEm?: DateTimeFilter<"EncaminhamentoPNAR"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }
+
+  export type EncaminhamentoPNAROrderByWithRelationInput = {
+    id?: SortOrder
+    ciap?: SortOrder
+    dataEncaminhamento?: SortOrder
+    dataConsultaPNAR?: SortOrderInput | SortOrder
+    horarioConsultaPNAR?: SortOrderInput | SortOrder
+    retornoRecomendado?: SortOrderInput | SortOrder
+    relatorioTexto?: SortOrderInput | SortOrder
+    consultaRealizada?: SortOrder
+    dataConsultaRealizada?: SortOrderInput | SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+    gestante?: GestanteOrderByWithRelationInput
+  }
+
+  export type EncaminhamentoPNARWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: EncaminhamentoPNARWhereInput | EncaminhamentoPNARWhereInput[]
+    OR?: EncaminhamentoPNARWhereInput[]
+    NOT?: EncaminhamentoPNARWhereInput | EncaminhamentoPNARWhereInput[]
+    ciap?: StringFilter<"EncaminhamentoPNAR"> | string
+    dataEncaminhamento?: DateTimeFilter<"EncaminhamentoPNAR"> | Date | string
+    dataConsultaPNAR?: DateTimeNullableFilter<"EncaminhamentoPNAR"> | Date | string | null
+    horarioConsultaPNAR?: StringNullableFilter<"EncaminhamentoPNAR"> | string | null
+    retornoRecomendado?: DateTimeNullableFilter<"EncaminhamentoPNAR"> | Date | string | null
+    relatorioTexto?: StringNullableFilter<"EncaminhamentoPNAR"> | string | null
+    consultaRealizada?: BoolFilter<"EncaminhamentoPNAR"> | boolean
+    dataConsultaRealizada?: DateTimeNullableFilter<"EncaminhamentoPNAR"> | Date | string | null
+    gestanteId?: StringFilter<"EncaminhamentoPNAR"> | string
+    criadoEm?: DateTimeFilter<"EncaminhamentoPNAR"> | Date | string
+    atualizadoEm?: DateTimeFilter<"EncaminhamentoPNAR"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }, "id">
+
+  export type EncaminhamentoPNAROrderByWithAggregationInput = {
+    id?: SortOrder
+    ciap?: SortOrder
+    dataEncaminhamento?: SortOrder
+    dataConsultaPNAR?: SortOrderInput | SortOrder
+    horarioConsultaPNAR?: SortOrderInput | SortOrder
+    retornoRecomendado?: SortOrderInput | SortOrder
+    relatorioTexto?: SortOrderInput | SortOrder
+    consultaRealizada?: SortOrder
+    dataConsultaRealizada?: SortOrderInput | SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+    _count?: EncaminhamentoPNARCountOrderByAggregateInput
+    _max?: EncaminhamentoPNARMaxOrderByAggregateInput
+    _min?: EncaminhamentoPNARMinOrderByAggregateInput
+  }
+
+  export type EncaminhamentoPNARScalarWhereWithAggregatesInput = {
+    AND?: EncaminhamentoPNARScalarWhereWithAggregatesInput | EncaminhamentoPNARScalarWhereWithAggregatesInput[]
+    OR?: EncaminhamentoPNARScalarWhereWithAggregatesInput[]
+    NOT?: EncaminhamentoPNARScalarWhereWithAggregatesInput | EncaminhamentoPNARScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EncaminhamentoPNAR"> | string
+    ciap?: StringWithAggregatesFilter<"EncaminhamentoPNAR"> | string
+    dataEncaminhamento?: DateTimeWithAggregatesFilter<"EncaminhamentoPNAR"> | Date | string
+    dataConsultaPNAR?: DateTimeNullableWithAggregatesFilter<"EncaminhamentoPNAR"> | Date | string | null
+    horarioConsultaPNAR?: StringNullableWithAggregatesFilter<"EncaminhamentoPNAR"> | string | null
+    retornoRecomendado?: DateTimeNullableWithAggregatesFilter<"EncaminhamentoPNAR"> | Date | string | null
+    relatorioTexto?: StringNullableWithAggregatesFilter<"EncaminhamentoPNAR"> | string | null
+    consultaRealizada?: BoolWithAggregatesFilter<"EncaminhamentoPNAR"> | boolean
+    dataConsultaRealizada?: DateTimeNullableWithAggregatesFilter<"EncaminhamentoPNAR"> | Date | string | null
+    gestanteId?: StringWithAggregatesFilter<"EncaminhamentoPNAR"> | string
+    criadoEm?: DateTimeWithAggregatesFilter<"EncaminhamentoPNAR"> | Date | string
+    atualizadoEm?: DateTimeWithAggregatesFilter<"EncaminhamentoPNAR"> | Date | string
+  }
+
+  export type PreNatalParceiroWhereInput = {
+    AND?: PreNatalParceiroWhereInput | PreNatalParceiroWhereInput[]
+    OR?: PreNatalParceiroWhereInput[]
+    NOT?: PreNatalParceiroWhereInput | PreNatalParceiroWhereInput[]
+    id?: StringFilter<"PreNatalParceiro"> | string
+    realizado?: BoolFilter<"PreNatalParceiro"> | boolean
+    autoReferido?: BoolFilter<"PreNatalParceiro"> | boolean
+    gestanteId?: StringFilter<"PreNatalParceiro"> | string
+    criadoEm?: DateTimeFilter<"PreNatalParceiro"> | Date | string
+    atualizadoEm?: DateTimeFilter<"PreNatalParceiro"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }
+
+  export type PreNatalParceiroOrderByWithRelationInput = {
+    id?: SortOrder
+    realizado?: SortOrder
+    autoReferido?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+    gestante?: GestanteOrderByWithRelationInput
+  }
+
+  export type PreNatalParceiroWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    gestanteId?: string
+    AND?: PreNatalParceiroWhereInput | PreNatalParceiroWhereInput[]
+    OR?: PreNatalParceiroWhereInput[]
+    NOT?: PreNatalParceiroWhereInput | PreNatalParceiroWhereInput[]
+    realizado?: BoolFilter<"PreNatalParceiro"> | boolean
+    autoReferido?: BoolFilter<"PreNatalParceiro"> | boolean
+    criadoEm?: DateTimeFilter<"PreNatalParceiro"> | Date | string
+    atualizadoEm?: DateTimeFilter<"PreNatalParceiro"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }, "id" | "gestanteId">
+
+  export type PreNatalParceiroOrderByWithAggregationInput = {
+    id?: SortOrder
+    realizado?: SortOrder
+    autoReferido?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+    _count?: PreNatalParceiroCountOrderByAggregateInput
+    _max?: PreNatalParceiroMaxOrderByAggregateInput
+    _min?: PreNatalParceiroMinOrderByAggregateInput
+  }
+
+  export type PreNatalParceiroScalarWhereWithAggregatesInput = {
+    AND?: PreNatalParceiroScalarWhereWithAggregatesInput | PreNatalParceiroScalarWhereWithAggregatesInput[]
+    OR?: PreNatalParceiroScalarWhereWithAggregatesInput[]
+    NOT?: PreNatalParceiroScalarWhereWithAggregatesInput | PreNatalParceiroScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PreNatalParceiro"> | string
+    realizado?: BoolWithAggregatesFilter<"PreNatalParceiro"> | boolean
+    autoReferido?: BoolWithAggregatesFilter<"PreNatalParceiro"> | boolean
+    gestanteId?: StringWithAggregatesFilter<"PreNatalParceiro"> | string
+    criadoEm?: DateTimeWithAggregatesFilter<"PreNatalParceiro"> | Date | string
+    atualizadoEm?: DateTimeWithAggregatesFilter<"PreNatalParceiro"> | Date | string
+  }
+
+  export type AvaliacaoWhereInput = {
+    AND?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    OR?: AvaliacaoWhereInput[]
+    NOT?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    id?: StringFilter<"Avaliacao"> | string
+    tipo?: StringFilter<"Avaliacao"> | string
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringNullableFilter<"Avaliacao"> | string | null
+    consultaId?: StringNullableFilter<"Avaliacao"> | string | null
+    gestanteId?: StringFilter<"Avaliacao"> | string
+    criadoEm?: DateTimeFilter<"Avaliacao"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }
+
+  export type AvaliacaoOrderByWithRelationInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrderInput | SortOrder
+    consultaId?: SortOrderInput | SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    gestante?: GestanteOrderByWithRelationInput
+  }
+
+  export type AvaliacaoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    OR?: AvaliacaoWhereInput[]
+    NOT?: AvaliacaoWhereInput | AvaliacaoWhereInput[]
+    tipo?: StringFilter<"Avaliacao"> | string
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringNullableFilter<"Avaliacao"> | string | null
+    consultaId?: StringNullableFilter<"Avaliacao"> | string | null
+    gestanteId?: StringFilter<"Avaliacao"> | string
+    criadoEm?: DateTimeFilter<"Avaliacao"> | Date | string
+    gestante?: XOR<GestanteScalarRelationFilter, GestanteWhereInput>
+  }, "id">
+
+  export type AvaliacaoOrderByWithAggregationInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrderInput | SortOrder
+    consultaId?: SortOrderInput | SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    _count?: AvaliacaoCountOrderByAggregateInput
+    _avg?: AvaliacaoAvgOrderByAggregateInput
+    _max?: AvaliacaoMaxOrderByAggregateInput
+    _min?: AvaliacaoMinOrderByAggregateInput
+    _sum?: AvaliacaoSumOrderByAggregateInput
+  }
+
+  export type AvaliacaoScalarWhereWithAggregatesInput = {
+    AND?: AvaliacaoScalarWhereWithAggregatesInput | AvaliacaoScalarWhereWithAggregatesInput[]
+    OR?: AvaliacaoScalarWhereWithAggregatesInput[]
+    NOT?: AvaliacaoScalarWhereWithAggregatesInput | AvaliacaoScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Avaliacao"> | string
+    tipo?: StringWithAggregatesFilter<"Avaliacao"> | string
+    nota?: IntWithAggregatesFilter<"Avaliacao"> | number
+    comentario?: StringNullableWithAggregatesFilter<"Avaliacao"> | string | null
+    consultaId?: StringNullableWithAggregatesFilter<"Avaliacao"> | string | null
+    gestanteId?: StringWithAggregatesFilter<"Avaliacao"> | string
+    criadoEm?: DateTimeWithAggregatesFilter<"Avaliacao"> | Date | string
+  }
+
   export type GestanteCreateInput = {
     id?: string
     cpf: string
@@ -13506,10 +20653,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -13530,6 +20680,18 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaCreateNestedManyWithoutGestanteInput
     exames?: ExameCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
@@ -13537,6 +20699,10 @@ export namespace Prisma {
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateInput = {
@@ -13552,10 +20718,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -13576,6 +20745,18 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
@@ -13583,6 +20764,10 @@ export namespace Prisma {
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUpdateInput = {
@@ -13598,10 +20783,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13622,6 +20810,18 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
@@ -13629,6 +20829,10 @@ export namespace Prisma {
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateInput = {
@@ -13644,10 +20848,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13668,6 +20875,18 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
@@ -13675,6 +20894,10 @@ export namespace Prisma {
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateManyInput = {
@@ -13690,10 +20913,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -13714,6 +20940,18 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
   }
 
   export type GestanteUpdateManyMutationInput = {
@@ -13729,10 +20967,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13753,6 +20994,18 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type GestanteUncheckedUpdateManyInput = {
@@ -13768,10 +21021,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13792,6 +21048,18 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ProfissionalCreateInput = {
@@ -13898,6 +21166,10 @@ export namespace Prisma {
     pressaoArterial?: string | null
     alturaUterina?: number | null
     batimentoCardiacoFetal?: number | null
+    imcConsulta?: number | null
+    movimentacaoFetal?: string | null
+    planoTexto?: string | null
+    ofertaLARC?: boolean
     notas?: string | null
     ubs?: string | null
     criadoEm?: Date | string
@@ -13914,6 +21186,10 @@ export namespace Prisma {
     pressaoArterial?: string | null
     alturaUterina?: number | null
     batimentoCardiacoFetal?: number | null
+    imcConsulta?: number | null
+    movimentacaoFetal?: string | null
+    planoTexto?: string | null
+    ofertaLARC?: boolean
     notas?: string | null
     ubs?: string | null
     gestanteId: string
@@ -13930,6 +21206,10 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13946,6 +21226,10 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     gestanteId?: StringFieldUpdateOperationsInput | string
@@ -13962,6 +21246,10 @@ export namespace Prisma {
     pressaoArterial?: string | null
     alturaUterina?: number | null
     batimentoCardiacoFetal?: number | null
+    imcConsulta?: number | null
+    movimentacaoFetal?: string | null
+    planoTexto?: string | null
+    ofertaLARC?: boolean
     notas?: string | null
     ubs?: string | null
     gestanteId: string
@@ -13978,6 +21266,10 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13992,6 +21284,10 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     gestanteId?: StringFieldUpdateOperationsInput | string
@@ -14351,6 +21647,11 @@ export namespace Prisma {
     status?: string
     termoLgpdAceito?: boolean
     etapaAtual?: number
+    ubsVinculacao?: string | null
+    profissionalVinculacaoId?: string | null
+    dataVinculacao?: Date | string | null
+    lgpdMetodoAssinatura?: string | null
+    lgpdDocumentoEnviado?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
     gestante: GestanteCreateNestedOneWithoutCartaoMaeSalvadorInput
@@ -14362,6 +21663,11 @@ export namespace Prisma {
     status?: string
     termoLgpdAceito?: boolean
     etapaAtual?: number
+    ubsVinculacao?: string | null
+    profissionalVinculacaoId?: string | null
+    dataVinculacao?: Date | string | null
+    lgpdMetodoAssinatura?: string | null
+    lgpdDocumentoEnviado?: boolean
     gestanteId: string
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -14373,6 +21679,11 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
     etapaAtual?: IntFieldUpdateOperationsInput | number
+    ubsVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    profissionalVinculacaoId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataVinculacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdMetodoAssinatura?: NullableStringFieldUpdateOperationsInput | string | null
+    lgpdDocumentoEnviado?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     gestante?: GestanteUpdateOneRequiredWithoutCartaoMaeSalvadorNestedInput
@@ -14384,6 +21695,11 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
     etapaAtual?: IntFieldUpdateOperationsInput | number
+    ubsVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    profissionalVinculacaoId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataVinculacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdMetodoAssinatura?: NullableStringFieldUpdateOperationsInput | string | null
+    lgpdDocumentoEnviado?: BoolFieldUpdateOperationsInput | boolean
     gestanteId?: StringFieldUpdateOperationsInput | string
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14395,6 +21711,11 @@ export namespace Prisma {
     status?: string
     termoLgpdAceito?: boolean
     etapaAtual?: number
+    ubsVinculacao?: string | null
+    profissionalVinculacaoId?: string | null
+    dataVinculacao?: Date | string | null
+    lgpdMetodoAssinatura?: string | null
+    lgpdDocumentoEnviado?: boolean
     gestanteId: string
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -14406,6 +21727,11 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
     etapaAtual?: IntFieldUpdateOperationsInput | number
+    ubsVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    profissionalVinculacaoId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataVinculacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdMetodoAssinatura?: NullableStringFieldUpdateOperationsInput | string | null
+    lgpdDocumentoEnviado?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14416,6 +21742,11 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
     etapaAtual?: IntFieldUpdateOperationsInput | number
+    ubsVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    profissionalVinculacaoId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataVinculacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdMetodoAssinatura?: NullableStringFieldUpdateOperationsInput | string | null
+    lgpdDocumentoEnviado?: BoolFieldUpdateOperationsInput | boolean
     gestanteId?: StringFieldUpdateOperationsInput | string
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14490,6 +21821,397 @@ export namespace Prisma {
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TratamentoSifilisCreateInput = {
+    id?: string
+    classificacaoCID: string
+    tipo: string
+    subtipo?: string | null
+    dataDiagnostico: Date | string
+    statusTratamento?: string
+    dosesNecessarias: number
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    gestante: GestanteCreateNestedOneWithoutTratamentosSifilisInput
+    aplicacoes?: AplicacaoPenicilinaCreateNestedManyWithoutTratamentoInput
+  }
+
+  export type TratamentoSifilisUncheckedCreateInput = {
+    id?: string
+    classificacaoCID: string
+    tipo: string
+    subtipo?: string | null
+    dataDiagnostico: Date | string
+    statusTratamento?: string
+    dosesNecessarias: number
+    gestanteId: string
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    aplicacoes?: AplicacaoPenicilinaUncheckedCreateNestedManyWithoutTratamentoInput
+  }
+
+  export type TratamentoSifilisUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classificacaoCID?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    subtipo?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDiagnostico?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusTratamento?: StringFieldUpdateOperationsInput | string
+    dosesNecessarias?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    gestante?: GestanteUpdateOneRequiredWithoutTratamentosSifilisNestedInput
+    aplicacoes?: AplicacaoPenicilinaUpdateManyWithoutTratamentoNestedInput
+  }
+
+  export type TratamentoSifilisUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classificacaoCID?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    subtipo?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDiagnostico?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusTratamento?: StringFieldUpdateOperationsInput | string
+    dosesNecessarias?: IntFieldUpdateOperationsInput | number
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    aplicacoes?: AplicacaoPenicilinaUncheckedUpdateManyWithoutTratamentoNestedInput
+  }
+
+  export type TratamentoSifilisCreateManyInput = {
+    id?: string
+    classificacaoCID: string
+    tipo: string
+    subtipo?: string | null
+    dataDiagnostico: Date | string
+    statusTratamento?: string
+    dosesNecessarias: number
+    gestanteId: string
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type TratamentoSifilisUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classificacaoCID?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    subtipo?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDiagnostico?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusTratamento?: StringFieldUpdateOperationsInput | string
+    dosesNecessarias?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TratamentoSifilisUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classificacaoCID?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    subtipo?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDiagnostico?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusTratamento?: StringFieldUpdateOperationsInput | string
+    dosesNecessarias?: IntFieldUpdateOperationsInput | number
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AplicacaoPenicilinaCreateInput = {
+    id?: string
+    data: Date | string
+    dose: number
+    observacao?: string | null
+    criadoEm?: Date | string
+    tratamento: TratamentoSifilisCreateNestedOneWithoutAplicacoesInput
+  }
+
+  export type AplicacaoPenicilinaUncheckedCreateInput = {
+    id?: string
+    data: Date | string
+    dose: number
+    observacao?: string | null
+    tratamentoId: string
+    criadoEm?: Date | string
+  }
+
+  export type AplicacaoPenicilinaUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    dose?: IntFieldUpdateOperationsInput | number
+    observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    tratamento?: TratamentoSifilisUpdateOneRequiredWithoutAplicacoesNestedInput
+  }
+
+  export type AplicacaoPenicilinaUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    dose?: IntFieldUpdateOperationsInput | number
+    observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    tratamentoId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AplicacaoPenicilinaCreateManyInput = {
+    id?: string
+    data: Date | string
+    dose: number
+    observacao?: string | null
+    tratamentoId: string
+    criadoEm?: Date | string
+  }
+
+  export type AplicacaoPenicilinaUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    dose?: IntFieldUpdateOperationsInput | number
+    observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AplicacaoPenicilinaUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    dose?: IntFieldUpdateOperationsInput | number
+    observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    tratamentoId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EncaminhamentoPNARCreateInput = {
+    id?: string
+    ciap?: string
+    dataEncaminhamento: Date | string
+    dataConsultaPNAR?: Date | string | null
+    horarioConsultaPNAR?: string | null
+    retornoRecomendado?: Date | string | null
+    relatorioTexto?: string | null
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: Date | string | null
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    gestante: GestanteCreateNestedOneWithoutEncaminhamentosPNARInput
+  }
+
+  export type EncaminhamentoPNARUncheckedCreateInput = {
+    id?: string
+    ciap?: string
+    dataEncaminhamento: Date | string
+    dataConsultaPNAR?: Date | string | null
+    horarioConsultaPNAR?: string | null
+    retornoRecomendado?: Date | string | null
+    relatorioTexto?: string | null
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: Date | string | null
+    gestanteId: string
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type EncaminhamentoPNARUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ciap?: StringFieldUpdateOperationsInput | string
+    dataEncaminhamento?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataConsultaPNAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horarioConsultaPNAR?: NullableStringFieldUpdateOperationsInput | string | null
+    retornoRecomendado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    relatorioTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaRealizada?: BoolFieldUpdateOperationsInput | boolean
+    dataConsultaRealizada?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    gestante?: GestanteUpdateOneRequiredWithoutEncaminhamentosPNARNestedInput
+  }
+
+  export type EncaminhamentoPNARUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ciap?: StringFieldUpdateOperationsInput | string
+    dataEncaminhamento?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataConsultaPNAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horarioConsultaPNAR?: NullableStringFieldUpdateOperationsInput | string | null
+    retornoRecomendado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    relatorioTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaRealizada?: BoolFieldUpdateOperationsInput | boolean
+    dataConsultaRealizada?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EncaminhamentoPNARCreateManyInput = {
+    id?: string
+    ciap?: string
+    dataEncaminhamento: Date | string
+    dataConsultaPNAR?: Date | string | null
+    horarioConsultaPNAR?: string | null
+    retornoRecomendado?: Date | string | null
+    relatorioTexto?: string | null
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: Date | string | null
+    gestanteId: string
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type EncaminhamentoPNARUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ciap?: StringFieldUpdateOperationsInput | string
+    dataEncaminhamento?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataConsultaPNAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horarioConsultaPNAR?: NullableStringFieldUpdateOperationsInput | string | null
+    retornoRecomendado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    relatorioTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaRealizada?: BoolFieldUpdateOperationsInput | boolean
+    dataConsultaRealizada?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EncaminhamentoPNARUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ciap?: StringFieldUpdateOperationsInput | string
+    dataEncaminhamento?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataConsultaPNAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horarioConsultaPNAR?: NullableStringFieldUpdateOperationsInput | string | null
+    retornoRecomendado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    relatorioTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaRealizada?: BoolFieldUpdateOperationsInput | boolean
+    dataConsultaRealizada?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PreNatalParceiroCreateInput = {
+    id?: string
+    realizado?: boolean
+    autoReferido?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    gestante: GestanteCreateNestedOneWithoutPreNatalParceiroInput
+  }
+
+  export type PreNatalParceiroUncheckedCreateInput = {
+    id?: string
+    realizado?: boolean
+    autoReferido?: boolean
+    gestanteId: string
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type PreNatalParceiroUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    realizado?: BoolFieldUpdateOperationsInput | boolean
+    autoReferido?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    gestante?: GestanteUpdateOneRequiredWithoutPreNatalParceiroNestedInput
+  }
+
+  export type PreNatalParceiroUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    realizado?: BoolFieldUpdateOperationsInput | boolean
+    autoReferido?: BoolFieldUpdateOperationsInput | boolean
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PreNatalParceiroCreateManyInput = {
+    id?: string
+    realizado?: boolean
+    autoReferido?: boolean
+    gestanteId: string
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type PreNatalParceiroUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    realizado?: BoolFieldUpdateOperationsInput | boolean
+    autoReferido?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PreNatalParceiroUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    realizado?: BoolFieldUpdateOperationsInput | boolean
+    autoReferido?: BoolFieldUpdateOperationsInput | boolean
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoCreateInput = {
+    id?: string
+    tipo: string
+    nota: number
+    comentario?: string | null
+    consultaId?: string | null
+    criadoEm?: Date | string
+    gestante: GestanteCreateNestedOneWithoutAvaliacoesInput
+  }
+
+  export type AvaliacaoUncheckedCreateInput = {
+    id?: string
+    tipo: string
+    nota: number
+    comentario?: string | null
+    consultaId?: string | null
+    gestanteId: string
+    criadoEm?: Date | string
+  }
+
+  export type AvaliacaoUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaId?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    gestante?: GestanteUpdateOneRequiredWithoutAvaliacoesNestedInput
+  }
+
+  export type AvaliacaoUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaId?: NullableStringFieldUpdateOperationsInput | string | null
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoCreateManyInput = {
+    id?: string
+    tipo: string
+    nota: number
+    comentario?: string | null
+    consultaId?: string | null
+    gestanteId: string
+    criadoEm?: Date | string
+  }
+
+  export type AvaliacaoUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaId?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaId?: NullableStringFieldUpdateOperationsInput | string | null
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -14540,6 +22262,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -14565,11 +22292,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
   export type ConsultaListRelationFilter = {
@@ -14613,6 +22335,29 @@ export namespace Prisma {
     none?: NotificacaoWhereInput
   }
 
+  export type TratamentoSifilisListRelationFilter = {
+    every?: TratamentoSifilisWhereInput
+    some?: TratamentoSifilisWhereInput
+    none?: TratamentoSifilisWhereInput
+  }
+
+  export type EncaminhamentoPNARListRelationFilter = {
+    every?: EncaminhamentoPNARWhereInput
+    some?: EncaminhamentoPNARWhereInput
+    none?: EncaminhamentoPNARWhereInput
+  }
+
+  export type PreNatalParceiroNullableScalarRelationFilter = {
+    is?: PreNatalParceiroWhereInput | null
+    isNot?: PreNatalParceiroWhereInput | null
+  }
+
+  export type AvaliacaoListRelationFilter = {
+    every?: AvaliacaoWhereInput
+    some?: AvaliacaoWhereInput
+    none?: AvaliacaoWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -14642,6 +22387,18 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type TratamentoSifilisOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EncaminhamentoPNAROrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AvaliacaoOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type GestanteCountOrderByAggregateInput = {
     id?: SortOrder
     cpf?: SortOrder
@@ -14655,10 +22412,13 @@ export namespace Prisma {
     bairro?: SortOrder
     cep?: SortOrder
     ubsVinculada?: SortOrder
+    hospitalReferencia?: SortOrder
     dataUltimaMenstruacao?: SortOrder
     dataProvavelParto?: SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    riscoGestacionalCIAP?: SortOrder
+    gravidezPlanejada?: SortOrder
     temWhatsapp?: SortOrder
     comoDescobriuGestacao?: SortOrder
     programaSocial?: SortOrder
@@ -14679,6 +22439,18 @@ export namespace Prisma {
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
+    antecedentesDiabetes?: SortOrder
+    antecedentesInfeccaoUrinaria?: SortOrder
+    antecedentesInfertilidade?: SortOrder
+    antecedentesDificuldadeAmamentacao?: SortOrder
+    antecedentesCardiopatia?: SortOrder
+    statusCaderneta?: SortOrder
+    cadernetaAnteriorId?: SortOrder
+    dataDesfecho?: SortOrder
+    participouAtividadeEducativa?: SortOrder
+    dataAtividadeEducativa?: SortOrder
+    realizouVisitaMaternidade?: SortOrder
+    dataVisitaMaternidade?: SortOrder
   }
 
   export type GestanteAvgOrderByAggregateInput = {
@@ -14703,10 +22475,13 @@ export namespace Prisma {
     bairro?: SortOrder
     cep?: SortOrder
     ubsVinculada?: SortOrder
+    hospitalReferencia?: SortOrder
     dataUltimaMenstruacao?: SortOrder
     dataProvavelParto?: SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    riscoGestacionalCIAP?: SortOrder
+    gravidezPlanejada?: SortOrder
     temWhatsapp?: SortOrder
     comoDescobriuGestacao?: SortOrder
     programaSocial?: SortOrder
@@ -14727,6 +22502,18 @@ export namespace Prisma {
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
+    antecedentesDiabetes?: SortOrder
+    antecedentesInfeccaoUrinaria?: SortOrder
+    antecedentesInfertilidade?: SortOrder
+    antecedentesDificuldadeAmamentacao?: SortOrder
+    antecedentesCardiopatia?: SortOrder
+    statusCaderneta?: SortOrder
+    cadernetaAnteriorId?: SortOrder
+    dataDesfecho?: SortOrder
+    participouAtividadeEducativa?: SortOrder
+    dataAtividadeEducativa?: SortOrder
+    realizouVisitaMaternidade?: SortOrder
+    dataVisitaMaternidade?: SortOrder
   }
 
   export type GestanteMinOrderByAggregateInput = {
@@ -14742,10 +22529,13 @@ export namespace Prisma {
     bairro?: SortOrder
     cep?: SortOrder
     ubsVinculada?: SortOrder
+    hospitalReferencia?: SortOrder
     dataUltimaMenstruacao?: SortOrder
     dataProvavelParto?: SortOrder
     tipoGravidez?: SortOrder
     riscoGestacional?: SortOrder
+    riscoGestacionalCIAP?: SortOrder
+    gravidezPlanejada?: SortOrder
     temWhatsapp?: SortOrder
     comoDescobriuGestacao?: SortOrder
     programaSocial?: SortOrder
@@ -14766,6 +22556,18 @@ export namespace Prisma {
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
+    antecedentesDiabetes?: SortOrder
+    antecedentesInfeccaoUrinaria?: SortOrder
+    antecedentesInfertilidade?: SortOrder
+    antecedentesDificuldadeAmamentacao?: SortOrder
+    antecedentesCardiopatia?: SortOrder
+    statusCaderneta?: SortOrder
+    cadernetaAnteriorId?: SortOrder
+    dataDesfecho?: SortOrder
+    participouAtividadeEducativa?: SortOrder
+    dataAtividadeEducativa?: SortOrder
+    realizouVisitaMaternidade?: SortOrder
+    dataVisitaMaternidade?: SortOrder
   }
 
   export type GestanteSumOrderByAggregateInput = {
@@ -14839,6 +22641,14 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -14877,14 +22687,6 @@ export namespace Prisma {
     _sum?: NestedFloatNullableFilter<$PrismaModel>
     _min?: NestedFloatNullableFilter<$PrismaModel>
     _max?: NestedFloatNullableFilter<$PrismaModel>
-  }
-
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type ProfissionalCountOrderByAggregateInput = {
@@ -14945,6 +22747,10 @@ export namespace Prisma {
     pressaoArterial?: SortOrder
     alturaUterina?: SortOrder
     batimentoCardiacoFetal?: SortOrder
+    imcConsulta?: SortOrder
+    movimentacaoFetal?: SortOrder
+    planoTexto?: SortOrder
+    ofertaLARC?: SortOrder
     notas?: SortOrder
     ubs?: SortOrder
     gestanteId?: SortOrder
@@ -14957,6 +22763,7 @@ export namespace Prisma {
     pesoKg?: SortOrder
     alturaUterina?: SortOrder
     batimentoCardiacoFetal?: SortOrder
+    imcConsulta?: SortOrder
   }
 
   export type ConsultaMaxOrderByAggregateInput = {
@@ -14968,6 +22775,10 @@ export namespace Prisma {
     pressaoArterial?: SortOrder
     alturaUterina?: SortOrder
     batimentoCardiacoFetal?: SortOrder
+    imcConsulta?: SortOrder
+    movimentacaoFetal?: SortOrder
+    planoTexto?: SortOrder
+    ofertaLARC?: SortOrder
     notas?: SortOrder
     ubs?: SortOrder
     gestanteId?: SortOrder
@@ -14984,6 +22795,10 @@ export namespace Prisma {
     pressaoArterial?: SortOrder
     alturaUterina?: SortOrder
     batimentoCardiacoFetal?: SortOrder
+    imcConsulta?: SortOrder
+    movimentacaoFetal?: SortOrder
+    planoTexto?: SortOrder
+    ofertaLARC?: SortOrder
     notas?: SortOrder
     ubs?: SortOrder
     gestanteId?: SortOrder
@@ -14996,6 +22811,7 @@ export namespace Prisma {
     pesoKg?: SortOrder
     alturaUterina?: SortOrder
     batimentoCardiacoFetal?: SortOrder
+    imcConsulta?: SortOrder
   }
 
   export type ExameCountOrderByAggregateInput = {
@@ -15165,6 +22981,11 @@ export namespace Prisma {
     status?: SortOrder
     termoLgpdAceito?: SortOrder
     etapaAtual?: SortOrder
+    ubsVinculacao?: SortOrder
+    profissionalVinculacaoId?: SortOrder
+    dataVinculacao?: SortOrder
+    lgpdMetodoAssinatura?: SortOrder
+    lgpdDocumentoEnviado?: SortOrder
     gestanteId?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -15180,6 +23001,11 @@ export namespace Prisma {
     status?: SortOrder
     termoLgpdAceito?: SortOrder
     etapaAtual?: SortOrder
+    ubsVinculacao?: SortOrder
+    profissionalVinculacaoId?: SortOrder
+    dataVinculacao?: SortOrder
+    lgpdMetodoAssinatura?: SortOrder
+    lgpdDocumentoEnviado?: SortOrder
     gestanteId?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -15191,6 +23017,11 @@ export namespace Prisma {
     status?: SortOrder
     termoLgpdAceito?: SortOrder
     etapaAtual?: SortOrder
+    ubsVinculacao?: SortOrder
+    profissionalVinculacaoId?: SortOrder
+    dataVinculacao?: SortOrder
+    lgpdMetodoAssinatura?: SortOrder
+    lgpdDocumentoEnviado?: SortOrder
     gestanteId?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -15246,6 +23077,213 @@ export namespace Prisma {
     criadoEm?: SortOrder
   }
 
+  export type AplicacaoPenicilinaListRelationFilter = {
+    every?: AplicacaoPenicilinaWhereInput
+    some?: AplicacaoPenicilinaWhereInput
+    none?: AplicacaoPenicilinaWhereInput
+  }
+
+  export type AplicacaoPenicilinaOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TratamentoSifilisCountOrderByAggregateInput = {
+    id?: SortOrder
+    classificacaoCID?: SortOrder
+    tipo?: SortOrder
+    subtipo?: SortOrder
+    dataDiagnostico?: SortOrder
+    statusTratamento?: SortOrder
+    dosesNecessarias?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type TratamentoSifilisAvgOrderByAggregateInput = {
+    dosesNecessarias?: SortOrder
+  }
+
+  export type TratamentoSifilisMaxOrderByAggregateInput = {
+    id?: SortOrder
+    classificacaoCID?: SortOrder
+    tipo?: SortOrder
+    subtipo?: SortOrder
+    dataDiagnostico?: SortOrder
+    statusTratamento?: SortOrder
+    dosesNecessarias?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type TratamentoSifilisMinOrderByAggregateInput = {
+    id?: SortOrder
+    classificacaoCID?: SortOrder
+    tipo?: SortOrder
+    subtipo?: SortOrder
+    dataDiagnostico?: SortOrder
+    statusTratamento?: SortOrder
+    dosesNecessarias?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type TratamentoSifilisSumOrderByAggregateInput = {
+    dosesNecessarias?: SortOrder
+  }
+
+  export type TratamentoSifilisScalarRelationFilter = {
+    is?: TratamentoSifilisWhereInput
+    isNot?: TratamentoSifilisWhereInput
+  }
+
+  export type AplicacaoPenicilinaCountOrderByAggregateInput = {
+    id?: SortOrder
+    data?: SortOrder
+    dose?: SortOrder
+    observacao?: SortOrder
+    tratamentoId?: SortOrder
+    criadoEm?: SortOrder
+  }
+
+  export type AplicacaoPenicilinaAvgOrderByAggregateInput = {
+    dose?: SortOrder
+  }
+
+  export type AplicacaoPenicilinaMaxOrderByAggregateInput = {
+    id?: SortOrder
+    data?: SortOrder
+    dose?: SortOrder
+    observacao?: SortOrder
+    tratamentoId?: SortOrder
+    criadoEm?: SortOrder
+  }
+
+  export type AplicacaoPenicilinaMinOrderByAggregateInput = {
+    id?: SortOrder
+    data?: SortOrder
+    dose?: SortOrder
+    observacao?: SortOrder
+    tratamentoId?: SortOrder
+    criadoEm?: SortOrder
+  }
+
+  export type AplicacaoPenicilinaSumOrderByAggregateInput = {
+    dose?: SortOrder
+  }
+
+  export type EncaminhamentoPNARCountOrderByAggregateInput = {
+    id?: SortOrder
+    ciap?: SortOrder
+    dataEncaminhamento?: SortOrder
+    dataConsultaPNAR?: SortOrder
+    horarioConsultaPNAR?: SortOrder
+    retornoRecomendado?: SortOrder
+    relatorioTexto?: SortOrder
+    consultaRealizada?: SortOrder
+    dataConsultaRealizada?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type EncaminhamentoPNARMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ciap?: SortOrder
+    dataEncaminhamento?: SortOrder
+    dataConsultaPNAR?: SortOrder
+    horarioConsultaPNAR?: SortOrder
+    retornoRecomendado?: SortOrder
+    relatorioTexto?: SortOrder
+    consultaRealizada?: SortOrder
+    dataConsultaRealizada?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type EncaminhamentoPNARMinOrderByAggregateInput = {
+    id?: SortOrder
+    ciap?: SortOrder
+    dataEncaminhamento?: SortOrder
+    dataConsultaPNAR?: SortOrder
+    horarioConsultaPNAR?: SortOrder
+    retornoRecomendado?: SortOrder
+    relatorioTexto?: SortOrder
+    consultaRealizada?: SortOrder
+    dataConsultaRealizada?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type PreNatalParceiroCountOrderByAggregateInput = {
+    id?: SortOrder
+    realizado?: SortOrder
+    autoReferido?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type PreNatalParceiroMaxOrderByAggregateInput = {
+    id?: SortOrder
+    realizado?: SortOrder
+    autoReferido?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type PreNatalParceiroMinOrderByAggregateInput = {
+    id?: SortOrder
+    realizado?: SortOrder
+    autoReferido?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+    atualizadoEm?: SortOrder
+  }
+
+  export type AvaliacaoCountOrderByAggregateInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    consultaId?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+  }
+
+  export type AvaliacaoAvgOrderByAggregateInput = {
+    nota?: SortOrder
+  }
+
+  export type AvaliacaoMaxOrderByAggregateInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    consultaId?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+  }
+
+  export type AvaliacaoMinOrderByAggregateInput = {
+    id?: SortOrder
+    tipo?: SortOrder
+    nota?: SortOrder
+    comentario?: SortOrder
+    consultaId?: SortOrder
+    gestanteId?: SortOrder
+    criadoEm?: SortOrder
+  }
+
+  export type AvaliacaoSumOrderByAggregateInput = {
+    nota?: SortOrder
+  }
+
   export type ConsultaCreateNestedManyWithoutGestanteInput = {
     create?: XOR<ConsultaCreateWithoutGestanteInput, ConsultaUncheckedCreateWithoutGestanteInput> | ConsultaCreateWithoutGestanteInput[] | ConsultaUncheckedCreateWithoutGestanteInput[]
     connectOrCreate?: ConsultaCreateOrConnectWithoutGestanteInput | ConsultaCreateOrConnectWithoutGestanteInput[]
@@ -15292,6 +23330,33 @@ export namespace Prisma {
     connectOrCreate?: NotificacaoCreateOrConnectWithoutGestanteInput | NotificacaoCreateOrConnectWithoutGestanteInput[]
     createMany?: NotificacaoCreateManyGestanteInputEnvelope
     connect?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
+  }
+
+  export type TratamentoSifilisCreateNestedManyWithoutGestanteInput = {
+    create?: XOR<TratamentoSifilisCreateWithoutGestanteInput, TratamentoSifilisUncheckedCreateWithoutGestanteInput> | TratamentoSifilisCreateWithoutGestanteInput[] | TratamentoSifilisUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: TratamentoSifilisCreateOrConnectWithoutGestanteInput | TratamentoSifilisCreateOrConnectWithoutGestanteInput[]
+    createMany?: TratamentoSifilisCreateManyGestanteInputEnvelope
+    connect?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+  }
+
+  export type EncaminhamentoPNARCreateNestedManyWithoutGestanteInput = {
+    create?: XOR<EncaminhamentoPNARCreateWithoutGestanteInput, EncaminhamentoPNARUncheckedCreateWithoutGestanteInput> | EncaminhamentoPNARCreateWithoutGestanteInput[] | EncaminhamentoPNARUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: EncaminhamentoPNARCreateOrConnectWithoutGestanteInput | EncaminhamentoPNARCreateOrConnectWithoutGestanteInput[]
+    createMany?: EncaminhamentoPNARCreateManyGestanteInputEnvelope
+    connect?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+  }
+
+  export type PreNatalParceiroCreateNestedOneWithoutGestanteInput = {
+    create?: XOR<PreNatalParceiroCreateWithoutGestanteInput, PreNatalParceiroUncheckedCreateWithoutGestanteInput>
+    connectOrCreate?: PreNatalParceiroCreateOrConnectWithoutGestanteInput
+    connect?: PreNatalParceiroWhereUniqueInput
+  }
+
+  export type AvaliacaoCreateNestedManyWithoutGestanteInput = {
+    create?: XOR<AvaliacaoCreateWithoutGestanteInput, AvaliacaoUncheckedCreateWithoutGestanteInput> | AvaliacaoCreateWithoutGestanteInput[] | AvaliacaoUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutGestanteInput | AvaliacaoCreateOrConnectWithoutGestanteInput[]
+    createMany?: AvaliacaoCreateManyGestanteInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
   }
 
   export type ConsultaUncheckedCreateNestedManyWithoutGestanteInput = {
@@ -15342,6 +23407,33 @@ export namespace Prisma {
     connect?: NotificacaoWhereUniqueInput | NotificacaoWhereUniqueInput[]
   }
 
+  export type TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput = {
+    create?: XOR<TratamentoSifilisCreateWithoutGestanteInput, TratamentoSifilisUncheckedCreateWithoutGestanteInput> | TratamentoSifilisCreateWithoutGestanteInput[] | TratamentoSifilisUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: TratamentoSifilisCreateOrConnectWithoutGestanteInput | TratamentoSifilisCreateOrConnectWithoutGestanteInput[]
+    createMany?: TratamentoSifilisCreateManyGestanteInputEnvelope
+    connect?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+  }
+
+  export type EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput = {
+    create?: XOR<EncaminhamentoPNARCreateWithoutGestanteInput, EncaminhamentoPNARUncheckedCreateWithoutGestanteInput> | EncaminhamentoPNARCreateWithoutGestanteInput[] | EncaminhamentoPNARUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: EncaminhamentoPNARCreateOrConnectWithoutGestanteInput | EncaminhamentoPNARCreateOrConnectWithoutGestanteInput[]
+    createMany?: EncaminhamentoPNARCreateManyGestanteInputEnvelope
+    connect?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+  }
+
+  export type PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput = {
+    create?: XOR<PreNatalParceiroCreateWithoutGestanteInput, PreNatalParceiroUncheckedCreateWithoutGestanteInput>
+    connectOrCreate?: PreNatalParceiroCreateOrConnectWithoutGestanteInput
+    connect?: PreNatalParceiroWhereUniqueInput
+  }
+
+  export type AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput = {
+    create?: XOR<AvaliacaoCreateWithoutGestanteInput, AvaliacaoUncheckedCreateWithoutGestanteInput> | AvaliacaoCreateWithoutGestanteInput[] | AvaliacaoUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutGestanteInput | AvaliacaoCreateOrConnectWithoutGestanteInput[]
+    createMany?: AvaliacaoCreateManyGestanteInputEnvelope
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -15356,6 +23448,10 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -15376,10 +23472,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
   }
 
   export type ConsultaUpdateManyWithoutGestanteNestedInput = {
@@ -15476,6 +23568,58 @@ export namespace Prisma {
     deleteMany?: NotificacaoScalarWhereInput | NotificacaoScalarWhereInput[]
   }
 
+  export type TratamentoSifilisUpdateManyWithoutGestanteNestedInput = {
+    create?: XOR<TratamentoSifilisCreateWithoutGestanteInput, TratamentoSifilisUncheckedCreateWithoutGestanteInput> | TratamentoSifilisCreateWithoutGestanteInput[] | TratamentoSifilisUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: TratamentoSifilisCreateOrConnectWithoutGestanteInput | TratamentoSifilisCreateOrConnectWithoutGestanteInput[]
+    upsert?: TratamentoSifilisUpsertWithWhereUniqueWithoutGestanteInput | TratamentoSifilisUpsertWithWhereUniqueWithoutGestanteInput[]
+    createMany?: TratamentoSifilisCreateManyGestanteInputEnvelope
+    set?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+    disconnect?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+    delete?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+    connect?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+    update?: TratamentoSifilisUpdateWithWhereUniqueWithoutGestanteInput | TratamentoSifilisUpdateWithWhereUniqueWithoutGestanteInput[]
+    updateMany?: TratamentoSifilisUpdateManyWithWhereWithoutGestanteInput | TratamentoSifilisUpdateManyWithWhereWithoutGestanteInput[]
+    deleteMany?: TratamentoSifilisScalarWhereInput | TratamentoSifilisScalarWhereInput[]
+  }
+
+  export type EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput = {
+    create?: XOR<EncaminhamentoPNARCreateWithoutGestanteInput, EncaminhamentoPNARUncheckedCreateWithoutGestanteInput> | EncaminhamentoPNARCreateWithoutGestanteInput[] | EncaminhamentoPNARUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: EncaminhamentoPNARCreateOrConnectWithoutGestanteInput | EncaminhamentoPNARCreateOrConnectWithoutGestanteInput[]
+    upsert?: EncaminhamentoPNARUpsertWithWhereUniqueWithoutGestanteInput | EncaminhamentoPNARUpsertWithWhereUniqueWithoutGestanteInput[]
+    createMany?: EncaminhamentoPNARCreateManyGestanteInputEnvelope
+    set?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+    disconnect?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+    delete?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+    connect?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+    update?: EncaminhamentoPNARUpdateWithWhereUniqueWithoutGestanteInput | EncaminhamentoPNARUpdateWithWhereUniqueWithoutGestanteInput[]
+    updateMany?: EncaminhamentoPNARUpdateManyWithWhereWithoutGestanteInput | EncaminhamentoPNARUpdateManyWithWhereWithoutGestanteInput[]
+    deleteMany?: EncaminhamentoPNARScalarWhereInput | EncaminhamentoPNARScalarWhereInput[]
+  }
+
+  export type PreNatalParceiroUpdateOneWithoutGestanteNestedInput = {
+    create?: XOR<PreNatalParceiroCreateWithoutGestanteInput, PreNatalParceiroUncheckedCreateWithoutGestanteInput>
+    connectOrCreate?: PreNatalParceiroCreateOrConnectWithoutGestanteInput
+    upsert?: PreNatalParceiroUpsertWithoutGestanteInput
+    disconnect?: PreNatalParceiroWhereInput | boolean
+    delete?: PreNatalParceiroWhereInput | boolean
+    connect?: PreNatalParceiroWhereUniqueInput
+    update?: XOR<XOR<PreNatalParceiroUpdateToOneWithWhereWithoutGestanteInput, PreNatalParceiroUpdateWithoutGestanteInput>, PreNatalParceiroUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type AvaliacaoUpdateManyWithoutGestanteNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutGestanteInput, AvaliacaoUncheckedCreateWithoutGestanteInput> | AvaliacaoCreateWithoutGestanteInput[] | AvaliacaoUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutGestanteInput | AvaliacaoCreateOrConnectWithoutGestanteInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutGestanteInput | AvaliacaoUpsertWithWhereUniqueWithoutGestanteInput[]
+    createMany?: AvaliacaoCreateManyGestanteInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutGestanteInput | AvaliacaoUpdateWithWhereUniqueWithoutGestanteInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutGestanteInput | AvaliacaoUpdateManyWithWhereWithoutGestanteInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+  }
+
   export type ConsultaUncheckedUpdateManyWithoutGestanteNestedInput = {
     create?: XOR<ConsultaCreateWithoutGestanteInput, ConsultaUncheckedCreateWithoutGestanteInput> | ConsultaCreateWithoutGestanteInput[] | ConsultaUncheckedCreateWithoutGestanteInput[]
     connectOrCreate?: ConsultaCreateOrConnectWithoutGestanteInput | ConsultaCreateOrConnectWithoutGestanteInput[]
@@ -15568,6 +23712,58 @@ export namespace Prisma {
     update?: NotificacaoUpdateWithWhereUniqueWithoutGestanteInput | NotificacaoUpdateWithWhereUniqueWithoutGestanteInput[]
     updateMany?: NotificacaoUpdateManyWithWhereWithoutGestanteInput | NotificacaoUpdateManyWithWhereWithoutGestanteInput[]
     deleteMany?: NotificacaoScalarWhereInput | NotificacaoScalarWhereInput[]
+  }
+
+  export type TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput = {
+    create?: XOR<TratamentoSifilisCreateWithoutGestanteInput, TratamentoSifilisUncheckedCreateWithoutGestanteInput> | TratamentoSifilisCreateWithoutGestanteInput[] | TratamentoSifilisUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: TratamentoSifilisCreateOrConnectWithoutGestanteInput | TratamentoSifilisCreateOrConnectWithoutGestanteInput[]
+    upsert?: TratamentoSifilisUpsertWithWhereUniqueWithoutGestanteInput | TratamentoSifilisUpsertWithWhereUniqueWithoutGestanteInput[]
+    createMany?: TratamentoSifilisCreateManyGestanteInputEnvelope
+    set?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+    disconnect?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+    delete?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+    connect?: TratamentoSifilisWhereUniqueInput | TratamentoSifilisWhereUniqueInput[]
+    update?: TratamentoSifilisUpdateWithWhereUniqueWithoutGestanteInput | TratamentoSifilisUpdateWithWhereUniqueWithoutGestanteInput[]
+    updateMany?: TratamentoSifilisUpdateManyWithWhereWithoutGestanteInput | TratamentoSifilisUpdateManyWithWhereWithoutGestanteInput[]
+    deleteMany?: TratamentoSifilisScalarWhereInput | TratamentoSifilisScalarWhereInput[]
+  }
+
+  export type EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput = {
+    create?: XOR<EncaminhamentoPNARCreateWithoutGestanteInput, EncaminhamentoPNARUncheckedCreateWithoutGestanteInput> | EncaminhamentoPNARCreateWithoutGestanteInput[] | EncaminhamentoPNARUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: EncaminhamentoPNARCreateOrConnectWithoutGestanteInput | EncaminhamentoPNARCreateOrConnectWithoutGestanteInput[]
+    upsert?: EncaminhamentoPNARUpsertWithWhereUniqueWithoutGestanteInput | EncaminhamentoPNARUpsertWithWhereUniqueWithoutGestanteInput[]
+    createMany?: EncaminhamentoPNARCreateManyGestanteInputEnvelope
+    set?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+    disconnect?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+    delete?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+    connect?: EncaminhamentoPNARWhereUniqueInput | EncaminhamentoPNARWhereUniqueInput[]
+    update?: EncaminhamentoPNARUpdateWithWhereUniqueWithoutGestanteInput | EncaminhamentoPNARUpdateWithWhereUniqueWithoutGestanteInput[]
+    updateMany?: EncaminhamentoPNARUpdateManyWithWhereWithoutGestanteInput | EncaminhamentoPNARUpdateManyWithWhereWithoutGestanteInput[]
+    deleteMany?: EncaminhamentoPNARScalarWhereInput | EncaminhamentoPNARScalarWhereInput[]
+  }
+
+  export type PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput = {
+    create?: XOR<PreNatalParceiroCreateWithoutGestanteInput, PreNatalParceiroUncheckedCreateWithoutGestanteInput>
+    connectOrCreate?: PreNatalParceiroCreateOrConnectWithoutGestanteInput
+    upsert?: PreNatalParceiroUpsertWithoutGestanteInput
+    disconnect?: PreNatalParceiroWhereInput | boolean
+    delete?: PreNatalParceiroWhereInput | boolean
+    connect?: PreNatalParceiroWhereUniqueInput
+    update?: XOR<XOR<PreNatalParceiroUpdateToOneWithWhereWithoutGestanteInput, PreNatalParceiroUpdateWithoutGestanteInput>, PreNatalParceiroUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput = {
+    create?: XOR<AvaliacaoCreateWithoutGestanteInput, AvaliacaoUncheckedCreateWithoutGestanteInput> | AvaliacaoCreateWithoutGestanteInput[] | AvaliacaoUncheckedCreateWithoutGestanteInput[]
+    connectOrCreate?: AvaliacaoCreateOrConnectWithoutGestanteInput | AvaliacaoCreateOrConnectWithoutGestanteInput[]
+    upsert?: AvaliacaoUpsertWithWhereUniqueWithoutGestanteInput | AvaliacaoUpsertWithWhereUniqueWithoutGestanteInput[]
+    createMany?: AvaliacaoCreateManyGestanteInputEnvelope
+    set?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    disconnect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    delete?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    connect?: AvaliacaoWhereUniqueInput | AvaliacaoWhereUniqueInput[]
+    update?: AvaliacaoUpdateWithWhereUniqueWithoutGestanteInput | AvaliacaoUpdateWithWhereUniqueWithoutGestanteInput[]
+    updateMany?: AvaliacaoUpdateManyWithWhereWithoutGestanteInput | AvaliacaoUpdateManyWithWhereWithoutGestanteInput[]
+    deleteMany?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
   }
 
   export type ConsultaCreateNestedManyWithoutProfissionalInput = {
@@ -15732,6 +23928,118 @@ export namespace Prisma {
     update?: XOR<XOR<GestanteUpdateToOneWithWhereWithoutNotificacoesInput, GestanteUpdateWithoutNotificacoesInput>, GestanteUncheckedUpdateWithoutNotificacoesInput>
   }
 
+  export type GestanteCreateNestedOneWithoutTratamentosSifilisInput = {
+    create?: XOR<GestanteCreateWithoutTratamentosSifilisInput, GestanteUncheckedCreateWithoutTratamentosSifilisInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutTratamentosSifilisInput
+    connect?: GestanteWhereUniqueInput
+  }
+
+  export type AplicacaoPenicilinaCreateNestedManyWithoutTratamentoInput = {
+    create?: XOR<AplicacaoPenicilinaCreateWithoutTratamentoInput, AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput> | AplicacaoPenicilinaCreateWithoutTratamentoInput[] | AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput[]
+    connectOrCreate?: AplicacaoPenicilinaCreateOrConnectWithoutTratamentoInput | AplicacaoPenicilinaCreateOrConnectWithoutTratamentoInput[]
+    createMany?: AplicacaoPenicilinaCreateManyTratamentoInputEnvelope
+    connect?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+  }
+
+  export type AplicacaoPenicilinaUncheckedCreateNestedManyWithoutTratamentoInput = {
+    create?: XOR<AplicacaoPenicilinaCreateWithoutTratamentoInput, AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput> | AplicacaoPenicilinaCreateWithoutTratamentoInput[] | AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput[]
+    connectOrCreate?: AplicacaoPenicilinaCreateOrConnectWithoutTratamentoInput | AplicacaoPenicilinaCreateOrConnectWithoutTratamentoInput[]
+    createMany?: AplicacaoPenicilinaCreateManyTratamentoInputEnvelope
+    connect?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+  }
+
+  export type GestanteUpdateOneRequiredWithoutTratamentosSifilisNestedInput = {
+    create?: XOR<GestanteCreateWithoutTratamentosSifilisInput, GestanteUncheckedCreateWithoutTratamentosSifilisInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutTratamentosSifilisInput
+    upsert?: GestanteUpsertWithoutTratamentosSifilisInput
+    connect?: GestanteWhereUniqueInput
+    update?: XOR<XOR<GestanteUpdateToOneWithWhereWithoutTratamentosSifilisInput, GestanteUpdateWithoutTratamentosSifilisInput>, GestanteUncheckedUpdateWithoutTratamentosSifilisInput>
+  }
+
+  export type AplicacaoPenicilinaUpdateManyWithoutTratamentoNestedInput = {
+    create?: XOR<AplicacaoPenicilinaCreateWithoutTratamentoInput, AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput> | AplicacaoPenicilinaCreateWithoutTratamentoInput[] | AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput[]
+    connectOrCreate?: AplicacaoPenicilinaCreateOrConnectWithoutTratamentoInput | AplicacaoPenicilinaCreateOrConnectWithoutTratamentoInput[]
+    upsert?: AplicacaoPenicilinaUpsertWithWhereUniqueWithoutTratamentoInput | AplicacaoPenicilinaUpsertWithWhereUniqueWithoutTratamentoInput[]
+    createMany?: AplicacaoPenicilinaCreateManyTratamentoInputEnvelope
+    set?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+    disconnect?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+    delete?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+    connect?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+    update?: AplicacaoPenicilinaUpdateWithWhereUniqueWithoutTratamentoInput | AplicacaoPenicilinaUpdateWithWhereUniqueWithoutTratamentoInput[]
+    updateMany?: AplicacaoPenicilinaUpdateManyWithWhereWithoutTratamentoInput | AplicacaoPenicilinaUpdateManyWithWhereWithoutTratamentoInput[]
+    deleteMany?: AplicacaoPenicilinaScalarWhereInput | AplicacaoPenicilinaScalarWhereInput[]
+  }
+
+  export type AplicacaoPenicilinaUncheckedUpdateManyWithoutTratamentoNestedInput = {
+    create?: XOR<AplicacaoPenicilinaCreateWithoutTratamentoInput, AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput> | AplicacaoPenicilinaCreateWithoutTratamentoInput[] | AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput[]
+    connectOrCreate?: AplicacaoPenicilinaCreateOrConnectWithoutTratamentoInput | AplicacaoPenicilinaCreateOrConnectWithoutTratamentoInput[]
+    upsert?: AplicacaoPenicilinaUpsertWithWhereUniqueWithoutTratamentoInput | AplicacaoPenicilinaUpsertWithWhereUniqueWithoutTratamentoInput[]
+    createMany?: AplicacaoPenicilinaCreateManyTratamentoInputEnvelope
+    set?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+    disconnect?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+    delete?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+    connect?: AplicacaoPenicilinaWhereUniqueInput | AplicacaoPenicilinaWhereUniqueInput[]
+    update?: AplicacaoPenicilinaUpdateWithWhereUniqueWithoutTratamentoInput | AplicacaoPenicilinaUpdateWithWhereUniqueWithoutTratamentoInput[]
+    updateMany?: AplicacaoPenicilinaUpdateManyWithWhereWithoutTratamentoInput | AplicacaoPenicilinaUpdateManyWithWhereWithoutTratamentoInput[]
+    deleteMany?: AplicacaoPenicilinaScalarWhereInput | AplicacaoPenicilinaScalarWhereInput[]
+  }
+
+  export type TratamentoSifilisCreateNestedOneWithoutAplicacoesInput = {
+    create?: XOR<TratamentoSifilisCreateWithoutAplicacoesInput, TratamentoSifilisUncheckedCreateWithoutAplicacoesInput>
+    connectOrCreate?: TratamentoSifilisCreateOrConnectWithoutAplicacoesInput
+    connect?: TratamentoSifilisWhereUniqueInput
+  }
+
+  export type TratamentoSifilisUpdateOneRequiredWithoutAplicacoesNestedInput = {
+    create?: XOR<TratamentoSifilisCreateWithoutAplicacoesInput, TratamentoSifilisUncheckedCreateWithoutAplicacoesInput>
+    connectOrCreate?: TratamentoSifilisCreateOrConnectWithoutAplicacoesInput
+    upsert?: TratamentoSifilisUpsertWithoutAplicacoesInput
+    connect?: TratamentoSifilisWhereUniqueInput
+    update?: XOR<XOR<TratamentoSifilisUpdateToOneWithWhereWithoutAplicacoesInput, TratamentoSifilisUpdateWithoutAplicacoesInput>, TratamentoSifilisUncheckedUpdateWithoutAplicacoesInput>
+  }
+
+  export type GestanteCreateNestedOneWithoutEncaminhamentosPNARInput = {
+    create?: XOR<GestanteCreateWithoutEncaminhamentosPNARInput, GestanteUncheckedCreateWithoutEncaminhamentosPNARInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutEncaminhamentosPNARInput
+    connect?: GestanteWhereUniqueInput
+  }
+
+  export type GestanteUpdateOneRequiredWithoutEncaminhamentosPNARNestedInput = {
+    create?: XOR<GestanteCreateWithoutEncaminhamentosPNARInput, GestanteUncheckedCreateWithoutEncaminhamentosPNARInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutEncaminhamentosPNARInput
+    upsert?: GestanteUpsertWithoutEncaminhamentosPNARInput
+    connect?: GestanteWhereUniqueInput
+    update?: XOR<XOR<GestanteUpdateToOneWithWhereWithoutEncaminhamentosPNARInput, GestanteUpdateWithoutEncaminhamentosPNARInput>, GestanteUncheckedUpdateWithoutEncaminhamentosPNARInput>
+  }
+
+  export type GestanteCreateNestedOneWithoutPreNatalParceiroInput = {
+    create?: XOR<GestanteCreateWithoutPreNatalParceiroInput, GestanteUncheckedCreateWithoutPreNatalParceiroInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutPreNatalParceiroInput
+    connect?: GestanteWhereUniqueInput
+  }
+
+  export type GestanteUpdateOneRequiredWithoutPreNatalParceiroNestedInput = {
+    create?: XOR<GestanteCreateWithoutPreNatalParceiroInput, GestanteUncheckedCreateWithoutPreNatalParceiroInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutPreNatalParceiroInput
+    upsert?: GestanteUpsertWithoutPreNatalParceiroInput
+    connect?: GestanteWhereUniqueInput
+    update?: XOR<XOR<GestanteUpdateToOneWithWhereWithoutPreNatalParceiroInput, GestanteUpdateWithoutPreNatalParceiroInput>, GestanteUncheckedUpdateWithoutPreNatalParceiroInput>
+  }
+
+  export type GestanteCreateNestedOneWithoutAvaliacoesInput = {
+    create?: XOR<GestanteCreateWithoutAvaliacoesInput, GestanteUncheckedCreateWithoutAvaliacoesInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutAvaliacoesInput
+    connect?: GestanteWhereUniqueInput
+  }
+
+  export type GestanteUpdateOneRequiredWithoutAvaliacoesNestedInput = {
+    create?: XOR<GestanteCreateWithoutAvaliacoesInput, GestanteUncheckedCreateWithoutAvaliacoesInput>
+    connectOrCreate?: GestanteCreateOrConnectWithoutAvaliacoesInput
+    upsert?: GestanteUpsertWithoutAvaliacoesInput
+    connect?: GestanteWhereUniqueInput
+    update?: XOR<XOR<GestanteUpdateToOneWithWhereWithoutAvaliacoesInput, GestanteUpdateWithoutAvaliacoesInput>, GestanteUncheckedUpdateWithoutAvaliacoesInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -15782,6 +24090,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -15807,11 +24120,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -15887,6 +24195,14 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
@@ -15927,14 +24243,6 @@ export namespace Prisma {
     _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
-  }
-
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -15971,6 +24279,10 @@ export namespace Prisma {
     pressaoArterial?: string | null
     alturaUterina?: number | null
     batimentoCardiacoFetal?: number | null
+    imcConsulta?: number | null
+    movimentacaoFetal?: string | null
+    planoTexto?: string | null
+    ofertaLARC?: boolean
     notas?: string | null
     ubs?: string | null
     criadoEm?: Date | string
@@ -15986,6 +24298,10 @@ export namespace Prisma {
     pressaoArterial?: string | null
     alturaUterina?: number | null
     batimentoCardiacoFetal?: number | null
+    imcConsulta?: number | null
+    movimentacaoFetal?: string | null
+    planoTexto?: string | null
+    ofertaLARC?: boolean
     notas?: string | null
     ubs?: string | null
     profissionalId: string
@@ -16135,6 +24451,11 @@ export namespace Prisma {
     status?: string
     termoLgpdAceito?: boolean
     etapaAtual?: number
+    ubsVinculacao?: string | null
+    profissionalVinculacaoId?: string | null
+    dataVinculacao?: Date | string | null
+    lgpdMetodoAssinatura?: string | null
+    lgpdDocumentoEnviado?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
   }
@@ -16145,6 +24466,11 @@ export namespace Prisma {
     status?: string
     termoLgpdAceito?: boolean
     etapaAtual?: number
+    ubsVinculacao?: string | null
+    profissionalVinculacaoId?: string | null
+    dataVinculacao?: Date | string | null
+    lgpdMetodoAssinatura?: string | null
+    lgpdDocumentoEnviado?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
   }
@@ -16181,6 +24507,126 @@ export namespace Prisma {
     data: NotificacaoCreateManyGestanteInput | NotificacaoCreateManyGestanteInput[]
   }
 
+  export type TratamentoSifilisCreateWithoutGestanteInput = {
+    id?: string
+    classificacaoCID: string
+    tipo: string
+    subtipo?: string | null
+    dataDiagnostico: Date | string
+    statusTratamento?: string
+    dosesNecessarias: number
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    aplicacoes?: AplicacaoPenicilinaCreateNestedManyWithoutTratamentoInput
+  }
+
+  export type TratamentoSifilisUncheckedCreateWithoutGestanteInput = {
+    id?: string
+    classificacaoCID: string
+    tipo: string
+    subtipo?: string | null
+    dataDiagnostico: Date | string
+    statusTratamento?: string
+    dosesNecessarias: number
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    aplicacoes?: AplicacaoPenicilinaUncheckedCreateNestedManyWithoutTratamentoInput
+  }
+
+  export type TratamentoSifilisCreateOrConnectWithoutGestanteInput = {
+    where: TratamentoSifilisWhereUniqueInput
+    create: XOR<TratamentoSifilisCreateWithoutGestanteInput, TratamentoSifilisUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type TratamentoSifilisCreateManyGestanteInputEnvelope = {
+    data: TratamentoSifilisCreateManyGestanteInput | TratamentoSifilisCreateManyGestanteInput[]
+  }
+
+  export type EncaminhamentoPNARCreateWithoutGestanteInput = {
+    id?: string
+    ciap?: string
+    dataEncaminhamento: Date | string
+    dataConsultaPNAR?: Date | string | null
+    horarioConsultaPNAR?: string | null
+    retornoRecomendado?: Date | string | null
+    relatorioTexto?: string | null
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: Date | string | null
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type EncaminhamentoPNARUncheckedCreateWithoutGestanteInput = {
+    id?: string
+    ciap?: string
+    dataEncaminhamento: Date | string
+    dataConsultaPNAR?: Date | string | null
+    horarioConsultaPNAR?: string | null
+    retornoRecomendado?: Date | string | null
+    relatorioTexto?: string | null
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: Date | string | null
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type EncaminhamentoPNARCreateOrConnectWithoutGestanteInput = {
+    where: EncaminhamentoPNARWhereUniqueInput
+    create: XOR<EncaminhamentoPNARCreateWithoutGestanteInput, EncaminhamentoPNARUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type EncaminhamentoPNARCreateManyGestanteInputEnvelope = {
+    data: EncaminhamentoPNARCreateManyGestanteInput | EncaminhamentoPNARCreateManyGestanteInput[]
+  }
+
+  export type PreNatalParceiroCreateWithoutGestanteInput = {
+    id?: string
+    realizado?: boolean
+    autoReferido?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type PreNatalParceiroUncheckedCreateWithoutGestanteInput = {
+    id?: string
+    realizado?: boolean
+    autoReferido?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type PreNatalParceiroCreateOrConnectWithoutGestanteInput = {
+    where: PreNatalParceiroWhereUniqueInput
+    create: XOR<PreNatalParceiroCreateWithoutGestanteInput, PreNatalParceiroUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type AvaliacaoCreateWithoutGestanteInput = {
+    id?: string
+    tipo: string
+    nota: number
+    comentario?: string | null
+    consultaId?: string | null
+    criadoEm?: Date | string
+  }
+
+  export type AvaliacaoUncheckedCreateWithoutGestanteInput = {
+    id?: string
+    tipo: string
+    nota: number
+    comentario?: string | null
+    consultaId?: string | null
+    criadoEm?: Date | string
+  }
+
+  export type AvaliacaoCreateOrConnectWithoutGestanteInput = {
+    where: AvaliacaoWhereUniqueInput
+    create: XOR<AvaliacaoCreateWithoutGestanteInput, AvaliacaoUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type AvaliacaoCreateManyGestanteInputEnvelope = {
+    data: AvaliacaoCreateManyGestanteInput | AvaliacaoCreateManyGestanteInput[]
+  }
+
   export type ConsultaUpsertWithWhereUniqueWithoutGestanteInput = {
     where: ConsultaWhereUniqueInput
     update: XOR<ConsultaUpdateWithoutGestanteInput, ConsultaUncheckedUpdateWithoutGestanteInput>
@@ -16209,6 +24655,10 @@ export namespace Prisma {
     pressaoArterial?: StringNullableFilter<"Consulta"> | string | null
     alturaUterina?: FloatNullableFilter<"Consulta"> | number | null
     batimentoCardiacoFetal?: IntNullableFilter<"Consulta"> | number | null
+    imcConsulta?: FloatNullableFilter<"Consulta"> | number | null
+    movimentacaoFetal?: StringNullableFilter<"Consulta"> | string | null
+    planoTexto?: StringNullableFilter<"Consulta"> | string | null
+    ofertaLARC?: BoolFilter<"Consulta"> | boolean
     notas?: StringNullableFilter<"Consulta"> | string | null
     ubs?: StringNullableFilter<"Consulta"> | string | null
     gestanteId?: StringFilter<"Consulta"> | string
@@ -16359,6 +24809,11 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
     etapaAtual?: IntFieldUpdateOperationsInput | number
+    ubsVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    profissionalVinculacaoId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataVinculacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdMetodoAssinatura?: NullableStringFieldUpdateOperationsInput | string | null
+    lgpdDocumentoEnviado?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16369,6 +24824,11 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     termoLgpdAceito?: BoolFieldUpdateOperationsInput | boolean
     etapaAtual?: IntFieldUpdateOperationsInput | number
+    ubsVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    profissionalVinculacaoId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataVinculacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lgpdMetodoAssinatura?: NullableStringFieldUpdateOperationsInput | string | null
+    lgpdDocumentoEnviado?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16402,6 +24862,128 @@ export namespace Prisma {
     criadoEm?: DateTimeFilter<"Notificacao"> | Date | string
   }
 
+  export type TratamentoSifilisUpsertWithWhereUniqueWithoutGestanteInput = {
+    where: TratamentoSifilisWhereUniqueInput
+    update: XOR<TratamentoSifilisUpdateWithoutGestanteInput, TratamentoSifilisUncheckedUpdateWithoutGestanteInput>
+    create: XOR<TratamentoSifilisCreateWithoutGestanteInput, TratamentoSifilisUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type TratamentoSifilisUpdateWithWhereUniqueWithoutGestanteInput = {
+    where: TratamentoSifilisWhereUniqueInput
+    data: XOR<TratamentoSifilisUpdateWithoutGestanteInput, TratamentoSifilisUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type TratamentoSifilisUpdateManyWithWhereWithoutGestanteInput = {
+    where: TratamentoSifilisScalarWhereInput
+    data: XOR<TratamentoSifilisUpdateManyMutationInput, TratamentoSifilisUncheckedUpdateManyWithoutGestanteInput>
+  }
+
+  export type TratamentoSifilisScalarWhereInput = {
+    AND?: TratamentoSifilisScalarWhereInput | TratamentoSifilisScalarWhereInput[]
+    OR?: TratamentoSifilisScalarWhereInput[]
+    NOT?: TratamentoSifilisScalarWhereInput | TratamentoSifilisScalarWhereInput[]
+    id?: StringFilter<"TratamentoSifilis"> | string
+    classificacaoCID?: StringFilter<"TratamentoSifilis"> | string
+    tipo?: StringFilter<"TratamentoSifilis"> | string
+    subtipo?: StringNullableFilter<"TratamentoSifilis"> | string | null
+    dataDiagnostico?: DateTimeFilter<"TratamentoSifilis"> | Date | string
+    statusTratamento?: StringFilter<"TratamentoSifilis"> | string
+    dosesNecessarias?: IntFilter<"TratamentoSifilis"> | number
+    gestanteId?: StringFilter<"TratamentoSifilis"> | string
+    criadoEm?: DateTimeFilter<"TratamentoSifilis"> | Date | string
+    atualizadoEm?: DateTimeFilter<"TratamentoSifilis"> | Date | string
+  }
+
+  export type EncaminhamentoPNARUpsertWithWhereUniqueWithoutGestanteInput = {
+    where: EncaminhamentoPNARWhereUniqueInput
+    update: XOR<EncaminhamentoPNARUpdateWithoutGestanteInput, EncaminhamentoPNARUncheckedUpdateWithoutGestanteInput>
+    create: XOR<EncaminhamentoPNARCreateWithoutGestanteInput, EncaminhamentoPNARUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type EncaminhamentoPNARUpdateWithWhereUniqueWithoutGestanteInput = {
+    where: EncaminhamentoPNARWhereUniqueInput
+    data: XOR<EncaminhamentoPNARUpdateWithoutGestanteInput, EncaminhamentoPNARUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type EncaminhamentoPNARUpdateManyWithWhereWithoutGestanteInput = {
+    where: EncaminhamentoPNARScalarWhereInput
+    data: XOR<EncaminhamentoPNARUpdateManyMutationInput, EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteInput>
+  }
+
+  export type EncaminhamentoPNARScalarWhereInput = {
+    AND?: EncaminhamentoPNARScalarWhereInput | EncaminhamentoPNARScalarWhereInput[]
+    OR?: EncaminhamentoPNARScalarWhereInput[]
+    NOT?: EncaminhamentoPNARScalarWhereInput | EncaminhamentoPNARScalarWhereInput[]
+    id?: StringFilter<"EncaminhamentoPNAR"> | string
+    ciap?: StringFilter<"EncaminhamentoPNAR"> | string
+    dataEncaminhamento?: DateTimeFilter<"EncaminhamentoPNAR"> | Date | string
+    dataConsultaPNAR?: DateTimeNullableFilter<"EncaminhamentoPNAR"> | Date | string | null
+    horarioConsultaPNAR?: StringNullableFilter<"EncaminhamentoPNAR"> | string | null
+    retornoRecomendado?: DateTimeNullableFilter<"EncaminhamentoPNAR"> | Date | string | null
+    relatorioTexto?: StringNullableFilter<"EncaminhamentoPNAR"> | string | null
+    consultaRealizada?: BoolFilter<"EncaminhamentoPNAR"> | boolean
+    dataConsultaRealizada?: DateTimeNullableFilter<"EncaminhamentoPNAR"> | Date | string | null
+    gestanteId?: StringFilter<"EncaminhamentoPNAR"> | string
+    criadoEm?: DateTimeFilter<"EncaminhamentoPNAR"> | Date | string
+    atualizadoEm?: DateTimeFilter<"EncaminhamentoPNAR"> | Date | string
+  }
+
+  export type PreNatalParceiroUpsertWithoutGestanteInput = {
+    update: XOR<PreNatalParceiroUpdateWithoutGestanteInput, PreNatalParceiroUncheckedUpdateWithoutGestanteInput>
+    create: XOR<PreNatalParceiroCreateWithoutGestanteInput, PreNatalParceiroUncheckedCreateWithoutGestanteInput>
+    where?: PreNatalParceiroWhereInput
+  }
+
+  export type PreNatalParceiroUpdateToOneWithWhereWithoutGestanteInput = {
+    where?: PreNatalParceiroWhereInput
+    data: XOR<PreNatalParceiroUpdateWithoutGestanteInput, PreNatalParceiroUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type PreNatalParceiroUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    realizado?: BoolFieldUpdateOperationsInput | boolean
+    autoReferido?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PreNatalParceiroUncheckedUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    realizado?: BoolFieldUpdateOperationsInput | boolean
+    autoReferido?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoUpsertWithWhereUniqueWithoutGestanteInput = {
+    where: AvaliacaoWhereUniqueInput
+    update: XOR<AvaliacaoUpdateWithoutGestanteInput, AvaliacaoUncheckedUpdateWithoutGestanteInput>
+    create: XOR<AvaliacaoCreateWithoutGestanteInput, AvaliacaoUncheckedCreateWithoutGestanteInput>
+  }
+
+  export type AvaliacaoUpdateWithWhereUniqueWithoutGestanteInput = {
+    where: AvaliacaoWhereUniqueInput
+    data: XOR<AvaliacaoUpdateWithoutGestanteInput, AvaliacaoUncheckedUpdateWithoutGestanteInput>
+  }
+
+  export type AvaliacaoUpdateManyWithWhereWithoutGestanteInput = {
+    where: AvaliacaoScalarWhereInput
+    data: XOR<AvaliacaoUpdateManyMutationInput, AvaliacaoUncheckedUpdateManyWithoutGestanteInput>
+  }
+
+  export type AvaliacaoScalarWhereInput = {
+    AND?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    OR?: AvaliacaoScalarWhereInput[]
+    NOT?: AvaliacaoScalarWhereInput | AvaliacaoScalarWhereInput[]
+    id?: StringFilter<"Avaliacao"> | string
+    tipo?: StringFilter<"Avaliacao"> | string
+    nota?: IntFilter<"Avaliacao"> | number
+    comentario?: StringNullableFilter<"Avaliacao"> | string | null
+    consultaId?: StringNullableFilter<"Avaliacao"> | string | null
+    gestanteId?: StringFilter<"Avaliacao"> | string
+    criadoEm?: DateTimeFilter<"Avaliacao"> | Date | string
+  }
+
   export type ConsultaCreateWithoutProfissionalInput = {
     id?: string
     data: Date | string
@@ -16411,6 +24993,10 @@ export namespace Prisma {
     pressaoArterial?: string | null
     alturaUterina?: number | null
     batimentoCardiacoFetal?: number | null
+    imcConsulta?: number | null
+    movimentacaoFetal?: string | null
+    planoTexto?: string | null
+    ofertaLARC?: boolean
     notas?: string | null
     ubs?: string | null
     criadoEm?: Date | string
@@ -16426,6 +25012,10 @@ export namespace Prisma {
     pressaoArterial?: string | null
     alturaUterina?: number | null
     batimentoCardiacoFetal?: number | null
+    imcConsulta?: number | null
+    movimentacaoFetal?: string | null
+    planoTexto?: string | null
+    ofertaLARC?: boolean
     notas?: string | null
     ubs?: string | null
     gestanteId: string
@@ -16470,10 +25060,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -16494,12 +25087,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     exames?: ExameCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutConsultasInput = {
@@ -16515,10 +25124,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -16539,12 +25151,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutConsultasInput = {
@@ -16607,10 +25235,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16631,12 +25262,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutConsultasInput = {
@@ -16652,10 +25299,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16676,12 +25326,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type ProfissionalUpsertWithoutConsultasInput = {
@@ -16734,10 +25400,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -16758,12 +25427,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutExamesInput = {
@@ -16779,10 +25464,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -16803,12 +25491,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutExamesInput = {
@@ -16840,10 +25544,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16864,12 +25571,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutExamesInput = {
@@ -16885,10 +25608,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16909,12 +25635,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateWithoutVacinasInput = {
@@ -16930,10 +25672,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -16954,12 +25699,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaCreateNestedManyWithoutGestanteInput
     exames?: ExameCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutVacinasInput = {
@@ -16975,10 +25736,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -16999,12 +25763,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutVacinasInput = {
@@ -17036,10 +25816,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17060,12 +25843,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutVacinasInput = {
@@ -17081,10 +25880,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17105,12 +25907,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateWithoutMedicacoesInput = {
@@ -17126,10 +25944,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -17150,12 +25971,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaCreateNestedManyWithoutGestanteInput
     exames?: ExameCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutMedicacoesInput = {
@@ -17171,10 +26008,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -17195,12 +26035,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutMedicacoesInput = {
@@ -17232,10 +26088,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17256,12 +26115,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutMedicacoesInput = {
@@ -17277,10 +26152,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17301,12 +26179,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateWithoutCondicoesInput = {
@@ -17322,10 +26216,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -17346,12 +26243,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaCreateNestedManyWithoutGestanteInput
     exames?: ExameCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutCondicoesInput = {
@@ -17367,10 +26280,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -17391,12 +26307,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
     notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutCondicoesInput = {
@@ -17428,10 +26360,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17452,12 +26387,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutCondicoesInput = {
@@ -17473,10 +26424,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17497,12 +26451,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
     notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateWithoutCartaoMaeSalvadorInput = {
@@ -17518,10 +26488,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -17542,12 +26515,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaCreateNestedManyWithoutGestanteInput
     exames?: ExameCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
     notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutCartaoMaeSalvadorInput = {
@@ -17563,10 +26552,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -17587,12 +26579,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
     notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutCartaoMaeSalvadorInput = {
@@ -17624,10 +26632,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17648,12 +26659,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
     notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutCartaoMaeSalvadorInput = {
@@ -17669,10 +26696,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17693,12 +26723,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
     notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteCreateWithoutNotificacoesInput = {
@@ -17714,10 +26760,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -17738,12 +26787,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaCreateNestedManyWithoutGestanteInput
     exames?: ExameCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteUncheckedCreateWithoutNotificacoesInput = {
@@ -17759,10 +26824,13 @@ export namespace Prisma {
     bairro?: string | null
     cep?: string | null
     ubsVinculada?: string | null
+    hospitalReferencia?: string | null
     dataUltimaMenstruacao?: Date | string | null
     dataProvavelParto?: Date | string | null
     tipoGravidez?: string
     riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
     temWhatsapp?: boolean
     comoDescobriuGestacao?: string | null
     programaSocial?: string | null
@@ -17783,12 +26851,28 @@ export namespace Prisma {
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
     consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
     exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
     vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
     medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
     condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
   }
 
   export type GestanteCreateOrConnectWithoutNotificacoesInput = {
@@ -17820,10 +26904,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17844,12 +26931,28 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
     exames?: ExameUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
   }
 
   export type GestanteUncheckedUpdateWithoutNotificacoesInput = {
@@ -17865,10 +26968,13 @@ export namespace Prisma {
     bairro?: NullableStringFieldUpdateOperationsInput | string | null
     cep?: NullableStringFieldUpdateOperationsInput | string | null
     ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
     dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tipoGravidez?: StringFieldUpdateOperationsInput | string
     riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
     temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
     comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
     programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17889,12 +26995,1237 @@ export namespace Prisma {
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
     exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
     vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
     medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
     condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
     cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type GestanteCreateWithoutTratamentosSifilisInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    hospitalReferencia?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
+    consultas?: ConsultaCreateNestedManyWithoutGestanteInput
+    exames?: ExameCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
+  }
+
+  export type GestanteUncheckedCreateWithoutTratamentosSifilisInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    hospitalReferencia?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
+    consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
+    exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
+  }
+
+  export type GestanteCreateOrConnectWithoutTratamentosSifilisInput = {
+    where: GestanteWhereUniqueInput
+    create: XOR<GestanteCreateWithoutTratamentosSifilisInput, GestanteUncheckedCreateWithoutTratamentosSifilisInput>
+  }
+
+  export type AplicacaoPenicilinaCreateWithoutTratamentoInput = {
+    id?: string
+    data: Date | string
+    dose: number
+    observacao?: string | null
+    criadoEm?: Date | string
+  }
+
+  export type AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput = {
+    id?: string
+    data: Date | string
+    dose: number
+    observacao?: string | null
+    criadoEm?: Date | string
+  }
+
+  export type AplicacaoPenicilinaCreateOrConnectWithoutTratamentoInput = {
+    where: AplicacaoPenicilinaWhereUniqueInput
+    create: XOR<AplicacaoPenicilinaCreateWithoutTratamentoInput, AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput>
+  }
+
+  export type AplicacaoPenicilinaCreateManyTratamentoInputEnvelope = {
+    data: AplicacaoPenicilinaCreateManyTratamentoInput | AplicacaoPenicilinaCreateManyTratamentoInput[]
+  }
+
+  export type GestanteUpsertWithoutTratamentosSifilisInput = {
+    update: XOR<GestanteUpdateWithoutTratamentosSifilisInput, GestanteUncheckedUpdateWithoutTratamentosSifilisInput>
+    create: XOR<GestanteCreateWithoutTratamentosSifilisInput, GestanteUncheckedCreateWithoutTratamentosSifilisInput>
+    where?: GestanteWhereInput
+  }
+
+  export type GestanteUpdateToOneWithWhereWithoutTratamentosSifilisInput = {
+    where?: GestanteWhereInput
+    data: XOR<GestanteUpdateWithoutTratamentosSifilisInput, GestanteUncheckedUpdateWithoutTratamentosSifilisInput>
+  }
+
+  export type GestanteUpdateWithoutTratamentosSifilisInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type GestanteUncheckedUpdateWithoutTratamentosSifilisInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type AplicacaoPenicilinaUpsertWithWhereUniqueWithoutTratamentoInput = {
+    where: AplicacaoPenicilinaWhereUniqueInput
+    update: XOR<AplicacaoPenicilinaUpdateWithoutTratamentoInput, AplicacaoPenicilinaUncheckedUpdateWithoutTratamentoInput>
+    create: XOR<AplicacaoPenicilinaCreateWithoutTratamentoInput, AplicacaoPenicilinaUncheckedCreateWithoutTratamentoInput>
+  }
+
+  export type AplicacaoPenicilinaUpdateWithWhereUniqueWithoutTratamentoInput = {
+    where: AplicacaoPenicilinaWhereUniqueInput
+    data: XOR<AplicacaoPenicilinaUpdateWithoutTratamentoInput, AplicacaoPenicilinaUncheckedUpdateWithoutTratamentoInput>
+  }
+
+  export type AplicacaoPenicilinaUpdateManyWithWhereWithoutTratamentoInput = {
+    where: AplicacaoPenicilinaScalarWhereInput
+    data: XOR<AplicacaoPenicilinaUpdateManyMutationInput, AplicacaoPenicilinaUncheckedUpdateManyWithoutTratamentoInput>
+  }
+
+  export type AplicacaoPenicilinaScalarWhereInput = {
+    AND?: AplicacaoPenicilinaScalarWhereInput | AplicacaoPenicilinaScalarWhereInput[]
+    OR?: AplicacaoPenicilinaScalarWhereInput[]
+    NOT?: AplicacaoPenicilinaScalarWhereInput | AplicacaoPenicilinaScalarWhereInput[]
+    id?: StringFilter<"AplicacaoPenicilina"> | string
+    data?: DateTimeFilter<"AplicacaoPenicilina"> | Date | string
+    dose?: IntFilter<"AplicacaoPenicilina"> | number
+    observacao?: StringNullableFilter<"AplicacaoPenicilina"> | string | null
+    tratamentoId?: StringFilter<"AplicacaoPenicilina"> | string
+    criadoEm?: DateTimeFilter<"AplicacaoPenicilina"> | Date | string
+  }
+
+  export type TratamentoSifilisCreateWithoutAplicacoesInput = {
+    id?: string
+    classificacaoCID: string
+    tipo: string
+    subtipo?: string | null
+    dataDiagnostico: Date | string
+    statusTratamento?: string
+    dosesNecessarias: number
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    gestante: GestanteCreateNestedOneWithoutTratamentosSifilisInput
+  }
+
+  export type TratamentoSifilisUncheckedCreateWithoutAplicacoesInput = {
+    id?: string
+    classificacaoCID: string
+    tipo: string
+    subtipo?: string | null
+    dataDiagnostico: Date | string
+    statusTratamento?: string
+    dosesNecessarias: number
+    gestanteId: string
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type TratamentoSifilisCreateOrConnectWithoutAplicacoesInput = {
+    where: TratamentoSifilisWhereUniqueInput
+    create: XOR<TratamentoSifilisCreateWithoutAplicacoesInput, TratamentoSifilisUncheckedCreateWithoutAplicacoesInput>
+  }
+
+  export type TratamentoSifilisUpsertWithoutAplicacoesInput = {
+    update: XOR<TratamentoSifilisUpdateWithoutAplicacoesInput, TratamentoSifilisUncheckedUpdateWithoutAplicacoesInput>
+    create: XOR<TratamentoSifilisCreateWithoutAplicacoesInput, TratamentoSifilisUncheckedCreateWithoutAplicacoesInput>
+    where?: TratamentoSifilisWhereInput
+  }
+
+  export type TratamentoSifilisUpdateToOneWithWhereWithoutAplicacoesInput = {
+    where?: TratamentoSifilisWhereInput
+    data: XOR<TratamentoSifilisUpdateWithoutAplicacoesInput, TratamentoSifilisUncheckedUpdateWithoutAplicacoesInput>
+  }
+
+  export type TratamentoSifilisUpdateWithoutAplicacoesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classificacaoCID?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    subtipo?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDiagnostico?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusTratamento?: StringFieldUpdateOperationsInput | string
+    dosesNecessarias?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    gestante?: GestanteUpdateOneRequiredWithoutTratamentosSifilisNestedInput
+  }
+
+  export type TratamentoSifilisUncheckedUpdateWithoutAplicacoesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classificacaoCID?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    subtipo?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDiagnostico?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusTratamento?: StringFieldUpdateOperationsInput | string
+    dosesNecessarias?: IntFieldUpdateOperationsInput | number
+    gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GestanteCreateWithoutEncaminhamentosPNARInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    hospitalReferencia?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
+    consultas?: ConsultaCreateNestedManyWithoutGestanteInput
+    exames?: ExameCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
+  }
+
+  export type GestanteUncheckedCreateWithoutEncaminhamentosPNARInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    hospitalReferencia?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
+    consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
+    exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
+  }
+
+  export type GestanteCreateOrConnectWithoutEncaminhamentosPNARInput = {
+    where: GestanteWhereUniqueInput
+    create: XOR<GestanteCreateWithoutEncaminhamentosPNARInput, GestanteUncheckedCreateWithoutEncaminhamentosPNARInput>
+  }
+
+  export type GestanteUpsertWithoutEncaminhamentosPNARInput = {
+    update: XOR<GestanteUpdateWithoutEncaminhamentosPNARInput, GestanteUncheckedUpdateWithoutEncaminhamentosPNARInput>
+    create: XOR<GestanteCreateWithoutEncaminhamentosPNARInput, GestanteUncheckedCreateWithoutEncaminhamentosPNARInput>
+    where?: GestanteWhereInput
+  }
+
+  export type GestanteUpdateToOneWithWhereWithoutEncaminhamentosPNARInput = {
+    where?: GestanteWhereInput
+    data: XOR<GestanteUpdateWithoutEncaminhamentosPNARInput, GestanteUncheckedUpdateWithoutEncaminhamentosPNARInput>
+  }
+
+  export type GestanteUpdateWithoutEncaminhamentosPNARInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type GestanteUncheckedUpdateWithoutEncaminhamentosPNARInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type GestanteCreateWithoutPreNatalParceiroInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    hospitalReferencia?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
+    consultas?: ConsultaCreateNestedManyWithoutGestanteInput
+    exames?: ExameCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    avaliacoes?: AvaliacaoCreateNestedManyWithoutGestanteInput
+  }
+
+  export type GestanteUncheckedCreateWithoutPreNatalParceiroInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    hospitalReferencia?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
+    consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
+    exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    avaliacoes?: AvaliacaoUncheckedCreateNestedManyWithoutGestanteInput
+  }
+
+  export type GestanteCreateOrConnectWithoutPreNatalParceiroInput = {
+    where: GestanteWhereUniqueInput
+    create: XOR<GestanteCreateWithoutPreNatalParceiroInput, GestanteUncheckedCreateWithoutPreNatalParceiroInput>
+  }
+
+  export type GestanteUpsertWithoutPreNatalParceiroInput = {
+    update: XOR<GestanteUpdateWithoutPreNatalParceiroInput, GestanteUncheckedUpdateWithoutPreNatalParceiroInput>
+    create: XOR<GestanteCreateWithoutPreNatalParceiroInput, GestanteUncheckedCreateWithoutPreNatalParceiroInput>
+    where?: GestanteWhereInput
+  }
+
+  export type GestanteUpdateToOneWithWhereWithoutPreNatalParceiroInput = {
+    where?: GestanteWhereInput
+    data: XOR<GestanteUpdateWithoutPreNatalParceiroInput, GestanteUncheckedUpdateWithoutPreNatalParceiroInput>
+  }
+
+  export type GestanteUpdateWithoutPreNatalParceiroInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type GestanteUncheckedUpdateWithoutPreNatalParceiroInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    avaliacoes?: AvaliacaoUncheckedUpdateManyWithoutGestanteNestedInput
+  }
+
+  export type GestanteCreateWithoutAvaliacoesInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    hospitalReferencia?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
+    consultas?: ConsultaCreateNestedManyWithoutGestanteInput
+    exames?: ExameCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroCreateNestedOneWithoutGestanteInput
+  }
+
+  export type GestanteUncheckedCreateWithoutAvaliacoesInput = {
+    id?: string
+    cpf: string
+    cns?: string | null
+    nome: string
+    nomeSocial?: string | null
+    dataNascimento: Date | string
+    telefone: string
+    email?: string | null
+    endereco: string
+    bairro?: string | null
+    cep?: string | null
+    ubsVinculada?: string | null
+    hospitalReferencia?: string | null
+    dataUltimaMenstruacao?: Date | string | null
+    dataProvavelParto?: Date | string | null
+    tipoGravidez?: string
+    riscoGestacional?: string
+    riscoGestacionalCIAP?: string | null
+    gravidezPlanejada?: boolean | null
+    temWhatsapp?: boolean
+    comoDescobriuGestacao?: string | null
+    programaSocial?: string | null
+    temPlanoSaude?: boolean
+    desejaSeguimentoUbs?: boolean
+    numGestacoesPrevia?: number | null
+    numPartosNormais?: number | null
+    numPartosCesareos?: number | null
+    numAbortosPrevia?: number | null
+    alergias?: string | null
+    doencasConhecidas?: string | null
+    medicacoesPreExistentes?: string | null
+    pesoPreGestacional?: number | null
+    alturaM?: number | null
+    maternidadeVinculacao?: string | null
+    desejoContracepcao?: boolean | null
+    senha: string
+    ativo?: boolean
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+    antecedentesDiabetes?: boolean
+    antecedentesInfeccaoUrinaria?: boolean
+    antecedentesInfertilidade?: boolean
+    antecedentesDificuldadeAmamentacao?: boolean
+    antecedentesCardiopatia?: boolean
+    statusCaderneta?: string
+    cadernetaAnteriorId?: string | null
+    dataDesfecho?: Date | string | null
+    participouAtividadeEducativa?: boolean
+    dataAtividadeEducativa?: Date | string | null
+    realizouVisitaMaternidade?: boolean
+    dataVisitaMaternidade?: Date | string | null
+    consultas?: ConsultaUncheckedCreateNestedManyWithoutGestanteInput
+    exames?: ExameUncheckedCreateNestedManyWithoutGestanteInput
+    vacinas?: VacinaUncheckedCreateNestedManyWithoutGestanteInput
+    medicacoes?: MedicacaoUncheckedCreateNestedManyWithoutGestanteInput
+    condicoes?: CondicaoClinicaUncheckedCreateNestedManyWithoutGestanteInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedCreateNestedOneWithoutGestanteInput
+    notificacoes?: NotificacaoUncheckedCreateNestedManyWithoutGestanteInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedCreateNestedManyWithoutGestanteInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedCreateNestedManyWithoutGestanteInput
+    preNatalParceiro?: PreNatalParceiroUncheckedCreateNestedOneWithoutGestanteInput
+  }
+
+  export type GestanteCreateOrConnectWithoutAvaliacoesInput = {
+    where: GestanteWhereUniqueInput
+    create: XOR<GestanteCreateWithoutAvaliacoesInput, GestanteUncheckedCreateWithoutAvaliacoesInput>
+  }
+
+  export type GestanteUpsertWithoutAvaliacoesInput = {
+    update: XOR<GestanteUpdateWithoutAvaliacoesInput, GestanteUncheckedUpdateWithoutAvaliacoesInput>
+    create: XOR<GestanteCreateWithoutAvaliacoesInput, GestanteUncheckedCreateWithoutAvaliacoesInput>
+    where?: GestanteWhereInput
+  }
+
+  export type GestanteUpdateToOneWithWhereWithoutAvaliacoesInput = {
+    where?: GestanteWhereInput
+    data: XOR<GestanteUpdateWithoutAvaliacoesInput, GestanteUncheckedUpdateWithoutAvaliacoesInput>
+  }
+
+  export type GestanteUpdateWithoutAvaliacoesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consultas?: ConsultaUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUpdateOneWithoutGestanteNestedInput
+  }
+
+  export type GestanteUncheckedUpdateWithoutAvaliacoesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    cpf?: StringFieldUpdateOperationsInput | string
+    cns?: NullableStringFieldUpdateOperationsInput | string | null
+    nome?: StringFieldUpdateOperationsInput | string
+    nomeSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    dataNascimento?: DateTimeFieldUpdateOperationsInput | Date | string
+    telefone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    endereco?: StringFieldUpdateOperationsInput | string
+    bairro?: NullableStringFieldUpdateOperationsInput | string | null
+    cep?: NullableStringFieldUpdateOperationsInput | string | null
+    ubsVinculada?: NullableStringFieldUpdateOperationsInput | string | null
+    hospitalReferencia?: NullableStringFieldUpdateOperationsInput | string | null
+    dataUltimaMenstruacao?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dataProvavelParto?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tipoGravidez?: StringFieldUpdateOperationsInput | string
+    riscoGestacional?: StringFieldUpdateOperationsInput | string
+    riscoGestacionalCIAP?: NullableStringFieldUpdateOperationsInput | string | null
+    gravidezPlanejada?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    temWhatsapp?: BoolFieldUpdateOperationsInput | boolean
+    comoDescobriuGestacao?: NullableStringFieldUpdateOperationsInput | string | null
+    programaSocial?: NullableStringFieldUpdateOperationsInput | string | null
+    temPlanoSaude?: BoolFieldUpdateOperationsInput | boolean
+    desejaSeguimentoUbs?: BoolFieldUpdateOperationsInput | boolean
+    numGestacoesPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosNormais?: NullableIntFieldUpdateOperationsInput | number | null
+    numPartosCesareos?: NullableIntFieldUpdateOperationsInput | number | null
+    numAbortosPrevia?: NullableIntFieldUpdateOperationsInput | number | null
+    alergias?: NullableStringFieldUpdateOperationsInput | string | null
+    doencasConhecidas?: NullableStringFieldUpdateOperationsInput | string | null
+    medicacoesPreExistentes?: NullableStringFieldUpdateOperationsInput | string | null
+    pesoPreGestacional?: NullableFloatFieldUpdateOperationsInput | number | null
+    alturaM?: NullableFloatFieldUpdateOperationsInput | number | null
+    maternidadeVinculacao?: NullableStringFieldUpdateOperationsInput | string | null
+    desejoContracepcao?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    senha?: StringFieldUpdateOperationsInput | string
+    ativo?: BoolFieldUpdateOperationsInput | boolean
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    antecedentesDiabetes?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfeccaoUrinaria?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesInfertilidade?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesDificuldadeAmamentacao?: BoolFieldUpdateOperationsInput | boolean
+    antecedentesCardiopatia?: BoolFieldUpdateOperationsInput | boolean
+    statusCaderneta?: StringFieldUpdateOperationsInput | string
+    cadernetaAnteriorId?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDesfecho?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    participouAtividadeEducativa?: BoolFieldUpdateOperationsInput | boolean
+    dataAtividadeEducativa?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    realizouVisitaMaternidade?: BoolFieldUpdateOperationsInput | boolean
+    dataVisitaMaternidade?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    consultas?: ConsultaUncheckedUpdateManyWithoutGestanteNestedInput
+    exames?: ExameUncheckedUpdateManyWithoutGestanteNestedInput
+    vacinas?: VacinaUncheckedUpdateManyWithoutGestanteNestedInput
+    medicacoes?: MedicacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    condicoes?: CondicaoClinicaUncheckedUpdateManyWithoutGestanteNestedInput
+    cartaoMaeSalvador?: CartaoMaeSalvadorUncheckedUpdateOneWithoutGestanteNestedInput
+    notificacoes?: NotificacaoUncheckedUpdateManyWithoutGestanteNestedInput
+    tratamentosSifilis?: TratamentoSifilisUncheckedUpdateManyWithoutGestanteNestedInput
+    encaminhamentosPNAR?: EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteNestedInput
+    preNatalParceiro?: PreNatalParceiroUncheckedUpdateOneWithoutGestanteNestedInput
   }
 
   export type ConsultaCreateManyGestanteInput = {
@@ -17906,6 +28237,10 @@ export namespace Prisma {
     pressaoArterial?: string | null
     alturaUterina?: number | null
     batimentoCardiacoFetal?: number | null
+    imcConsulta?: number | null
+    movimentacaoFetal?: string | null
+    planoTexto?: string | null
+    ofertaLARC?: boolean
     notas?: string | null
     ubs?: string | null
     profissionalId: string
@@ -17967,6 +28302,41 @@ export namespace Prisma {
     criadoEm?: Date | string
   }
 
+  export type TratamentoSifilisCreateManyGestanteInput = {
+    id?: string
+    classificacaoCID: string
+    tipo: string
+    subtipo?: string | null
+    dataDiagnostico: Date | string
+    statusTratamento?: string
+    dosesNecessarias: number
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type EncaminhamentoPNARCreateManyGestanteInput = {
+    id?: string
+    ciap?: string
+    dataEncaminhamento: Date | string
+    dataConsultaPNAR?: Date | string | null
+    horarioConsultaPNAR?: string | null
+    retornoRecomendado?: Date | string | null
+    relatorioTexto?: string | null
+    consultaRealizada?: boolean
+    dataConsultaRealizada?: Date | string | null
+    criadoEm?: Date | string
+    atualizadoEm?: Date | string
+  }
+
+  export type AvaliacaoCreateManyGestanteInput = {
+    id?: string
+    tipo: string
+    nota: number
+    comentario?: string | null
+    consultaId?: string | null
+    criadoEm?: Date | string
+  }
+
   export type ConsultaUpdateWithoutGestanteInput = {
     id?: StringFieldUpdateOperationsInput | string
     data?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17976,6 +28346,10 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17991,6 +28365,10 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     profissionalId?: StringFieldUpdateOperationsInput | string
@@ -18006,6 +28384,10 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     profissionalId?: StringFieldUpdateOperationsInput | string
@@ -18177,6 +28559,113 @@ export namespace Prisma {
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TratamentoSifilisUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classificacaoCID?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    subtipo?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDiagnostico?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusTratamento?: StringFieldUpdateOperationsInput | string
+    dosesNecessarias?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    aplicacoes?: AplicacaoPenicilinaUpdateManyWithoutTratamentoNestedInput
+  }
+
+  export type TratamentoSifilisUncheckedUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classificacaoCID?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    subtipo?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDiagnostico?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusTratamento?: StringFieldUpdateOperationsInput | string
+    dosesNecessarias?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    aplicacoes?: AplicacaoPenicilinaUncheckedUpdateManyWithoutTratamentoNestedInput
+  }
+
+  export type TratamentoSifilisUncheckedUpdateManyWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    classificacaoCID?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    subtipo?: NullableStringFieldUpdateOperationsInput | string | null
+    dataDiagnostico?: DateTimeFieldUpdateOperationsInput | Date | string
+    statusTratamento?: StringFieldUpdateOperationsInput | string
+    dosesNecessarias?: IntFieldUpdateOperationsInput | number
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EncaminhamentoPNARUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ciap?: StringFieldUpdateOperationsInput | string
+    dataEncaminhamento?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataConsultaPNAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horarioConsultaPNAR?: NullableStringFieldUpdateOperationsInput | string | null
+    retornoRecomendado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    relatorioTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaRealizada?: BoolFieldUpdateOperationsInput | boolean
+    dataConsultaRealizada?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EncaminhamentoPNARUncheckedUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ciap?: StringFieldUpdateOperationsInput | string
+    dataEncaminhamento?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataConsultaPNAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horarioConsultaPNAR?: NullableStringFieldUpdateOperationsInput | string | null
+    retornoRecomendado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    relatorioTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaRealizada?: BoolFieldUpdateOperationsInput | boolean
+    dataConsultaRealizada?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EncaminhamentoPNARUncheckedUpdateManyWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ciap?: StringFieldUpdateOperationsInput | string
+    dataEncaminhamento?: DateTimeFieldUpdateOperationsInput | Date | string
+    dataConsultaPNAR?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    horarioConsultaPNAR?: NullableStringFieldUpdateOperationsInput | string | null
+    retornoRecomendado?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    relatorioTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaRealizada?: BoolFieldUpdateOperationsInput | boolean
+    dataConsultaRealizada?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaId?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoUncheckedUpdateWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaId?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AvaliacaoUncheckedUpdateManyWithoutGestanteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
+    nota?: IntFieldUpdateOperationsInput | number
+    comentario?: NullableStringFieldUpdateOperationsInput | string | null
+    consultaId?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type ConsultaCreateManyProfissionalInput = {
     id?: string
     data: Date | string
@@ -18186,6 +28675,10 @@ export namespace Prisma {
     pressaoArterial?: string | null
     alturaUterina?: number | null
     batimentoCardiacoFetal?: number | null
+    imcConsulta?: number | null
+    movimentacaoFetal?: string | null
+    planoTexto?: string | null
+    ofertaLARC?: boolean
     notas?: string | null
     ubs?: string | null
     gestanteId: string
@@ -18201,6 +28694,10 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18216,6 +28713,10 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     gestanteId?: StringFieldUpdateOperationsInput | string
@@ -18231,9 +28732,45 @@ export namespace Prisma {
     pressaoArterial?: NullableStringFieldUpdateOperationsInput | string | null
     alturaUterina?: NullableFloatFieldUpdateOperationsInput | number | null
     batimentoCardiacoFetal?: NullableIntFieldUpdateOperationsInput | number | null
+    imcConsulta?: NullableFloatFieldUpdateOperationsInput | number | null
+    movimentacaoFetal?: NullableStringFieldUpdateOperationsInput | string | null
+    planoTexto?: NullableStringFieldUpdateOperationsInput | string | null
+    ofertaLARC?: BoolFieldUpdateOperationsInput | boolean
     notas?: NullableStringFieldUpdateOperationsInput | string | null
     ubs?: NullableStringFieldUpdateOperationsInput | string | null
     gestanteId?: StringFieldUpdateOperationsInput | string
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AplicacaoPenicilinaCreateManyTratamentoInput = {
+    id?: string
+    data: Date | string
+    dose: number
+    observacao?: string | null
+    criadoEm?: Date | string
+  }
+
+  export type AplicacaoPenicilinaUpdateWithoutTratamentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    dose?: IntFieldUpdateOperationsInput | number
+    observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AplicacaoPenicilinaUncheckedUpdateWithoutTratamentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    dose?: IntFieldUpdateOperationsInput | number
+    observacao?: NullableStringFieldUpdateOperationsInput | string | null
+    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AplicacaoPenicilinaUncheckedUpdateManyWithoutTratamentoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    data?: DateTimeFieldUpdateOperationsInput | Date | string
+    dose?: IntFieldUpdateOperationsInput | number
+    observacao?: NullableStringFieldUpdateOperationsInput | string | null
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

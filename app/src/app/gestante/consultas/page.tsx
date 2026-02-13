@@ -49,12 +49,18 @@ export default async function ConsultasPage() {
               </div>
 
               {/* Dados clínicos */}
-              {(c.pesoKg || c.pressaoArterial || c.alturaUterina || c.batimentoCardiacoFetal) && (
+              {(c.pesoKg || c.pressaoArterial || c.alturaUterina || c.batimentoCardiacoFetal || c.imcConsulta || c.movimentacaoFetal) && (
                 <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {c.pesoKg && (
                     <div className="bg-surface-50 rounded-lg p-2.5 text-center">
                       <p className="text-xs text-surface-400">Peso</p>
                       <p className="text-sm font-semibold text-surface-700">{c.pesoKg} kg</p>
+                    </div>
+                  )}
+                  {c.imcConsulta && (
+                    <div className="bg-surface-50 rounded-lg p-2.5 text-center">
+                      <p className="text-xs text-surface-400">IMC</p>
+                      <p className="text-sm font-semibold text-surface-700">{c.imcConsulta.toFixed(1)}</p>
                     </div>
                   )}
                   {c.pressaoArterial && (
@@ -75,6 +81,25 @@ export default async function ConsultasPage() {
                       <p className="text-sm font-semibold text-surface-700">{c.batimentoCardiacoFetal} bpm</p>
                     </div>
                   )}
+                  {c.movimentacaoFetal && (
+                    <div className="bg-surface-50 rounded-lg p-2.5 text-center">
+                      <p className="text-xs text-surface-400">Mov. Fetal</p>
+                      <p className="text-sm font-semibold text-surface-700">{c.movimentacaoFetal}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {c.planoTexto && (
+                <div className="mt-3 bg-blue-50 border border-blue-100 rounded-lg p-3">
+                  <p className="text-xs text-blue-500 mb-1">Plano</p>
+                  <p className="text-sm text-blue-800">{c.planoTexto}</p>
+                </div>
+              )}
+
+              {c.tipo === 'PUERPERIO' && c.ofertaLARC && (
+                <div className="mt-2 inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full bg-purple-100 text-purple-700 font-medium">
+                  ✓ LARC ofertado
                 </div>
               )}
 

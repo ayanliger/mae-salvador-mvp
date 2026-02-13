@@ -24,10 +24,13 @@ model Gestante {
   bairro          String?
   cep             String?
   ubsVinculada    String?  // Nome/código da UBS
+  hospitalReferencia String? // Hospital de referência vinculado à UBS
   dataUltimaMenstruacao DateTime? // DUM - para cálculo da idade gestacional
   dataProvavelParto     DateTime? // DPP
-  tipoGravidez    String   @default("UNICA") // UNICA, GEMELAR, etc.
+  tipoGravidez    String   @default("UNICA") // UNICA, MULTIPLA
   riscoGestacional String  @default("HABITUAL") // HABITUAL, ALTO
+  riscoGestacionalCIAP String? // W78 (Habitual), W84 (Alto Risco)
+  gravidezPlanejada Boolean?
   temWhatsapp     Boolean  @default(false)
   comoDescobriuGestacao String? // TESTE_RAPIDO, BETA_HCG, ATRASO_MENSTRUAL
   programaSocial  String?  // Bolsa Família, BPC/LOAS, Aluguel social, outros
@@ -49,13 +52,35 @@ model Gestante {
   criadoEm        DateTime @default(now())
   atualizadoEm    DateTime @updatedAt
 
-  consultas       Consulta[]
-  exames          Exame[]
-  vacinas         Vacina[]
-  medicacoes      Medicacao[]
-  condicoes       CondicaoClinica[]
-  cartaoMaeSalvador CartaoMaeSalvador?
-  notificacoes    Notificacao[]
+  // Antecedentes clínicos obstétricos (v2: yes/no structured)
+  antecedentesDiabetes              Boolean @default(false)
+  antecedentesInfeccaoUrinaria      Boolean @default(false)
+  antecedentesInfertilidade         Boolean @default(false)
+  antecedentesDificuldadeAmamentacao Boolean @default(false)
+  antecedentesCardiopatia           Boolean @default(false)
+
+  // Cadernetas prévias (v2)
+  statusCaderneta     String   @default("ATIVA") // ATIVA, ARQUIVADA
+  cadernetaAnteriorId String?
+  dataDesfecho        DateTime?
+
+  // Atividade educativa & visita maternidade
+  participouAtividadeEducativa     Boolean  @default(false)
+  dataAtividadeEducativa           DateTime?
+  realizouVisitaMaternidade        Boolean  @default(false)
+  dataVisitaMaternidade            DateTime?
+
+  consultas             Consulta[]
+  exames                Exame[]
+  vacinas               Vacina[]
+  medicacoes            Medicacao[]
+  condicoes             CondicaoClinica[]
+  cartaoMaeSalvador     CartaoMaeSalvador?
+  notificacoes          Notificacao[]
+  tratamentosSifilis    TratamentoSifilis[]
+  encaminhamentosPNAR   EncaminhamentoPNAR[]
+  preNatalParceiro      PreNatalParceiro?
+  avaliacoes            Avaliacao[]
 
   @@map("gestantes")
 }
@@ -82,12 +107,16 @@ model Profissional {
 model Consulta {
   id              String   @id @default(cuid())
   data            DateTime
-  tipo            String   // PRE_NATAL, PUERPERIO, URGENCIA
+  tipo            String   // PRE_NATAL, PUERPERIO, URGENCIA, ODONTOLOGICA
   semanaGestacional Int?
   pesoKg          Float?
   pressaoArterial String?  // ex: "120/80"
   alturaUterina   Float?   // em cm
   batimentoCardiacoFetal Int? // BCF
+  imcConsulta     Float?   // IMC no momento da consulta
+  movimentacaoFetal String? // observação de movimentação fetal
+  planoTexto      String?  // campo texto do Plano no PEC
+  ofertaLARC      Boolean  @default(false) // oferta de LARC na consulta puerperal
   notas           String?
   ubs             String?
 
@@ -183,6 +212,13 @@ model CartaoMaeSalvador {
   termoLgpdAceito Boolean  @default(false)
   etapaAtual      Int      @default(0) // 0=nenhuma, 1, 2, 3
 
+  // v2: professional-initiated registration
+  ubsVinculacao          String?  // UBS que emitiu o cartão
+  profissionalVinculacaoId String? // profissional que vinculou
+  dataVinculacao         DateTime?
+  lgpdMetodoAssinatura   String?  // WHATSAPP, APP_GOV, PDF_IMPRESSO
+  lgpdDocumentoEnviado   Boolean  @default(false)
+
   gestanteId      String   @unique
   gestante        Gestante @relation(fields: [gestanteId], references: [id])
 
@@ -197,7 +233,7 @@ model Notificacao {
   id         String   @id @default(cuid())
   titulo     String
   mensagem   String
-  tipo       String   // CONSULTA, CARTAO, ALERTA, INFO
+  tipo       String   // CONSULTA, CARTAO, ALERTA, INFO, BUSCA_ATIVA, AGENDAMENTO, MUDANCA_UNIDADE, SIFILIS, NOVA_GESTACAO
   lida       Boolean  @default(false)
 
   gestanteId String
@@ -206,4 +242,92 @@ model Notificacao {
   criadoEm   DateTime @default(now())
 
   @@map("notificacoes")
+}
+
+// Tratamento de Sífilis
+model TratamentoSifilis {
+  id                String   @id @default(cuid())
+  classificacaoCID  String   // CID/CIAP code
+  tipo              String   // RECENTE, TARDIA
+  subtipo           String?  // PRIMARIA, LATENTE_RECENTE, SECUNDARIA, LATENTE_TARDIA, TERCIARIA
+  dataDiagnostico   DateTime
+  statusTratamento  String   @default("EM_TRATAMENTO") // EM_TRATAMENTO, COMPLETO, RETRATAMENTO
+  dosesNecessarias  Int      // 1 para recente, 3 para tardia
+
+  gestanteId        String
+  gestante          Gestante @relation(fields: [gestanteId], references: [id])
+
+  aplicacoes        AplicacaoPenicilina[]
+
+  criadoEm          DateTime @default(now())
+  atualizadoEm      DateTime @updatedAt
+
+  @@map("tratamentos_sifilis")
+}
+
+// Aplicação de Penicilina para Sífilis
+model AplicacaoPenicilina {
+  id              String   @id @default(cuid())
+  data            DateTime
+  dose            Int      // número da dose (1, 2, 3)
+  observacao      String?
+
+  tratamentoId    String
+  tratamento      TratamentoSifilis @relation(fields: [tratamentoId], references: [id])
+
+  criadoEm        DateTime @default(now())
+
+  @@map("aplicacoes_penicilina")
+}
+
+// Encaminhamento para Pré-Natal de Alto Risco
+model EncaminhamentoPNAR {
+  id                    String    @id @default(cuid())
+  ciap                  String    @default("W84") // CIAP W84
+  dataEncaminhamento    DateTime
+  dataConsultaPNAR      DateTime? // inserida pelo distrito
+  horarioConsultaPNAR   String?   // horário da consulta no CNAR
+  retornoRecomendado    DateTime?
+  relatorioTexto        String?   // texto do relatório de encaminhamento
+  consultaRealizada     Boolean   @default(false) // profissional externo registra
+  dataConsultaRealizada DateTime?
+
+  gestanteId            String
+  gestante              Gestante  @relation(fields: [gestanteId], references: [id])
+
+  criadoEm              DateTime  @default(now())
+  atualizadoEm          DateTime  @updatedAt
+
+  @@map("encaminhamentos_pnar")
+}
+
+// Pré-natal do Parceiro
+model PreNatalParceiro {
+  id          String   @id @default(cuid())
+  realizado   Boolean  @default(false)
+  autoReferido Boolean @default(true) // true = auto-referido, false = puxado do prontuário
+
+  gestanteId  String   @unique
+  gestante    Gestante @relation(fields: [gestanteId], references: [id])
+
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@map("prenatal_parceiro")
+}
+
+// Avaliação (Maternidade e Pré-Natal)
+model Avaliacao {
+  id          String   @id @default(cuid())
+  tipo        String   // MATERNIDADE, PRE_NATAL
+  nota        Int      // 1-5
+  comentario  String?
+  consultaId  String?  // opcional: avaliação por consulta
+
+  gestanteId  String
+  gestante    Gestante @relation(fields: [gestanteId], references: [id])
+
+  criadoEm    DateTime @default(now())
+
+  @@map("avaliacoes")
 }

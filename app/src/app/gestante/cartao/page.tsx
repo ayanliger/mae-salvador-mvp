@@ -57,12 +57,26 @@ export default async function CartaoPage() {
                 <p className="text-lg font-mono font-bold tracking-wider">{cartao.numeroTranscard}</p>
               </div>
             )}
-            <div className="mt-3 flex items-center gap-2">
+            <div className="mt-3 flex flex-wrap items-center gap-2">
               <span className="text-white/70 text-xs">LGPD:</span>
               <span className={`text-xs px-2 py-0.5 rounded-full ${cartao.termoLgpdAceito ? 'bg-white/20' : 'bg-yellow-400/30 text-yellow-100'}`}>
                 {cartao.termoLgpdAceito ? 'Termo aceito' : 'Pendente'}
               </span>
+              {cartao.lgpdMetodoAssinatura && (
+                <span className="text-xs px-2 py-0.5 rounded-full bg-white/20">
+                  via {cartao.lgpdMetodoAssinatura === 'WHATSAPP' ? 'WhatsApp' : cartao.lgpdMetodoAssinatura === 'APP_GOV' ? '.gov' : 'PDF impresso'}
+                </span>
+              )}
             </div>
+            {cartao.ubsVinculacao && (
+              <div className="mt-3 pt-3 border-t border-white/20">
+                <p className="text-white/70 text-xs">Vinculado na UBS</p>
+                <p className="text-sm font-semibold">{cartao.ubsVinculacao}</p>
+                {cartao.dataVinculacao && (
+                  <p className="text-white/60 text-xs mt-0.5">em {formatarData(cartao.dataVinculacao)}</p>
+                )}
+              </div>
+            )}
           </div>
         ) : (
           <div className="rounded-2xl p-6 bg-surface-100 border-2 border-dashed border-surface-300 text-center">
