@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react";
 
-type Papel = "enfermeiro" | "medico" | "gestor";
+type Papel = "profissional" | "gestor";
 
 interface AuthUser {
   id: string;
@@ -23,8 +23,7 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 const MOCK_USERS: Record<Papel, AuthUser> = {
-  enfermeiro: { id: "prof-002", nome: "Enf. Carla Santos Oliveira", papel: "enfermeiro" },
-  medico: { id: "prof-001", nome: "Dra. Ana Beatriz Souza", papel: "medico" },
+  profissional: { id: "prof-002", nome: "Enf. Carla Santos Oliveira", papel: "profissional" },
   gestor: { id: "prof-004", nome: "Maria Helena Ferreira", papel: "gestor" },
 };
 

@@ -2,12 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { useAuth, type Papel } from "@/lib/auth-context";
-import { Stethoscope, ClipboardList, BarChart3, Heart } from "lucide-react";
+import { ClipboardList, BarChart3, Heart } from "lucide-react";
 
 const ROLES: { papel: Papel; label: string; desc: string; icon: React.ElementType }[] = [
-  { papel: "medico", label: "Médico(a)", desc: "Acompanhamento clínico e registro de consultas", icon: Stethoscope },
-  { papel: "enfermeiro", label: "Enfermeiro(a)", desc: "Pré-natal e acompanhamento das gestantes", icon: ClipboardList },
-  { papel: "gestor", label: "Gestor(a)", desc: "Indicadores, relatórios e visão geral", icon: BarChart3 },
+  { papel: "profissional", label: "Profissional Assistente", desc: "Acompanhamento pré-natal e gestão local das gestantes da equipe", icon: ClipboardList },
+  { papel: "gestor", label: "Gestor(a)", desc: "Indicadores, relatórios e visão distrital ou central", icon: BarChart3 },
 ];
 
 export default function LoginPage() {
