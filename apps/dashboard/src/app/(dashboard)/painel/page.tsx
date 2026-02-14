@@ -8,9 +8,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RiskBadge } from "@/components/risk-badge";
 import { Search, ChevronRight } from "lucide-react";
-import { MOCK_GESTANTES, MOCK_CONSULTAS, MOCK_PROFISSIONAIS } from "@shared/mock-data";
-import { UBS_LIST } from "@shared/constants";
-import type { RiscoGestacional } from "@shared/types";
+import { MOCK_GESTANTES, MOCK_CONSULTAS, MOCK_PROFISSIONAIS, UBS_LIST } from "@mae-salvador/shared";
+import type { RiscoGestacional } from "@mae-salvador/shared";
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR");

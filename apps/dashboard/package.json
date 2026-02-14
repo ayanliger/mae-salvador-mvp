@@ -21,7 +21,8 @@
     "react-hook-form": "^7.71.1",
     "recharts": "^2.15.4",
     "tailwind-merge": "^3.4.0",
-    "zod": "^4.3.6"
+    "zod": "^4.3.6",
+    "@mae-salvador/shared": "*"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

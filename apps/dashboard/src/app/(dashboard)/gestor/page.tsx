@@ -8,8 +8,7 @@ import {
   BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer, Legend,
 } from "recharts";
-import { MOCK_KPIS, MOCK_DADOS_UBS, MOCK_TENDENCIA_MENSAL } from "@shared/mock-data";
-import { DISTRITOS_SANITARIOS } from "@shared/constants";
+import { MOCK_KPIS, MOCK_DADOS_UBS, MOCK_TENDENCIA_MENSAL, DISTRITOS_SANITARIOS } from "@mae-salvador/shared";
 
 const CHART_COLORS = [
   "oklch(0.55 0.11 185)", // teal

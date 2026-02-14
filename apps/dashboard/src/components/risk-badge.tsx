@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import type { RiscoGestacional } from "@shared/types";
+import type { RiscoGestacional } from "@mae-salvador/shared";
 
 const RISK_CONFIG: Record<RiscoGestacional, { label: string; className: string }> = {
   habitual: {

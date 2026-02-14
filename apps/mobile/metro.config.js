@@ -15,4 +15,16 @@ config.resolver.nodeModulesPaths = [
   path.resolve(monorepoRoot, 'node_modules'),
 ];
 
+// Redirect expo-router _ctx to our local version with hardcoded app root
+const originalResolveRequest = config.resolver.resolveRequest;
+config.resolver.resolveRequest = (context, moduleName, platform) => {
+  if (moduleName === 'expo-router/_ctx' || moduleName.endsWith('expo-router/_ctx.web.js') || moduleName.endsWith('expo-router/_ctx')) {
+    return { type: 'sourceFile', filePath: path.resolve(projectRoot, 'ctx.web.js') };
+  }
+  if (originalResolveRequest) {
+    return originalResolveRequest(context, moduleName, platform);
+  }
+  return context.resolveRequest(context, moduleName, platform);
+};
+
 module.exports = config;

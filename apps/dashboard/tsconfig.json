@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@shared/*": ["../../packages/shared/src/*"]
+      "@mae-salvador/shared": ["../../packages/shared/src/index.ts"]
     }
   },
   "include": [
@@ -29,8 +29,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts",
-    "../../packages/shared/src/**/*.ts"
+    "**/*.mts"
   ],
   "exclude": ["node_modules"]
 }

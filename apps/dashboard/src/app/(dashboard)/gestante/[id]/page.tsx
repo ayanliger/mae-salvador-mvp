@@ -9,8 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RiskBadge } from "@/components/risk-badge";
 import { ArrowLeft, ClipboardPlus, Calendar, Droplets, Syringe, Pill, User } from "lucide-react";
-import { MOCK_GESTANTES, MOCK_CONSULTAS, MOCK_EXAMES, MOCK_VACINAS, MOCK_MEDICACOES, MOCK_PROFISSIONAIS } from "@shared/mock-data";
-import { UBS_LIST } from "@shared/constants";
+import { MOCK_GESTANTES, MOCK_CONSULTAS, MOCK_EXAMES, MOCK_VACINAS, MOCK_MEDICACOES, MOCK_PROFISSIONAIS, UBS_LIST } from "@mae-salvador/shared";
 
 function fmt(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR");
