@@ -11,15 +11,15 @@ import {
 import { MOCK_KPIS, MOCK_DADOS_UBS, MOCK_TENDENCIA_MENSAL, DISTRITOS_SANITARIOS } from "@mae-salvador/shared";
 
 const CHART_COLORS = [
-  "oklch(0.55 0.11 185)", // teal
+  "oklch(0.50 0.16 255)", // blue (primary)
   "oklch(0.67 0.14 30)",  // coral
   "oklch(0.76 0.14 80)",  // amber
-  "oklch(0.68 0.11 148)", // sage
+  "oklch(0.62 0.12 200)", // sky
   "oklch(0.54 0.07 325)", // mauve
 ];
 
 const RISK_PIE_DATA = [
-  { name: "Habitual", value: MOCK_KPIS.distribuicaoRisco.habitual, fill: "oklch(0.65 0.12 155)" },
+  { name: "Habitual", value: MOCK_KPIS.distribuicaoRisco.habitual, fill: "oklch(0.58 0.14 255)" },
   { name: "Alto", value: MOCK_KPIS.distribuicaoRisco.alto, fill: "oklch(0.76 0.14 80)" },
   { name: "Muito Alto", value: MOCK_KPIS.distribuicaoRisco.muitoAlto, fill: "oklch(0.60 0.18 25)" },
 ];
@@ -79,7 +79,7 @@ export default function GestorPage() {
           <CardContent>
             <ResponsiveContainer width="100%" height={260}>
               <BarChart data={MOCK_TENDENCIA_MENSAL}>
-                <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.91 0.01 85)" />
+                <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.91 0.01 250)" />
                 <XAxis dataKey="mes" fontSize={12} tickLine={false} axisLine={false} />
                 <YAxis fontSize={12} tickLine={false} axisLine={false} />
                 <RechartsTooltip contentStyle={{ borderRadius: "8px", fontSize: "12px" }} />
@@ -132,7 +132,7 @@ export default function GestorPage() {
         <CardContent>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={MOCK_TENDENCIA_MENSAL}>
-              <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.91 0.01 85)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.91 0.01 250)" />
               <XAxis dataKey="mes" fontSize={12} tickLine={false} axisLine={false} />
               <YAxis fontSize={12} tickLine={false} axisLine={false} domain={[60, 80]} unit="%" />
               <RechartsTooltip contentStyle={{ borderRadius: "8px", fontSize: "12px" }} />
