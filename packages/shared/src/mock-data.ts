@@ -1,6 +1,7 @@
 import type {
   Gestante, ConsultaPreNatal, Exame, Vacina, Medicacao,
   Profissional, Notificacao, RegistroPeso, KPIsGestor,
+  TranscardVinculacao,
 } from "./types";
 import { UBS_LIST, MATERNIDADES } from "./constants";
 
@@ -243,6 +244,35 @@ export const MOCK_NOTIFICACOES: Notificacao[] = [
   { id: "not-002", gestanteId: "gest-001", titulo: "Resultado de exame disponível", mensagem: "O resultado do exame TOTG 75g está disponível. Consulte sua caderneta.", tipo: "exame", lida: true, data: "2026-01-20" },
   { id: "not-003", gestanteId: "gest-001", titulo: "Vacina pendente", mensagem: "A 3ª dose da vacina Hepatite B está prevista para abril. Fique atenta!", tipo: "vacina", lida: false, data: "2026-02-10" },
   { id: "not-004", gestanteId: "gest-001", titulo: "Dica da semana", mensagem: "Na 26ª semana, seu bebê já consegue abrir os olhos. Continue com a alimentação saudável!", tipo: "geral", lida: false, data: "2026-02-12" },
+];
+
+// ── Transcard Vinculações ──────────────────────────────
+
+export const MOCK_TRANSCARD: TranscardVinculacao[] = [
+  {
+    id: "tc-001", gestanteId: "gest-001", numeroTranscard: "TC-001-0041", cpf: "987.654.321-00",
+    situacao: "ativo", dataVinculacao: "2025-10-15", etapaAtual: 2,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  {
+    id: "tc-002", gestanteId: "gest-002", numeroTranscard: "TC-002-0028", cpf: "876.543.210-11",
+    situacao: "ativo", dataVinculacao: "2025-08-20", etapaAtual: 3,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2026-01-10",
+  },
+  {
+    id: "tc-003", gestanteId: "gest-003", numeroTranscard: "TC-003-0010", cpf: "765.432.109-22",
+    situacao: "pendente", dataVinculacao: "2025-12-01", etapaAtual: 1,
+    lgpdConsentimento: "pendente", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  {
+    id: "tc-004", gestanteId: "gest-004", numeroTranscard: "TC-004-0055", cpf: "654.321.098-33",
+    situacao: "ativo", dataVinculacao: "2025-09-05", etapaAtual: 2,
+    lgpdConsentimento: "assinado-fisico", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2025-12-20",
+  },
 ];
 
 // ── KPIs do Gestor ─────────────────────────────────────

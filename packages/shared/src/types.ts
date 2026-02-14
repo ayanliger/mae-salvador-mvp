@@ -158,6 +158,26 @@ export interface DistritoSanitario {
   numero: number;
 }
 
+// ── Transcard / Programa Mãe Salvador ──────────────────
+
+export type EtapaMaeSalvador = 1 | 2 | 3;
+export type SituacaoTranscard = "ativo" | "inconsistencia" | "pendente" | "recusado";
+
+export interface TranscardVinculacao {
+  id: string;
+  gestanteId: string;
+  numeroTranscard: string;
+  cpf: string;
+  situacao: SituacaoTranscard;
+  dataVinculacao: string;
+  etapaAtual: EtapaMaeSalvador;
+  lgpdConsentimento: "assinado-digital" | "assinado-fisico" | "pendente";
+  recusouTranscard: boolean;
+  recusouKitEnxoval: boolean;
+  encaminhadaCras: boolean;
+  dataEncaminhamentoCras?: string;
+}
+
 // ── Notificação ────────────────────────────────────────
 
 export interface Notificacao {

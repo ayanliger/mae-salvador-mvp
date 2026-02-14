@@ -8,8 +8,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RiskBadge } from "@/components/risk-badge";
-import { ArrowLeft, ClipboardPlus, Calendar, Droplets, Syringe, Pill, User } from "lucide-react";
-import { MOCK_GESTANTES, MOCK_CONSULTAS, MOCK_EXAMES, MOCK_VACINAS, MOCK_MEDICACOES, MOCK_PROFISSIONAIS, UBS_LIST } from "@mae-salvador/shared";
+import { ArrowLeft, ClipboardPlus, Calendar, Droplets, Syringe, Pill, User, CreditCard } from "lucide-react";
+import { TranscardTab } from "@/components/transcard-tab";
+import { MOCK_GESTANTES, MOCK_CONSULTAS, MOCK_EXAMES, MOCK_VACINAS, MOCK_MEDICACOES, MOCK_PROFISSIONAIS, MOCK_TRANSCARD, UBS_LIST } from "@mae-salvador/shared";
 
 function fmt(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR");
@@ -39,6 +40,12 @@ export default function GestanteDetailPage({ params }: { params: Promise<{ id: s
   const exames = MOCK_EXAMES.filter((e) => e.gestanteId === id).sort((a, b) => b.dataSolicitacao.localeCompare(a.dataSolicitacao));
   const vacinas = MOCK_VACINAS.filter((v) => v.gestanteId === id);
   const medicacoes = MOCK_MEDICACOES.filter((m) => m.gestanteId === id);
+  const transcard = MOCK_TRANSCARD.find((t) => t.gestanteId === id);
+
+  const consultasRealizadas = consultas.filter((c) => c.status === "realizada").length;
+  const testesRapidosFeitos = exames.some((e) => e.nome.toLowerCase().includes("sífilis") && e.status === "resultado-disponivel")
+    && exames.some((e) => e.nome.toLowerCase().includes("hiv") && e.status === "resultado-disponivel");
+  const vacinasAtualizadas = vacinas.filter((v) => v.status === "aplicada").length >= 2;
 
   return (
     <div className="space-y-6">
@@ -105,6 +112,7 @@ export default function GestanteDetailPage({ params }: { params: Promise<{ id: s
           <TabsTrigger value="exames"><Droplets className="w-3.5 h-3.5 mr-1.5" />Exames</TabsTrigger>
           <TabsTrigger value="vacinas"><Syringe className="w-3.5 h-3.5 mr-1.5" />Vacinas</TabsTrigger>
           <TabsTrigger value="medicacoes"><Pill className="w-3.5 h-3.5 mr-1.5" />Medicações</TabsTrigger>
+          <TabsTrigger value="transcard"><CreditCard className="w-3.5 h-3.5 mr-1.5" />Transcard</TabsTrigger>
         </TabsList>
 
         {/* Dados pessoais */}
@@ -304,6 +312,17 @@ export default function GestanteDetailPage({ params }: { params: Promise<{ id: s
               </Table>
             </CardContent>
           </Card>
+        </TabsContent>
+
+        {/* Transcard */}
+        <TabsContent value="transcard">
+          <TranscardTab
+            gestante={g}
+            vinculacao={transcard}
+            consultasRealizadas={consultasRealizadas}
+            testesRapidosFeitos={testesRapidosFeitos}
+            vacinasAtualizadas={vacinasAtualizadas}
+          />
         </TabsContent>
       </Tabs>
     </div>

@@ -62,6 +62,19 @@ export const UBS_LIST: UBS[] = [
   },
 ];
 
+// ── Números de Transcard disponíveis por UBS ───────────
+
+export const TRANSCARD_DISPONIVEIS: Record<string, string[]> = {
+  "ubs-001": ["TC-001-0045", "TC-001-0046", "TC-001-0047", "TC-001-0048", "TC-001-0049"],
+  "ubs-002": ["TC-002-0031", "TC-002-0032", "TC-002-0033", "TC-002-0034"],
+  "ubs-003": ["TC-003-0012", "TC-003-0013", "TC-003-0014"],
+  "ubs-004": ["TC-004-0058", "TC-004-0059", "TC-004-0060", "TC-004-0061", "TC-004-0062"],
+  "ubs-005": ["TC-005-0021", "TC-005-0022", "TC-005-0023"],
+  "ubs-006": ["TC-006-0037", "TC-006-0038", "TC-006-0039", "TC-006-0040"],
+  "ubs-007": ["TC-007-0015", "TC-007-0016"],
+  "ubs-008": ["TC-008-0008", "TC-008-0009", "TC-008-0010"],
+};
+
 // ── Classificações de risco ────────────────────────────
 
 export const FATORES_RISCO = [
