@@ -3,10 +3,11 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useAuth, type Papel } from "@/lib/auth-context";
-import { ClipboardList, BarChart3 } from "lucide-react";
+import { ClipboardList, BarChart3, UserPlus } from "lucide-react";
 
 const ROLES: { papel: Papel; label: string; desc: string; icon: React.ElementType }[] = [
   { papel: "profissional", label: "Profissional Assistente", desc: "Acompanhamento pré-natal e gestão local das gestantes da equipe", icon: ClipboardList },
+  { papel: "cadastro", label: "Cadastro de Gestante", desc: "Cadastrar novas gestantes no programa Mãe Salvador", icon: UserPlus },
   { papel: "gestor", label: "Gestão", desc: "Indicadores, relatórios e visão distrital ou central", icon: BarChart3 },
 ];
 
@@ -16,7 +17,7 @@ export default function LoginPage() {
 
   function handleLogin(papel: Papel) {
     login(papel);
-    router.push(papel === "gestor" ? "/gestor" : "/painel");
+    router.push(papel === "gestor" ? "/gestor" : papel === "cadastro" ? "/cadastrar" : "/painel");
   }
 
   return (

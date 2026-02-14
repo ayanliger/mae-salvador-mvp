@@ -9,7 +9,7 @@ import {
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, ClipboardPlus, BarChart3, LogOut } from "lucide-react";
+import { Heart, Users, ClipboardPlus, BarChart3, LogOut, UserPlus } from "lucide-react";
 
 export function AppSidebar() {
   const { user, logout } = useAuth();
@@ -24,6 +24,7 @@ export function AppSidebar() {
   const navItems = [
     { href: "/painel", label: "Painel de Gestantes", icon: Users, roles: ["profissional", "gestor"] },
     { href: "/registrar", label: "Nova Consulta", icon: ClipboardPlus, roles: ["profissional"] },
+    { href: "/cadastrar", label: "Cadastrar Gestante", icon: UserPlus, roles: ["cadastro", "profissional"] },
     { href: "/gestor", label: "Indicadores", icon: BarChart3, roles: ["gestor"] },
   ];
 
@@ -66,7 +67,7 @@ export function AppSidebar() {
           <div className="flex items-center justify-between">
             <div className="min-w-0">
               <p className="text-xs font-medium text-sidebar-foreground truncate">{user.nome}</p>
-              <p className="text-[10px] text-sidebar-foreground/50">{user.papel === "profissional" ? "Profissional Assistente" : "Gestão"}</p>
+              <p className="text-[10px] text-sidebar-foreground/50">{user.papel === "profissional" ? "Profissional Assistente" : user.papel === "cadastro" ? "Cadastro" : "Gestão"}</p>
             </div>
             <Button variant="ghost" size="icon" onClick={handleLogout} className="text-sidebar-foreground/60 hover:text-sidebar-foreground hover:bg-sidebar-accent shrink-0">
               <LogOut className="w-4 h-4" />

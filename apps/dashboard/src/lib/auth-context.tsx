@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, type ReactNode } from "react";
 
-type Papel = "profissional" | "gestor";
+type Papel = "profissional" | "gestor" | "cadastro";
 
 interface AuthUser {
   id: string;
@@ -25,6 +25,7 @@ const AuthContext = createContext<AuthContextType>({
 const MOCK_USERS: Record<Papel, AuthUser> = {
   profissional: { id: "prof-002", nome: "Enf. Carla Santos Oliveira", papel: "profissional" },
   gestor: { id: "prof-004", nome: "Maria Helena Ferreira", papel: "gestor" },
+  cadastro: { id: "prof-005", nome: "Profissional de Cadastro", papel: "cadastro" },
 };
 
 export function AuthProvider({ children }: { children: ReactNode }) {

@@ -8,6 +8,10 @@ export type StatusVacina = "pendente" | "aplicada" | "atrasada";
 export type TrimestreGestacional = 1 | 2 | 3;
 export type PapelProfissional = "enfermeiro" | "medico" | "gestor" | "admin";
 
+export type DescobrimentoGestacao = "teste-rapido" | "beta-hcg" | "atraso-menstrual";
+
+export type ProgramaSocial = "nenhum" | "bolsa-familia" | "bpc-loas" | "aluguel-social" | "outros";
+
 // ── Gestante ───────────────────────────────────────────
 
 export interface Gestante {
