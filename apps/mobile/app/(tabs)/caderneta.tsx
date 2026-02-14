@@ -6,10 +6,15 @@ import Colors from '@/constants/Colors';
 const SECTIONS = [
   { icon: 'book', label: 'Orientações', desc: '31 temas educativos sobre a gestação', route: '/orientacoes' },
   { icon: 'user', label: 'Dados pessoais', desc: 'Informações pessoais e obstétricas', route: '/dados' },
+  { icon: 'heartbeat', label: 'Gestação atual', desc: 'Antecedentes, condições clínicas e sífilis', route: '/gestacao-atual' },
+  { icon: 'line-chart', label: 'Ganho de peso', desc: 'Curva de peso e IMC gestacional', route: '/ganho-peso' },
   { icon: 'stethoscope', label: 'Consultas pré-natal', desc: 'Histórico de consultas realizadas', route: '/consultas' },
   { icon: 'flask', label: 'Exames', desc: 'Resultados de exames laboratoriais', route: '/exames' },
   { icon: 'medkit', label: 'Vacinas', desc: 'Cartão de vacinação gestacional', route: '/vacinas' },
   { icon: 'pills', label: 'Medicações', desc: 'Prescrições e medicamentos', route: '/medicacoes' },
+  { icon: 'smile-o', label: 'Consulta odontológica', desc: 'Saúde bucal durante a gestação', route: '/consulta-odontologica' },
+  { icon: 'child', label: 'Consulta puerperal', desc: 'Acompanhamento pós-parto', route: '/consulta-puerperal' },
+  { icon: 'star', label: 'Avaliação de qualidade', desc: 'Critérios de qualidade do pré-natal', route: '/avaliacao-qualidade' },
   { icon: 'bus', label: 'Cartão Mãe Salvador', desc: 'Passagens gratuitas para consultas', route: '/cartao' },
 ] as const;
 

@@ -68,6 +68,108 @@ export const REGISTROS_PESO = [
   { semana: 25, peso: 67.5 },
 ];
 
+export const ANTECEDENTES_PESSOAIS = {
+  doencasCronicas: [] as string[],
+  alergias: ['Dipirona'],
+  cirurgias: [] as string[],
+  usoMedicamentos: false,
+  tabagismo: false,
+  etilismo: false,
+  drogasIlicitas: false,
+  historicoFamiliar: ['Diabetes mellitus (mãe)', 'Hipertensão arterial (pai)'],
+};
+
+export const ANTECEDENTES_OBSTETRICOS = [
+  {
+    ano: 2020,
+    tipoParto: 'Normal',
+    idadeGestacionalParto: 39,
+    pesoRN: 3250,
+    sexoRN: 'Masculino',
+    complicacoes: [] as string[],
+    desfecho: 'Nascido vivo',
+  },
+];
+
+export const CONDICOES_GESTACAO = {
+  fatoresRisco: [] as string[],
+  condicoesAtuais: [] as string[],
+  riscoClassificacao: 'habitual' as const,
+  descobrimentoGestacao: 'teste-rapido' as const,
+  primeiraConsultaIG: 6,
+  suplementacao: ['Ácido fólico 5mg', 'Sulfato ferroso 40mg'],
+};
+
+export const SIFILIS = {
+  testeRapido1Tri: { data: '2025-10-30', resultado: 'Não reagente' },
+  testeRapido3Tri: null as { data: string; resultado: string } | null,
+  casoConfirmado: false,
+  tratamentoGestante: null as { inicio: string; conclusao: string; esquema: string } | null,
+  tratamentoParceiro: null as { inicio: string; conclusao: string } | null,
+};
+
+export const CONSULTA_ODONTOLOGICA = {
+  realizada: true,
+  data: '2025-11-20',
+  profissional: 'Dr. Marcos Vieira (Cirurgião-dentista)',
+  local: 'USF Bairro da Paz',
+  igSemanas: 14,
+  condicaoBucal: 'Boa',
+  tratamentoNecessario: false,
+  observacoes: 'Sem cáries ativas. Orientações sobre higiene bucal na gestação.',
+  proximaConsulta: null as string | null,
+};
+
+export const CONSULTA_PUERPERAL = {
+  primeiraConsulta: {
+    prevista: true,
+    data: null as string | null,
+    realizada: false,
+    prazo: 'Até 10 dias após o parto',
+  },
+  segundaConsulta: {
+    prevista: true,
+    data: null as string | null,
+    realizada: false,
+    prazo: 'Até 42 dias após o parto',
+  },
+  orientacoes: [
+    'Aleitamento materno exclusivo até 6 meses',
+    'Cuidados com a cicatriz (se cesárea)',
+    'Sinais de alerta: febre, sangramento intenso, dor abdominal',
+    'Planejamento reprodutivo',
+    'Saúde mental: atenção a sintomas de depressão pós-parto',
+  ],
+};
+
+export const AVALIACAO_QUALIDADE = [
+  { criterio: 'Início precoce do pré-natal (≤12 semanas)', atendido: true, detalhe: 'Primeira consulta na 6ª semana' },
+  { criterio: 'Mínimo 7 consultas pré-natal', atendido: false, detalhe: '5 de 7 consultas realizadas' },
+  { criterio: 'Exames do 1º trimestre completos', atendido: true, detalhe: 'Todos realizados' },
+  { criterio: 'Teste rápido HIV no 1º trimestre', atendido: true, detalhe: 'Não reagente — 30/10/2025' },
+  { criterio: 'Teste rápido sífilis no 1º trimestre', atendido: true, detalhe: 'Não reagente — 30/10/2025' },
+  { criterio: 'Vacina dTpa aplicada', atendido: true, detalhe: 'Aplicada em 15/01/2026' },
+  { criterio: 'Vacina Influenza aplicada', atendido: true, detalhe: 'Aplicada em 02/11/2025' },
+  { criterio: 'Consulta odontológica realizada', atendido: true, detalhe: 'Realizada na 14ª semana' },
+  { criterio: 'Suplementação de ácido fólico', atendido: true, detalhe: 'Em uso contínuo' },
+  { criterio: 'Suplementação de sulfato ferroso', atendido: true, detalhe: 'Em uso contínuo' },
+  { criterio: 'Ultrassonografia 1º trimestre', atendido: true, detalhe: 'Realizada em 15/11/2025' },
+];
+
+export const AVALIACOES_USUARIO = {
+  usf: [
+    { trimestre: 1, estrelas: 4, data: '2025-12-10', comentario: 'Bom atendimento, mas a espera foi longa.' },
+    { trimestre: 2, estrelas: 5, data: '2026-01-20', comentario: 'Excelente! Equipe muito atenciosa.' },
+    { trimestre: 3, estrelas: null as number | null, data: null as string | null, comentario: null as string | null },
+  ],
+  maternidade: {
+    avaliada: false,
+    estrelas: null as number | null,
+    data: null as string | null,
+    comentario: null as string | null,
+  },
+};
+
 export const NOTIFICACOES = [
   { id: 'n1', titulo: 'Consulta agendada', msg: 'Sua próxima consulta é dia 19/02 às 09:00 na USF Bairro da Paz.', tipo: 'consulta' as const, lida: false, data: '2026-02-14' },
   { id: 'n2', titulo: 'Resultado disponível', msg: 'O resultado do exame TOTG 75g está disponível.', tipo: 'exame' as const, lida: true, data: '2026-01-20' },

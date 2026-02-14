@@ -1,33 +1,75 @@
+import { useMemo } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Colors from '@/constants/Colors';
-import { GESTANTE, PROXIMA_CONSULTA, NOTIFICACOES } from '@/data';
+import { useAuthStore } from '@/store/auth-store';
+import { GESTANTE, CONSULTAS, PROXIMA_CONSULTA, VACINAS, EXAMES, NOTIFICACOES } from '@/data';
+import { gerarAlertas, computeIG } from '@/utils/alertas';
 
 function fmt(iso: string) { return new Date(iso).toLocaleDateString('pt-BR'); }
 
 export default function HomeScreen() {
   const router = useRouter();
+  const logout = useAuthStore((s) => s.logout);
   const unread = NOTIFICACOES.filter((n) => !n.lida).length;
+
+  const alertas = useMemo(() => gerarAlertas({
+    dum: GESTANTE.dum,
+    consultas: CONSULTAS,
+    proximaConsulta: PROXIMA_CONSULTA,
+    vacinas: VACINAS,
+    exames: EXAMES,
+  }), []);
+  const igAtual = computeIG(GESTANTE.dum);
+  const urgentes = alertas.filter((a) => a.severidade === 'urgente');
+  const atencao = alertas.filter((a) => a.severidade === 'atencao');
+
+  function handleLogout() {
+    logout();
+    router.replace('/login');
+  }
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 32 }}>
       <View style={styles.greeting}>
         <Text style={styles.greetingText}>Olá, {GESTANTE.nomeCompleto.split(' ')[0]}!</Text>
-        <Text style={styles.greetingSub}>Semana {GESTANTE.idadeGestacionalSemanas} de gestação</Text>
+        <Text style={styles.greetingSub}>Semana {igAtual} de gestação</Text>
       </View>
+
+      {/* Alert banners */}
+      {urgentes.map((a) => (
+        <TouchableOpacity key={a.id} style={styles.alertBannerUrgent} onPress={() => router.push('/notificacoes' as any)} activeOpacity={0.8}>
+          <FontAwesome name={a.icone as any} size={15} color={Colors.danger} />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.alertBannerTitle}>{a.titulo}</Text>
+            <Text style={styles.alertBannerMsg}>{a.mensagem}</Text>
+          </View>
+          <FontAwesome name="chevron-right" size={10} color={Colors.danger} />
+        </TouchableOpacity>
+      ))}
+      {atencao.length > 0 && urgentes.length === 0 && (
+        <TouchableOpacity style={styles.alertBannerWarn} onPress={() => router.push('/notificacoes' as any)} activeOpacity={0.8}>
+          <FontAwesome name={atencao[0].icone as any} size={15} color={Colors.amber} />
+          <View style={{ flex: 1 }}>
+            <Text style={[styles.alertBannerTitle, { color: Colors.amber }]}>{atencao.length} alerta{atencao.length > 1 ? 's' : ''}</Text>
+            <Text style={styles.alertBannerMsg}>{atencao[0].titulo}{atencao.length > 1 ? ` e mais ${atencao.length - 1}` : ''}</Text>
+          </View>
+          <FontAwesome name="chevron-right" size={10} color={Colors.amber} />
+        </TouchableOpacity>
+      )}
 
       {/* Progress card */}
       <View style={styles.progressCard}>
         <View style={styles.progressRow}>
-          <View style={styles.progressItem}><Text style={styles.pVal}>{GESTANTE.idadeGestacionalSemanas}</Text><Text style={styles.pLbl}>semanas</Text></View>
+          <View style={styles.progressItem}><Text style={styles.pVal}>{igAtual}</Text><Text style={styles.pLbl}>semanas</Text></View>
           <View style={styles.divider} />
           <View style={styles.progressItem}><Text style={styles.pVal}>{fmt(GESTANTE.dpp)}</Text><Text style={styles.pLbl}>data provável</Text></View>
           <View style={styles.divider} />
           <View style={styles.progressItem}><Text style={styles.pVal}>5</Text><Text style={styles.pLbl}>consultas</Text></View>
         </View>
-        <View style={styles.barBg}><View style={[styles.barFill, { width: `${(GESTANTE.idadeGestacionalSemanas / 40) * 100}%` }]} /></View>
-        <Text style={styles.barLabel}>{GESTANTE.idadeGestacionalSemanas}/40 semanas</Text>
+        <View style={styles.barBg}><View style={[styles.barFill, { width: `${(igAtual / 40) * 100}%` }]} /></View>
+        <Text style={styles.barLabel}>{igAtual}/40 semanas</Text>
       </View>
 
       {/* Next appointment */}
@@ -67,6 +109,12 @@ export default function HomeScreen() {
           <Text style={styles.ubsDetail}>Maternidade: {GESTANTE.maternidadeReferencia}</Text>
         </View>
       </View>
+
+      {/* Logout */}
+      <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout} activeOpacity={0.7}>
+        <FontAwesome name="sign-out" size={14} color={Colors.danger} />
+        <Text style={styles.logoutText}>Sair da conta</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 }
@@ -97,4 +145,11 @@ const styles = StyleSheet.create({
   ubsCard: { backgroundColor: Colors.card, borderRadius: 14, padding: 16, flexDirection: 'row', alignItems: 'center' },
   ubsName: { fontSize: 13, fontWeight: '700', color: Colors.text },
   ubsDetail: { fontSize: 11, color: Colors.textSecondary, marginTop: 2 },
+  logoutBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 20, paddingVertical: 14 },
+  logoutText: { fontSize: 14, color: Colors.danger, fontWeight: '600' },
+  // Alert banners
+  alertBannerUrgent: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#FDE8E8', borderRadius: 12, padding: 14, marginBottom: 12, borderLeftWidth: 3, borderLeftColor: Colors.danger },
+  alertBannerWarn: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: '#FEF3E0', borderRadius: 12, padding: 14, marginBottom: 12, borderLeftWidth: 3, borderLeftColor: Colors.amber },
+  alertBannerTitle: { fontSize: 13, fontWeight: '700', color: Colors.danger },
+  alertBannerMsg: { fontSize: 11, color: Colors.textSecondary, marginTop: 1, lineHeight: 16 },
 });
