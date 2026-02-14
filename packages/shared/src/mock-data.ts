@@ -1,7 +1,8 @@
 import type {
   Gestante, ConsultaPreNatal, Exame, Vacina, Medicacao,
   Profissional, Notificacao, RegistroPeso, KPIsGestor,
-  TranscardVinculacao,
+  TranscardVinculacao, AtividadeEducativa, VisitaMaternidade,
+  CasoSifilis, IndicadorPrevine,
 } from "./types";
 import { UBS_LIST, MATERNIDADES } from "./constants";
 
@@ -77,7 +78,7 @@ export const MOCK_GESTANTES: Gestante[] = [
     endereco: { logradouro: "Av. Suburbana", numero: "200", bairro: "Pau da Lima", cep: "41235-010", distritoSanitarioId: "ds-10" },
     tipoSanguineo: "AB-", gestacoes: 4, partos: 2, abortos: 1, filhosVivos: 2,
     dum: "2025-07-10", dpp: "2026-04-16", idadeGestacionalSemanas: 31,
-    riscoGestacional: "muito-alto", fatoresRisco: ["Diabetes gestacional", "Pré-eclâmpsia em gestação anterior", "Idade materna ≥ 35 anos"],
+    riscoGestacional: "alto", fatoresRisco: ["Diabetes gestacional", "Pré-eclâmpsia em gestação anterior", "Idade materna ≥ 35 anos"],
     ubsId: "ubs-004", maternidadeReferencia: MATERNIDADES[3], profissionalResponsavelId: "prof-003",
     cartaoMaeSalvador: true, bolsaFamilia: true, dataCadastro: "2025-08-01", ativa: true,
   },
@@ -246,6 +247,23 @@ export const MOCK_NOTIFICACOES: Notificacao[] = [
   { id: "not-004", gestanteId: "gest-001", titulo: "Dica da semana", mensagem: "Na 26ª semana, seu bebê já consegue abrir os olhos. Continue com a alimentação saudável!", tipo: "geral", lida: false, data: "2026-02-12" },
 ];
 
+// ── Atividades Educativas ───────────────────────────────
+
+export const MOCK_ATIVIDADES_EDUCATIVAS: AtividadeEducativa[] = [
+  { id: "ae-001", gestanteId: "gest-001", data: "2025-11-15", descricao: "Roda de conversa: Aleitamento materno e seus benefícios", profissionalId: "prof-002" },
+  { id: "ae-002", gestanteId: "gest-001", data: "2026-01-20", descricao: "Oficina: Cuidados com o recém-nascido", profissionalId: "prof-002" },
+  { id: "ae-003", gestanteId: "gest-002", data: "2025-10-10", descricao: "Palestra: Sinais de alerta na gestação de alto risco", profissionalId: "prof-001" },
+  { id: "ae-004", gestanteId: "gest-002", data: "2025-12-05", descricao: "Grupo de gestantes: Exercícios respiratórios para o parto", profissionalId: "prof-001" },
+  { id: "ae-005", gestanteId: "gest-002", data: "2026-01-18", descricao: "Roda de conversa: Direitos da gestante e puérpera", profissionalId: "prof-001" },
+];
+
+// ── Visitas à Maternidade ───────────────────────────────
+
+export const MOCK_VISITAS_MATERNIDADE: VisitaMaternidade[] = [
+  { id: "vm-001", gestanteId: "gest-001", data: "2026-01-25", maternidade: "Maternidade Albert Sabin", profissionalId: "prof-002", observacoes: "Gestante conheceu a sala de parto e o alojamento conjunto" },
+  { id: "vm-002", gestanteId: "gest-002", data: "2025-12-15", maternidade: "Maternidade Climério de Oliveira (UFBA)", profissionalId: "prof-001", observacoes: "Visita guiada com equipe da maternidade. Gestante tirou dúvidas sobre parto cesáreo" },
+];
+
 // ── Transcard Vinculações ──────────────────────────────
 
 export const MOCK_TRANSCARD: TranscardVinculacao[] = [
@@ -275,6 +293,52 @@ export const MOCK_TRANSCARD: TranscardVinculacao[] = [
   },
 ];
 
+// ── Casos de Sífilis ───────────────────────────────────
+
+export const MOCK_CASOS_SIFILIS: CasoSifilis[] = [
+  { id: "sif-001", gestanteId: "gest-002", classificacao: "recente", dataDeteccao: "2025-09-12", idadeGestacionalDeteccao: 14, tratamentoIniciado: true, tratamentoConcluido: true, parceiroTratado: true },
+  { id: "sif-002", gestanteId: "gest-004", classificacao: "tardia", dataDeteccao: "2025-08-20", idadeGestacionalDeteccao: 6, tratamentoIniciado: true, tratamentoConcluido: false, parceiroTratado: false },
+  { id: "sif-003", gestanteId: "gest-006", classificacao: "recente", dataDeteccao: "2025-12-15", idadeGestacionalDeteccao: 7, tratamentoIniciado: true, tratamentoConcluido: true, parceiroTratado: true },
+];
+
+// ── Indicadores Previne Brasil (quadrimestral) ─────────
+
+export const MOCK_INDICADORES_PREVINE: IndicadorPrevine[] = [
+  { id: "ip-01", nome: "Proporção de gestantes com pelo menos 6 consultas", meta: 60, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 52.4 }, { quadrimestre: "2° Quad 2025", valor: 55.1 }, { quadrimestre: "3° Quad 2025", valor: 58.7 },
+  ]},
+  { id: "ip-02", nome: "Proporção de gestantes com início precoce do pré-natal (≤12 sem)", meta: 80, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 65.2 }, { quadrimestre: "2° Quad 2025", valor: 68.8 }, { quadrimestre: "3° Quad 2025", valor: 72.3 },
+  ]},
+  { id: "ip-03", nome: "Proporção de gestantes com exames do 1° trimestre", meta: 80, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 71.0 }, { quadrimestre: "2° Quad 2025", valor: 74.5 }, { quadrimestre: "3° Quad 2025", valor: 76.8 },
+  ]},
+  { id: "ip-04", nome: "Cobertura vacinal dTpa", meta: 85, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 75.0 }, { quadrimestre: "2° Quad 2025", valor: 78.3 }, { quadrimestre: "3° Quad 2025", valor: 81.5 },
+  ]},
+  { id: "ip-05", nome: "Cobertura vacinal Influenza", meta: 80, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 55.0 }, { quadrimestre: "2° Quad 2025", valor: 60.2 }, { quadrimestre: "3° Quad 2025", valor: 64.2 },
+  ]},
+  { id: "ip-06", nome: "Teste rápido de sífilis no 1° trimestre", meta: 90, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 82.1 }, { quadrimestre: "2° Quad 2025", valor: 85.4 }, { quadrimestre: "3° Quad 2025", valor: 87.3 },
+  ]},
+  { id: "ip-07", nome: "Teste rápido de HIV no 1° trimestre", meta: 90, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 80.5 }, { quadrimestre: "2° Quad 2025", valor: 84.0 }, { quadrimestre: "3° Quad 2025", valor: 86.9 },
+  ]},
+  { id: "ip-08", nome: "Proporção de gestantes com 7+ consultas", meta: 70, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 48.3 }, { quadrimestre: "2° Quad 2025", valor: 53.6 }, { quadrimestre: "3° Quad 2025", valor: 58.1 },
+  ]},
+  { id: "ip-09", nome: "Urocultura no 1° trimestre", meta: 75, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 60.2 }, { quadrimestre: "2° Quad 2025", valor: 64.8 }, { quadrimestre: "3° Quad 2025", valor: 68.4 },
+  ]},
+  { id: "ip-10", nome: "Ultrassonografia obstétrica 1° trimestre", meta: 70, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 58.0 }, { quadrimestre: "2° Quad 2025", valor: 62.5 }, { quadrimestre: "3° Quad 2025", valor: 65.3 },
+  ]},
+  { id: "ip-11", nome: "Suplementação de sulfato ferroso", meta: 85, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 78.5 }, { quadrimestre: "2° Quad 2025", valor: 81.0 }, { quadrimestre: "3° Quad 2025", valor: 83.2 },
+  ]},
+];
+
 // ── KPIs do Gestor ─────────────────────────────────────
 
 export const MOCK_KPIS: KPIsGestor = {
@@ -285,7 +349,7 @@ export const MOCK_KPIS: KPIsGestor = {
   coberturaVacinalDtpa: 81.5,
   coberturaVacinalInfluenza: 64.2,
   examesPrimeiroTrimestre: 76.8,
-  distribuicaoRisco: { habitual: 68, alto: 24, muitoAlto: 8 },
+  distribuicaoRisco: { habitual: 68, alto: 32 },
 };
 
 // ── Dados agregados por UBS (para tabela do gestor) ────

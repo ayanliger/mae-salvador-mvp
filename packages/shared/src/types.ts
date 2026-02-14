@@ -1,6 +1,6 @@
 // ── Enums ──────────────────────────────────────────────
 
-export type RiscoGestacional = "habitual" | "alto" | "muito-alto";
+export type RiscoGestacional = "habitual" | "alto";
 export type TipoSanguineo = "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-";
 export type StatusConsulta = "agendada" | "realizada" | "faltou";
 export type StatusExame = "solicitado" | "coletado" | "resultado-disponivel";
@@ -178,6 +178,49 @@ export interface TranscardVinculacao {
   dataEncaminhamentoCras?: string;
 }
 
+// ── Atividade Educativa / Visita Maternidade ──────────
+
+export interface AtividadeEducativa {
+  id: string;
+  gestanteId: string;
+  data: string;
+  descricao: string;
+  profissionalId: string;
+}
+
+export interface VisitaMaternidade {
+  id: string;
+  gestanteId: string;
+  data: string;
+  maternidade: string;
+  profissionalId: string;
+  observacoes?: string;
+}
+
+// ── Sífilis na Gestação ────────────────────────────────
+
+export type ClassificacaoSifilis = "recente" | "tardia" | "indeterminada";
+
+export interface CasoSifilis {
+  id: string;
+  gestanteId: string;
+  classificacao: ClassificacaoSifilis;
+  dataDeteccao: string;
+  idadeGestacionalDeteccao: number;
+  tratamentoIniciado: boolean;
+  tratamentoConcluido: boolean;
+  parceiroTratado: boolean;
+}
+
+// ── Indicadores Previne Brasil (por quadrimestre) ──────
+
+export interface IndicadorPrevine {
+  id: string;
+  nome: string;
+  meta: number;
+  valores: { quadrimestre: string; valor: number }[];
+}
+
 // ── Notificação ────────────────────────────────────────
 
 export interface Notificacao {
@@ -212,6 +255,5 @@ export interface KPIsGestor {
   distribuicaoRisco: {
     habitual: number;
     alto: number;
-    muitoAlto: number;
   };
 }

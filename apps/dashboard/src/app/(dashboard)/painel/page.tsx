@@ -67,9 +67,8 @@ export default function PainelPage() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="todos">Todos os riscos</SelectItem>
-            <SelectItem value="habitual">Habitual</SelectItem>
-            <SelectItem value="alto">Alto</SelectItem>
-            <SelectItem value="muito-alto">Muito Alto</SelectItem>
+            <SelectItem value="habitual">Risco Habitual</SelectItem>
+            <SelectItem value="alto">Alto Risco</SelectItem>
           </SelectContent>
         </Select>
       </div>
