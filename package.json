@@ -1,0 +1,14 @@
+{
+  "name": "mae-salvador-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dashboard": "npm run dev --workspace=apps/dashboard",
+    "mobile": "npm run start --workspace=apps/mobile",
+    "shared:build": "npm run build --workspace=packages/shared"
+  }
+}
