@@ -8,7 +8,7 @@ import Colors from '@/constants/Colors';
 
 export { ErrorBoundary } from 'expo-router';
 
-export const unstable_settings = { initialRouteName: '(tabs)' };
+export const unstable_settings = { initialRouteName: 'login' };
 
 SplashScreen.preventAutoHideAsync();
 
