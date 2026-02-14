@@ -1,4 +1,4 @@
-import type { DistritoSanitario, UBS } from "./types";
+import type { DistritoSanitario, UBS, Equipe, RacaCor } from "./types";
 
 // ── 12 Distritos Sanitários de Salvador ────────────────
 
@@ -60,6 +60,33 @@ export const UBS_LIST: UBS[] = [
     distritoSanitarioId: "ds-06", equipesSF: 2,
     endereco: { logradouro: "Rua Marquês de Caravelas", numero: "40", bairro: "Barra", cep: "40140-240", distritoSanitarioId: "ds-06" },
   },
+];
+
+// ── Raça / Cor ─────────────────────────────────────────
+
+export const RACAS_CORES: { value: RacaCor; label: string }[] = [
+  { value: "preta", label: "Preta" },
+  { value: "parda", label: "Parda" },
+  { value: "branca", label: "Branca" },
+  { value: "amarela", label: "Amarela" },
+  { value: "indigena", label: "Indígena" },
+];
+
+// ── Equipes de Saúde da Família ────────────────────────
+
+export const EQUIPES: Equipe[] = [
+  { id: "eq-001", nome: "eSF Bairro da Paz I", ubsId: "ubs-001", tipo: "eSF" },
+  { id: "eq-002", nome: "eSF Bairro da Paz II", ubsId: "ubs-001", tipo: "eSF" },
+  { id: "eq-003", nome: "eSF Cajazeiras X-A", ubsId: "ubs-002", tipo: "eSF" },
+  { id: "eq-004", nome: "eSF Cajazeiras X-B", ubsId: "ubs-002", tipo: "eSF" },
+  { id: "eq-005", nome: "eAP Ramiro de Azevedo", ubsId: "ubs-003", tipo: "eAP" },
+  { id: "eq-006", nome: "eSF Pau da Lima I", ubsId: "ubs-004", tipo: "eSF" },
+  { id: "eq-007", nome: "eSF Pau da Lima II", ubsId: "ubs-004", tipo: "eSF" },
+  { id: "eq-008", nome: "eSF Vale do Camurugipe", ubsId: "ubs-005", tipo: "eSF" },
+  { id: "eq-009", nome: "eSF Liberdade I", ubsId: "ubs-006", tipo: "eSF" },
+  { id: "eq-010", nome: "eSF São Marcos", ubsId: "ubs-007", tipo: "eSF" },
+  { id: "eq-011", nome: "eAP Nelson Piauhy", ubsId: "ubs-008", tipo: "eAP" },
+  { id: "eq-012", nome: "eSB Bairro da Paz", ubsId: "ubs-001", tipo: "eSB" },
 ];
 
 // ── Números de Transcard disponíveis por UBS ───────────

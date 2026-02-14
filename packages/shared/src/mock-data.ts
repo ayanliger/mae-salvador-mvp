@@ -50,7 +50,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-08-15", dpp: "2026-05-22", idadeGestacionalSemanas: 26,
     riscoGestacional: "habitual", fatoresRisco: [],
     ubsId: "ubs-001", maternidadeReferencia: MATERNIDADES[0], profissionalResponsavelId: "prof-002",
-    cartaoMaeSalvador: true, bolsaFamilia: false, dataCadastro: "2025-09-10", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-001",
+    dataCadastro: "2025-09-10", ativa: true,
   },
   {
     id: "gest-002", nomeCompleto: "Beatriz Santos Nascimento", cpf: "876.543.210-11",
@@ -60,7 +61,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-06-01", dpp: "2026-03-08", idadeGestacionalSemanas: 37,
     riscoGestacional: "alto", fatoresRisco: ["Hipertensão arterial crônica", "Idade materna ≥ 35 anos"],
     ubsId: "ubs-002", maternidadeReferencia: MATERNIDADES[1], profissionalResponsavelId: "prof-001",
-    cartaoMaeSalvador: true, bolsaFamilia: true, dataCadastro: "2025-07-15", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-003",
+    dataCadastro: "2025-07-15", ativa: true,
   },
   {
     id: "gest-003", nomeCompleto: "Camila Ferreira dos Santos", cpf: "765.432.109-22",
@@ -70,7 +72,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-10-20", dpp: "2026-07-27", idadeGestacionalSemanas: 17,
     riscoGestacional: "habitual", fatoresRisco: [],
     ubsId: "ubs-003", maternidadeReferencia: MATERNIDADES[2], profissionalResponsavelId: "prof-003",
-    cartaoMaeSalvador: true, bolsaFamilia: false, dataCadastro: "2025-11-05", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "branca", equipeId: "eq-005",
+    dataCadastro: "2025-11-05", ativa: true,
   },
   {
     id: "gest-004", nomeCompleto: "Daniela Oliveira Lima", cpf: "654.321.098-33",
@@ -80,7 +83,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-07-10", dpp: "2026-04-16", idadeGestacionalSemanas: 31,
     riscoGestacional: "alto", fatoresRisco: ["Diabetes gestacional", "Pré-eclâmpsia em gestação anterior", "Idade materna ≥ 35 anos"],
     ubsId: "ubs-004", maternidadeReferencia: MATERNIDADES[3], profissionalResponsavelId: "prof-003",
-    cartaoMaeSalvador: true, bolsaFamilia: true, dataCadastro: "2025-08-01", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-006",
+    dataCadastro: "2025-08-01", ativa: true,
   },
   {
     id: "gest-005", nomeCompleto: "Elaine Ribeiro Souza", cpf: "543.210.987-44",
@@ -90,7 +94,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-09-01", dpp: "2026-06-08", idadeGestacionalSemanas: 24,
     riscoGestacional: "habitual", fatoresRisco: [],
     ubsId: "ubs-005", maternidadeReferencia: MATERNIDADES[4], profissionalResponsavelId: "prof-002",
-    cartaoMaeSalvador: true, bolsaFamilia: false, dataCadastro: "2025-10-01", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-008",
+    dataCadastro: "2025-10-01", ativa: true,
   },
   {
     id: "gest-006", nomeCompleto: "Fernanda Almeida Costa", cpf: "432.109.876-55",
@@ -100,7 +105,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-11-01", dpp: "2026-08-08", idadeGestacionalSemanas: 15,
     riscoGestacional: "alto", fatoresRisco: ["Anemia falciforme"],
     ubsId: "ubs-006", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-001",
-    cartaoMaeSalvador: false, bolsaFamilia: false, dataCadastro: "2025-12-01", ativa: true,
+    cartaoMaeSalvador: false, bolsaFamilia: false, racaCor: "amarela", equipeId: "eq-009",
+    dataCadastro: "2025-12-01", ativa: true,
   },
 ];
 

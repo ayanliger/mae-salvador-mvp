@@ -7,6 +7,8 @@ export type StatusExame = "solicitado" | "coletado" | "resultado-disponivel";
 export type StatusVacina = "pendente" | "aplicada" | "atrasada";
 export type TrimestreGestacional = 1 | 2 | 3;
 export type PapelProfissional = "enfermeiro" | "medico" | "gestor" | "admin";
+export type RacaCor = "preta" | "parda" | "branca" | "amarela" | "indigena";
+export type TipoEquipe = "eSF" | "eAP" | "eSB";
 
 export type DescobrimentoGestacao = "teste-rapido" | "beta-hcg" | "atraso-menstrual";
 
@@ -42,6 +44,8 @@ export interface Gestante {
   // Programa
   cartaoMaeSalvador: boolean;
   bolsaFamilia: boolean;
+  racaCor: RacaCor;
+  equipeId: string;
   // Meta
   dataCadastro: string;
   ativa: boolean;
@@ -156,6 +160,15 @@ export interface DistritoSanitario {
   id: string;
   nome: string;
   numero: number;
+}
+
+// ── Equipe de Saúde ────────────────────────────────────
+
+export interface Equipe {
+  id: string;
+  nome: string;
+  ubsId: string;
+  tipo: TipoEquipe;
 }
 
 // ── Transcard / Programa Mãe Salvador ──────────────────
