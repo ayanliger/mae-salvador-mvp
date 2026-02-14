@@ -44,6 +44,7 @@ export default function HomeScreen() {
       <Text style={styles.sectionTitle}>Acesso rápido</Text>
       <View style={styles.grid}>
         {([
+          { icon: 'book', label: 'Orientações', route: '/orientacoes' },
           { icon: 'user', label: 'Meus dados', route: '/dados' },
           { icon: 'stethoscope', label: 'Consultas', route: '/consultas' },
           { icon: 'flask', label: 'Exames', route: '/exames' },

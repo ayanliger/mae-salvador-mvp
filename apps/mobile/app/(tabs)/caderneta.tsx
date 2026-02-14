@@ -4,6 +4,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Colors from '@/constants/Colors';
 
 const SECTIONS = [
+  { icon: 'book', label: 'Orientações', desc: '31 temas educativos sobre a gestação', route: '/orientacoes' },
   { icon: 'user', label: 'Dados pessoais', desc: 'Informações pessoais e obstétricas', route: '/dados' },
   { icon: 'stethoscope', label: 'Consultas pré-natal', desc: 'Histórico de consultas realizadas', route: '/consultas' },
   { icon: 'flask', label: 'Exames', desc: 'Resultados de exames laboratoriais', route: '/exames' },

@@ -39,6 +39,8 @@ export default function RootLayout() {
         <Stack.Screen name="vacinas" options={{ title: 'Vacinas', headerTintColor: Colors.primary }} />
         <Stack.Screen name="medicacoes" options={{ title: 'Medicações', headerTintColor: Colors.primary }} />
         <Stack.Screen name="cartao" options={{ title: 'Cartão Mãe Salvador', headerTintColor: Colors.primary }} />
+        <Stack.Screen name="orientacoes" options={{ title: 'Orientações', headerTintColor: Colors.primary }} />
+        <Stack.Screen name="orientacao-detalhe" options={{ title: 'Orientação', headerTintColor: Colors.primary }} />
       </Stack>
     </ThemeProvider>
   );
