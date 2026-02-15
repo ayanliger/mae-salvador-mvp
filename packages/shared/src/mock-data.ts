@@ -1,6 +1,8 @@
 import type {
   Gestante, ConsultaPreNatal, Exame, Vacina, Medicacao,
   Profissional, Notificacao, RegistroPeso, KPIsGestor,
+  TranscardVinculacao, AtividadeEducativa, VisitaMaternidade,
+  CasoSifilis, IndicadorPrevine,
 } from "./types";
 import { UBS_LIST, MATERNIDADES } from "./constants";
 
@@ -48,7 +50,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-08-15", dpp: "2026-05-22", idadeGestacionalSemanas: 26,
     riscoGestacional: "habitual", fatoresRisco: [],
     ubsId: "ubs-001", maternidadeReferencia: MATERNIDADES[0], profissionalResponsavelId: "prof-002",
-    cartaoMaeSalvador: true, bolsaFamilia: false, dataCadastro: "2025-09-10", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-001",
+    dataCadastro: "2025-09-10", ativa: true,
   },
   {
     id: "gest-002", nomeCompleto: "Beatriz Santos Nascimento", cpf: "876.543.210-11",
@@ -58,7 +61,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-06-01", dpp: "2026-03-08", idadeGestacionalSemanas: 37,
     riscoGestacional: "alto", fatoresRisco: ["Hipertensão arterial crônica", "Idade materna ≥ 35 anos"],
     ubsId: "ubs-002", maternidadeReferencia: MATERNIDADES[1], profissionalResponsavelId: "prof-001",
-    cartaoMaeSalvador: true, bolsaFamilia: true, dataCadastro: "2025-07-15", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-003",
+    dataCadastro: "2025-07-15", ativa: true,
   },
   {
     id: "gest-003", nomeCompleto: "Camila Ferreira dos Santos", cpf: "765.432.109-22",
@@ -68,7 +72,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-10-20", dpp: "2026-07-27", idadeGestacionalSemanas: 17,
     riscoGestacional: "habitual", fatoresRisco: [],
     ubsId: "ubs-003", maternidadeReferencia: MATERNIDADES[2], profissionalResponsavelId: "prof-003",
-    cartaoMaeSalvador: true, bolsaFamilia: false, dataCadastro: "2025-11-05", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "branca", equipeId: "eq-005",
+    dataCadastro: "2025-11-05", ativa: true,
   },
   {
     id: "gest-004", nomeCompleto: "Daniela Oliveira Lima", cpf: "654.321.098-33",
@@ -76,9 +81,10 @@ export const MOCK_GESTANTES: Gestante[] = [
     endereco: { logradouro: "Av. Suburbana", numero: "200", bairro: "Pau da Lima", cep: "41235-010", distritoSanitarioId: "ds-10" },
     tipoSanguineo: "AB-", gestacoes: 4, partos: 2, abortos: 1, filhosVivos: 2,
     dum: "2025-07-10", dpp: "2026-04-16", idadeGestacionalSemanas: 31,
-    riscoGestacional: "muito-alto", fatoresRisco: ["Diabetes gestacional", "Pré-eclâmpsia em gestação anterior", "Idade materna ≥ 35 anos"],
+    riscoGestacional: "alto", fatoresRisco: ["Diabetes gestacional", "Pré-eclâmpsia em gestação anterior", "Idade materna ≥ 35 anos"],
     ubsId: "ubs-004", maternidadeReferencia: MATERNIDADES[3], profissionalResponsavelId: "prof-003",
-    cartaoMaeSalvador: true, bolsaFamilia: true, dataCadastro: "2025-08-01", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-006",
+    dataCadastro: "2025-08-01", ativa: true,
   },
   {
     id: "gest-005", nomeCompleto: "Elaine Ribeiro Souza", cpf: "543.210.987-44",
@@ -88,7 +94,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-09-01", dpp: "2026-06-08", idadeGestacionalSemanas: 24,
     riscoGestacional: "habitual", fatoresRisco: [],
     ubsId: "ubs-005", maternidadeReferencia: MATERNIDADES[4], profissionalResponsavelId: "prof-002",
-    cartaoMaeSalvador: true, bolsaFamilia: false, dataCadastro: "2025-10-01", ativa: true,
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-008",
+    dataCadastro: "2025-10-01", ativa: true,
   },
   {
     id: "gest-006", nomeCompleto: "Fernanda Almeida Costa", cpf: "432.109.876-55",
@@ -98,7 +105,8 @@ export const MOCK_GESTANTES: Gestante[] = [
     dum: "2025-11-01", dpp: "2026-08-08", idadeGestacionalSemanas: 15,
     riscoGestacional: "alto", fatoresRisco: ["Anemia falciforme"],
     ubsId: "ubs-006", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-001",
-    cartaoMaeSalvador: false, bolsaFamilia: false, dataCadastro: "2025-12-01", ativa: true,
+    cartaoMaeSalvador: false, bolsaFamilia: false, racaCor: "amarela", equipeId: "eq-009",
+    dataCadastro: "2025-12-01", ativa: true,
   },
 ];
 
@@ -245,6 +253,98 @@ export const MOCK_NOTIFICACOES: Notificacao[] = [
   { id: "not-004", gestanteId: "gest-001", titulo: "Dica da semana", mensagem: "Na 26ª semana, seu bebê já consegue abrir os olhos. Continue com a alimentação saudável!", tipo: "geral", lida: false, data: "2026-02-12" },
 ];
 
+// ── Atividades Educativas ───────────────────────────────
+
+export const MOCK_ATIVIDADES_EDUCATIVAS: AtividadeEducativa[] = [
+  { id: "ae-001", gestanteId: "gest-001", data: "2025-11-15", descricao: "Roda de conversa: Aleitamento materno e seus benefícios", profissionalId: "prof-002" },
+  { id: "ae-002", gestanteId: "gest-001", data: "2026-01-20", descricao: "Oficina: Cuidados com o recém-nascido", profissionalId: "prof-002" },
+  { id: "ae-003", gestanteId: "gest-002", data: "2025-10-10", descricao: "Palestra: Sinais de alerta na gestação de alto risco", profissionalId: "prof-001" },
+  { id: "ae-004", gestanteId: "gest-002", data: "2025-12-05", descricao: "Grupo de gestantes: Exercícios respiratórios para o parto", profissionalId: "prof-001" },
+  { id: "ae-005", gestanteId: "gest-002", data: "2026-01-18", descricao: "Roda de conversa: Direitos da gestante e puérpera", profissionalId: "prof-001" },
+];
+
+// ── Visitas à Maternidade ───────────────────────────────
+
+export const MOCK_VISITAS_MATERNIDADE: VisitaMaternidade[] = [
+  { id: "vm-001", gestanteId: "gest-001", data: "2026-01-25", maternidade: "Maternidade Albert Sabin", profissionalId: "prof-002", observacoes: "Gestante conheceu a sala de parto e o alojamento conjunto" },
+  { id: "vm-002", gestanteId: "gest-002", data: "2025-12-15", maternidade: "Maternidade Climério de Oliveira (UFBA)", profissionalId: "prof-001", observacoes: "Visita guiada com equipe da maternidade. Gestante tirou dúvidas sobre parto cesáreo" },
+];
+
+// ── Transcard Vinculações ──────────────────────────────
+
+export const MOCK_TRANSCARD: TranscardVinculacao[] = [
+  {
+    id: "tc-001", gestanteId: "gest-001", numeroTranscard: "TC-001-0041", cpf: "987.654.321-00",
+    situacao: "ativo", dataVinculacao: "2025-10-15", etapaAtual: 2,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  {
+    id: "tc-002", gestanteId: "gest-002", numeroTranscard: "TC-002-0028", cpf: "876.543.210-11",
+    situacao: "ativo", dataVinculacao: "2025-08-20", etapaAtual: 3,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2026-01-10",
+  },
+  {
+    id: "tc-003", gestanteId: "gest-003", numeroTranscard: "TC-003-0010", cpf: "765.432.109-22",
+    situacao: "pendente", dataVinculacao: "2025-12-01", etapaAtual: 1,
+    lgpdConsentimento: "pendente", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  {
+    id: "tc-004", gestanteId: "gest-004", numeroTranscard: "TC-004-0055", cpf: "654.321.098-33",
+    situacao: "ativo", dataVinculacao: "2025-09-05", etapaAtual: 2,
+    lgpdConsentimento: "assinado-fisico", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2025-12-20",
+  },
+];
+
+// ── Casos de Sífilis ───────────────────────────────────
+
+export const MOCK_CASOS_SIFILIS: CasoSifilis[] = [
+  { id: "sif-001", gestanteId: "gest-002", classificacao: "recente", dataDeteccao: "2025-09-12", idadeGestacionalDeteccao: 14, tratamentoIniciado: true, tratamentoConcluido: true, parceiroTratado: true },
+  { id: "sif-002", gestanteId: "gest-004", classificacao: "tardia", dataDeteccao: "2025-08-20", idadeGestacionalDeteccao: 6, tratamentoIniciado: true, tratamentoConcluido: false, parceiroTratado: false },
+  { id: "sif-003", gestanteId: "gest-006", classificacao: "recente", dataDeteccao: "2025-12-15", idadeGestacionalDeteccao: 7, tratamentoIniciado: true, tratamentoConcluido: true, parceiroTratado: true },
+];
+
+// ── Indicadores Previne Brasil (quadrimestral) ─────────
+
+export const MOCK_INDICADORES_PREVINE: IndicadorPrevine[] = [
+  { id: "ip-01", nome: "Proporção de gestantes com pelo menos 6 consultas", meta: 60, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 52.4 }, { quadrimestre: "2° Quad 2025", valor: 55.1 }, { quadrimestre: "3° Quad 2025", valor: 58.7 },
+  ]},
+  { id: "ip-02", nome: "Proporção de gestantes com início precoce do pré-natal (≤12 sem)", meta: 80, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 65.2 }, { quadrimestre: "2° Quad 2025", valor: 68.8 }, { quadrimestre: "3° Quad 2025", valor: 72.3 },
+  ]},
+  { id: "ip-03", nome: "Proporção de gestantes com exames do 1° trimestre", meta: 80, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 71.0 }, { quadrimestre: "2° Quad 2025", valor: 74.5 }, { quadrimestre: "3° Quad 2025", valor: 76.8 },
+  ]},
+  { id: "ip-04", nome: "Cobertura vacinal dTpa", meta: 85, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 75.0 }, { quadrimestre: "2° Quad 2025", valor: 78.3 }, { quadrimestre: "3° Quad 2025", valor: 81.5 },
+  ]},
+  { id: "ip-05", nome: "Cobertura vacinal Influenza", meta: 80, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 55.0 }, { quadrimestre: "2° Quad 2025", valor: 60.2 }, { quadrimestre: "3° Quad 2025", valor: 64.2 },
+  ]},
+  { id: "ip-06", nome: "Teste rápido de sífilis no 1° trimestre", meta: 90, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 82.1 }, { quadrimestre: "2° Quad 2025", valor: 85.4 }, { quadrimestre: "3° Quad 2025", valor: 87.3 },
+  ]},
+  { id: "ip-07", nome: "Teste rápido de HIV no 1° trimestre", meta: 90, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 80.5 }, { quadrimestre: "2° Quad 2025", valor: 84.0 }, { quadrimestre: "3° Quad 2025", valor: 86.9 },
+  ]},
+  { id: "ip-08", nome: "Proporção de gestantes com 7+ consultas", meta: 70, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 48.3 }, { quadrimestre: "2° Quad 2025", valor: 53.6 }, { quadrimestre: "3° Quad 2025", valor: 58.1 },
+  ]},
+  { id: "ip-09", nome: "Urocultura no 1° trimestre", meta: 75, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 60.2 }, { quadrimestre: "2° Quad 2025", valor: 64.8 }, { quadrimestre: "3° Quad 2025", valor: 68.4 },
+  ]},
+  { id: "ip-10", nome: "Ultrassonografia obstétrica 1° trimestre", meta: 70, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 58.0 }, { quadrimestre: "2° Quad 2025", valor: 62.5 }, { quadrimestre: "3° Quad 2025", valor: 65.3 },
+  ]},
+  { id: "ip-11", nome: "Suplementação de sulfato ferroso", meta: 85, valores: [
+    { quadrimestre: "1° Quad 2025", valor: 78.5 }, { quadrimestre: "2° Quad 2025", valor: 81.0 }, { quadrimestre: "3° Quad 2025", valor: 83.2 },
+  ]},
+];
+
 // ── KPIs do Gestor ─────────────────────────────────────
 
 export const MOCK_KPIS: KPIsGestor = {
@@ -255,7 +355,7 @@ export const MOCK_KPIS: KPIsGestor = {
   coberturaVacinalDtpa: 81.5,
   coberturaVacinalInfluenza: 64.2,
   examesPrimeiroTrimestre: 76.8,
-  distribuicaoRisco: { habitual: 68, alto: 24, muitoAlto: 8 },
+  distribuicaoRisco: { habitual: 68, alto: 32 },
 };
 
 // ── Dados agregados por UBS (para tabela do gestor) ────

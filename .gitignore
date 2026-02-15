@@ -19,3 +19,5 @@ npm-debug.log*
 .DS_Store
 *.tsbuildinfo
 .vercel
+AGENTS.md
+docs/requirementos_projeto.pdf

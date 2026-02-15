@@ -1,4 +1,4 @@
-import type { DistritoSanitario, UBS } from "./types";
+import type { DistritoSanitario, UBS, Equipe, RacaCor } from "./types";
 
 // ── 12 Distritos Sanitários de Salvador ────────────────
 
@@ -61,6 +61,46 @@ export const UBS_LIST: UBS[] = [
     endereco: { logradouro: "Rua Marquês de Caravelas", numero: "40", bairro: "Barra", cep: "40140-240", distritoSanitarioId: "ds-06" },
   },
 ];
+
+// ── Raça / Cor ─────────────────────────────────────────
+
+export const RACAS_CORES: { value: RacaCor; label: string }[] = [
+  { value: "preta", label: "Preta" },
+  { value: "parda", label: "Parda" },
+  { value: "branca", label: "Branca" },
+  { value: "amarela", label: "Amarela" },
+  { value: "indigena", label: "Indígena" },
+];
+
+// ── Equipes de Saúde da Família ────────────────────────
+
+export const EQUIPES: Equipe[] = [
+  { id: "eq-001", nome: "eSF Bairro da Paz I", ubsId: "ubs-001", tipo: "eSF" },
+  { id: "eq-002", nome: "eSF Bairro da Paz II", ubsId: "ubs-001", tipo: "eSF" },
+  { id: "eq-003", nome: "eSF Cajazeiras X-A", ubsId: "ubs-002", tipo: "eSF" },
+  { id: "eq-004", nome: "eSF Cajazeiras X-B", ubsId: "ubs-002", tipo: "eSF" },
+  { id: "eq-005", nome: "eAP Ramiro de Azevedo", ubsId: "ubs-003", tipo: "eAP" },
+  { id: "eq-006", nome: "eSF Pau da Lima I", ubsId: "ubs-004", tipo: "eSF" },
+  { id: "eq-007", nome: "eSF Pau da Lima II", ubsId: "ubs-004", tipo: "eSF" },
+  { id: "eq-008", nome: "eSF Vale do Camurugipe", ubsId: "ubs-005", tipo: "eSF" },
+  { id: "eq-009", nome: "eSF Liberdade I", ubsId: "ubs-006", tipo: "eSF" },
+  { id: "eq-010", nome: "eSF São Marcos", ubsId: "ubs-007", tipo: "eSF" },
+  { id: "eq-011", nome: "eAP Nelson Piauhy", ubsId: "ubs-008", tipo: "eAP" },
+  { id: "eq-012", nome: "eSB Bairro da Paz", ubsId: "ubs-001", tipo: "eSB" },
+];
+
+// ── Números de Transcard disponíveis por UBS ───────────
+
+export const TRANSCARD_DISPONIVEIS: Record<string, string[]> = {
+  "ubs-001": ["TC-001-0045", "TC-001-0046", "TC-001-0047", "TC-001-0048", "TC-001-0049"],
+  "ubs-002": ["TC-002-0031", "TC-002-0032", "TC-002-0033", "TC-002-0034"],
+  "ubs-003": ["TC-003-0012", "TC-003-0013", "TC-003-0014"],
+  "ubs-004": ["TC-004-0058", "TC-004-0059", "TC-004-0060", "TC-004-0061", "TC-004-0062"],
+  "ubs-005": ["TC-005-0021", "TC-005-0022", "TC-005-0023"],
+  "ubs-006": ["TC-006-0037", "TC-006-0038", "TC-006-0039", "TC-006-0040"],
+  "ubs-007": ["TC-007-0015", "TC-007-0016"],
+  "ubs-008": ["TC-008-0008", "TC-008-0009", "TC-008-0010"],
+};
 
 // ── Classificações de risco ────────────────────────────
 

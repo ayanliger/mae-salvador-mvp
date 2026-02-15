@@ -8,7 +8,7 @@ import Colors from '@/constants/Colors';
 
 export { ErrorBoundary } from 'expo-router';
 
-export const unstable_settings = { initialRouteName: '(tabs)' };
+export const unstable_settings = { initialRouteName: 'login' };
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,6 +32,7 @@ export default function RootLayout() {
     <ThemeProvider value={theme}>
       <Stack>
         <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen name="cadastro" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="dados" options={{ title: 'Meus Dados', headerTintColor: Colors.primary }} />
         <Stack.Screen name="consultas" options={{ title: 'Consultas', headerTintColor: Colors.primary }} />
@@ -39,6 +40,13 @@ export default function RootLayout() {
         <Stack.Screen name="vacinas" options={{ title: 'Vacinas', headerTintColor: Colors.primary }} />
         <Stack.Screen name="medicacoes" options={{ title: 'Medicações', headerTintColor: Colors.primary }} />
         <Stack.Screen name="cartao" options={{ title: 'Cartão Mãe Salvador', headerTintColor: Colors.primary }} />
+        <Stack.Screen name="orientacoes" options={{ title: 'Orientações', headerTintColor: Colors.primary }} />
+        <Stack.Screen name="ganho-peso" options={{ title: 'Ganho de Peso', headerTintColor: Colors.primary }} />
+        <Stack.Screen name="gestacao-atual" options={{ title: 'Gestação Atual', headerTintColor: Colors.primary }} />
+        <Stack.Screen name="consulta-odontologica" options={{ title: 'Consulta Odontológica', headerTintColor: Colors.primary }} />
+        <Stack.Screen name="consulta-puerperal" options={{ title: 'Consulta Puerperal', headerTintColor: Colors.primary }} />
+        <Stack.Screen name="avaliacao-qualidade" options={{ title: 'Avaliação de Qualidade', headerTintColor: Colors.primary }} />
+        <Stack.Screen name="orientacao-detalhe" options={{ title: 'Orientação', headerTintColor: Colors.primary }} />
       </Stack>
     </ThemeProvider>
   );

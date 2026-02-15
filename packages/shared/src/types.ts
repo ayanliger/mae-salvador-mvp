@@ -1,12 +1,18 @@
 // ── Enums ──────────────────────────────────────────────
 
-export type RiscoGestacional = "habitual" | "alto" | "muito-alto";
+export type RiscoGestacional = "habitual" | "alto";
 export type TipoSanguineo = "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-";
 export type StatusConsulta = "agendada" | "realizada" | "faltou";
 export type StatusExame = "solicitado" | "coletado" | "resultado-disponivel";
 export type StatusVacina = "pendente" | "aplicada" | "atrasada";
 export type TrimestreGestacional = 1 | 2 | 3;
 export type PapelProfissional = "enfermeiro" | "medico" | "gestor" | "admin";
+export type RacaCor = "preta" | "parda" | "branca" | "amarela" | "indigena";
+export type TipoEquipe = "eSF" | "eAP" | "eSB";
+
+export type DescobrimentoGestacao = "teste-rapido" | "beta-hcg" | "atraso-menstrual";
+
+export type ProgramaSocial = "nenhum" | "bolsa-familia" | "bpc-loas" | "aluguel-social" | "outros";
 
 // ── Gestante ───────────────────────────────────────────
 
@@ -38,6 +44,8 @@ export interface Gestante {
   // Programa
   cartaoMaeSalvador: boolean;
   bolsaFamilia: boolean;
+  racaCor: RacaCor;
+  equipeId: string;
   // Meta
   dataCadastro: string;
   ativa: boolean;
@@ -154,6 +162,78 @@ export interface DistritoSanitario {
   numero: number;
 }
 
+// ── Equipe de Saúde ────────────────────────────────────
+
+export interface Equipe {
+  id: string;
+  nome: string;
+  ubsId: string;
+  tipo: TipoEquipe;
+}
+
+// ── Transcard / Programa Mãe Salvador ──────────────────
+
+export type EtapaMaeSalvador = 1 | 2 | 3;
+export type SituacaoTranscard = "ativo" | "inconsistencia" | "pendente" | "recusado";
+
+export interface TranscardVinculacao {
+  id: string;
+  gestanteId: string;
+  numeroTranscard: string;
+  cpf: string;
+  situacao: SituacaoTranscard;
+  dataVinculacao: string;
+  etapaAtual: EtapaMaeSalvador;
+  lgpdConsentimento: "assinado-digital" | "assinado-fisico" | "pendente";
+  recusouTranscard: boolean;
+  recusouKitEnxoval: boolean;
+  encaminhadaCras: boolean;
+  dataEncaminhamentoCras?: string;
+}
+
+// ── Atividade Educativa / Visita Maternidade ──────────
+
+export interface AtividadeEducativa {
+  id: string;
+  gestanteId: string;
+  data: string;
+  descricao: string;
+  profissionalId: string;
+}
+
+export interface VisitaMaternidade {
+  id: string;
+  gestanteId: string;
+  data: string;
+  maternidade: string;
+  profissionalId: string;
+  observacoes?: string;
+}
+
+// ── Sífilis na Gestação ────────────────────────────────
+
+export type ClassificacaoSifilis = "recente" | "tardia" | "indeterminada";
+
+export interface CasoSifilis {
+  id: string;
+  gestanteId: string;
+  classificacao: ClassificacaoSifilis;
+  dataDeteccao: string;
+  idadeGestacionalDeteccao: number;
+  tratamentoIniciado: boolean;
+  tratamentoConcluido: boolean;
+  parceiroTratado: boolean;
+}
+
+// ── Indicadores Previne Brasil (por quadrimestre) ──────
+
+export interface IndicadorPrevine {
+  id: string;
+  nome: string;
+  meta: number;
+  valores: { quadrimestre: string; valor: number }[];
+}
+
 // ── Notificação ────────────────────────────────────────
 
 export interface Notificacao {
@@ -188,6 +268,5 @@ export interface KPIsGestor {
   distribuicaoRisco: {
     habitual: number;
     alto: number;
-    muitoAlto: number;
   };
 }

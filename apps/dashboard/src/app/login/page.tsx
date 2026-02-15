@@ -1,13 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useAuth, type Papel } from "@/lib/auth-context";
-import { Stethoscope, ClipboardList, BarChart3, Heart } from "lucide-react";
+import { ClipboardList, BarChart3, UserPlus } from "lucide-react";
 
 const ROLES: { papel: Papel; label: string; desc: string; icon: React.ElementType }[] = [
-  { papel: "medico", label: "Médico(a)", desc: "Acompanhamento clínico e registro de consultas", icon: Stethoscope },
-  { papel: "enfermeiro", label: "Enfermeiro(a)", desc: "Pré-natal e acompanhamento das gestantes", icon: ClipboardList },
-  { papel: "gestor", label: "Gestor(a)", desc: "Indicadores, relatórios e visão geral", icon: BarChart3 },
+  { papel: "profissional", label: "Profissional Assistente", desc: "Acompanhamento pré-natal e gestão local das gestantes da equipe", icon: ClipboardList },
+  { papel: "cadastro", label: "Cadastro de Gestante", desc: "Cadastrar novas gestantes no programa Mãe Salvador", icon: UserPlus },
+  { papel: "gestor", label: "Gestão", desc: "Indicadores, relatórios e visão distrital ou central", icon: BarChart3 },
 ];
 
 export default function LoginPage() {
@@ -16,16 +17,23 @@ export default function LoginPage() {
 
   function handleLogin(papel: Papel) {
     login(papel);
-    router.push(papel === "gestor" ? "/gestor" : "/painel");
+    router.push(papel === "gestor" ? "/gestor" : papel === "cadastro" ? "/cadastrar" : "/painel");
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[oklch(0.22_0.045_200)] via-[oklch(0.28_0.06_195)] to-[oklch(0.20_0.04_215)] px-4">
-      <div className="w-full max-w-sm">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[oklch(0.22_0.06_255)] via-[oklch(0.30_0.10_255)] to-[oklch(0.18_0.05_260)] px-4">
+      <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-sm mb-4">
-            <Heart className="w-7 h-7 text-[oklch(0.75_0.14_30)]" />
+          <div className="inline-flex items-center justify-center w-65 h-65 rounded-2xl bg-white/10 backdrop-blur-sm mb-5 ring-1 ring-white/10">
+            <Image
+              src="/prefeitura_salvador.jpg"
+              alt="Prefeitura de Salvador"
+              width={220}
+              height={220}
+              className="rounded-xl object-cover"
+              priority
+            />
           </div>
           <h1 className="text-2xl font-bold text-white tracking-tight">
             Caderneta Digital
@@ -52,7 +60,7 @@ export default function LoginPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold text-sm text-foreground">{label}</p>
-                  <p className="text-xs text-muted-foreground truncate">{desc}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
                 </div>
               </button>
             ))}

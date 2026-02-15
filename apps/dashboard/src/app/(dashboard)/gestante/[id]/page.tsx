@@ -8,8 +8,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RiskBadge } from "@/components/risk-badge";
-import { ArrowLeft, ClipboardPlus, Calendar, Droplets, Syringe, Pill, User } from "lucide-react";
-import { MOCK_GESTANTES, MOCK_CONSULTAS, MOCK_EXAMES, MOCK_VACINAS, MOCK_MEDICACOES, MOCK_PROFISSIONAIS, UBS_LIST } from "@mae-salvador/shared";
+import { ArrowLeft, ClipboardPlus, Calendar, Droplets, Syringe, Pill, User, CreditCard, GraduationCap, Building } from "lucide-react";
+import { TranscardTab } from "@/components/transcard-tab";
+import { MOCK_GESTANTES, MOCK_CONSULTAS, MOCK_EXAMES, MOCK_VACINAS, MOCK_MEDICACOES, MOCK_PROFISSIONAIS, MOCK_TRANSCARD, MOCK_ATIVIDADES_EDUCATIVAS, MOCK_VISITAS_MATERNIDADE, UBS_LIST } from "@mae-salvador/shared";
 
 function fmt(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR");
@@ -39,6 +40,14 @@ export default function GestanteDetailPage({ params }: { params: Promise<{ id: s
   const exames = MOCK_EXAMES.filter((e) => e.gestanteId === id).sort((a, b) => b.dataSolicitacao.localeCompare(a.dataSolicitacao));
   const vacinas = MOCK_VACINAS.filter((v) => v.gestanteId === id);
   const medicacoes = MOCK_MEDICACOES.filter((m) => m.gestanteId === id);
+  const transcard = MOCK_TRANSCARD.find((t) => t.gestanteId === id);
+  const atividades = MOCK_ATIVIDADES_EDUCATIVAS.filter((a) => a.gestanteId === id).sort((a, b) => b.data.localeCompare(a.data));
+  const visitas = MOCK_VISITAS_MATERNIDADE.filter((v) => v.gestanteId === id).sort((a, b) => b.data.localeCompare(a.data));
+
+  const consultasRealizadas = consultas.filter((c) => c.status === "realizada").length;
+  const testesRapidosFeitos = exames.some((e) => e.nome.toLowerCase().includes("sífilis") && e.status === "resultado-disponivel")
+    && exames.some((e) => e.nome.toLowerCase().includes("hiv") && e.status === "resultado-disponivel");
+  const vacinasAtualizadas = vacinas.filter((v) => v.status === "aplicada").length >= 2;
 
   return (
     <div className="space-y-6">
@@ -105,6 +114,9 @@ export default function GestanteDetailPage({ params }: { params: Promise<{ id: s
           <TabsTrigger value="exames"><Droplets className="w-3.5 h-3.5 mr-1.5" />Exames</TabsTrigger>
           <TabsTrigger value="vacinas"><Syringe className="w-3.5 h-3.5 mr-1.5" />Vacinas</TabsTrigger>
           <TabsTrigger value="medicacoes"><Pill className="w-3.5 h-3.5 mr-1.5" />Medicações</TabsTrigger>
+          <TabsTrigger value="transcard"><CreditCard className="w-3.5 h-3.5 mr-1.5" />Transcard</TabsTrigger>
+          <TabsTrigger value="atividades"><GraduationCap className="w-3.5 h-3.5 mr-1.5" />Atividades</TabsTrigger>
+          <TabsTrigger value="visita"><Building className="w-3.5 h-3.5 mr-1.5" />Visita</TabsTrigger>
         </TabsList>
 
         {/* Dados pessoais */}
@@ -302,6 +314,91 @@ export default function GestanteDetailPage({ params }: { params: Promise<{ id: s
                   ))}
                 </TableBody>
               </Table>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Transcard */}
+        <TabsContent value="transcard">
+          <TranscardTab
+            gestante={g}
+            vinculacao={transcard}
+            consultasRealizadas={consultasRealizadas}
+            testesRapidosFeitos={testesRapidosFeitos}
+            vacinasAtualizadas={vacinasAtualizadas}
+          />
+        </TabsContent>
+
+        {/* Atividades Educativas */}
+        <TabsContent value="atividades">
+          <Card>
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-sm">Participação em Atividades Educativas</CardTitle>
+                <Badge variant="outline" className="text-xs">{atividades.length} registro{atividades.length !== 1 ? "s" : ""}</Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="p-0">
+              {atividades.length > 0 ? (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Data</TableHead>
+                      <TableHead>Atividade</TableHead>
+                      <TableHead className="hidden md:table-cell">Profissional</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {atividades.map((a) => (
+                      <TableRow key={a.id}>
+                        <TableCell className="font-medium whitespace-nowrap">{fmt(a.data)}</TableCell>
+                        <TableCell className="text-sm">{a.descricao}</TableCell>
+                        <TableCell className="hidden md:table-cell text-sm text-muted-foreground">{getProfNome(a.profissionalId)}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              ) : (
+                <p className="text-sm text-muted-foreground text-center py-8">Nenhuma atividade educativa registrada.</p>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Visita à Maternidade */}
+        <TabsContent value="visita">
+          <Card>
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-sm">Visita de Vinculação à Maternidade</CardTitle>
+                <Badge variant="outline" className="text-xs">{visitas.length} registro{visitas.length !== 1 ? "s" : ""}</Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="p-0">
+              {visitas.length > 0 ? (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Data</TableHead>
+                      <TableHead>Maternidade</TableHead>
+                      <TableHead className="hidden md:table-cell">Profissional</TableHead>
+                      <TableHead className="hidden lg:table-cell">Observações</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {visitas.map((v) => (
+                      <TableRow key={v.id}>
+                        <TableCell className="font-medium whitespace-nowrap">{fmt(v.data)}</TableCell>
+                        <TableCell className="text-sm">{v.maternidade}</TableCell>
+                        <TableCell className="hidden md:table-cell text-sm text-muted-foreground">{getProfNome(v.profissionalId)}</TableCell>
+                        <TableCell className="hidden lg:table-cell text-sm text-muted-foreground max-w-xs truncate">{v.observacoes ?? "—"}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              ) : (
+                <p className="text-sm text-muted-foreground text-center py-8">Nenhuma visita à maternidade registrada.</p>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
