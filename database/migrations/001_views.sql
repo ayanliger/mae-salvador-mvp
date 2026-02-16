@@ -19,6 +19,7 @@ DROP VIEW IF EXISTS mae_salvador.vw_vacina_gestante CASCADE;
 DROP VIEW IF EXISTS mae_salvador.vw_exame CASCADE;
 DROP VIEW IF EXISTS mae_salvador.vw_consulta_prenatal CASCADE;
 DROP VIEW IF EXISTS mae_salvador.vw_gestante_ativa CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_gestante CASCADE;
 
 DROP VIEW IF EXISTS mae_salvador.vw_cidadao CASCADE;
 DROP VIEW IF EXISTS mae_salvador.vw_pre_natal CASCADE;
@@ -106,10 +107,12 @@ ORDER BY co_seq_unidade_saude, dt_auditoria DESC;
 --  DW DOMAIN VIEWS
 -- ────────────────────────────────────────────────────────────────
 
--- 1. GESTANTE ATIVA — active pregnant women from DW star schema
+-- 1. GESTANTE — pregnant women from DW star schema (active + recent completed)
 --    Source: tb_fat_rel_op_gestante + tb_fat_cidadao_pec + dims
---    Active = puerperium hasn't started yet (dt_inicio_puerperio > today)
-CREATE OR REPLACE VIEW mae_salvador.vw_gestante_ativa AS
+--    Includes active pregnancies AND completed pregnancies from 2024+
+--    so we have clinical data (the DW hasn't ingested encounters for
+--    currently-active pregnancies yet in this dump).
+CREATE OR REPLACE VIEW mae_salvador.vw_gestante AS
 SELECT
   fcp.co_seq_fat_cidadao_pec        AS co_seq_cidadao,
   COALESCE(fcp.no_cidadao, ci.no_nome) AS no_cidadao,
@@ -120,7 +123,7 @@ SELECT
   ci.no_email                       AS ds_email,
   rc.ds_raca_cor                    AS no_raca_cor,
   NULL::text                        AS no_tipo_sanguineo,
-  1::integer                        AS st_ativo,
+  CASE WHEN g.dt_inicio_puerperio > CURRENT_DATE THEN 'ativa' ELSE 'concluída' END AS situacao,
   -- Address (not available in DW citizen tables)
   NULL::text AS ds_logradouro,
   NULL::text AS nu_numero,
@@ -172,7 +175,7 @@ LEFT JOIN LATERAL (
   LIMIT 1
 ) oh ON true
 WHERE COALESCE(fcp.st_faleceu, 0) = 0
-  AND g.dt_inicio_puerperio > CURRENT_DATE;
+  AND g.dt_inicio_puerperio >= '2024-01-01';
 
 
 -- 2. CONSULTA PRÉ-NATAL — DW encounters with vitals + PEC SOAP bridge

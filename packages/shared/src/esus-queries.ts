@@ -16,7 +16,7 @@
 // ════════════════════════════════════════════════════════════════
 
 export const QUERY_GESTANTES = `
-SELECT * FROM mae_salvador.vw_gestante_ativa
+SELECT * FROM mae_salvador.vw_gestante
 ORDER BY no_cidadao
 `;
 
@@ -27,7 +27,7 @@ ORDER BY no_cidadao
 
 /** Param: $1 = co_seq_cidadao */
 export const QUERY_GESTANTE_BY_ID = `
-SELECT * FROM mae_salvador.vw_gestante_ativa
+SELECT * FROM mae_salvador.vw_gestante
 WHERE co_seq_cidadao = $1
 LIMIT 1
 `;
@@ -145,4 +145,94 @@ SELECT *
 FROM mae_salvador.vw_fator_risco
 WHERE co_fat_cidadao_pec = $1
 ORDER BY dt_inicio_problema DESC
+`;
+
+
+// ════════════════════════════════════════════════════════════════
+//  11. ÚLTIMA CONSULTA POR GESTANTE — aggregate for painel list
+// ════════════════════════════════════════════════════════════════
+
+export const QUERY_ULTIMA_CONSULTA_POR_GESTANTE = `
+SELECT
+  co_fat_cidadao_pec,
+  MAX(data_consulta) AS ultima_consulta,
+  COUNT(*)           AS total_consultas
+FROM mae_salvador.vw_consulta_prenatal
+GROUP BY co_fat_cidadao_pec
+`;
+
+
+// ════════════════════════════════════════════════════════════════
+//  12. SÍFILIS — gestantes with syphilis diagnosis
+// ════════════════════════════════════════════════════════════════
+
+export const QUERY_CASOS_SIFILIS = `
+SELECT
+  fr.co_fat_cidadao_pec           AS gestante_id,
+  fr.descricao_problema,
+  fr.co_ciap,
+  fr.co_cid10,
+  fr.dt_inicio_problema           AS data_deteccao,
+  g.dt_ultima_menstruacao          AS dum,
+  CASE
+    WHEN fr.co_cid10 LIKE 'A51%' THEN 'recente'
+    WHEN fr.co_cid10 LIKE 'A52%' THEN 'tardia'
+    WHEN fr.co_cid10 = 'O981'    THEN 'recente'
+    WHEN fr.co_ciap = 'X70'      THEN 'recente'
+    ELSE 'indeterminada'
+  END                              AS classificacao
+FROM mae_salvador.vw_fator_risco fr
+JOIN mae_salvador.vw_gestante g ON g.co_seq_cidadao = fr.co_fat_cidadao_pec
+WHERE fr.co_cid10 LIKE 'A5%'
+   OR fr.co_ciap = 'X70'
+   OR fr.co_cid10 = 'O981'
+ORDER BY fr.dt_inicio_problema DESC NULLS LAST
+`;
+
+
+// ════════════════════════════════════════════════════════════════
+//  13. INDICADORES SNAPSHOT — current aggregate metrics
+// ════════════════════════════════════════════════════════════════
+
+/** Returns a single row with all computed indicator values */
+export const QUERY_INDICADORES_SNAPSHOT = `
+WITH gestantes AS (
+  SELECT co_seq_cidadao, dt_ultima_menstruacao AS dum
+  FROM mae_salvador.vw_gestante
+),
+consultas_por_gestante AS (
+  SELECT
+    cp.co_fat_cidadao_pec,
+    COUNT(*)                         AS total_consultas,
+    MIN(cp.data_consulta)            AS primeira_consulta
+  FROM mae_salvador.vw_consulta_prenatal cp
+  JOIN gestantes g ON g.co_seq_cidadao = cp.co_fat_cidadao_pec
+  GROUP BY cp.co_fat_cidadao_pec
+),
+vac_counts AS (
+  SELECT
+    v.co_fat_cidadao_pec,
+    bool_or(LOWER(i.nome_vacina) LIKE '%dtpa%' OR LOWER(i.nome_vacina) LIKE '%difteria%tetano%pertussis%') AS has_dtpa,
+    bool_or(LOWER(i.nome_vacina) LIKE '%influenza%')  AS has_influenza
+  FROM mae_salvador.vw_vacina_gestante v
+  JOIN gestantes g ON g.co_seq_cidadao = v.co_fat_cidadao_pec
+  LEFT JOIN LATERAL (
+    SELECT v.nome_vacina
+  ) i ON true
+  WHERE v.status_vacina = 'aplicada'
+  GROUP BY v.co_fat_cidadao_pec
+)
+SELECT
+  (SELECT COUNT(*) FROM gestantes)                                          AS total_gestantes,
+  COALESCE((SELECT COUNT(*) FROM consultas_por_gestante WHERE total_consultas >= 6), 0) AS com_6_consultas,
+  COALESCE((SELECT COUNT(*) FROM consultas_por_gestante WHERE total_consultas >= 7), 0) AS com_7_consultas,
+  COALESCE((
+    SELECT COUNT(*) FROM consultas_por_gestante cpg
+    JOIN gestantes g ON g.co_seq_cidadao = cpg.co_fat_cidadao_pec
+    WHERE g.dum IS NOT NULL
+      AND (cpg.primeira_consulta - g.dum::date) <= 84  -- 12 weeks = 84 days
+  ), 0)                                                                     AS inicio_precoce,
+  COALESCE((SELECT COUNT(*) FROM vac_counts WHERE has_dtpa), 0)             AS cobertura_dtpa,
+  COALESCE((SELECT COUNT(*) FROM vac_counts WHERE has_influenza), 0)        AS cobertura_influenza,
+  COALESCE((SELECT COUNT(*) FROM consultas_por_gestante), 0)                AS gestantes_com_consulta
 `;

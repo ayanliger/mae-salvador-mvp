@@ -40,6 +40,10 @@ import {
   QUERY_UBS_LIST,
   QUERY_EQUIPES_BY_UBS,
   QUERY_HISTORICO_PESO,
+  QUERY_FATORES_RISCO,
+  QUERY_ULTIMA_CONSULTA_POR_GESTANTE,
+  QUERY_CASOS_SIFILIS,
+  QUERY_INDICADORES_SNAPSHOT,
 } from "@mae-salvador/shared";
 
 import {
@@ -50,6 +54,8 @@ import {
   EDEMA_MAP,
   TIPO_EXAME_MAP,
 } from "@mae-salvador/shared";
+
+import type { CasoSifilis, ClassificacaoSifilis } from "@mae-salvador/shared";
 
 // ── Helpers ────────────────────────────────────────────
 
@@ -153,7 +159,7 @@ function mapGestante(row: any, programa?: ProgramaGestanteRow | null): Gestante 
     dataCadastro: programa?.data_cadastro
       ? toISODate(programa.data_cadastro)
       : "",
-    ativa: row.st_ativo === 1,
+    ativa: row.situacao === 'ativa',
   };
 }
 
@@ -366,4 +372,90 @@ export async function esusGetHistoricoPeso(
       imcAtual: parseFloat(String(r.imc)) || 0,
     };
   });
+}
+
+// ── Fatores de Risco ───────────────────────────────────────
+
+export async function esusGetFatoresRisco(
+  gestanteId: string,
+): Promise<string[]> {
+  const { rows } = await getEsusPool().query(QUERY_FATORES_RISCO, [gestanteId]);
+  return rows
+    .map((r: any) => toStr(r.descricao_problema))
+    .filter((s: string) => s.length > 0);
+}
+
+// ── Última Consulta por Gestante (aggregate) ───────────────
+
+export interface UltimaConsultaMap {
+  [gestanteId: string]: { ultimaConsulta: string; totalConsultas: number };
+}
+
+export async function esusGetUltimaConsultaPorGestante(): Promise<UltimaConsultaMap> {
+  const { rows } = await getEsusPool().query(QUERY_ULTIMA_CONSULTA_POR_GESTANTE);
+  const map: UltimaConsultaMap = {};
+  for (const r of rows) {
+    map[String(r.co_fat_cidadao_pec)] = {
+      ultimaConsulta: toISODate(r.ultima_consulta),
+      totalConsultas: toInt(r.total_consultas),
+    };
+  }
+  return map;
+}
+
+// ── Casos de Sífilis ───────────────────────────────────────
+
+export async function esusGetCasosSifilis(): Promise<CasoSifilis[]> {
+  const { rows } = await getEsusPool().query(QUERY_CASOS_SIFILIS);
+  // De-duplicate by gestante (keep first / most specific diagnosis)
+  const seen = new Set<string>();
+  const result: CasoSifilis[] = [];
+  for (const r of rows) {
+    const gid = String(r.gestante_id);
+    if (seen.has(gid)) continue;
+    seen.add(gid);
+    const dum = toISODate(r.dum);
+    const dataDeteccao = toISODate(r.data_deteccao);
+    const igDeteccao = dum && dataDeteccao
+      ? computeIdadeGestacional(dum, dataDeteccao)
+      : 0;
+    result.push({
+      id: `sif-${gid}`,
+      gestanteId: gid,
+      classificacao: (r.classificacao as ClassificacaoSifilis) ?? "indeterminada",
+      dataDeteccao: dataDeteccao || "",
+      idadeGestacionalDeteccao: igDeteccao,
+      // Treatment data not available in DW
+      tratamentoIniciado: false,
+      tratamentoConcluido: false,
+      parceiroTratado: false,
+    });
+  }
+  return result;
+}
+
+// ── Indicadores Snapshot ───────────────────────────────────
+
+export interface IndicadoresSnapshot {
+  totalGestantes: number;
+  com6Consultas: number;
+  com7Consultas: number;
+  inicioPrecoce: number;
+  coberturaDtpa: number;
+  coberturaInfluenza: number;
+  gestantesComConsulta: number;
+}
+
+export async function esusGetIndicadoresSnapshot(): Promise<IndicadoresSnapshot> {
+  const { rows } = await getEsusPool().query(QUERY_INDICADORES_SNAPSHOT);
+  const r = rows[0] ?? {};
+  return {
+    totalGestantes: toInt(r.total_gestantes),
+    com6Consultas: toInt(r.com_6_consultas),
+    com7Consultas: toInt(r.com_7_consultas),
+    inicioPrecoce: toInt(r.inicio_precoce),
+    coberturaDtpa: toInt(r.cobertura_dtpa),
+    coberturaInfluenza: toInt(r.cobertura_influenza),
+    gestantesComConsulta: toInt(r.gestantes_com_consulta),
+  };
 }
