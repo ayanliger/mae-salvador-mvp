@@ -132,7 +132,73 @@ SELECT
   NULL::text AS ds_cep,
   -- Pregnancy
   COALESCE(g.dt_fai_dum, g.dt_inicio_gestacao) AS dt_ultima_menstruacao,
-  NULL::integer                     AS st_alto_risco,
+  -- Alto risco: critérios conforme Manual de Gestação de Alto Risco (MS, 2022)
+  CASE WHEN EXISTS (
+    SELECT 1 FROM public.tb_fat_atd_ind_problemas fr
+    LEFT JOIN public.tb_dim_ciap ciap
+      ON ciap.co_seq_dim_ciap = fr.co_dim_ciap AND fr.co_dim_ciap != 1
+    LEFT JOIN public.tb_dim_cid cid
+      ON cid.co_seq_dim_cid = fr.co_dim_cid AND fr.co_dim_cid != 1
+    WHERE fr.co_fat_cidadao_pec = fcp.co_seq_fat_cidadao_pec
+      AND (fr.co_dim_data_fim_problema IS NULL OR fr.co_dim_data_fim_problema <= 1)
+      AND (
+        -- ═══ CIAP-2: condições de alto risco obstétrico ═══
+        ciap.nu_ciap = ANY(ARRAY[
+          'W72',  -- Neoplasia maligna relacionada à gestação
+          'W75',  -- Lesões complicando gestação
+          'W76',  -- Anomalia congênita complicando gestação
+          'W80',  -- Gravidez ectópica
+          'W81',  -- Toxemia gravídica / pré-eclâmpsia
+          'W84',  -- Gravidez de alto risco
+          'W85',  -- Diabetes gestacional
+          'X70'   -- Sífilis
+        ])
+        -- ═══ CID-10 Cap. XV: complicações obstétricas ═══
+        OR cid.nu_cid LIKE ANY(ARRAY[
+          -- Transtornos hipertensivos na gestação (O10-O16)
+          'O10%','O11%','O12%','O13%','O14%','O15%','O16%',
+          'O24%',  -- Diabetes na gestação
+          'O30%',  -- Gestação múltipla
+          'O36%',  -- Assistência à mãe por problemas fetais
+          'O43%',  -- Transtornos da placenta (acretismo)
+          'O44%',  -- Placenta prévia
+          'O98%',  -- Infecções complicando gestação (HIV, sífilis, hepatites)
+          'O99%',  -- Outras doenças maternas complicando gestação
+          'Z35%',  -- Supervisão de gestação de alto risco
+          -- ═══ CID-10: condições crônicas pré-existentes ═══
+          -- Hipertensão arterial (I10-I15)
+          'I10%','I11%','I12%','I13%','I15%',
+          -- Diabetes mellitus (E10-E14)
+          'E10%','E11%','E12%','E13%','E14%',
+          -- HIV/AIDS (B20-B24)
+          'B20%','B21%','B22%','B23%','B24%',
+          -- Sífilis (A50-A53)
+          'A50%','A51%','A52%','A53%',
+          -- Hemoglobinopatias: doença falciforme e talassemia (D56-D57)
+          'D56%','D57%',
+          -- Lúpus eritematoso sistêmico e outras autoimunes
+          'M32%','M35%',
+          -- Epilepsia
+          'G40%',
+          -- Hepatites virais (B15-B19)
+          'B15%','B16%','B17%','B18%','B19%',
+          -- Toxoplasmose
+          'B58%',
+          -- Doença renal crônica
+          'N18%',
+          -- Cardiopatias reumáticas crônicas (I05-I09)
+          'I05%','I06%','I07%','I08%','I09%',
+          -- Asma
+          'J45%',
+          -- Tireopatias (E00-E07)
+          'E00%','E01%','E02%','E03%','E04%','E05%','E06%','E07%',
+          -- Neoplasias malignas (C00-C97)
+          'C0%','C1%','C2%','C3%','C4%','C5%','C6%','C7%','C8%','C9%',
+          -- Transtornos psiquiátricos graves
+          'F20%','F31%','F32%','F33%'
+        ])
+      )
+  ) THEN 1 ELSE 0 END                AS st_alto_risco,
   NULL::text                        AS tp_gravidez,
   NULL::date                        AS dt_desfecho,
   -- Obstetric history (from latest prenatal encounter)

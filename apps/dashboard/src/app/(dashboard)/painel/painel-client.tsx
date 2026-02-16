@@ -32,7 +32,8 @@ export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: 
       const matchSearch =
         search === "" ||
         g.nomeCompleto.toLowerCase().includes(search.toLowerCase()) ||
-        g.cpf.includes(search);
+        g.cpf.includes(search) ||
+        (g.cns?.includes(search) ?? false);
       const matchRisco = riscoFilter === "todos" || g.riscoGestacional === riscoFilter;
       return matchSearch && matchRisco;
     });
@@ -60,7 +61,7 @@ export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: 
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
-            placeholder="Buscar por nome ou CPF..."
+            placeholder="Buscar por nome, CPF ou CNS..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="pl-9"
@@ -86,6 +87,7 @@ export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: 
               <TableRow>
                 <TableHead>Nome</TableHead>
                 <TableHead className="hidden md:table-cell">CPF</TableHead>
+                <TableHead className="hidden md:table-cell">CNS</TableHead>
                 <TableHead>IG (sem)</TableHead>
                 <TableHead className="hidden sm:table-cell">DPP</TableHead>
                 <TableHead>Risco</TableHead>
@@ -108,7 +110,10 @@ export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: 
                     <TableCell className="hidden md:table-cell text-muted-foreground text-sm font-mono">
                       {g.cpf || "—"}
                     </TableCell>
-                    <TableCell className="font-semibold">{g.idadeGestacionalSemanas}</TableCell>
+                    <TableCell className="hidden md:table-cell text-muted-foreground text-sm font-mono">
+                      {g.cns || "—"}
+                    </TableCell>
+                    <TableCell className="font-semibold">{g.ativa ? g.idadeGestacionalSemanas : "—"}</TableCell>
                     <TableCell className="hidden sm:table-cell text-sm text-muted-foreground">
                       {g.dpp ? formatDate(g.dpp) : "—"}
                     </TableCell>
@@ -139,7 +144,7 @@ export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: 
               })}
               {filtered.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={9} className="text-center py-8 text-muted-foreground">
+                  <TableCell colSpan={10} className="text-center py-8 text-muted-foreground">
                     Nenhuma gestante encontrada.
                   </TableCell>
                 </TableRow>
