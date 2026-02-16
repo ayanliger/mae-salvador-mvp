@@ -23,4 +23,8 @@ psql -U postgres -d esus -c "
   ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO esus_leitura;
 "
 
-echo "Done — e-SUS database restored."
+echo "Creating Mãe Salvador application database..."
+psql -U postgres -c "SELECT 'exists' FROM pg_database WHERE datname = 'mae_salvador';" | grep -q exists || \
+  psql -U postgres -c "CREATE DATABASE mae_salvador ENCODING 'UTF8' LOCALE 'pt_BR.UTF-8' TEMPLATE template0;"
+
+echo "Done — databases ready."
