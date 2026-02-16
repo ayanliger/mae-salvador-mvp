@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RiskBadge } from "@/components/risk-badge";
 import { MockSection } from "@/components/mock-badge";
-import { ArrowLeft, ClipboardPlus, Calendar, Droplets, Syringe, Pill, User, CreditCard, GraduationCap, Building } from "lucide-react";
+import { ArrowLeft, Calendar, Droplets, Syringe, Pill, User, CreditCard, GraduationCap, Building } from "lucide-react";
 import { TranscardTab } from "@/components/transcard-tab";
 import { MOCK_TRANSCARD, MOCK_ATIVIDADES_EDUCATIVAS, MOCK_VISITAS_MATERNIDADE, MOCK_PROFISSIONAIS } from "@mae-salvador/shared";
 import type { Gestante, ConsultaPreNatal, Exame, Vacina, Medicacao, UBS } from "@mae-salvador/shared";
@@ -83,12 +83,6 @@ export default function GestanteDetailClient({
             </p>
           </div>
         </div>
-        <Link href={`/registrar?gestante=${g.id}`}>
-          <Button size="sm">
-            <ClipboardPlus className="w-4 h-4 mr-1.5" />
-            Nova Consulta
-          </Button>
-        </Link>
       </div>
 
       {/* Summary cards */}
