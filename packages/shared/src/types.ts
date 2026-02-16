@@ -246,6 +246,57 @@ export interface Notificacao {
   data: string;
 }
 
+// ── Cadastro Gestante (registration) ──────────────────
+
+export type OrigemCadastro = "dashboard" | "mobile";
+export type StatusCadastro = "pendente" | "aprovado" | "recusado";
+
+export interface CadastroGestante {
+  id: string;
+  // Identificação
+  cpf: string;
+  cns?: string;
+  nomeCompleto: string;
+  nomeSocial?: string;
+  identidadeGenero?: string;
+  orientacaoSexual?: string;
+  dataNascimento?: string;
+  telefone: string;
+  temWhatsapp: boolean;
+  // Endereço
+  logradouro: string;
+  numero: string;
+  complemento?: string;
+  bairro: string;
+  cep: string;
+  distritoSanitarioId?: string;
+  // Gestação
+  descobrimentoGestacao: DescobrimentoGestacao;
+  dum?: string;
+  programaSocial: ProgramaSocial;
+  nis?: string;
+  planoSaude?: "sim" | "nao";
+  manterAcompanhamentoUbs?: "sim" | "nao";
+  // UBS
+  ubsId: string;
+  // Histórico obstétrico (facultativo)
+  gestacoesPrevias?: number;
+  partosCesareo?: number;
+  partosNormal?: number;
+  abortos?: number;
+  // Saúde (facultativo)
+  alergias?: string;
+  doencasConhecidas?: string;
+  medicacoesEmUso?: string;
+  // Meta
+  origem: OrigemCadastro;
+  status: StatusCadastro;
+  criadoEm: string;
+  atualizadoEm: string;
+}
+
+export type CadastroGestanteInput = Omit<CadastroGestante, "id" | "status" | "criadoEm" | "atualizadoEm">;
+
 // ── Registro de Peso (para gráfico) ───────────────────
 
 export interface RegistroPeso {

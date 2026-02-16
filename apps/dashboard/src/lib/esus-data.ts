@@ -165,7 +165,18 @@ function mapGestante(row: any, programa?: ProgramaGestanteRow | null): Gestante 
 
 export async function esusGetGestantes(): Promise<Gestante[]> {
   const { rows } = await getEsusPool().query(QUERY_GESTANTES);
-  return rows.map((r: any) => mapGestante(r));
+  // Deduplicate by co_seq_cidadao — the view can return multiple rows
+  // per citizen when she has more than one pregnancy; keep the first
+  // (most-recent, per ORDER BY in the query).
+  const seen = new Set<string>();
+  const unique: Gestante[] = [];
+  for (const r of rows) {
+    const g = mapGestante(r);
+    if (seen.has(g.id)) continue;
+    seen.add(g.id);
+    unique.push(g);
+  }
+  return unique;
 }
 
 export async function esusGetGestanteById(

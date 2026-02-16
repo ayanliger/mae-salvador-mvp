@@ -2,11 +2,13 @@ import { useState } from 'react';
 import {
   View, Text, StyleSheet, ScrollView, TextInput,
   TouchableOpacity, KeyboardAvoidingView, Platform,
+  ActivityIndicator, Alert,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useAuthStore } from '@/store/auth-store';
 import Colors from '@/constants/Colors';
+import { API_BASE_URL } from '@/constants/Api';
 
 // Inline UBS/distrito data (shared pkg not wired in mobile)
 const DISTRITOS = [
@@ -146,6 +148,7 @@ export default function CadastroScreen() {
   const login = useAuthStore((s) => s.login);
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   // Step 0 – Identificação
   const [cpf, setCpf] = useState('');
@@ -212,8 +215,71 @@ export default function CadastroScreen() {
     else handleSubmit();
   }
 
-  function handleSubmit() {
-    setSubmitted(true);
+  async function handleSubmit() {
+    if (submitting) return;
+    setSubmitting(true);
+
+    // Parse DD/MM/YYYY → YYYY-MM-DD for date fields
+    function toISO(ddmmyyyy: string): string | undefined {
+      const d = ddmmyyyy.replace(/\D/g, '');
+      if (d.length !== 8) return undefined;
+      return `${d.slice(4, 8)}-${d.slice(2, 4)}-${d.slice(0, 2)}`;
+    }
+
+    const payload = {
+      cpf,
+      cns: cns || undefined,
+      nomeCompleto: nome,
+      nomeSocial: nomeSocial || undefined,
+      identidadeGenero: identidadeGenero || undefined,
+      orientacaoSexual: orientacaoSexual || undefined,
+      dataNascimento: toISO(nascimento),
+      telefone,
+      temWhatsapp,
+      logradouro,
+      numero,
+      complemento: complemento || undefined,
+      bairro,
+      cep,
+      distritoSanitarioId: distritoId || undefined,
+      descobrimentoGestacao: descobrimento,
+      dum: toISO(dum),
+      programaSocial: programaSocial || 'nenhum',
+      nis: nis || undefined,
+      planoSaude: planoSaude || undefined,
+      manterAcompanhamentoUbs: manterUbs || undefined,
+      ubsId,
+      gestacoesPrevias: gestacoesPrevias ? parseInt(gestacoesPrevias) : undefined,
+      partosCesareo: partosCesareo ? parseInt(partosCesareo) : undefined,
+      partosNormal: partosNormal ? parseInt(partosNormal) : undefined,
+      abortos: abortos ? parseInt(abortos) : undefined,
+      alergias: alergias || undefined,
+      doencasConhecidas: doencas || undefined,
+      medicacoesEmUso: medicacoes || undefined,
+      origem: 'mobile' as const,
+    };
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/cadastro`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Erro ao cadastrar');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      Alert.alert(
+        'Erro no cadastro',
+        err instanceof Error ? err.message : 'Tente novamente mais tarde.',
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function handleFinish() {
@@ -473,13 +539,19 @@ export default function CadastroScreen() {
         {/* Bottom button */}
         <View style={styles.bottomBar}>
           <TouchableOpacity
-            style={[styles.nextBtn, !canAdvance() && styles.nextBtnDisabled]}
+            style={[styles.nextBtn, (!canAdvance() || submitting) && styles.nextBtnDisabled]}
             onPress={handleNext}
             activeOpacity={0.8}
-            disabled={!canAdvance()}
+            disabled={!canAdvance() || submitting}
           >
-            <Text style={styles.nextBtnText}>{step === LAST_STEP ? 'Finalizar cadastro' : 'Continuar'}</Text>
-            <FontAwesome name={step === LAST_STEP ? 'check' : 'arrow-right'} size={14} color="#fff" />
+            {submitting ? (
+              <ActivityIndicator color="#fff" size="small" />
+            ) : (
+              <>
+                <Text style={styles.nextBtnText}>{step === LAST_STEP ? 'Finalizar cadastro' : 'Continuar'}</Text>
+                <FontAwesome name={step === LAST_STEP ? 'check' : 'arrow-right'} size={14} color="#fff" />
+              </>
+            )}
           </TouchableOpacity>
         </View>
       </View>

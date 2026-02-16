@@ -16,8 +16,11 @@ import type {
   VisitaMaternidade,
   Notificacao,
   CasoSifilis,
+  CadastroGestante,
+  CadastroGestanteInput,
   EtapaMaeSalvador,
   SituacaoTranscard,
+  StatusCadastro,
 } from "@mae-salvador/shared";
 
 // ── Helpers ────────────────────────────────────────────
@@ -320,4 +323,101 @@ export async function appCreateCasoSifilis(
     [coCidadao, classificacao, dataDeteccao, igSemanas ?? null],
   );
   return mapSifilis(rows[0]);
+}
+
+// ── Cadastro Gestante ──────────────────────────────────
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+function mapCadastro(row: any): CadastroGestante {
+  return {
+    id: String(row.id),
+    cpf: toStr(row.cpf),
+    cns: toOptStr(row.cns),
+    nomeCompleto: toStr(row.nome_completo),
+    nomeSocial: toOptStr(row.nome_social),
+    identidadeGenero: toOptStr(row.identidade_genero),
+    orientacaoSexual: toOptStr(row.orientacao_sexual),
+    dataNascimento: row.data_nascimento ? toISODate(row.data_nascimento) : undefined,
+    telefone: toStr(row.telefone),
+    temWhatsapp: row.tem_whatsapp === true,
+    logradouro: toStr(row.logradouro),
+    numero: toStr(row.numero),
+    complemento: toOptStr(row.complemento),
+    bairro: toStr(row.bairro),
+    cep: toStr(row.cep),
+    distritoSanitarioId: toOptStr(row.distrito_sanitario_id),
+    descobrimentoGestacao: row.descobrimento_gestacao,
+    dum: row.dum ? toISODate(row.dum) : undefined,
+    programaSocial: row.programa_social,
+    nis: toOptStr(row.nis),
+    planoSaude: row.plano_saude ?? undefined,
+    manterAcompanhamentoUbs: row.manter_acompanhamento_ubs ?? undefined,
+    ubsId: toStr(row.ubs_id),
+    gestacoesPrevias: row.gestacoes_previas ?? undefined,
+    partosCesareo: row.partos_cesareo ?? undefined,
+    partosNormal: row.partos_normal ?? undefined,
+    abortos: row.abortos ?? undefined,
+    alergias: toOptStr(row.alergias),
+    doencasConhecidas: toOptStr(row.doencas_conhecidas),
+    medicacoesEmUso: toOptStr(row.medicacoes_em_uso),
+    origem: row.origem,
+    status: row.status,
+    criadoEm: row.criado_em instanceof Date ? row.criado_em.toISOString() : String(row.criado_em),
+    atualizadoEm: row.atualizado_em instanceof Date ? row.atualizado_em.toISOString() : String(row.atualizado_em),
+  };
+}
+
+export async function appCreateCadastroGestante(
+  data: CadastroGestanteInput,
+): Promise<CadastroGestante> {
+  const cpfDigits = data.cpf ? data.cpf.replace(/\D/g, "") : null;
+  const cnsDigits = data.cns ? data.cns.replace(/\D/g, "") : null;
+  const { rows } = await getAppPool().query(
+    `INSERT INTO cadastro_gestante (
+       cpf, cns, nome_completo, nome_social, identidade_genero, orientacao_sexual,
+       data_nascimento, telefone, tem_whatsapp,
+       logradouro, numero, complemento, bairro, cep, distrito_sanitario_id,
+       descobrimento_gestacao, dum, programa_social, nis, plano_saude, manter_acompanhamento_ubs,
+       ubs_id,
+       gestacoes_previas, partos_cesareo, partos_normal, abortos,
+       alergias, doencas_conhecidas, medicacoes_em_uso,
+       origem
+     ) VALUES (
+       $1, $2, $3, $4, $5, $6,
+       $7, $8, $9,
+       $10, $11, $12, $13, $14, $15,
+       $16, $17, $18, $19, $20, $21,
+       $22,
+       $23, $24, $25, $26,
+       $27, $28, $29,
+       $30
+     ) RETURNING *`,
+    [
+      cpfDigits || null, cnsDigits || null, data.nomeCompleto, data.nomeSocial || null,
+      data.identidadeGenero || null, data.orientacaoSexual || null,
+      data.dataNascimento || null, data.telefone, data.temWhatsapp,
+      data.logradouro, data.numero, data.complemento || null,
+      data.bairro, data.cep, data.distritoSanitarioId || null,
+      data.descobrimentoGestacao, data.dum || null, data.programaSocial,
+      data.nis || null, data.planoSaude || null, data.manterAcompanhamentoUbs || null,
+      data.ubsId,
+      data.gestacoesPrevias ?? null, data.partosCesareo ?? null,
+      data.partosNormal ?? null, data.abortos ?? null,
+      data.alergias || null, data.doencasConhecidas || null, data.medicacoesEmUso || null,
+      data.origem,
+    ],
+  );
+  return mapCadastro(rows[0]);
+}
+
+export async function appGetCadastrosGestante(
+  status?: StatusCadastro,
+): Promise<CadastroGestante[]> {
+  const query = status
+    ? "SELECT * FROM cadastro_gestante WHERE status = $1 ORDER BY criado_em DESC"
+    : "SELECT * FROM cadastro_gestante ORDER BY criado_em DESC";
+  const params = status ? [status] : [];
+  const { rows } = await getAppPool().query(query, params);
+  return rows.map(mapCadastro);
 }

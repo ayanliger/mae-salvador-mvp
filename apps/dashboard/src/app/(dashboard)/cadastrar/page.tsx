@@ -14,12 +14,14 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { Check, Phone } from "lucide-react";
+import { Check, Phone, Loader2 } from "lucide-react";
 import { UBS_LIST, DISTRITOS_SANITARIOS, MATERNIDADES } from "@mae-salvador/shared";
-import type { DescobrimentoGestacao, ProgramaSocial } from "@mae-salvador/shared";
+import type { DescobrimentoGestacao, ProgramaSocial, CadastroGestanteInput } from "@mae-salvador/shared";
 
 export default function CadastrarGestantePage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Required fields
   const [cpf, setCpf] = useState("");
@@ -68,8 +70,11 @@ export default function CadastrarGestantePage() {
     ? UBS_LIST.filter((u) => u.distritoSanitarioId === distritoId)
     : UBS_LIST;
 
+  const hasCpf = cpf.replace(/\D/g, "").length === 11;
+  const hasCns = cns.replace(/\D/g, "").length === 15;
+
   const canSubmit =
-    cpf.trim() !== "" &&
+    (hasCpf || hasCns) &&
     nomeCompleto.trim() !== "" &&
     telefone.trim() !== "" &&
     logradouro.trim() !== "" &&
@@ -80,11 +85,64 @@ export default function CadastrarGestantePage() {
     programaSocial !== "" &&
     ubsId !== "";
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!canSubmit) return;
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    if (!canSubmit || submitting) return;
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const payload: CadastroGestanteInput = {
+      cpf,
+      cns: cns || undefined,
+      nomeCompleto,
+      nomeSocial: nomeSocial || undefined,
+      identidadeGenero: identidadeGenero || undefined,
+      orientacaoSexual: orientacaoSexual || undefined,
+      dataNascimento: dataNascimento || undefined,
+      telefone,
+      temWhatsapp,
+      logradouro,
+      numero,
+      complemento: complemento || undefined,
+      bairro,
+      cep,
+      distritoSanitarioId: distritoId || undefined,
+      descobrimentoGestacao: descobrimento as DescobrimentoGestacao,
+      dum: dum || undefined,
+      programaSocial: programaSocial as ProgramaSocial,
+      nis: nis || undefined,
+      planoSaude: planoSaude as "sim" | "nao" || undefined,
+      manterAcompanhamentoUbs: manterAcompanhamentoUbs as "sim" | "nao" || undefined,
+      ubsId,
+      gestacoesPrevias: gestacoesPrevias ? parseInt(gestacoesPrevias) : undefined,
+      partosCesareo: partosCesareo ? parseInt(partosCesareo) : undefined,
+      partosNormal: partosNormal ? parseInt(partosNormal) : undefined,
+      abortos: abortos ? parseInt(abortos) : undefined,
+      alergias: alergias || undefined,
+      doencasConhecidas: doencasConhecidas || undefined,
+      medicacoesEmUso: medicacoesEmUso || undefined,
+      origem: "dashboard",
+    };
+
+    try {
+      const res = await fetch("/api/cadastro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Erro ao cadastrar gestante");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Erro ao cadastrar gestante");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function formatCpf(value: string) {
@@ -129,7 +187,7 @@ export default function CadastrarGestantePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="cpf">
-                  CPF <span className="text-red-500">*</span>
+                  CPF {!hasCns && <span className="text-red-500">*</span>}
                 </Label>
                 <Input
                   id="cpf"
@@ -138,9 +196,14 @@ export default function CadastrarGestantePage() {
                   onChange={(e) => setCpf(formatCpf(e.target.value))}
                   maxLength={14}
                 />
+                {!hasCpf && !hasCns && (
+                  <p className="text-[10px] text-muted-foreground">Preencha CPF ou CNS</p>
+                )}
               </div>
               <div className="space-y-2">
-                <Label htmlFor="cns">CNS</Label>
+                <Label htmlFor="cns">
+                  CNS {!hasCpf && <span className="text-red-500">*</span>}
+                </Label>
                 <Input
                   id="cns"
                   placeholder="Cartão Nacional de Saúde"
@@ -561,6 +624,11 @@ export default function CadastrarGestantePage() {
         </Card>
 
         {/* ── Submit ── */}
+        {submitError && (
+          <div className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+            {submitError}
+          </div>
+        )}
         <div className="flex gap-3 justify-end">
           {submitted ? (
             <Button disabled className="bg-emerald-600">
@@ -568,8 +636,9 @@ export default function CadastrarGestantePage() {
               Gestante cadastrada com sucesso!
             </Button>
           ) : (
-            <Button type="submit" disabled={!canSubmit} size="lg">
-              Cadastrar Gestante
+            <Button type="submit" disabled={!canSubmit || submitting} size="lg">
+              {submitting && <Loader2 className="w-4 h-4 mr-1.5 animate-spin" />}
+              {submitting ? "Cadastrando..." : "Cadastrar Gestante"}
             </Button>
           )}
         </div>
