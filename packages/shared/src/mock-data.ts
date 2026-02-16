@@ -108,6 +108,363 @@ export const MOCK_GESTANTES: Gestante[] = [
     cartaoMaeSalvador: false, bolsaFamilia: false, racaCor: "amarela", equipeId: "eq-009",
     dataCadastro: "2025-12-01", ativa: true,
   },
+  // ── Adolescentes (≤17 anos) ──────────────────────────────
+  {
+    id: "gest-007", nomeCompleto: "Gabriela Nascimento Reis", cpf: "321.098.765-66",
+    dataNascimento: "2010-06-15", telefone: "(71) 98432-1098",
+    endereco: { logradouro: "Rua das Flores", numero: "22", bairro: "Itapuã", cep: "41610-020", distritoSanitarioId: "ds-08" },
+    tipoSanguineo: "O+", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-12-01", dpp: "2026-09-07", idadeGestacionalSemanas: 11,
+    riscoGestacional: "alto", fatoresRisco: ["Idade materna ≤ 15 anos"],
+    ubsId: "ubs-001", maternidadeReferencia: MATERNIDADES[0], profissionalResponsavelId: "prof-002",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-002",
+    dataCadastro: "2026-01-05", ativa: true,
+  },
+  {
+    id: "gest-008", nomeCompleto: "Helena Souza Martins", cpf: "210.987.654-77",
+    dataNascimento: "2009-03-22", telefone: "(71) 99321-0987",
+    endereco: { logradouro: "Travessa São Jorge", numero: "8", bairro: "Subúrbio", cep: "40710-050", distritoSanitarioId: "ds-11" },
+    tipoSanguineo: "A+", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-11-15", dpp: "2026-08-22", idadeGestacionalSemanas: 13,
+    riscoGestacional: "alto", fatoresRisco: ["Idade materna ≤ 15 anos", "Violência doméstica"],
+    ubsId: "ubs-007", maternidadeReferencia: MATERNIDADES[2], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "parda", equipeId: "eq-010",
+    dataCadastro: "2025-12-20", ativa: true,
+  },
+  // ── Gestação múltipla (gêmeos) ──────────────────────────
+  {
+    id: "gest-009", nomeCompleto: "Isabela Carvalho Mendes", cpf: "109.876.543-88",
+    dataNascimento: "1992-08-10", telefone: "(71) 98210-9876",
+    endereco: { logradouro: "Av. Oceânica", numero: "450", bairro: "Barra", cep: "40140-130", distritoSanitarioId: "ds-06" },
+    tipoSanguineo: "B-", gestacoes: 2, partos: 1, abortos: 0, filhosVivos: 1,
+    dum: "2025-09-20", dpp: "2026-06-27", idadeGestacionalSemanas: 21,
+    riscoGestacional: "alto", fatoresRisco: ["Gestação múltipla"],
+    ubsId: "ubs-008", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "branca", equipeId: "eq-011",
+    dataCadastro: "2025-10-25", ativa: true,
+  },
+  // ── HIV positivo ────────────────────────────────────────
+  {
+    id: "gest-010", nomeCompleto: "Juliana Pereira da Silva", cpf: "098.765.432-99",
+    dataNascimento: "1994-12-03", telefone: "(71) 99109-8765",
+    endereco: { logradouro: "Rua do Comércio", numero: "112", bairro: "São Caetano", cep: "40390-020", distritoSanitarioId: "ds-03" },
+    tipoSanguineo: "O+", gestacoes: 3, partos: 2, abortos: 0, filhosVivos: 2,
+    dum: "2025-08-01", dpp: "2026-05-08", idadeGestacionalSemanas: 28,
+    riscoGestacional: "alto", fatoresRisco: ["HIV positivo"],
+    ubsId: "ubs-007", maternidadeReferencia: MATERNIDADES[1], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-010",
+    dataCadastro: "2025-09-01", ativa: true,
+  },
+  // ── Obesidade (IMC ≥ 30) ────────────────────────────────
+  {
+    id: "gest-011", nomeCompleto: "Karla Batista Rocha", cpf: "987.654.321-10",
+    dataNascimento: "1996-05-18", telefone: "(71) 98987-6543",
+    endereco: { logradouro: "Rua Principal", numero: "78", bairro: "Brotas", cep: "40285-010", distritoSanitarioId: "ds-05" },
+    tipoSanguineo: "A+", gestacoes: 2, partos: 1, abortos: 0, filhosVivos: 1,
+    dum: "2025-10-10", dpp: "2026-07-17", idadeGestacionalSemanas: 18,
+    riscoGestacional: "alto", fatoresRisco: ["IMC ≥ 30 (obesidade)", "Diabetes gestacional"],
+    ubsId: "ubs-003", maternidadeReferencia: MATERNIDADES[2], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-005",
+    dataCadastro: "2025-11-15", ativa: true,
+  },
+  // ── Histórico de prematuridade ──────────────────────────
+  {
+    id: "gest-012", nomeCompleto: "Larissa Teixeira Gomes", cpf: "876.543.210-21",
+    dataNascimento: "1991-11-25", telefone: "(71) 99876-5432",
+    endereco: { logradouro: "Av. San Martin", numero: "320", bairro: "Itapagipe", cep: "40420-000", distritoSanitarioId: "ds-02" },
+    tipoSanguineo: "AB+", gestacoes: 4, partos: 3, abortos: 0, filhosVivos: 3,
+    dum: "2025-07-25", dpp: "2026-05-01", idadeGestacionalSemanas: 29,
+    riscoGestacional: "alto", fatoresRisco: ["Histórico de prematuridade", "Idade materna ≥ 35 anos"],
+    ubsId: "ubs-002", maternidadeReferencia: MATERNIDADES[1], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-004",
+    dataCadastro: "2025-08-20", ativa: true,
+  },
+  // ── Abortos de repetição ────────────────────────────────
+  {
+    id: "gest-013", nomeCompleto: "Mariana Costa Freitas", cpf: "765.432.109-32",
+    dataNascimento: "1989-02-14", telefone: "(71) 98765-4321",
+    endereco: { logradouro: "Rua Chile", numero: "55", bairro: "Centro Histórico", cep: "40020-000", distritoSanitarioId: "ds-01" },
+    tipoSanguineo: "O-", gestacoes: 5, partos: 1, abortos: 3, filhosVivos: 1,
+    dum: "2025-09-10", dpp: "2026-06-17", idadeGestacionalSemanas: 23,
+    riscoGestacional: "alto", fatoresRisco: ["Histórico de abortos de repetição", "Idade materna ≥ 35 anos"],
+    ubsId: "ubs-003", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "branca", equipeId: "eq-005",
+    dataCadastro: "2025-10-01", ativa: true,
+  },
+  // ── Cardiopatia ─────────────────────────────────────────
+  {
+    id: "gest-014", nomeCompleto: "Natália Rodrigues Pinto", cpf: "654.321.098-43",
+    dataNascimento: "1998-07-30", telefone: "(71) 99654-3210",
+    endereco: { logradouro: "Rua do Uruguai", numero: "190", bairro: "Uruguai", cep: "40450-020", distritoSanitarioId: "ds-02" },
+    tipoSanguineo: "B+", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-12-05", dpp: "2026-09-11", idadeGestacionalSemanas: 10,
+    riscoGestacional: "alto", fatoresRisco: ["Cardiopatia"],
+    ubsId: "ubs-004", maternidadeReferencia: MATERNIDADES[3], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-007",
+    dataCadastro: "2026-01-10", ativa: true,
+  },
+  // ── Uso de substâncias ──────────────────────────────────
+  {
+    id: "gest-015", nomeCompleto: "Olivia Santos Barbosa", cpf: "543.210.987-54",
+    dataNascimento: "1999-09-08", telefone: "(71) 98543-2109",
+    endereco: { logradouro: "Rua da Mangueira", numero: "33", bairro: "Valéria", cep: "41301-110", distritoSanitarioId: "ds-03" },
+    tipoSanguineo: "A-", gestacoes: 2, partos: 0, abortos: 1, filhosVivos: 0,
+    dum: "2025-10-25", dpp: "2026-08-01", idadeGestacionalSemanas: 16,
+    riscoGestacional: "alto", fatoresRisco: ["Uso de substâncias"],
+    ubsId: "ubs-007", maternidadeReferencia: MATERNIDADES[2], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: false, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-010",
+    dataCadastro: "2025-11-20", ativa: true,
+  },
+  // ── Infecção urinária de repetição ──────────────────────
+  {
+    id: "gest-016", nomeCompleto: "Patrícia Lima Vieira", cpf: "432.109.876-65",
+    dataNascimento: "1995-01-12", telefone: "(71) 99432-1098",
+    endereco: { logradouro: "Rua Nova Esperança", numero: "67", bairro: "Boca do Rio", cep: "41706-710", distritoSanitarioId: "ds-07" },
+    tipoSanguineo: "O+", gestacoes: 3, partos: 2, abortos: 0, filhosVivos: 2,
+    dum: "2025-08-20", dpp: "2026-05-27", idadeGestacionalSemanas: 25,
+    riscoGestacional: "alto", fatoresRisco: ["Infecção urinária de repetição"],
+    ubsId: "ubs-005", maternidadeReferencia: MATERNIDADES[4], profissionalResponsavelId: "prof-002",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-008",
+    dataCadastro: "2025-09-15", ativa: true,
+  },
+  // ── Diabetes mellitus prévio ────────────────────────────
+  {
+    id: "gest-017", nomeCompleto: "Raquel Fernandes Moura", cpf: "321.098.765-76",
+    dataNascimento: "1987-04-05", telefone: "(71) 98321-0987",
+    endereco: { logradouro: "Av. Paralela", numero: "1500", bairro: "Pau da Lima", cep: "41235-100", distritoSanitarioId: "ds-10" },
+    tipoSanguineo: "A+", gestacoes: 3, partos: 2, abortos: 0, filhosVivos: 2,
+    dum: "2025-06-15", dpp: "2026-03-22", idadeGestacionalSemanas: 35,
+    riscoGestacional: "alto", fatoresRisco: ["Diabetes mellitus prévio", "Idade materna ≥ 35 anos"],
+    ubsId: "ubs-004", maternidadeReferencia: MATERNIDADES[3], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-006",
+    dataCadastro: "2025-07-20", ativa: true,
+  },
+  // ── Indígena ────────────────────────────────────────────
+  {
+    id: "gest-018", nomeCompleto: "Raíssa Tupinambá", cpf: "210.987.654-87",
+    dataNascimento: "2001-12-20", telefone: "(71) 99210-9876",
+    endereco: { logradouro: "Aldeia Pataxó", numero: "s/n", bairro: "Itapuã", cep: "41635-150", distritoSanitarioId: "ds-08" },
+    tipoSanguineo: "O+", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-11-10", dpp: "2026-08-17", idadeGestacionalSemanas: 14,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-001", maternidadeReferencia: MATERNIDADES[0], profissionalResponsavelId: "prof-002",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "indigena", equipeId: "eq-001",
+    dataCadastro: "2025-12-15", ativa: true,
+  },
+  // ── 3º Trimestre (próximas do parto) ────────────────────
+  {
+    id: "gest-019", nomeCompleto: "Sandra Oliveira Cruz", cpf: "109.876.543-98",
+    dataNascimento: "1993-06-28", telefone: "(71) 98109-8765",
+    endereco: { logradouro: "Rua do Farol", numero: "200", bairro: "Barra", cep: "40140-200", distritoSanitarioId: "ds-06" },
+    tipoSanguineo: "B+", gestacoes: 2, partos: 1, abortos: 0, filhosVivos: 1,
+    dum: "2025-05-20", dpp: "2026-02-24", idadeGestacionalSemanas: 39,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-008", maternidadeReferencia: MATERNIDADES[4], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "branca", equipeId: "eq-011",
+    dataCadastro: "2025-06-25", ativa: true,
+  },
+  {
+    id: "gest-020", nomeCompleto: "Tatiana Ramos Santana", cpf: "098.765.432-09",
+    dataNascimento: "1990-10-15", telefone: "(71) 99098-7654",
+    endereco: { logradouro: "Rua das Palmeiras", numero: "88", bairro: "Cajazeiras", cep: "41340-030", distritoSanitarioId: "ds-12" },
+    tipoSanguineo: "AB+", gestacoes: 4, partos: 3, abortos: 0, filhosVivos: 3,
+    dum: "2025-05-10", dpp: "2026-02-14", idadeGestacionalSemanas: 40,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-002", maternidadeReferencia: MATERNIDADES[1], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-003",
+    dataCadastro: "2025-06-15", ativa: true,
+  },
+  // ── 1º Trimestre (início recente) ───────────────────────
+  {
+    id: "gest-021", nomeCompleto: "Úrsula Dias Fonseca", cpf: "987.654.321-20",
+    dataNascimento: "1997-03-08", telefone: "(71) 98987-6543",
+    endereco: { logradouro: "Rua da Saúde", numero: "45", bairro: "Centro Histórico", cep: "40020-100", distritoSanitarioId: "ds-01" },
+    tipoSanguineo: "O+", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-12-20", dpp: "2026-09-26", idadeGestacionalSemanas: 8,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-003", maternidadeReferencia: MATERNIDADES[2], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-005",
+    dataCadastro: "2026-01-20", ativa: true,
+  },
+  {
+    id: "gest-022", nomeCompleto: "Valentina Moreira Campos", cpf: "876.543.210-31",
+    dataNascimento: "2000-08-22", telefone: "(71) 99876-5432",
+    endereco: { logradouro: "Rua Direita da Piedade", numero: "120", bairro: "Brotas", cep: "40285-020", distritoSanitarioId: "ds-05" },
+    tipoSanguineo: "A-", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2026-01-05", dpp: "2026-10-12", idadeGestacionalSemanas: 6,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-006", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: false, bolsaFamilia: false, racaCor: "branca", equipeId: "eq-009",
+    dataCadastro: "2026-02-01", ativa: true,
+  },
+  // ── Gestante inativa (alta/transferência) ───────────────
+  {
+    id: "gest-023", nomeCompleto: "Wanessa Alves Pinheiro", cpf: "765.432.109-42",
+    dataNascimento: "1994-05-10", telefone: "(71) 98765-4321",
+    endereco: { logradouro: "Rua do Sol", numero: "77", bairro: "Rio Vermelho", cep: "41940-340", distritoSanitarioId: "ds-06" },
+    tipoSanguineo: "B+", gestacoes: 2, partos: 2, abortos: 0, filhosVivos: 2,
+    dum: "2025-03-01", dpp: "2025-12-06", idadeGestacionalSemanas: 40,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-008", maternidadeReferencia: MATERNIDADES[4], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-011",
+    dataCadastro: "2025-04-01", ativa: false,
+  },
+  // ── Transcard recusado ──────────────────────────────────
+  {
+    id: "gest-024", nomeCompleto: "Ximena Brito Araújo", cpf: "654.321.098-53",
+    dataNascimento: "1996-11-30", telefone: "(71) 99654-3210",
+    endereco: { logradouro: "Rua Carlos Gomes", numero: "300", bairro: "Federação", cep: "40231-030", distritoSanitarioId: "ds-05" },
+    tipoSanguineo: "O-", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-09-25", dpp: "2026-07-02", idadeGestacionalSemanas: 20,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-006", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: false, bolsaFamilia: false, racaCor: "branca", equipeId: "eq-009",
+    dataCadastro: "2025-10-30", ativa: true,
+  },
+  // ── Sífilis detectada ───────────────────────────────────
+  {
+    id: "gest-025", nomeCompleto: "Yasmin Conceição Almeida", cpf: "543.210.987-64",
+    dataNascimento: "1998-02-18", telefone: "(71) 98543-2109",
+    endereco: { logradouro: "Rua do Pero Vaz", numero: "50", bairro: "Pero Vaz", cep: "40330-010", distritoSanitarioId: "ds-04" },
+    tipoSanguineo: "A+", gestacoes: 2, partos: 1, abortos: 0, filhosVivos: 1,
+    dum: "2025-08-05", dpp: "2026-05-12", idadeGestacionalSemanas: 27,
+    riscoGestacional: "alto", fatoresRisco: ["Sífilis"],
+    ubsId: "ubs-006", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-009",
+    dataCadastro: "2025-09-05", ativa: true,
+  },
+  // ── Mulher mais velha (40+) ─────────────────────────────
+  {
+    id: "gest-026", nomeCompleto: "Zilda Maria dos Santos", cpf: "432.109.876-75",
+    dataNascimento: "1984-09-12", telefone: "(71) 99432-1098",
+    endereco: { logradouro: "Rua do Gravatá", numero: "180", bairro: "Cabula", cep: "41150-050", distritoSanitarioId: "ds-09" },
+    tipoSanguineo: "AB-", gestacoes: 5, partos: 4, abortos: 0, filhosVivos: 4,
+    dum: "2025-07-01", dpp: "2026-04-07", idadeGestacionalSemanas: 32,
+    riscoGestacional: "alto", fatoresRisco: ["Idade materna ≥ 35 anos", "Hipertensão arterial crônica"],
+    ubsId: "ubs-005", maternidadeReferencia: MATERNIDADES[4], profissionalResponsavelId: "prof-002",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-008",
+    dataCadastro: "2025-08-01", ativa: true,
+  },
+  // ── Primigesta jovem sem risco ──────────────────────────
+  {
+    id: "gest-027", nomeCompleto: "Ana Clara Ramos", cpf: "321.098.765-86",
+    dataNascimento: "2002-04-25", telefone: "(71) 98321-0987",
+    endereco: { logradouro: "Rua da Independência", numero: "95", bairro: "Itapagipe", cep: "40420-100", distritoSanitarioId: "ds-02" },
+    tipoSanguineo: "O+", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-10-01", dpp: "2026-07-08", idadeGestacionalSemanas: 19,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-001", maternidadeReferencia: MATERNIDADES[0], profissionalResponsavelId: "prof-002",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "parda", equipeId: "eq-002",
+    dataCadastro: "2025-11-01", ativa: true,
+  },
+  // ── Multípara sem risco ─────────────────────────────────
+  {
+    id: "gest-028", nomeCompleto: "Bianca Ferreira Lopes", cpf: "210.987.654-97",
+    dataNascimento: "1992-12-08", telefone: "(71) 99210-9876",
+    endereco: { logradouro: "Rua Thomaz Gonzaga", numero: "42", bairro: "Liberdade", cep: "40325-030", distritoSanitarioId: "ds-04" },
+    tipoSanguineo: "A+", gestacoes: 4, partos: 3, abortos: 0, filhosVivos: 3,
+    dum: "2025-09-15", dpp: "2026-06-22", idadeGestacionalSemanas: 22,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-006", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-009",
+    dataCadastro: "2025-10-15", ativa: true,
+  },
+  // ── Asiática (amarela) ──────────────────────────────────
+  {
+    id: "gest-029", nomeCompleto: "Chen Wei Oliveira", cpf: "109.876.543-08",
+    dataNascimento: "1995-07-14", telefone: "(71) 98109-8765",
+    endereco: { logradouro: "Rua da Ajuda", numero: "68", bairro: "Centro", cep: "40060-000", distritoSanitarioId: "ds-01" },
+    tipoSanguineo: "B-", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-11-20", dpp: "2026-08-27", idadeGestacionalSemanas: 12,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-003", maternidadeReferencia: MATERNIDADES[2], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "amarela", equipeId: "eq-005",
+    dataCadastro: "2025-12-25", ativa: true,
+  },
+  // ── Múltiplos fatores de risco ──────────────────────────
+  {
+    id: "gest-030", nomeCompleto: "Débora Cristina Matos", cpf: "098.765.432-19",
+    dataNascimento: "1986-03-30", telefone: "(71) 99098-7654",
+    endereco: { logradouro: "Rua do Curuzu", numero: "220", bairro: "Curuzu", cep: "40330-080", distritoSanitarioId: "ds-04" },
+    tipoSanguineo: "O+", gestacoes: 6, partos: 3, abortos: 2, filhosVivos: 3,
+    dum: "2025-08-10", dpp: "2026-05-17", idadeGestacionalSemanas: 27,
+    riscoGestacional: "alto", fatoresRisco: ["Idade materna ≥ 35 anos", "Hipertensão arterial crônica", "Diabetes gestacional", "Histórico de abortos de repetição"],
+    ubsId: "ubs-006", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-009",
+    dataCadastro: "2025-09-10", ativa: true,
+  },
+  // ── Sem Bolsa Família, sem Transcard ────────────────────
+  {
+    id: "gest-031", nomeCompleto: "Eduarda Vasconcelos", cpf: "987.654.321-30",
+    dataNascimento: "1999-01-05", telefone: "(71) 98987-6543",
+    endereco: { logradouro: "Rua Visconde de Mauá", numero: "350", bairro: "Barra", cep: "40140-300", distritoSanitarioId: "ds-06" },
+    tipoSanguineo: "A+", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-10-15", dpp: "2026-07-22", idadeGestacionalSemanas: 17,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-008", maternidadeReferencia: MATERNIDADES[4], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: false, bolsaFamilia: false, racaCor: "branca", equipeId: "eq-011",
+    dataCadastro: "2025-11-20", ativa: true,
+  },
+  // ── Grande multípara ────────────────────────────────────
+  {
+    id: "gest-032", nomeCompleto: "Francisca de Jesus Silva", cpf: "876.543.210-41",
+    dataNascimento: "1985-08-18", telefone: "(71) 99876-5432",
+    endereco: { logradouro: "Rua Nova Constituinte", numero: "180", bairro: "Nova Constituinte", cep: "40720-000", distritoSanitarioId: "ds-11" },
+    tipoSanguineo: "O+", gestacoes: 8, partos: 7, abortos: 0, filhosVivos: 7,
+    dum: "2025-09-05", dpp: "2026-06-12", idadeGestacionalSemanas: 23,
+    riscoGestacional: "alto", fatoresRisco: ["Idade materna ≥ 35 anos"],
+    ubsId: "ubs-007", maternidadeReferencia: MATERNIDADES[2], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "preta", equipeId: "eq-010",
+    dataCadastro: "2025-10-05", ativa: true,
+  },
+  // ── Endereço em área rural/difícil acesso ───────────────
+  {
+    id: "gest-033", nomeCompleto: "Graziela Nascimento", cpf: "765.432.109-52",
+    dataNascimento: "1997-06-22", telefone: "(71) 98765-4321",
+    endereco: { logradouro: "Estrada da Derba", numero: "km 5", bairro: "Coutos", cep: "40750-000", distritoSanitarioId: "ds-11" },
+    tipoSanguineo: "B+", gestacoes: 2, partos: 1, abortos: 0, filhosVivos: 1,
+    dum: "2025-10-30", dpp: "2026-08-06", idadeGestacionalSemanas: 15,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-007", maternidadeReferencia: MATERNIDADES[2], profissionalResponsavelId: "prof-003",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "parda", equipeId: "eq-010",
+    dataCadastro: "2025-12-01", ativa: true,
+  },
+  // ── Rh negativo (necessita Coombs) ──────────────────────
+  {
+    id: "gest-034", nomeCompleto: "Heloísa Santana Melo", cpf: "654.321.098-63",
+    dataNascimento: "1994-10-08", telefone: "(71) 99654-3210",
+    endereco: { logradouro: "Rua Piauí", numero: "135", bairro: "Pituba", cep: "41830-270", distritoSanitarioId: "ds-07" },
+    tipoSanguineo: "A-", gestacoes: 2, partos: 1, abortos: 0, filhosVivos: 1,
+    dum: "2025-09-08", dpp: "2026-06-15", idadeGestacionalSemanas: 23,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-005", maternidadeReferencia: MATERNIDADES[4], profissionalResponsavelId: "prof-002",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "branca", equipeId: "eq-008",
+    dataCadastro: "2025-10-08", ativa: true,
+  },
+  // ── Consultas atrasadas ─────────────────────────────────
+  {
+    id: "gest-035", nomeCompleto: "Ivone Pereira Souza", cpf: "543.210.987-74",
+    dataNascimento: "1993-02-28", telefone: "(71) 98543-2109",
+    endereco: { logradouro: "Rua São Domingos", numero: "89", bairro: "Engenho Velho", cep: "40240-000", distritoSanitarioId: "ds-05" },
+    tipoSanguineo: "O+", gestacoes: 3, partos: 2, abortos: 0, filhosVivos: 2,
+    dum: "2025-07-20", dpp: "2026-04-26", idadeGestacionalSemanas: 30,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-006", maternidadeReferencia: MATERNIDADES[5], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: true, racaCor: "parda", equipeId: "eq-009",
+    dataCadastro: "2025-08-25", ativa: true,
+  },
+  // ── Início tardio do pré-natal (>12 semanas) ────────────
+  {
+    id: "gest-036", nomeCompleto: "Joana Dark Mendes", cpf: "432.109.876-85",
+    dataNascimento: "1998-11-15", telefone: "(71) 99432-1098",
+    endereco: { logradouro: "Rua da Gratidão", numero: "210", bairro: "Fazenda Grande", cep: "41330-000", distritoSanitarioId: "ds-12" },
+    tipoSanguineo: "AB+", gestacoes: 1, partos: 0, abortos: 0, filhosVivos: 0,
+    dum: "2025-08-25", dpp: "2026-06-01", idadeGestacionalSemanas: 25,
+    riscoGestacional: "habitual", fatoresRisco: [],
+    ubsId: "ubs-002", maternidadeReferencia: MATERNIDADES[1], profissionalResponsavelId: "prof-001",
+    cartaoMaeSalvador: true, bolsaFamilia: false, racaCor: "preta", equipeId: "eq-004",
+    dataCadastro: "2025-12-10", ativa: true,
+  },
 ];
 
 // ── Consultas ──────────────────────────────────────────
@@ -186,6 +543,180 @@ export const MOCK_CONSULTAS: ConsultaPreNatal[] = [
     id: "cons-030", gestanteId: "gest-004", profissionalId: "prof-003", ubsId: "ubs-004",
     data: "2026-02-20", idadeGestacionalSemanas: 32, status: "agendada",
   },
+  // Gabriela (adolescente) — 1 consulta
+  {
+    id: "cons-040", gestanteId: "gest-007", profissionalId: "prof-002", ubsId: "ubs-001",
+    data: "2026-01-15", idadeGestacionalSemanas: 7, status: "realizada",
+    pesoKg: 48.5, pressaoSistolica: 100, pressaoDiastolica: 60,
+    conduta: "Primeira consulta. Encaminhamento para acompanhamento psicossocial. Ácido fólico prescrito",
+  },
+  // Juliana (HIV) — 4 consultas
+  {
+    id: "cons-050", gestanteId: "gest-010", profissionalId: "prof-003", ubsId: "ubs-007",
+    data: "2025-09-15", idadeGestacionalSemanas: 6, status: "realizada",
+    pesoKg: 60.0, pressaoSistolica: 108, pressaoDiastolica: 68,
+    conduta: "Início TARV, exames do 1º trimestre solicitados",
+  },
+  {
+    id: "cons-051", gestanteId: "gest-010", profissionalId: "prof-003", ubsId: "ubs-007",
+    data: "2025-11-10", idadeGestacionalSemanas: 14, status: "realizada",
+    pesoKg: 61.2, pressaoSistolica: 110, pressaoDiastolica: 70, bcf: 150,
+    conduta: "Carga viral indetectável. Manter TARV",
+  },
+  {
+    id: "cons-052", gestanteId: "gest-010", profissionalId: "prof-003", ubsId: "ubs-007",
+    data: "2026-01-05", idadeGestacionalSemanas: 22, status: "realizada",
+    pesoKg: 63.0, pressaoSistolica: 112, pressaoDiastolica: 72, alturaUterinaСm: 22, bcf: 146,
+    movimentosFetais: true, conduta: "Gestação evoluindo bem. Adesão à TARV satisfatória",
+  },
+  {
+    id: "cons-053", gestanteId: "gest-010", profissionalId: "prof-003", ubsId: "ubs-007",
+    data: "2026-02-15", idadeGestacionalSemanas: 28, status: "realizada",
+    pesoKg: 64.5, pressaoSistolica: 110, pressaoDiastolica: 70, alturaUterinaСm: 28, bcf: 142,
+    movimentosFetais: true, conduta: "Exames do 3º trimestre solicitados",
+  },
+  // Raquel (diabetes prévio, 35 sem) — 7 consultas
+  {
+    id: "cons-060", gestanteId: "gest-017", profissionalId: "prof-003", ubsId: "ubs-004",
+    data: "2025-07-28", idadeGestacionalSemanas: 6, status: "realizada",
+    pesoKg: 72.0, pressaoSistolica: 120, pressaoDiastolica: 78,
+    conduta: "Início pré-natal. Controle glicêmico rigoroso",
+  },
+  {
+    id: "cons-061", gestanteId: "gest-017", profissionalId: "prof-003", ubsId: "ubs-004",
+    data: "2025-09-08", idadeGestacionalSemanas: 12, status: "realizada",
+    pesoKg: 73.0, pressaoSistolica: 118, pressaoDiastolica: 76, bcf: 155,
+    conduta: "Glicemia controlada com insulina",
+  },
+  {
+    id: "cons-062", gestanteId: "gest-017", profissionalId: "prof-003", ubsId: "ubs-004",
+    data: "2025-10-20", idadeGestacionalSemanas: 18, status: "realizada",
+    pesoKg: 74.5, pressaoSistolica: 122, pressaoDiastolica: 78, alturaUterinaСm: 18, bcf: 148,
+    conduta: "USG morfológica solicitada",
+  },
+  {
+    id: "cons-063", gestanteId: "gest-017", profissionalId: "prof-003", ubsId: "ubs-004",
+    data: "2025-11-25", idadeGestacionalSemanas: 23, status: "realizada",
+    pesoKg: 76.0, pressaoSistolica: 120, pressaoDiastolica: 76, alturaUterinaСm: 23, bcf: 145,
+    movimentosFetais: true, conduta: "Bom controle glicêmico",
+  },
+  {
+    id: "cons-064", gestanteId: "gest-017", profissionalId: "prof-003", ubsId: "ubs-004",
+    data: "2025-12-22", idadeGestacionalSemanas: 27, status: "realizada",
+    pesoKg: 77.5, pressaoSistolica: 124, pressaoDiastolica: 80, alturaUterinaСm: 27, bcf: 140,
+    movimentosFetais: true, conduta: "Exames do 3º trimestre",
+  },
+  {
+    id: "cons-065", gestanteId: "gest-017", profissionalId: "prof-003", ubsId: "ubs-004",
+    data: "2026-01-15", idadeGestacionalSemanas: 30, status: "realizada",
+    pesoKg: 78.8, pressaoSistolica: 126, pressaoDiastolica: 82, alturaUterinaСm: 30, bcf: 138,
+    movimentosFetais: true, conduta: "Programação do parto a partir de 38 semanas",
+  },
+  {
+    id: "cons-066", gestanteId: "gest-017", profissionalId: "prof-003", ubsId: "ubs-004",
+    data: "2026-02-10", idadeGestacionalSemanas: 34, status: "realizada",
+    pesoKg: 80.0, pressaoSistolica: 128, pressaoDiastolica: 82, alturaUterinaСm: 33, bcf: 136,
+    movimentosFetais: true, conduta: "CTG fetal solicitada",
+  },
+  // Sandra (39 sem, próxima do parto) — 8 consultas
+  {
+    id: "cons-070", gestanteId: "gest-019", profissionalId: "prof-001", ubsId: "ubs-008",
+    data: "2025-07-05", idadeGestacionalSemanas: 7, status: "realizada",
+    pesoKg: 58.0, pressaoSistolica: 108, pressaoDiastolica: 66,
+    conduta: "Primeira consulta. Exames solicitados",
+  },
+  {
+    id: "cons-071", gestanteId: "gest-019", profissionalId: "prof-001", ubsId: "ubs-008",
+    data: "2025-08-15", idadeGestacionalSemanas: 13, status: "realizada",
+    pesoKg: 59.0, pressaoSistolica: 110, pressaoDiastolica: 68, bcf: 155,
+    conduta: "Exames normais",
+  },
+  {
+    id: "cons-072", gestanteId: "gest-019", profissionalId: "prof-001", ubsId: "ubs-008",
+    data: "2025-09-25", idadeGestacionalSemanas: 18, status: "realizada",
+    pesoKg: 60.5, pressaoSistolica: 112, pressaoDiastolica: 70, alturaUterinaСm: 18, bcf: 148,
+    conduta: "Gestação evoluindo bem",
+  },
+  {
+    id: "cons-073", gestanteId: "gest-019", profissionalId: "prof-001", ubsId: "ubs-008",
+    data: "2025-10-30", idadeGestacionalSemanas: 23, status: "realizada",
+    pesoKg: 62.0, pressaoSistolica: 110, pressaoDiastolica: 68, alturaUterinaСm: 23, bcf: 145,
+    movimentosFetais: true, conduta: "TOTG normal",
+  },
+  {
+    id: "cons-074", gestanteId: "gest-019", profissionalId: "prof-001", ubsId: "ubs-008",
+    data: "2025-11-27", idadeGestacionalSemanas: 27, status: "realizada",
+    pesoKg: 63.5, pressaoSistolica: 112, pressaoDiastolica: 70, alturaUterinaСm: 27, bcf: 142,
+    movimentosFetais: true, conduta: "dTpa aplicada",
+  },
+  {
+    id: "cons-075", gestanteId: "gest-019", profissionalId: "prof-001", ubsId: "ubs-008",
+    data: "2025-12-22", idadeGestacionalSemanas: 31, status: "realizada",
+    pesoKg: 65.0, pressaoSistolica: 114, pressaoDiastolica: 72, alturaUterinaСm: 31, bcf: 140,
+    movimentosFetais: true, conduta: "Exames do 3º trimestre",
+  },
+  {
+    id: "cons-076", gestanteId: "gest-019", profissionalId: "prof-001", ubsId: "ubs-008",
+    data: "2026-01-15", idadeGestacionalSemanas: 34, status: "realizada",
+    pesoKg: 66.0, pressaoSistolica: 110, pressaoDiastolica: 68, alturaUterinaСm: 34, bcf: 138,
+    movimentosFetais: true, conduta: "Apresentação cefálica. Plano de parto discutido",
+  },
+  {
+    id: "cons-077", gestanteId: "gest-019", profissionalId: "prof-001", ubsId: "ubs-008",
+    data: "2026-02-05", idadeGestacionalSemanas: 37, status: "realizada",
+    pesoKg: 67.0, pressaoSistolica: 112, pressaoDiastolica: 70, alturaUterinaСm: 36, bcf: 136,
+    movimentosFetais: true, conduta: "Gestação a termo. Orientações sobre sinais de trabalho de parto",
+  },
+  // Ivone (consultas atrasadas) — 2 consultas e 1 falta
+  {
+    id: "cons-080", gestanteId: "gest-035", profissionalId: "prof-001", ubsId: "ubs-006",
+    data: "2025-09-10", idadeGestacionalSemanas: 8, status: "realizada",
+    pesoKg: 65.0, pressaoSistolica: 112, pressaoDiastolica: 70,
+    conduta: "Primeira consulta. Exames solicitados",
+  },
+  {
+    id: "cons-081", gestanteId: "gest-035", profissionalId: "prof-001", ubsId: "ubs-006",
+    data: "2025-11-05", idadeGestacionalSemanas: 15, status: "faltou",
+  },
+  {
+    id: "cons-082", gestanteId: "gest-035", profissionalId: "prof-001", ubsId: "ubs-006",
+    data: "2025-12-10", idadeGestacionalSemanas: 20, status: "realizada",
+    pesoKg: 67.5, pressaoSistolica: 118, pressaoDiastolica: 74, alturaUterinaСm: 20, bcf: 148,
+    conduta: "Busca ativa realizada. Retornou ao pré-natal",
+  },
+  // Joana (início tardio) — 1 consulta
+  {
+    id: "cons-090", gestanteId: "gest-036", profissionalId: "prof-001", ubsId: "ubs-002",
+    data: "2025-12-15", idadeGestacionalSemanas: 16, status: "realizada",
+    pesoKg: 57.0, pressaoSistolica: 110, pressaoDiastolica: 68,
+    conduta: "Início tardio do pré-natal. Todos os exames do 1º e 2º trimestre solicitados de uma vez",
+  },
+  // Débora (múltiplos riscos) — 4 consultas
+  {
+    id: "cons-100", gestanteId: "gest-030", profissionalId: "prof-001", ubsId: "ubs-006",
+    data: "2025-09-20", idadeGestacionalSemanas: 6, status: "realizada",
+    pesoKg: 88.0, pressaoSistolica: 142, pressaoDiastolica: 92,
+    conduta: "Alto risco confirmado. Encaminhamento imediato ao pré-natal de alto risco",
+    riscoAtualizado: "alto",
+  },
+  {
+    id: "cons-101", gestanteId: "gest-030", profissionalId: "prof-001", ubsId: "ubs-006",
+    data: "2025-11-15", idadeGestacionalSemanas: 14, status: "realizada",
+    pesoKg: 89.5, pressaoSistolica: 138, pressaoDiastolica: 88, bcf: 152,
+    conduta: "PA em controle com medicação. Glicemia monitorada",
+  },
+  {
+    id: "cons-102", gestanteId: "gest-030", profissionalId: "prof-001", ubsId: "ubs-006",
+    data: "2026-01-05", idadeGestacionalSemanas: 21, status: "realizada",
+    pesoKg: 91.0, pressaoSistolica: 134, pressaoDiastolica: 86, alturaUterinaСm: 21, bcf: 146,
+    movimentosFetais: true, conduta: "Estável. Manter acompanhamento quinzenal",
+  },
+  {
+    id: "cons-103", gestanteId: "gest-030", profissionalId: "prof-001", ubsId: "ubs-006",
+    data: "2026-02-10", idadeGestacionalSemanas: 26, status: "realizada",
+    pesoKg: 92.5, pressaoSistolica: 136, pressaoDiastolica: 88, alturaUterinaСm: 26, bcf: 142,
+    movimentosFetais: true, conduta: "TOTG solicitado",
+  },
 ];
 
 // ── Exames ─────────────────────────────────────────────
@@ -221,6 +752,33 @@ export const MOCK_VACINAS: Vacina[] = [
   // Camila — nenhuma vacina ainda
   { id: "vac-020", gestanteId: "gest-003", nome: "dTpa", dose: "Dose única", dataPrevista: "2026-03-10", status: "pendente" },
   { id: "vac-021", gestanteId: "gest-003", nome: "Influenza", dose: "Dose única", dataPrevista: "2026-01-15", status: "atrasada" },
+  // Juliana (HIV)
+  { id: "vac-030", gestanteId: "gest-010", nome: "dTpa", dose: "Dose única", dataAplicacao: "2025-12-20", dataPrevista: "2025-12-15", status: "aplicada" },
+  { id: "vac-031", gestanteId: "gest-010", nome: "Influenza", dose: "Dose única", dataAplicacao: "2025-09-20", dataPrevista: "2025-09-15", status: "aplicada" },
+  // Raquel (7+ consultas)
+  { id: "vac-032", gestanteId: "gest-017", nome: "dTpa", dose: "Dose única", dataAplicacao: "2025-12-01", dataPrevista: "2025-11-25", status: "aplicada" },
+  { id: "vac-033", gestanteId: "gest-017", nome: "Influenza", dose: "Dose única", dataAplicacao: "2025-08-15", dataPrevista: "2025-08-10", status: "aplicada" },
+  // Sandra (39 sem)
+  { id: "vac-034", gestanteId: "gest-019", nome: "dTpa", dose: "Dose única", dataAplicacao: "2025-11-27", dataPrevista: "2025-11-20", status: "aplicada" },
+  { id: "vac-035", gestanteId: "gest-019", nome: "Influenza", dose: "Dose única", dataAplicacao: "2025-07-10", dataPrevista: "2025-07-05", status: "aplicada" },
+  // Tatiana (40 sem)
+  { id: "vac-036", gestanteId: "gest-020", nome: "dTpa", dose: "Dose única", dataAplicacao: "2025-10-10", dataPrevista: "2025-10-01", status: "aplicada" },
+  { id: "vac-037", gestanteId: "gest-020", nome: "Influenza", dose: "Dose única", dataAplicacao: "2025-06-20", dataPrevista: "2025-06-15", status: "aplicada" },
+  // Ivone (atrasada)
+  { id: "vac-038", gestanteId: "gest-035", nome: "dTpa", dose: "Dose única", dataPrevista: "2025-12-20", status: "atrasada" },
+  { id: "vac-039", gestanteId: "gest-035", nome: "Influenza", dose: "Dose única", dataPrevista: "2025-10-01", status: "atrasada" },
+  // Gabriela (adolescente)
+  { id: "vac-040", gestanteId: "gest-007", nome: "dTpa", dose: "Dose única", dataPrevista: "2026-04-10", status: "pendente" },
+  { id: "vac-041", gestanteId: "gest-007", nome: "Influenza", dose: "Dose única", dataPrevista: "2026-02-15", status: "pendente" },
+  // Débora (múltiplos riscos)
+  { id: "vac-042", gestanteId: "gest-030", nome: "dTpa", dose: "Dose única", dataAplicacao: "2026-01-10", dataPrevista: "2026-01-05", status: "aplicada" },
+  { id: "vac-043", gestanteId: "gest-030", nome: "Influenza", dose: "Dose única", dataPrevista: "2025-10-15", status: "atrasada" },
+  // Helena (adolescente, violência doméstica)
+  { id: "vac-044", gestanteId: "gest-008", nome: "dTpa", dose: "Dose única", dataPrevista: "2026-04-01", status: "pendente" },
+  { id: "vac-045", gestanteId: "gest-008", nome: "Influenza", dose: "Dose única", dataPrevista: "2026-02-01", status: "atrasada" },
+  // Zilda (40+)
+  { id: "vac-046", gestanteId: "gest-026", nome: "dTpa", dose: "Dose única", dataAplicacao: "2025-12-05", dataPrevista: "2025-12-01", status: "aplicada" },
+  { id: "vac-047", gestanteId: "gest-026", nome: "Influenza", dose: "Dose única", dataAplicacao: "2025-09-01", dataPrevista: "2025-08-25", status: "aplicada" },
 ];
 
 // ── Medicações ─────────────────────────────────────────
@@ -232,6 +790,33 @@ export const MOCK_MEDICACOES: Medicacao[] = [
   { id: "med-004", gestanteId: "gest-002", nome: "Ácido fólico", dosagem: "5mg", frequencia: "1x ao dia", dataInicio: "2025-07-20", ativa: true },
   { id: "med-005", gestanteId: "gest-003", nome: "Ácido fólico", dosagem: "5mg", frequencia: "1x ao dia", dataInicio: "2025-11-20", ativa: true },
   { id: "med-006", gestanteId: "gest-003", nome: "Sulfato ferroso", dosagem: "40mg Fe elementar", frequencia: "1x ao dia", dataInicio: "2025-11-20", ativa: true },
+  // Gabriela (adolescente)
+  { id: "med-007", gestanteId: "gest-007", nome: "Ácido fólico", dosagem: "5mg", frequencia: "1x ao dia", dataInicio: "2026-01-15", ativa: true },
+  // Juliana (HIV)
+  { id: "med-008", gestanteId: "gest-010", nome: "Ácido fólico", dosagem: "5mg", frequencia: "1x ao dia", dataInicio: "2025-09-15", ativa: true },
+  { id: "med-009", gestanteId: "gest-010", nome: "Sulfato ferroso", dosagem: "40mg Fe elementar", frequencia: "1x ao dia", dataInicio: "2025-09-15", ativa: true },
+  // Raquel (diabetes prévio)
+  { id: "med-010", gestanteId: "gest-017", nome: "Insulina NPH", dosagem: "20UI", frequencia: "2x ao dia", dataInicio: "2025-07-28", ativa: true, observacoes: "Diabetes mellitus prévio" },
+  { id: "med-011", gestanteId: "gest-017", nome: "Ácido fólico", dosagem: "5mg", frequencia: "1x ao dia", dataInicio: "2025-07-28", ativa: true },
+  // Isabela (gestação múltipla)
+  { id: "med-012", gestanteId: "gest-009", nome: "Ácido fólico", dosagem: "5mg", frequencia: "1x ao dia", dataInicio: "2025-10-25", ativa: true },
+  { id: "med-013", gestanteId: "gest-009", nome: "Sulfato ferroso", dosagem: "40mg Fe elementar", frequencia: "1x ao dia", dataInicio: "2025-10-25", ativa: true },
+  // Zilda (40+, hipertensão)
+  { id: "med-014", gestanteId: "gest-026", nome: "Metildopa", dosagem: "500mg", frequencia: "3x ao dia", dataInicio: "2025-08-01", ativa: true, observacoes: "Controle de hipertensão" },
+  { id: "med-015", gestanteId: "gest-026", nome: "AAS", dosagem: "100mg", frequencia: "1x ao dia", dataInicio: "2025-08-01", ativa: true, observacoes: "Prevenção de pré-eclâmpsia" },
+  { id: "med-016", gestanteId: "gest-026", nome: "Cálcio", dosagem: "1g", frequencia: "1x ao dia", dataInicio: "2025-08-01", ativa: true },
+  // Débora (múltiplos riscos)
+  { id: "med-017", gestanteId: "gest-030", nome: "Metildopa", dosagem: "250mg", frequencia: "3x ao dia", dataInicio: "2025-09-20", ativa: true },
+  { id: "med-018", gestanteId: "gest-030", nome: "Insulina NPH", dosagem: "15UI", frequencia: "2x ao dia", dataInicio: "2025-09-20", ativa: true },
+  { id: "med-019", gestanteId: "gest-030", nome: "AAS", dosagem: "100mg", frequencia: "1x ao dia", dataInicio: "2025-09-20", ativa: true },
+  // Sandra (perto do parto)
+  { id: "med-020", gestanteId: "gest-019", nome: "Ácido fólico", dosagem: "5mg", frequencia: "1x ao dia", dataInicio: "2025-07-05", ativa: true },
+  { id: "med-021", gestanteId: "gest-019", nome: "Sulfato ferroso", dosagem: "40mg Fe elementar", frequencia: "1x ao dia", dataInicio: "2025-07-05", ativa: true },
+  // Patrícia (ITU de repetição)
+  { id: "med-022", gestanteId: "gest-016", nome: "Ácido fólico", dosagem: "5mg", frequencia: "1x ao dia", dataInicio: "2025-09-15", ativa: true },
+  // Bianca (multípara habitual)
+  { id: "med-023", gestanteId: "gest-028", nome: "Ácido fólico", dosagem: "5mg", frequencia: "1x ao dia", dataInicio: "2025-10-15", ativa: true },
+  { id: "med-024", gestanteId: "gest-028", nome: "Sulfato ferroso", dosagem: "40mg Fe elementar", frequencia: "1x ao dia", dataInicio: "2025-10-15", ativa: true },
 ];
 
 // ── Registros de peso (para gráfico — Adriana) ─────────
@@ -297,6 +882,125 @@ export const MOCK_TRANSCARD: TranscardVinculacao[] = [
     lgpdConsentimento: "assinado-fisico", recusouTranscard: false, recusouKitEnxoval: false,
     encaminhadaCras: true, dataEncaminhamentoCras: "2025-12-20",
   },
+  // Gabriela (adolescente, bolsa família)
+  {
+    id: "tc-005", gestanteId: "gest-007", numeroTranscard: "TC-001-0045", cpf: "321.098.765-66",
+    situacao: "ativo", dataVinculacao: "2026-01-10", etapaAtual: 1,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2026-01-15",
+  },
+  // Helena (adolescente, violência doméstica)
+  {
+    id: "tc-006", gestanteId: "gest-008", numeroTranscard: "TC-007-0015", cpf: "210.987.654-77",
+    situacao: "ativo", dataVinculacao: "2025-12-25", etapaAtual: 1,
+    lgpdConsentimento: "assinado-fisico", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2026-01-05",
+  },
+  // Juliana (HIV)
+  {
+    id: "tc-007", gestanteId: "gest-010", numeroTranscard: "TC-007-0016", cpf: "098.765.432-99",
+    situacao: "ativo", dataVinculacao: "2025-09-15", etapaAtual: 2,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2025-10-01",
+  },
+  // Larissa (histórico prematuridade)
+  {
+    id: "tc-008", gestanteId: "gest-012", numeroTranscard: "TC-002-0031", cpf: "876.543.210-21",
+    situacao: "ativo", dataVinculacao: "2025-09-01", etapaAtual: 2,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  // Raíssa (indígena)
+  {
+    id: "tc-009", gestanteId: "gest-018", numeroTranscard: "TC-001-0046", cpf: "210.987.654-87",
+    situacao: "ativo", dataVinculacao: "2025-12-20", etapaAtual: 1,
+    lgpdConsentimento: "assinado-fisico", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2026-01-10",
+  },
+  // Sandra (39 sem, perto do parto)
+  {
+    id: "tc-010", gestanteId: "gest-019", numeroTranscard: "TC-008-0008", cpf: "109.876.543-98",
+    situacao: "ativo", dataVinculacao: "2025-07-10", etapaAtual: 3,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  // Tatiana (40 sem)
+  {
+    id: "tc-011", gestanteId: "gest-020", numeroTranscard: "TC-002-0032", cpf: "098.765.432-09",
+    situacao: "ativo", dataVinculacao: "2025-06-25", etapaAtual: 3,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  // Ximena (recusou transcard)
+  {
+    id: "tc-012", gestanteId: "gest-024", numeroTranscard: "", cpf: "654.321.098-53",
+    situacao: "recusado", dataVinculacao: "2025-11-05", etapaAtual: 1,
+    lgpdConsentimento: "pendente", recusouTranscard: true, recusouKitEnxoval: true,
+    encaminhadaCras: false,
+  },
+  // Yasmin (sífilis)
+  {
+    id: "tc-013", gestanteId: "gest-025", numeroTranscard: "TC-006-0037", cpf: "543.210.987-64",
+    situacao: "ativo", dataVinculacao: "2025-09-15", etapaAtual: 2,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2025-10-20",
+  },
+  // Zilda (40+, hipertensão)
+  {
+    id: "tc-014", gestanteId: "gest-026", numeroTranscard: "TC-005-0021", cpf: "432.109.876-75",
+    situacao: "ativo", dataVinculacao: "2025-08-15", etapaAtual: 3,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2025-11-01",
+  },
+  // Bianca (multípara habitual)
+  {
+    id: "tc-015", gestanteId: "gest-028", numeroTranscard: "TC-006-0038", cpf: "210.987.654-97",
+    situacao: "ativo", dataVinculacao: "2025-10-25", etapaAtual: 2,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  // Débora (múltiplos riscos)
+  {
+    id: "tc-016", gestanteId: "gest-030", numeroTranscard: "TC-006-0039", cpf: "098.765.432-19",
+    situacao: "ativo", dataVinculacao: "2025-09-20", etapaAtual: 2,
+    lgpdConsentimento: "assinado-fisico", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2025-12-01",
+  },
+  // Francisca (grande multípara, subúrbio)
+  {
+    id: "tc-017", gestanteId: "gest-032", numeroTranscard: "TC-007-0016", cpf: "876.543.210-41",
+    situacao: "inconsistencia", dataVinculacao: "2025-10-15", etapaAtual: 1,
+    lgpdConsentimento: "assinado-fisico", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2025-11-10",
+  },
+  // Olivia (uso de substâncias) — recusou kit enxoval
+  {
+    id: "tc-018", gestanteId: "gest-015", numeroTranscard: "TC-007-0016", cpf: "543.210.987-54",
+    situacao: "ativo", dataVinculacao: "2025-12-01", etapaAtual: 1,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: true,
+    encaminhadaCras: true, dataEncaminhamentoCras: "2025-12-15",
+  },
+  // Raquel (diabetes, 35 sem)
+  {
+    id: "tc-019", gestanteId: "gest-017", numeroTranscard: "TC-004-0058", cpf: "321.098.765-76",
+    situacao: "ativo", dataVinculacao: "2025-08-01", etapaAtual: 3,
+    lgpdConsentimento: "assinado-digital", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  // Joana (início tardio) — pendente
+  {
+    id: "tc-020", gestanteId: "gest-036", numeroTranscard: "TC-002-0033", cpf: "432.109.876-85",
+    situacao: "pendente", dataVinculacao: "2025-12-15", etapaAtual: 1,
+    lgpdConsentimento: "pendente", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
+  // Ivone (consultas atrasadas)
+  {
+    id: "tc-021", gestanteId: "gest-035", numeroTranscard: "TC-006-0040", cpf: "543.210.987-74",
+    situacao: "inconsistencia", dataVinculacao: "2025-09-01", etapaAtual: 1,
+    lgpdConsentimento: "assinado-fisico", recusouTranscard: false, recusouKitEnxoval: false,
+    encaminhadaCras: false,
+  },
 ];
 
 // ── Casos de Sífilis ───────────────────────────────────
@@ -305,6 +1009,14 @@ export const MOCK_CASOS_SIFILIS: CasoSifilis[] = [
   { id: "sif-001", gestanteId: "gest-002", classificacao: "recente", dataDeteccao: "2025-09-12", idadeGestacionalDeteccao: 14, tratamentoIniciado: true, tratamentoConcluido: true, parceiroTratado: true },
   { id: "sif-002", gestanteId: "gest-004", classificacao: "tardia", dataDeteccao: "2025-08-20", idadeGestacionalDeteccao: 6, tratamentoIniciado: true, tratamentoConcluido: false, parceiroTratado: false },
   { id: "sif-003", gestanteId: "gest-006", classificacao: "recente", dataDeteccao: "2025-12-15", idadeGestacionalDeteccao: 7, tratamentoIniciado: true, tratamentoConcluido: true, parceiroTratado: true },
+  // Yasmin — sífilis recente, tratamento adequado
+  { id: "sif-004", gestanteId: "gest-025", classificacao: "recente", dataDeteccao: "2025-09-20", idadeGestacionalDeteccao: 7, tratamentoIniciado: true, tratamentoConcluido: true, parceiroTratado: true },
+  // Débora — sífilis indeterminada, em tratamento, parceiro não tratado
+  { id: "sif-005", gestanteId: "gest-030", classificacao: "indeterminada", dataDeteccao: "2025-10-05", idadeGestacionalDeteccao: 8, tratamentoIniciado: true, tratamentoConcluido: false, parceiroTratado: false },
+  // Olivia (uso de substâncias) — sífilis tardia, não iniciou tratamento
+  { id: "sif-006", gestanteId: "gest-015", classificacao: "tardia", dataDeteccao: "2025-12-01", idadeGestacionalDeteccao: 5, tratamentoIniciado: false, tratamentoConcluido: false, parceiroTratado: false },
+  // Francisca (grande multípara) — sífilis recente, tratamento concluído mas parceiro não
+  { id: "sif-007", gestanteId: "gest-032", classificacao: "recente", dataDeteccao: "2025-10-20", idadeGestacionalDeteccao: 7, tratamentoIniciado: true, tratamentoConcluido: true, parceiroTratado: false },
 ];
 
 // ── Indicadores Previne Brasil (quadrimestral) ─────────
