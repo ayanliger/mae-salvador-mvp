@@ -1,13 +1,13 @@
 /**
  * ════════════════════════════════════════════════════════════════
- *  e-SUS AB PEC → Mãe Salvador  —  SQL Query Templates
+ *  e-SUS DW → Mãe Salvador  —  SQL Query Templates
  * ════════════════════════════════════════════════════════════════
  *
  * These queries run against the e-SUS PostgreSQL replica (read-only).
  *
- * All queries target views in the `mae_salvador` schema, which
- * encapsulate the audit-trail deduplication and lookup joins.
- * See database/migrations/001_views.sql for view definitions.
+ * Domain views in `mae_salvador` schema source from the DW star
+ * schema (tb_fat_* + tb_dim_*). Org views (prof, UBS, equipe)
+ * remain PEC-based. See database/migrations/001_views.sql.
  */
 
 
@@ -37,13 +37,12 @@ LIMIT 1
 //  2. CONSULTAS PRÉ-NATAL — By gestante
 // ════════════════════════════════════════════════════════════════
 
-/** Param: $1 = co_seq_cidadao (gestante ID) */
+/** Param: $1 = co_seq_cidadao (DW co_fat_cidadao_pec) */
 export const QUERY_CONSULTAS_BY_GESTANTE = `
-SELECT c.*
-FROM mae_salvador.vw_consulta_prenatal c
-JOIN mae_salvador.vw_prontuario p ON p.co_seq_prontuario = c.co_prontuario
-WHERE p.co_cidadao = $1
-ORDER BY c.data_consulta DESC
+SELECT *
+FROM mae_salvador.vw_consulta_prenatal
+WHERE co_fat_cidadao_pec = $1
+ORDER BY data_consulta DESC
 `;
 
 
@@ -51,13 +50,12 @@ ORDER BY c.data_consulta DESC
 //  3. EXAMES — By gestante
 // ════════════════════════════════════════════════════════════════
 
-/** Param: $1 = co_seq_cidadao (gestante ID) */
+/** Param: $1 = co_seq_cidadao (DW co_fat_cidadao_pec) */
 export const QUERY_EXAMES_BY_GESTANTE = `
-SELECT e.*
-FROM mae_salvador.vw_exame e
-JOIN mae_salvador.vw_prontuario p ON p.co_seq_prontuario = e.co_prontuario
-WHERE p.co_cidadao = $1
-ORDER BY e.dt_solicitacao DESC
+SELECT *
+FROM mae_salvador.vw_exame
+WHERE co_fat_cidadao_pec = $1
+ORDER BY dt_solicitacao DESC
 `;
 
 
@@ -65,13 +63,12 @@ ORDER BY e.dt_solicitacao DESC
 //  4. VACINAS — By gestante (pregnancy vaccines only)
 // ════════════════════════════════════════════════════════════════
 
-/** Param: $1 = co_seq_cidadao (gestante ID) */
+/** Param: $1 = co_seq_cidadao (DW co_fat_cidadao_pec) */
 export const QUERY_VACINAS_BY_GESTANTE = `
-SELECT v.*
-FROM mae_salvador.vw_vacina_gestante v
-JOIN mae_salvador.vw_prontuario p ON p.co_seq_prontuario = v.co_prontuario
-WHERE p.co_cidadao = $1
-ORDER BY COALESCE(v.dt_aplicacao, v.dt_aprazamento) DESC
+SELECT *
+FROM mae_salvador.vw_vacina_gestante
+WHERE co_fat_cidadao_pec = $1
+ORDER BY dt_aplicacao DESC NULLS LAST
 `;
 
 
@@ -79,15 +76,12 @@ ORDER BY COALESCE(v.dt_aplicacao, v.dt_aprazamento) DESC
 //  5. MEDICAÇÕES — By gestante
 // ════════════════════════════════════════════════════════════════
 
-/** Param: $1 = co_seq_cidadao (gestante ID) */
+/** Param: $1 = co_seq_cidadao (DW co_fat_cidadao_pec) */
 export const QUERY_MEDICACOES_BY_GESTANTE = `
-SELECT m.*
-FROM mae_salvador.vw_medicacao m
-JOIN mae_salvador.vw_atend_prof ap ON ap.co_seq_atend_prof = m.co_atend_prof
-JOIN mae_salvador.vw_atend a       ON a.co_seq_atend = ap.co_atend
-JOIN mae_salvador.vw_prontuario p  ON p.co_seq_prontuario = a.co_prontuario
-WHERE p.co_cidadao = $1
-ORDER BY m.dt_inicio_tratamento DESC
+SELECT *
+FROM mae_salvador.vw_medicacao
+WHERE co_fat_cidadao_pec = $1
+ORDER BY dt_inicio_tratamento DESC
 `;
 
 
@@ -127,20 +121,17 @@ WHERE co_unidade_saude = $1
 //  9. PESO HISTORY — For weight gain chart
 // ════════════════════════════════════════════════════════════════
 
-/** Param: $1 = co_seq_cidadao (gestante ID) */
+/** Param: $1 = co_seq_cidadao (DW co_fat_cidadao_pec) */
 export const QUERY_HISTORICO_PESO = `
 SELECT
-  m.dt_medicao            AS data,
-  m.nu_medicao_peso       AS peso_kg,
-  m.nu_medicao_imc        AS imc,
-  m.nu_medicao_altura     AS altura
-FROM mae_salvador.vw_medicao m
-JOIN mae_salvador.vw_atend_prof ap ON ap.co_seq_atend_prof = m.co_atend_prof
-JOIN mae_salvador.vw_atend a       ON a.co_seq_atend = ap.co_atend
-JOIN mae_salvador.vw_prontuario p  ON p.co_seq_prontuario = a.co_prontuario
-WHERE p.co_cidadao = $1
-  AND m.nu_medicao_peso IS NOT NULL
-ORDER BY m.dt_medicao ASC
+  enc.dt_inicial_atendimento::date AS data,
+  enc.nu_peso                      AS peso_kg,
+  NULL::numeric                    AS imc,
+  enc.nu_altura                    AS altura
+FROM public.tb_fat_atendimento_individual enc
+WHERE enc.co_fat_cidadao_pec = $1
+  AND enc.nu_peso IS NOT NULL
+ORDER BY enc.dt_inicial_atendimento ASC
 `;
 
 
@@ -148,11 +139,10 @@ ORDER BY m.dt_medicao ASC
 //  10. RISK FACTORS — Active problems for a gestante
 // ════════════════════════════════════════════════════════════════
 
-/** Param: $1 = co_seq_cidadao (gestante ID) */
+/** Param: $1 = co_seq_cidadao (DW co_fat_cidadao_pec) */
 export const QUERY_FATORES_RISCO = `
-SELECT f.*
-FROM mae_salvador.vw_fator_risco f
-JOIN mae_salvador.vw_prontuario p ON p.co_seq_prontuario = f.co_prontuario
-WHERE p.co_cidadao = $1
-ORDER BY f.dt_inicio_problema DESC
+SELECT *
+FROM mae_salvador.vw_fator_risco
+WHERE co_fat_cidadao_pec = $1
+ORDER BY dt_inicio_problema DESC
 `;

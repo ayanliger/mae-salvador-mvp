@@ -7,6 +7,7 @@
  */
 
 import { getEsusPool } from "./db";
+import { appGetProgramaGestante, type ProgramaGestanteRow } from "./app-data";
 
 import type {
   Gestante,
@@ -45,7 +46,6 @@ import {
   computeIdadeGestacional,
   computeDPP,
   computeTrimestre,
-  parsePressaoArterial,
   STATUS_ATEND_PROF_MAP,
   EDEMA_MAP,
   TIPO_EXAME_MAP,
@@ -108,7 +108,7 @@ const TIPO_EQUIPE_MAP: Record<number, TipoEquipe> = {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-function mapGestante(row: any): Gestante {
+function mapGestante(row: any, programa?: ProgramaGestanteRow | null): Gestante {
   const dum = toISODate(row.dt_ultima_menstruacao);
   return {
     id: String(row.co_seq_cidadao),
@@ -124,7 +124,7 @@ function mapGestante(row: any): Gestante {
       complemento: toOptStr(row.ds_complemento),
       bairro: toStr(row.no_bairro),
       cep: toStr(row.ds_cep),
-      distritoSanitarioId: "", // Salvador-specific — resolved from bairro in app layer
+      distritoSanitarioId: "",
     },
     tipoSanguineo: (row.no_tipo_sanguineo as TipoSanguineo) ?? undefined,
     racaCor: parseRacaCor(row.no_raca_cor),
@@ -138,38 +138,43 @@ function mapGestante(row: any): Gestante {
     dpp: dum ? computeDPP(dum) : "",
     idadeGestacionalSemanas: dum ? computeIdadeGestacional(dum) : 0,
     riscoGestacional: row.st_alto_risco === 1 ? "alto" : "habitual",
-    fatoresRisco: [], // populated from QUERY_FATORES_RISCO when needed
-    // Vínculo (partially from e-SUS, rest from app DB)
+    fatoresRisco: [],
+    // Vínculo (e-SUS + app DB enrichment)
     ubsId: toStr(row.ubs_cnes),
     equipeId: toStr(row.equipe_ine),
-    maternidadeReferencia: "",       // app DB (step 5)
-    profissionalResponsavelId: "",   // app DB (step 5)
+    maternidadeReferencia: programa?.maternidade_referencia ?? "",
+    profissionalResponsavelId: programa?.profissional_responsavel_id
+      ? String(programa.profissional_responsavel_id)
+      : "",
     // Programa (app DB)
-    cartaoMaeSalvador: false,
-    bolsaFamilia: false,
+    cartaoMaeSalvador: programa?.cartao_mae_salvador ?? false,
+    bolsaFamilia: programa?.bolsa_familia ?? false,
     // Meta
-    dataCadastro: "",                // app DB (step 5)
+    dataCadastro: programa?.data_cadastro
+      ? toISODate(programa.data_cadastro)
+      : "",
     ativa: row.st_ativo === 1,
   };
 }
 
 export async function esusGetGestantes(): Promise<Gestante[]> {
   const { rows } = await getEsusPool().query(QUERY_GESTANTES);
-  return rows.map(mapGestante);
+  return rows.map((r: any) => mapGestante(r));
 }
 
 export async function esusGetGestanteById(
   id: string,
 ): Promise<Gestante | null> {
   const { rows } = await getEsusPool().query(QUERY_GESTANTE_BY_ID, [id]);
-  return rows.length > 0 ? mapGestante(rows[0]) : null;
+  if (rows.length === 0) return null;
+  const programa = await appGetProgramaGestante(id);
+  return mapGestante(rows[0], programa);
 }
 
 // ── Consultas Pré-Natal ────────────────────────────────
 
 function mapConsulta(row: any, gestanteId: string, dum?: string): ConsultaPreNatal {
   const dataConsulta = toISODate(row.data_consulta);
-  const pa = parsePressaoArterial(row.nu_medicao_pressao_arterial);
   return {
     id: String(row.co_seq_atend_prof),
     gestanteId,
@@ -179,8 +184,9 @@ function mapConsulta(row: any, gestanteId: string, dum?: string): ConsultaPreNat
     idadeGestacionalSemanas: dum ? computeIdadeGestacional(dum, dataConsulta) : 0,
     status: (STATUS_ATEND_PROF_MAP[row.status_code] as StatusConsulta) ?? "realizada",
     pesoKg: toFloat(row.nu_medicao_peso),
-    pressaoSistolica: pa?.sistolica,
-    pressaoDiastolica: pa?.diastolica,
+    // DW provides separate numeric columns for BP (not combined "120/80" string)
+    pressaoSistolica: toFloat(row.nu_pressao_sistolica),
+    pressaoDiastolica: toFloat(row.nu_pressao_diastolica),
     alturaUterinaСm: toFloat(row.nu_medicao_altura_uterina),
     bcf: toFloat(row.bcf) ? Math.round(toFloat(row.bcf)!) : undefined,
     edema: row.tp_edema != null ? (EDEMA_MAP[row.tp_edema] as ConsultaPreNatal["edema"]) : undefined,

@@ -28,9 +28,19 @@ psql -U postgres -c "SELECT 'exists' FROM pg_database WHERE datname = 'mae_salva
   psql -U postgres -c "CREATE DATABASE mae_salvador ENCODING 'UTF8' LOCALE 'pt_BR.UTF-8' TEMPLATE template0;"
 
 echo "Running migrations on esus database..."
-for f in /dump/migrations/*.sql; do
-  echo "  Applying $(basename $f)..."
-  psql -U postgres -d esus -f "$f"
+for f in /dump/migrations/001_*.sql; do
+  if [ -f "$f" ]; then
+    echo "  Applying $(basename $f) on esus..."
+    psql -U postgres -d esus -f "$f"
+  fi
+done
+
+echo "Running migrations on mae_salvador database..."
+for f in /dump/migrations/002_*.sql; do
+  if [ -f "$f" ]; then
+    echo "  Applying $(basename $f) on mae_salvador..."
+    psql -U postgres -d mae_salvador -f "$f"
+  fi
 done
 
 echo "Done — databases ready."

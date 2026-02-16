@@ -1,48 +1,50 @@
 -- ════════════════════════════════════════════════════════════════
---  Mãe Salvador — Views over e-SUS audit-trail tables
---  Migration 001: Core domain views
+--  Mãe Salvador — DW-Primary Views with PEC SOAP Enrichment
+--  Migration 001: Core domain views (DW rewrite)
 -- ════════════════════════════════════════════════════════════════
 --
---  All views live in the `mae_salvador` schema to keep them
---  separate from the e-SUS `public` schema.
+--  Primary data: DW star schema (tb_fat_* + tb_dim_*)
+--  PEC used for: org data (prof, UBS, equipe) + SOAP notes
 --  Safe to re-run (CREATE OR REPLACE).
 
 CREATE SCHEMA IF NOT EXISTS mae_salvador;
 
 -- ────────────────────────────────────────────────────────────────
---  BASE VIEWS — audit-trail deduplication
---  Each returns the latest non-deleted row per entity PK.
+--  DROP old PEC-only base views no longer referenced
 -- ────────────────────────────────────────────────────────────────
 
-CREATE OR REPLACE VIEW mae_salvador.vw_cidadao AS
-SELECT DISTINCT ON (co_seq_cidadao) *
-FROM public.ta_cidadao
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_cidadao, dt_auditoria DESC;
+DROP VIEW IF EXISTS mae_salvador.vw_fator_risco CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_medicacao CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_vacina_gestante CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_exame CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_consulta_prenatal CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_gestante_ativa CASCADE;
+
+DROP VIEW IF EXISTS mae_salvador.vw_cidadao CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_pre_natal CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_antecedente CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_vinculacao_equipe CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_atend_prof_pre_natal CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_medicao CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_exame_requisitado CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_requisicao_exame CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_vacinacao CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_registro_vacinacao CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_imunobiologico_lote CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_receita_medicamento CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_medicamento CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_problema CASCADE;
+DROP VIEW IF EXISTS mae_salvador.vw_problema_evolucao CASCADE;
+
+-- ────────────────────────────────────────────────────────────────
+--  PEC BASE VIEWS — kept for SOAP bridge + org data
+-- ────────────────────────────────────────────────────────────────
 
 CREATE OR REPLACE VIEW mae_salvador.vw_prontuario AS
 SELECT DISTINCT ON (co_seq_prontuario) *
 FROM public.ta_prontuario
 WHERE co_tipo_auditoria != 'E'
 ORDER BY co_seq_prontuario, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_pre_natal AS
-SELECT DISTINCT ON (co_seq_pre_natal) *
-FROM public.ta_pre_natal
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_pre_natal, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_antecedente AS
-SELECT DISTINCT ON (co_prontuario) *
-FROM public.ta_antecedente
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_prontuario, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_vinculacao_equipe AS
-SELECT DISTINCT ON (co_cidadao) *
-FROM public.ta_cidadao_vinculacao_equipe
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_cidadao, dt_auditoria DESC;
 
 CREATE OR REPLACE VIEW mae_salvador.vw_atend AS
 SELECT DISTINCT ON (co_seq_atend) *
@@ -56,24 +58,6 @@ FROM public.ta_atend_prof
 WHERE co_tipo_auditoria != 'E'
   AND st_cancelado IS DISTINCT FROM 1
 ORDER BY co_seq_atend_prof, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_atend_prof_pre_natal AS
-SELECT DISTINCT ON (co_atend_prof_pre_natal) *
-FROM public.ta_atend_prof_pre_natal
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_atend_prof_pre_natal, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_medicao AS
-SELECT DISTINCT ON (co_atend_prof) *
-FROM public.ta_medicao
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_atend_prof, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_lotacao AS
-SELECT DISTINCT ON (co_seq_talotacao) *
-FROM public.ta_lotacao
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_talotacao, dt_auditoria DESC;
 
 CREATE OR REPLACE VIEW mae_salvador.vw_evolucao_subjetivo AS
 SELECT DISTINCT ON (co_atend_prof) *
@@ -93,47 +77,11 @@ FROM public.ta_evolucao_avaliacao
 WHERE co_tipo_auditoria != 'E'
 ORDER BY co_atend_prof, dt_auditoria DESC;
 
-CREATE OR REPLACE VIEW mae_salvador.vw_exame_requisitado AS
-SELECT DISTINCT ON (co_seq_exame_requisitado) *
-FROM public.ta_exame_requisitado
+CREATE OR REPLACE VIEW mae_salvador.vw_lotacao AS
+SELECT DISTINCT ON (co_seq_talotacao) *
+FROM public.ta_lotacao
 WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_exame_requisitado, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_requisicao_exame AS
-SELECT DISTINCT ON (co_seq_requisicao_exame) *
-FROM public.ta_requisicao_exame
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_requisicao_exame, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_vacinacao AS
-SELECT DISTINCT ON (co_seq_vacinacao) *
-FROM public.ta_vacinacao
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_vacinacao, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_registro_vacinacao AS
-SELECT DISTINCT ON (co_seq_registro_vacinacao) *
-FROM public.ta_registro_vacinacao
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_registro_vacinacao, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_imunobiologico_lote AS
-SELECT DISTINCT ON (co_seq_imunobiologico_lote) *
-FROM public.ta_imunobiologico_lote
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_imunobiologico_lote, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_receita_medicamento AS
-SELECT DISTINCT ON (co_seq_receita_medicamento) *
-FROM public.ta_receita_medicamento
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_receita_medicamento, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_medicamento AS
-SELECT DISTINCT ON (co_seq_medicamento) *
-FROM public.ta_medicamento
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_medicamento, dt_auditoria DESC;
+ORDER BY co_seq_talotacao, dt_auditoria DESC;
 
 CREATE OR REPLACE VIEW mae_salvador.vw_prof AS
 SELECT DISTINCT ON (co_seq_prof) *
@@ -153,172 +101,208 @@ FROM public.ta_unidade_saude
 WHERE co_tipo_auditoria != 'E'
 ORDER BY co_seq_unidade_saude, dt_auditoria DESC;
 
-CREATE OR REPLACE VIEW mae_salvador.vw_problema AS
-SELECT DISTINCT ON (co_seq_problema) *
-FROM public.ta_problema
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_seq_problema, dt_auditoria DESC;
-
-CREATE OR REPLACE VIEW mae_salvador.vw_problema_evolucao AS
-SELECT DISTINCT ON (co_unico_problema) *
-FROM public.ta_problema_evolucao
-WHERE co_tipo_auditoria != 'E'
-ORDER BY co_unico_problema, dt_auditoria DESC;
-
 
 -- ────────────────────────────────────────────────────────────────
---  DOMAIN VIEWS — consumed by the application
+--  DW DOMAIN VIEWS
 -- ────────────────────────────────────────────────────────────────
 
--- 1. GESTANTE ATIVA — active pregnant women with full context
+-- 1. GESTANTE ATIVA — active pregnant women from DW star schema
+--    Source: tb_fat_rel_op_gestante + tb_fat_cidadao_pec + dims
+--    Active = puerperium hasn't started yet (dt_inicio_puerperio > today)
 CREATE OR REPLACE VIEW mae_salvador.vw_gestante_ativa AS
 SELECT
-  c.co_seq_cidadao,
-  c.no_cidadao,
-  c.nu_cpf,
-  c.nu_cns,
-  c.dt_nascimento,
-  c.nu_telefone_celular,
-  c.ds_email,
-  c.no_tipo_sanguineo,
-  rc.no_raca_cor,
-  c.st_ativo,
-  -- Address
-  c.ds_logradouro,
-  c.nu_numero,
-  c.ds_complemento,
-  c.no_bairro,
-  c.ds_cep,
+  fcp.co_seq_fat_cidadao_pec        AS co_seq_cidadao,
+  COALESCE(fcp.no_cidadao, ci.no_nome) AS no_cidadao,
+  COALESCE(fcp.nu_cpf_cidadao, ci.nu_cpf_cidadao) AS nu_cpf,
+  fcp.nu_cns,
+  t_nasc.dt_registro                AS dt_nascimento,
+  COALESCE(fcp.nu_telefone_celular, ci.nu_celular) AS nu_telefone_celular,
+  ci.no_email                       AS ds_email,
+  rc.ds_raca_cor                    AS no_raca_cor,
+  NULL::text                        AS no_tipo_sanguineo,
+  1::integer                        AS st_ativo,
+  -- Address (not available in DW citizen tables)
+  NULL::text AS ds_logradouro,
+  NULL::text AS nu_numero,
+  NULL::text AS ds_complemento,
+  NULL::text AS no_bairro,
+  NULL::text AS ds_cep,
   -- Pregnancy
-  pn.co_seq_pre_natal,
-  pn.dt_ultima_menstruacao,
-  pn.st_alto_risco,
-  pn.tp_gravidez,
-  pn.dt_desfecho,
-  -- Obstetric history
-  COALESCE(ant.ds_gestacao, '0')    AS ds_gestacao,
-  COALESCE(ant.ds_parto, '0')      AS ds_parto,
-  COALESCE(ant.qt_aborto, '0')     AS qt_aborto,
-  COALESCE(ant.ds_filho_vivo, '0') AS ds_filho_vivo,
-  -- Team assignment
-  v.nu_ine   AS equipe_ine,
-  v.nu_cnes  AS ubs_cnes,
-  -- Prontuario link
-  p.co_seq_prontuario
-FROM mae_salvador.vw_cidadao c
-JOIN mae_salvador.vw_prontuario p        ON p.co_cidadao = c.co_seq_cidadao
-LEFT JOIN mae_salvador.vw_pre_natal pn   ON pn.co_prontuario = p.co_seq_prontuario
-                                        AND pn.dt_desfecho IS NULL
-LEFT JOIN mae_salvador.vw_antecedente ant ON ant.co_prontuario = p.co_seq_prontuario
-LEFT JOIN mae_salvador.vw_vinculacao_equipe v ON v.co_cidadao = c.co_seq_cidadao
-LEFT JOIN public.tb_raca_cor rc          ON rc.co_raca_cor = c.co_raca_cor
-WHERE UPPER(c.no_sexo) = 'FEMININO'
-  AND c.st_ativo = 1
-  AND c.st_faleceu = 0
-  AND pn.co_seq_pre_natal IS NOT NULL;
+  COALESCE(g.dt_fai_dum, g.dt_inicio_gestacao) AS dt_ultima_menstruacao,
+  NULL::integer                     AS st_alto_risco,
+  NULL::text                        AS tp_gravidez,
+  NULL::date                        AS dt_desfecho,
+  -- Obstetric history (from latest prenatal encounter)
+  COALESCE(oh.nu_gestas_previas::text, '0') AS ds_gestacao,
+  COALESCE(oh.nu_partos::text, '0')         AS ds_parto,
+  '0'::text                         AS qt_aborto,
+  '0'::text                         AS ds_filho_vivo,
+  -- Team/UBS
+  eq.nu_ine                         AS equipe_ine,
+  us.nu_cnes                        AS ubs_cnes
+FROM public.tb_fat_rel_op_gestante g
+JOIN public.tb_fat_cidadao_pec fcp
+  ON fcp.co_seq_fat_cidadao_pec = g.co_fat_cidadao_pec
+LEFT JOIN public.tb_dim_tempo t_nasc
+  ON t_nasc.co_seq_dim_tempo = fcp.co_dim_tempo_nascimento
+LEFT JOIN public.tb_dim_unidade_saude us
+  ON us.co_seq_dim_unidade_saude = fcp.co_dim_unidade_saude_vinc
+LEFT JOIN public.tb_dim_equipe eq
+  ON eq.co_seq_dim_equipe = fcp.co_dim_equipe_vinc
+-- Latest CDS registration for enrichment (name, phone, race, email)
+LEFT JOIN LATERAL (
+  SELECT ci2.no_nome, ci2.nu_cpf_cidadao, ci2.nu_celular,
+         ci2.no_email, ci2.co_dim_raca_cor
+  FROM public.tb_fat_cad_individual ci2
+  WHERE ci2.co_fat_cidadao_pec = fcp.co_seq_fat_cidadao_pec
+    AND ci2.st_ficha_inativa = 0
+  ORDER BY ci2.co_dim_tempo DESC
+  LIMIT 1
+) ci ON true
+LEFT JOIN public.tb_dim_raca_cor rc
+  ON rc.co_seq_dim_raca_cor = ci.co_dim_raca_cor
+-- Latest prenatal encounter for obstetric history
+LEFT JOIN LATERAL (
+  SELECT enc2.nu_gestas_previas, enc2.nu_partos
+  FROM public.tb_fat_atendimento_individual enc2
+  WHERE enc2.co_fat_cidadao_pec = fcp.co_seq_fat_cidadao_pec
+    AND enc2.nu_idade_gestacional_semanas > 0
+    AND (enc2.nu_gestas_previas IS NOT NULL OR enc2.nu_partos IS NOT NULL)
+  ORDER BY enc2.co_dim_tempo DESC
+  LIMIT 1
+) oh ON true
+WHERE COALESCE(fcp.st_faleceu, 0) = 0
+  AND g.dt_inicio_puerperio > CURRENT_DATE;
 
 
--- 2. CONSULTA PRÉ-NATAL — encounters with vitals + SOAP
+-- 2. CONSULTA PRÉ-NATAL — DW encounters with vitals + PEC SOAP bridge
+--    Source: tb_fat_atendimento_individual WHERE IG > 0
+--    SOAP: best-effort bridge via co_cidadao + date matching to PEC
 CREATE OR REPLACE VIEW mae_salvador.vw_consulta_prenatal AS
 SELECT
-  ap.co_seq_atend_prof,
-  a.co_prontuario,
-  ap.dt_inicio                     AS data_consulta,
-  ap.st_atend_prof                 AS status_code,
-  l.co_prof                        AS profissional_id,
-  a.co_unidade_saude               AS ubs_id,
-  -- Vitals
-  m.nu_medicao_peso,
-  m.nu_medicao_pressao_arterial,
-  m.nu_medicao_altura_uterina,
-  m.nu_medicao_batimnto_cardco_ftl AS bcf,
-  -- Pre-natal specifics
-  pna.tp_edema,
-  pna.st_movimentacao_fetal,
-  -- SOAP notes
-  s.ds_subjetivo                   AS queixas,
-  pl.ds_plano                      AS conduta,
-  av.ds_avaliacao                  AS observacoes
-FROM mae_salvador.vw_atend_prof ap
-JOIN mae_salvador.vw_atend a                ON a.co_seq_atend = ap.co_atend
-LEFT JOIN mae_salvador.vw_atend_prof_pre_natal pna ON pna.co_atend_prof_pre_natal = ap.co_seq_atend_prof
-LEFT JOIN mae_salvador.vw_medicao m          ON m.co_atend_prof = ap.co_seq_atend_prof
-LEFT JOIN mae_salvador.vw_evolucao_subjetivo s  ON s.co_atend_prof = ap.co_seq_atend_prof
-LEFT JOIN mae_salvador.vw_evolucao_plano pl     ON pl.co_atend_prof = ap.co_seq_atend_prof
-LEFT JOIN mae_salvador.vw_evolucao_avaliacao av ON av.co_atend_prof = ap.co_seq_atend_prof
-LEFT JOIN mae_salvador.vw_lotacao l          ON l.co_seq_talotacao = ap.co_lotacao;
+  enc.co_seq_fat_atd_ind            AS co_seq_atend_prof,
+  enc.co_fat_cidadao_pec,
+  dt.dt_registro                    AS data_consulta,
+  NULL::integer                     AS status_code,
+  enc.co_dim_profissional_1         AS profissional_id,
+  us.nu_cnes                        AS ubs_id,
+  -- Vitals (DW has separate numeric columns, not combined strings)
+  enc.nu_peso                       AS nu_medicao_peso,
+  enc.nu_pressao_sistolica,
+  enc.nu_pressao_diastolica,
+  NULL::numeric                     AS nu_medicao_altura_uterina,
+  NULL::numeric                     AS bcf,
+  NULL::integer                     AS tp_edema,
+  NULL::integer                     AS st_movimentacao_fetal,
+  enc.nu_idade_gestacional_semanas,
+  -- SOAP from PEC (bridged via co_cidadao + date)
+  soap.ds_subjetivo                 AS queixas,
+  soap.ds_plano                     AS conduta,
+  soap.ds_avaliacao                 AS observacoes
+FROM public.tb_fat_atendimento_individual enc
+JOIN public.tb_dim_tempo dt
+  ON dt.co_seq_dim_tempo = enc.co_dim_tempo
+JOIN public.tb_fat_cidadao_pec fcp
+  ON fcp.co_seq_fat_cidadao_pec = enc.co_fat_cidadao_pec
+LEFT JOIN public.tb_dim_unidade_saude us
+  ON us.co_seq_dim_unidade_saude = enc.co_dim_unidade_saude_1
+-- SOAP bridge: DW cidadao → PEC prontuario → encounter → SOAP
+LEFT JOIN (
+  SELECT DISTINCT ON (pr.co_cidadao, ap.dt_inicio::date)
+    pr.co_cidadao,
+    ap.dt_inicio::date              AS dt_atend,
+    sub.ds_subjetivo,
+    pl.ds_plano,
+    av.ds_avaliacao
+  FROM mae_salvador.vw_prontuario pr
+  JOIN mae_salvador.vw_atend a  ON a.co_prontuario = pr.co_seq_prontuario
+  JOIN mae_salvador.vw_atend_prof ap ON ap.co_atend = a.co_seq_atend
+  LEFT JOIN mae_salvador.vw_evolucao_subjetivo sub
+    ON sub.co_atend_prof = ap.co_seq_atend_prof
+  LEFT JOIN mae_salvador.vw_evolucao_plano pl
+    ON pl.co_atend_prof = ap.co_seq_atend_prof
+  LEFT JOIN mae_salvador.vw_evolucao_avaliacao av
+    ON av.co_atend_prof = ap.co_seq_atend_prof
+  WHERE sub.ds_subjetivo IS NOT NULL
+     OR pl.ds_plano IS NOT NULL
+     OR av.ds_avaliacao IS NOT NULL
+  ORDER BY pr.co_cidadao, ap.dt_inicio::date, ap.co_seq_atend_prof DESC
+) soap ON soap.co_cidadao = fcp.co_cidadao
+      AND soap.dt_atend = dt.dt_registro
+WHERE enc.nu_idade_gestacional_semanas > 0;
 
 
--- 3. EXAME — with human-readable name and derived status
+-- 3. EXAME — from DW exams fact table
 CREATE OR REPLACE VIEW mae_salvador.vw_exame AS
 SELECT
-  er.co_seq_exame_requisitado,
-  er.co_prontuario,
-  er.dt_solicitacao,
-  er.dt_resultado,
-  er.dt_realizacao,
-  er.ds_resultado,
-  er.ds_observacao,
-  proc.no_proced                   AS nome_exame,
-  req.tp_exame,
+  ex.co_seq_fat_atd_ind_exames      AS co_seq_exame_requisitado,
+  ex.co_fat_cidadao_pec,
+  ex.dt_solicitacao,
+  ex.dt_resultado,
+  ex.dt_realizacao,
   CASE
-    WHEN er.dt_resultado IS NOT NULL THEN 'resultado-disponivel'
-    WHEN er.dt_realizacao IS NOT NULL THEN 'coletado'
+    WHEN ex.nu_resultado_valor IS NOT NULL THEN ex.nu_resultado_valor::text
+    ELSE NULL::text
+  END                                AS ds_resultado,
+  NULL::text                         AS ds_observacao,
+  proc.ds_proced                     AS nome_exame,
+  NULL::integer                      AS tp_exame,
+  CASE
+    WHEN ex.dt_resultado IS NOT NULL THEN 'resultado-disponivel'
+    WHEN ex.dt_realizacao IS NOT NULL THEN 'coletado'
     ELSE 'solicitado'
-  END AS status_exame
-FROM mae_salvador.vw_exame_requisitado er
-LEFT JOIN mae_salvador.vw_requisicao_exame req ON req.co_seq_requisicao_exame = er.co_requisicao_exame
-LEFT JOIN public.tb_proced proc               ON proc.co_seq_proced = er.co_proced;
+  END                                AS status_exame
+FROM public.tb_fat_atd_ind_exames ex
+LEFT JOIN public.tb_dim_procedimento proc
+  ON proc.co_seq_dim_procedimento = ex.co_dim_procedimento;
 
 
--- 4. VACINA GESTANTE — pregnancy vaccines with names and derived status
+-- 4. VACINA GESTANTE — vaccinations from DW
 CREATE OR REPLACE VIEW mae_salvador.vw_vacina_gestante AS
 SELECT
-  rv.co_seq_registro_vacinacao,
-  vac.co_prontuario,
-  imuno.no_imunobiologico          AS nome_vacina,
-  dose.sg_dose_imunobiologico      AS dose,
-  rv.dt_aplicacao,
-  rv.dt_aprazamento,
-  lt.ds_lote,
+  vv.co_seq_fat_vacinacao_vacina     AS co_seq_registro_vacinacao,
+  v.co_fat_cidadao_pec,
+  imuno.no_imunobiologico            AS nome_vacina,
+  dose.sg_dose_imunobiologico        AS dose,
+  t_apl.dt_registro                  AS dt_aplicacao,
+  NULL::date                         AS dt_aprazamento,
+  vv.no_lote                         AS ds_lote,
   CASE
-    WHEN rv.dt_aplicacao IS NOT NULL THEN 'aplicada'
-    WHEN rv.dt_aprazamento < CURRENT_DATE AND rv.dt_aplicacao IS NULL THEN 'atrasada'
+    WHEN t_apl.dt_registro IS NOT NULL THEN 'aplicada'
     ELSE 'pendente'
-  END AS status_vacina
-FROM mae_salvador.vw_registro_vacinacao rv
-JOIN mae_salvador.vw_vacinacao vac           ON vac.co_seq_vacinacao = rv.co_vacinacao
-LEFT JOIN public.tb_imunobiologico imuno     ON imuno.co_imunobiologico = rv.co_imunobiologico
-LEFT JOIN public.tb_dose_imunobiologico dose ON dose.co_dose_imunobiologico = rv.co_dose_imunobiologico
-LEFT JOIN mae_salvador.vw_imunobiologico_lote lt ON lt.co_seq_imunobiologico_lote = rv.co_imunobiologico_lote
-WHERE vac.st_gestante = 1;
+  END                                AS status_vacina
+FROM public.tb_fat_vacinacao_vacina vv
+JOIN public.tb_fat_vacinacao v
+  ON v.co_seq_fat_vacinacao = vv.co_fat_vacinacao
+LEFT JOIN public.tb_dim_imunobiologico imuno
+  ON imuno.co_seq_dim_imunobiologico = vv.co_dim_imunobiologico
+LEFT JOIN public.tb_dim_dose_imunobiologico dose
+  ON dose.co_seq_dim_dose_imunobiologico = vv.co_dim_dose_imunobiologico
+LEFT JOIN public.tb_dim_tempo t_apl
+  ON t_apl.co_seq_dim_tempo = vv.co_dim_tempo_vacina_aplicada;
 
 
--- 5. MEDICAÇÃO — prescriptions with drug name and active status
+-- 5. MEDICAÇÃO — prescriptions from DW
 CREATE OR REPLACE VIEW mae_salvador.vw_medicacao AS
 SELECT
-  rm.co_seq_receita_medicamento,
-  rm.co_atend_prof,
-  med.no_principio_ativo,
-  med.ds_concentracao,
-  rm.ds_dose,
-  rm.no_posologia,
-  rm.dt_inicio_tratamento,
-  rm.dt_fim_tratamento,
-  rm.st_uso_continuo,
-  rm.st_interrompido,
-  rm.ds_recomendacao,
-  CASE
-    WHEN rm.st_interrompido = 1 THEN false
-    WHEN rm.dt_fim_tratamento IS NOT NULL
-      AND rm.dt_fim_tratamento < CURRENT_DATE THEN false
-    ELSE true
-  END AS ativa
-FROM mae_salvador.vw_receita_medicamento rm
-LEFT JOIN mae_salvador.vw_medicamento med ON med.co_seq_medicamento = rm.co_medicamento;
+  med.co_seq_fat_atd_ind_medicam     AS co_seq_receita_medicamento,
+  med.co_fat_cidadao_pec,
+  cat.no_principio_ativo,
+  cat.ds_concentracao,
+  med.ds_dose,
+  med.ds_dose_frequencia             AS no_posologia,
+  med.dt_inicio_tratamento,
+  NULL::date                         AS dt_fim_tratamento,
+  CASE WHEN med.st_uso_continuo = 1 THEN 1 ELSE 0 END AS st_uso_continuo,
+  0::integer                         AS st_interrompido,
+  NULL::text                         AS ds_recomendacao,
+  true                               AS ativa
+FROM public.tb_fat_atd_ind_medicamentos med
+LEFT JOIN public.tb_dim_catmat cat
+  ON cat.co_seq_dim_catmat = med.co_dim_catmat;
 
 
--- 6. PROFISSIONAL — with CBO code and role
+-- 6. PROFISSIONAL — PEC-based (well populated: 389 UBS, 1006 equipes)
 CREATE OR REPLACE VIEW mae_salvador.vw_profissional AS
 SELECT
   pr.co_seq_prof,
@@ -373,21 +357,28 @@ FROM mae_salvador.vw_equipe_base
 WHERE st_ativo = 1;
 
 
--- 9. FATORES DE RISCO — active health problems
+-- 9. FATORES DE RISCO — from DW problems fact table
 CREATE OR REPLACE VIEW mae_salvador.vw_fator_risco AS
 SELECT
-  pr.co_seq_problema,
-  pr.co_prontuario,
-  pr.ds_outro                      AS descricao_problema,
-  pr.co_ciap,
-  pr.co_cid10,
-  ev.co_situacao_problema,
-  ev.dt_inicio_problema,
-  ev.dt_fim_problema
-FROM mae_salvador.vw_problema pr
-LEFT JOIN mae_salvador.vw_problema_evolucao ev ON ev.co_unico_problema = pr.co_unico_problema
-WHERE ev.co_situacao_problema IS DISTINCT FROM 3
-  AND ev.dt_fim_problema IS NULL;
+  p.co_seq_fat_atend_ind_problemas   AS co_seq_problema,
+  p.co_fat_cidadao_pec,
+  COALESCE(ciap.no_ciap, cid.no_cid) AS descricao_problema,
+  ciap.nu_ciap                       AS co_ciap,
+  cid.nu_cid                         AS co_cid10,
+  NULL::integer                      AS co_situacao_problema,
+  dt_inicio.dt_registro              AS dt_inicio_problema,
+  dt_fim.dt_registro                 AS dt_fim_problema
+FROM public.tb_fat_atd_ind_problemas p
+LEFT JOIN public.tb_dim_ciap ciap
+  ON ciap.co_seq_dim_ciap = p.co_dim_ciap AND p.co_dim_ciap != 1
+LEFT JOIN public.tb_dim_cid cid
+  ON cid.co_seq_dim_cid = p.co_dim_cid AND p.co_dim_cid != 1
+LEFT JOIN public.tb_dim_tempo dt_inicio
+  ON dt_inicio.co_seq_dim_tempo = p.co_dim_data_inicio_problema
+LEFT JOIN public.tb_dim_tempo dt_fim
+  ON dt_fim.co_seq_dim_tempo = p.co_dim_data_fim_problema
+WHERE (p.co_dim_ciap != 1 OR p.co_dim_cid != 1)
+  AND (p.co_dim_data_fim_problema IS NULL OR p.co_dim_data_fim_problema <= 1);
 
 
 -- ────────────────────────────────────────────────────────────────
