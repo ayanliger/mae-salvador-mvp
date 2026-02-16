@@ -6,9 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { RiskBadge } from "@/components/risk-badge";
-import { ArrowLeft, ClipboardPlus, Calendar, Droplets, Syringe, Pill, User, CreditCard, GraduationCap, Building } from "lucide-react";
+import { ArrowLeft, Calendar, Droplets, Syringe, Pill, User, CreditCard, GraduationCap, Building } from "lucide-react";
 import { TranscardTab } from "@/components/transcard-tab";
 import { MOCK_GESTANTES, MOCK_CONSULTAS, MOCK_EXAMES, MOCK_VACINAS, MOCK_MEDICACOES, MOCK_PROFISSIONAIS, MOCK_TRANSCARD, MOCK_ATIVIDADES_EDUCATIVAS, MOCK_VISITAS_MATERNIDADE, UBS_LIST } from "@mae-salvador/shared";
 
@@ -67,12 +66,6 @@ export default function GestanteDetailPage({ params }: { params: Promise<{ id: s
             </p>
           </div>
         </div>
-        <Link href={`/registrar?gestante=${id}`}>
-          <Button size="sm">
-            <ClipboardPlus className="w-4 h-4 mr-1.5" />
-            Nova Consulta
-          </Button>
-        </Link>
       </div>
 
       {/* Summary cards */}
