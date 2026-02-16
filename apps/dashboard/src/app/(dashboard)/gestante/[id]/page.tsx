@@ -8,6 +8,7 @@ import {
   esusGetFatoresRisco,
   esusGetUbsList,
 } from "@/lib/esus-data";
+import { appGetTranscardByGestante } from "@/lib/app-data";
 import GestanteDetailClient from "./gestante-detail-client";
 
 export default async function GestanteDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -16,13 +17,14 @@ export default async function GestanteDetailPage({ params }: { params: Promise<{
 
   if (!gestante) return notFound();
 
-  const [consultas, exames, vacinas, medicacoes, fatoresRisco, ubsList] = await Promise.all([
+  const [consultas, exames, vacinas, medicacoes, fatoresRisco, ubsList, transcard] = await Promise.all([
     esusGetConsultasByGestante(id, gestante.dum),
     esusGetExamesByGestante(id, gestante.dum),
     esusGetVacinasByGestante(id),
     esusGetMedicacoesByGestante(id),
     esusGetFatoresRisco(id),
     esusGetUbsList(),
+    appGetTranscardByGestante(id),
   ]);
 
   return (
@@ -34,6 +36,7 @@ export default async function GestanteDetailPage({ params }: { params: Promise<{
       medicacoes={medicacoes}
       ubsList={ubsList}
       fatoresRisco={fatoresRisco}
+      transcard={transcard}
     />
   );
 }

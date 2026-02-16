@@ -10,8 +10,8 @@ import { RiskBadge } from "@/components/risk-badge";
 import { MockSection } from "@/components/mock-badge";
 import { ArrowLeft, Calendar, Droplets, Syringe, Pill, User, CreditCard, GraduationCap, Building } from "lucide-react";
 import { TranscardTab } from "@/components/transcard-tab";
-import { MOCK_TRANSCARD, MOCK_ATIVIDADES_EDUCATIVAS, MOCK_VISITAS_MATERNIDADE, MOCK_PROFISSIONAIS } from "@mae-salvador/shared";
-import type { Gestante, ConsultaPreNatal, Exame, Vacina, Medicacao, UBS } from "@mae-salvador/shared";
+import { MOCK_ATIVIDADES_EDUCATIVAS, MOCK_VISITAS_MATERNIDADE, MOCK_PROFISSIONAIS } from "@mae-salvador/shared";
+import type { Gestante, ConsultaPreNatal, Exame, Vacina, Medicacao, UBS, TranscardVinculacao } from "@mae-salvador/shared";
 
 interface GestanteDetailClientProps {
   gestante: Gestante;
@@ -21,6 +21,7 @@ interface GestanteDetailClientProps {
   medicacoes: Medicacao[];
   ubsList: UBS[];
   fatoresRisco: string[];
+  transcard: TranscardVinculacao | null;
 }
 
 function fmt(iso: string) {
@@ -40,6 +41,7 @@ export default function GestanteDetailClient({
   medicacoes,
   ubsList,
   fatoresRisco,
+  transcard,
 }: GestanteDetailClientProps) {
   function getUbsNome(id: string) {
     return ubsList.find((u) => u.id === id || u.cnes === id)?.nome ?? id;
@@ -49,9 +51,8 @@ export default function GestanteDetailClient({
     return g.nomeCompleto || `Cidadão #${g.id}`;
   }
 
-  // Mock-only data — use first mock gestante as demo
+  // Mock-only data for atividades/visitas — use first mock gestante as demo
   const demoGestanteId = "gest-001";
-  const transcard = MOCK_TRANSCARD.find((t) => t.gestanteId === demoGestanteId);
   const atividades = MOCK_ATIVIDADES_EDUCATIVAS.filter((a) => a.gestanteId === demoGestanteId).sort((a, b) => b.data.localeCompare(a.data));
   const visitas = MOCK_VISITAS_MATERNIDADE.filter((v) => v.gestanteId === demoGestanteId).sort((a, b) => b.data.localeCompare(a.data));
 
@@ -352,17 +353,15 @@ export default function GestanteDetailClient({
           </Card>
         </TabsContent>
 
-        {/* Transcard — mock-tagged */}
+        {/* Transcard */}
         <TabsContent value="transcard">
-          <MockSection>
-            <TranscardTab
-              gestante={g}
-              vinculacao={transcard}
-              consultasRealizadas={consultasRealizadas}
-              testesRapidosFeitos={testesRapidosFeitos}
-              vacinasAtualizadas={vacinasAtualizadas}
-            />
-          </MockSection>
+          <TranscardTab
+            gestante={g}
+            vinculacao={transcard ?? undefined}
+            consultasRealizadas={consultasRealizadas}
+            testesRapidosFeitos={testesRapidosFeitos}
+            vacinasAtualizadas={vacinasAtualizadas}
+          />
         </TabsContent>
 
         {/* Atividades Educativas — mock-tagged */}

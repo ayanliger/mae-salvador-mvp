@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -24,8 +25,8 @@ import {
   Package,
   Building2,
   Check,
+  Loader2,
 } from "lucide-react";
-import { TRANSCARD_DISPONIVEIS } from "@mae-salvador/shared";
 import type { TranscardVinculacao, Gestante, EtapaMaeSalvador } from "@mae-salvador/shared";
 
 interface TranscardTabProps {
@@ -75,6 +76,15 @@ function fmt(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR");
 }
 
+/** Format a digits-only CPF string as 000.000.000-00 */
+function fmtCpf(v: string): string {
+  const d = v.replace(/\D/g, "");
+  if (d.length <= 3) return d;
+  if (d.length <= 6) return `${d.slice(0, 3)}.${d.slice(3)}`;
+  if (d.length <= 9) return `${d.slice(0, 3)}.${d.slice(3, 6)}.${d.slice(6)}`;
+  return `${d.slice(0, 3)}.${d.slice(3, 6)}.${d.slice(6, 9)}-${d.slice(9, 11)}`;
+}
+
 export function TranscardTab({
   gestante,
   vinculacao,
@@ -82,14 +92,34 @@ export function TranscardTab({
   testesRapidosFeitos,
   vacinasAtualizadas,
 }: TranscardTabProps) {
+  const router = useRouter();
   const [selectedTranscard, setSelectedTranscard] = useState("");
+  const [cpfManual, setCpfManual] = useState("");
   const [recusouTranscard, setRecusouTranscard] = useState(vinculacao?.recusouTranscard ?? false);
   const [recusouKitEnxoval, setRecusouKitEnxoval] = useState(vinculacao?.recusouKitEnxoval ?? false);
   const [encaminhadaCras, setEncaminhadaCras] = useState(vinculacao?.encaminhadaCras ?? false);
   const [lgpdSent, setLgpdSent] = useState(false);
   const [vinculacaoSalva, setVinculacaoSalva] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const disponveis = TRANSCARD_DISPONIVEIS[gestante.ubsId] ?? [];
+  const cpfResolved = gestante.cpf || cpfManual.replace(/\D/g, "");
+  const hasCpf = cpfResolved.length === 11;
+
+  const [disponveis, setDisponiveis] = useState<string[]>([]);
+  const [loadingCards, setLoadingCards] = useState(false);
+
+  useEffect(() => {
+    if (vinculacao) return; // Already vinculated, no need to fetch
+    let cancelled = false;
+    setLoadingCards(true);
+    fetch(`/api/ubs/${gestante.ubsId}/transcards`)
+      .then((res) => res.json())
+      .then((nums: string[]) => { if (!cancelled) setDisponiveis(nums); })
+      .catch(() => { if (!cancelled) setDisponiveis([]); })
+      .finally(() => { if (!cancelled) setLoadingCards(false); });
+    return () => { cancelled = true; };
+  }, [gestante.ubsId, vinculacao]);
 
   // Compute etapas progress
   const etapa1 = consultasRealizadas >= 1;
@@ -98,9 +128,50 @@ export function TranscardTab({
 
   const hasExistingVinculacao = !!vinculacao;
 
-  function handleVincular() {
-    setVinculacaoSalva(true);
-    setTimeout(() => setVinculacaoSalva(false), 3000);
+  async function handleVincular() {
+    setSaving(true);
+    setError(null);
+    try {
+      if (!hasCpf) {
+        setError("Informe um CPF válido (11 dígitos) para vincular o Transcard.");
+        setSaving(false);
+        return;
+      }
+      const res = await fetch(`/api/gestantes/${gestante.id}/transcard`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          cpf: cpfResolved,
+          numeroTranscard: selectedTranscard || undefined,
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Erro ao vincular Transcard");
+      }
+      setVinculacaoSalva(true);
+      router.refresh();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Erro ao vincular Transcard");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleUpdateFlag(field: string, value: boolean) {
+    try {
+      await fetch(`/api/gestantes/${gestante.id}/transcard`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ [field]: value }),
+      });
+      router.refresh();
+    } catch {
+      // Revert on failure
+      if (field === "recusouTranscard") setRecusouTranscard(!value);
+      if (field === "recusouKitEnxoval") setRecusouKitEnxoval(!value);
+      if (field === "encaminhadaCras") setEncaminhadaCras(!value);
+    }
   }
 
   function handleSendLgpd() {
@@ -132,7 +203,7 @@ export function TranscardTab({
                 </div>
                 <div>
                   <p className="text-muted-foreground text-xs">CPF Vinculado</p>
-                  <p className="font-mono">{vinculacao.cpf}</p>
+                  <p className="font-mono">{fmtCpf(vinculacao.cpf)}</p>
                 </div>
                 <div>
                   <p className="text-muted-foreground text-xs">Data de Vinculação</p>
@@ -261,7 +332,7 @@ export function TranscardTab({
               <div className="flex flex-wrap gap-2">
                 <button
                   type="button"
-                  onClick={() => setRecusouTranscard(!recusouTranscard)}
+                  onClick={() => { const next = !recusouTranscard; setRecusouTranscard(next); handleUpdateFlag("recusouTranscard", next); }}
                   className={`flex items-center gap-1.5 px-3 py-2 rounded-md border text-xs font-medium transition-colors ${
                     recusouTranscard
                       ? "bg-red-50 border-red-300 text-red-700"
@@ -273,7 +344,7 @@ export function TranscardTab({
                 </button>
                 <button
                   type="button"
-                  onClick={() => setRecusouKitEnxoval(!recusouKitEnxoval)}
+                  onClick={() => { const next = !recusouKitEnxoval; setRecusouKitEnxoval(next); handleUpdateFlag("recusouKitEnxoval", next); }}
                   className={`flex items-center gap-1.5 px-3 py-2 rounded-md border text-xs font-medium transition-colors ${
                     recusouKitEnxoval
                       ? "bg-red-50 border-red-300 text-red-700"
@@ -285,7 +356,7 @@ export function TranscardTab({
                 </button>
                 <button
                   type="button"
-                  onClick={() => setEncaminhadaCras(!encaminhadaCras)}
+                  onClick={() => { const next = !encaminhadaCras; setEncaminhadaCras(next); handleUpdateFlag("encaminhadaCras", next); }}
                   className={`flex items-center gap-1.5 px-3 py-2 rounded-md border text-xs font-medium transition-colors ${
                     encaminhadaCras
                       ? "bg-emerald-50 border-emerald-300 text-emerald-700"
@@ -321,16 +392,35 @@ export function TranscardTab({
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label className="text-xs">CPF da Gestante</Label>
-                  <Input value={gestante.cpf} disabled className="font-mono bg-muted/50" />
+                  {gestante.cpf ? (
+                    <Input value={fmtCpf(gestante.cpf)} disabled className="font-mono bg-muted/50" />
+                  ) : (
+                    <>
+                      <Input
+                        value={cpfManual}
+                        onChange={(e) => {
+                          const digits = e.target.value.replace(/\D/g, "").slice(0, 11);
+                          setCpfManual(fmtCpf(digits));
+                        }}
+                        placeholder="000.000.000-00"
+                        maxLength={14}
+                        className="font-mono"
+                      />
+                      <p className="text-[11px] text-amber-600">
+                        Esta gestante não possui CPF no cadastro e-SUS. Informe o CPF para vincular ao Transcard.
+                      </p>
+                    </>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <Label className="text-xs">Nº Transcard Disponível</Label>
                   <Select
                     value={selectedTranscard}
                     onValueChange={setSelectedTranscard}
+                    disabled={loadingCards}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Selecione o cartão" />
+                      <SelectValue placeholder={loadingCards ? "Carregando..." : "Selecione o cartão"} />
                     </SelectTrigger>
                     <SelectContent>
                       {disponveis.length > 0 ? (
@@ -341,7 +431,7 @@ export function TranscardTab({
                         ))
                       ) : (
                         <SelectItem value="_none" disabled>
-                          Nenhum cartão disponível
+                          Nenhum cartão disponível nesta UBS
                         </SelectItem>
                       )}
                     </SelectContent>
@@ -430,6 +520,10 @@ export function TranscardTab({
                 </button>
               </div>
 
+              {error && (
+                <p className="text-xs text-red-600 font-medium">{error}</p>
+              )}
+
               <div className="flex justify-end pt-2">
                 {vinculacaoSalva ? (
                   <Button disabled className="bg-emerald-600">
@@ -439,26 +533,20 @@ export function TranscardTab({
                 ) : (
                   <Button
                     onClick={handleVincular}
-                    disabled={!selectedTranscard && !recusouTranscard}
+                    disabled={saving || (!hasCpf && !recusouTranscard) || (!selectedTranscard && !recusouTranscard)}
                   >
-                    <CreditCard className="w-4 h-4 mr-1.5" />
-                    Vincular Transcard
+                    {saving ? (
+                      <Loader2 className="w-4 h-4 mr-1.5 animate-spin" />
+                    ) : (
+                      <CreditCard className="w-4 h-4 mr-1.5" />
+                    )}
+                    {saving ? "Vinculando..." : "Vincular Transcard"}
                   </Button>
                 )}
               </div>
             </CardContent>
           </Card>
 
-          {!gestante.cpf && (
-            <Card className="border-amber-200 bg-amber-50/50">
-              <CardContent className="pt-4 pb-3 px-4">
-                <p className="text-xs text-amber-800">
-                  <strong>Atenção:</strong> Esta gestante não possui CPF cadastrado.
-                  Encaminhe ao CRAS para obter o documento antes de vincular o Transcard.
-                </p>
-              </CardContent>
-            </Card>
-          )}
         </>
       )}
     </div>

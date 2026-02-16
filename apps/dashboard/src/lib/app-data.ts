@@ -123,6 +123,10 @@ export async function appCreateTranscard(
      VALUES ($1, $2, $3) RETURNING *`,
     [coCidadao, cpf, numeroTranscard ?? null],
   );
+  // Mark the physical card as consumed in estoque
+  if (numeroTranscard) {
+    await appReservarTranscard(numeroTranscard);
+  }
   return mapTranscard(rows[0]);
 }
 
@@ -149,6 +153,25 @@ export async function appUpdateTranscard(
   await getAppPool().query(
     `UPDATE transcard_vinculacao SET ${setClauses.join(", ")}, atualizado_em = now() WHERE id = $1`,
     [id, ...values],
+  );
+}
+
+// ── Transcard Estoque (card inventory) ─────────────────
+
+export async function appGetTranscardsDisponiveis(
+  ubsCnes: string,
+): Promise<string[]> {
+  const { rows } = await getAppPool().query(
+    "SELECT numero_transcard FROM transcard_estoque WHERE ubs_cnes = $1 AND disponivel = true ORDER BY numero_transcard",
+    [ubsCnes],
+  );
+  return rows.map((r: any) => String(r.numero_transcard));
+}
+
+async function appReservarTranscard(numeroTranscard: string): Promise<void> {
+  await getAppPool().query(
+    "UPDATE transcard_estoque SET disponivel = false WHERE numero_transcard = $1",
+    [numeroTranscard],
   );
 }
 

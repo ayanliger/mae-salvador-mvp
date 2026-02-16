@@ -84,6 +84,13 @@ function toFloat(v: unknown): number | undefined {
   return isNaN(n) ? undefined : n;
 }
 
+/** Return a valid 11-digit CPF string, or "" for junk values like 0. */
+function parseCpf(v: unknown): string {
+  const digits = String(v ?? "").replace(/\D/g, "");
+  if (digits.length !== 11 || /^0+$/.test(digits)) return "";
+  return digits;
+}
+
 // ── Lookup maps ────────────────────────────────────────
 
 /** Map tb_raca_cor.no_raca_cor (uppercase PT) → domain enum */
@@ -119,7 +126,7 @@ function mapGestante(row: any, programa?: ProgramaGestanteRow | null): Gestante 
   return {
     id: String(row.co_seq_cidadao),
     nomeCompleto: toStr(row.no_cidadao),
-    cpf: toStr(row.nu_cpf),
+    cpf: parseCpf(row.nu_cpf),
     cns: toOptStr(row.nu_cns),
     dataNascimento: toISODate(row.dt_nascimento),
     telefone: toStr(row.nu_telefone_celular),
