@@ -27,4 +27,10 @@ echo "Creating Mãe Salvador application database..."
 psql -U postgres -c "SELECT 'exists' FROM pg_database WHERE datname = 'mae_salvador';" | grep -q exists || \
   psql -U postgres -c "CREATE DATABASE mae_salvador ENCODING 'UTF8' LOCALE 'pt_BR.UTF-8' TEMPLATE template0;"
 
+echo "Running migrations on esus database..."
+for f in /dump/migrations/*.sql; do
+  echo "  Applying $(basename $f)..."
+  psql -U postgres -d esus -f "$f"
+done
+
 echo "Done — databases ready."

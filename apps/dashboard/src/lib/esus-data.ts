@@ -80,13 +80,15 @@ function toFloat(v: unknown): number | undefined {
 
 // ── Lookup maps ────────────────────────────────────────
 
-const RACA_COR_MAP: Record<number, RacaCor> = {
-  1: "branca",
-  2: "preta",
-  3: "amarela",
-  4: "parda",
-  5: "indigena",
-};
+/** Map tb_raca_cor.no_raca_cor (uppercase PT) → domain enum */
+function parseRacaCor(v: unknown): RacaCor {
+  const s = String(v ?? "").toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  if (s.includes("BRANCA"))   return "branca";
+  if (s.includes("PRETA"))    return "preta";
+  if (s.includes("AMARELA"))  return "amarela";
+  if (s.includes("INDIGENA")) return "indigena";
+  return "parda"; // default / "PARDA"
+}
 
 function cboPapel(cbo: unknown): PapelProfissional {
   const s = String(cbo ?? "");
@@ -125,7 +127,7 @@ function mapGestante(row: any): Gestante {
       distritoSanitarioId: "", // Salvador-specific — resolved from bairro in app layer
     },
     tipoSanguineo: (row.no_tipo_sanguineo as TipoSanguineo) ?? undefined,
-    racaCor: RACA_COR_MAP[row.co_raca_cor] ?? "parda",
+    racaCor: parseRacaCor(row.no_raca_cor),
     // Obstetric history
     gestacoes: toInt(row.ds_gestacao),
     partos: toInt(row.ds_parto),
@@ -206,7 +208,7 @@ function mapExame(row: any, gestanteId: string, dum?: string): Exame {
     id: String(row.co_seq_exame_requisitado),
     gestanteId,
     tipo: TIPO_EXAME_MAP[row.tp_exame] ?? "laboratorio",
-    nome: toStr(row.co_proced), // TODO: join tb_proced.no_proced for human name
+    nome: toStr(row.nome_exame),
     dataSolicitacao: dataSol,
     dataResultado: toOptStr(row.dt_resultado) ? toISODate(row.dt_resultado) : undefined,
     resultado: toOptStr(row.ds_resultado),
@@ -230,8 +232,8 @@ function mapVacina(row: any, gestanteId: string): Vacina {
   return {
     id: String(row.co_seq_registro_vacinacao),
     gestanteId,
-    nome: toStr(row.co_imunobiologico),         // TODO: join tb_imunobiologico.no_imunobiologico
-    dose: toStr(row.co_dose_imunobiologico),     // TODO: join tb_dose_imunobiologico.sg_dose
+    nome: toStr(row.nome_vacina),
+    dose: toStr(row.dose),
     dataAplicacao: toOptStr(row.dt_aplicacao) ? toISODate(row.dt_aplicacao) : undefined,
     dataPrevista: toISODate(row.dt_aprazamento),
     status: (row.status_vacina as StatusVacina) ?? "pendente",
@@ -280,8 +282,8 @@ function mapProfissional(row: any): Profissional {
     cpf: toStr(row.nu_cpf),
     cns: toOptStr(row.nu_cns),
     conselho: toOptStr(row.nu_conselho_classe),
-    cbo: toStr(row.co_cbo),
-    papel: cboPapel(row.co_cbo),
+    cbo: toStr(row.nu_cbo),
+    papel: cboPapel(row.nu_cbo),
     ubsIds: Array.isArray(row.ubs_ids)
       ? row.ubs_ids.map(String)
       : [],
