@@ -91,7 +91,7 @@ export default function HomeScreen() {
           { icon: 'stethoscope', label: 'Consultas', route: '/consultas' },
           { icon: 'flask', label: 'Exames', route: '/exames' },
           { icon: 'medkit', label: 'Vacinas', route: '/vacinas' },
-          { icon: 'pills', label: 'Medicações', route: '/medicacoes' },
+          { icon: 'eyedropper', label: 'Medicações', route: '/medicacoes' },
           { icon: 'bus', label: 'Cartão Mãe', route: '/cartao' },
         ] as const).map((item) => (
           <TouchableOpacity key={item.label} style={styles.gridItem} onPress={() => router.push(item.route as any)} activeOpacity={0.7}>

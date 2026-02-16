@@ -9,7 +9,7 @@ import {
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
-import { Heart, Users, ClipboardPlus, BarChart3, LogOut } from "lucide-react";
+import { Heart, Users, BarChart3, LogOut } from "lucide-react";
 
 export function AppSidebar() {
   const { user, logout } = useAuth();
@@ -23,7 +23,6 @@ export function AppSidebar() {
 
   const navItems = [
     { href: "/painel", label: "Painel de Gestantes", icon: Users, roles: ["profissional", "gestor"] },
-    { href: "/registrar", label: "Nova Consulta", icon: ClipboardPlus, roles: ["profissional"] },
     { href: "/gestor", label: "Indicadores", icon: BarChart3, roles: ["profissional", "gestor"] },
   ];
 
