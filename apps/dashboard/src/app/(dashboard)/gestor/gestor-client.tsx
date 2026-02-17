@@ -193,6 +193,7 @@ export default function GestorClient({
   }, [gestantes, vgUnidade, vgTrimestre, vgRaca]);
 
   const vgN = Math.max(vg.length, 1);
+  const vgMenores14 = vg.filter((g) => g.dataNascimento && getIdade(g.dataNascimento) < 14).length;
   const vgMenores18 = vg.filter((g) => g.dataNascimento && getIdade(g.dataNascimento) < 18).length;
   const vg35mais = vg.filter((g) => g.dataNascimento && getIdade(g.dataNascimento) >= 35).length;
   const vgAltoRisco = Math.round((vg.filter((g) => g.riscoGestacional === "alto").length / vgN) * 100);
@@ -375,8 +376,9 @@ export default function GestorClient({
           </div>
 
           {/* KPI Cards Row 1 */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
             <KPICard title="Gestantes Ativas" value={vg.length.toLocaleString("pt-BR")} subtitle="no filtro atual" icon={Users} />
+            <KPICard title="Gestantes < 14 anos" value={String(vgMenores14)} subtitle="menores de 14 anos" icon={Baby} />
             <KPICard title="Gestantes < 18 anos" value={String(vgMenores18)} subtitle="menores de idade" icon={Baby} />
             <KPICard title="Gestantes ≥ 35 anos" value={String(vg35mais)} subtitle="idade avançada" icon={Users} />
             <KPICard title="Com 7+ Consultas" value={String(vgCom7)} subtitle={`de ${vg.length} gestantes`} icon={ClipboardCheck} />
@@ -393,7 +395,7 @@ export default function GestorClient({
           {/* Charts: Trimestre pie + UBS bar */}
           <div className="grid lg:grid-cols-3 gap-4">
             <Card>
-              <CardHeader className="pb-2"><CardTitle className="text-sm">Gestações por Trimestre</CardTitle></CardHeader>
+<CardHeader className="pb-2"><CardTitle className="text-sm">Gestantes por Trimestre</CardTitle></CardHeader>
               <CardContent className="flex items-center justify-center">
                 <ResponsiveContainer width="100%" height={240}>
                   <PieChart>
@@ -406,7 +408,7 @@ export default function GestorClient({
               </CardContent>
             </Card>
             <Card className="lg:col-span-2">
-              <CardHeader className="pb-2"><CardTitle className="text-sm">Gestações por UBS (Top 10)</CardTitle></CardHeader>
+              <CardHeader className="pb-2"><CardTitle className="text-sm">Gestantes por UBS (Top 10)</CardTitle></CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={240}>
                   <BarChart data={vgUbsData} layout="vertical">
@@ -424,7 +426,7 @@ export default function GestorClient({
           {/* Charts: Raça bar + Consultas distribution */}
           <div className="grid lg:grid-cols-2 gap-4">
             <Card>
-              <CardHeader className="pb-2"><CardTitle className="text-sm">Gestações por Raça/Cor</CardTitle></CardHeader>
+              <CardHeader className="pb-2"><CardTitle className="text-sm">Gestantes por Raça/Cor</CardTitle></CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={220}>
                   <BarChart data={vgRacaData}>
