@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
-import { getIndicadoresPrevine } from "@/lib/data";
+import { esusGetIndicadoresSnapshot } from "@/lib/esus-data";
 
 export async function GET() {
-  const indicadores = await getIndicadoresPrevine();
-  return NextResponse.json(indicadores);
+  try {
+    const snapshot = await esusGetIndicadoresSnapshot();
+    return NextResponse.json(snapshot);
+  } catch (e: unknown) {
+    console.error("[api/indicadores] DB error:", e);
+    return NextResponse.json(
+      { error: e instanceof Error ? e.message : "Database error" },
+      { status: 500 },
+    );
+  }
 }

@@ -8,13 +8,14 @@ import {
 import GestorClient from "./gestor-client";
 
 export default async function GestorPage() {
-  const [gestantes, ubsList, casosSifilis, indicadoresSnapshot, ultimaConsultaMap] = await Promise.all([
+  const [allGestantes, ubsList, casosSifilis, indicadoresSnapshot, ultimaConsultaMap] = await Promise.all([
     esusGetGestantes(),
     esusGetUbsList(),
     esusGetCasosSifilis(),
     esusGetIndicadoresSnapshot(),
     esusGetUltimaConsultaPorGestante(),
   ]);
+  const gestantes = allGestantes.filter((g) => g.ativa);
 
   return (
     <GestorClient

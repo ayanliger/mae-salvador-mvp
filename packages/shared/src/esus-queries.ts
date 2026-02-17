@@ -37,11 +37,12 @@ LIMIT 1
 //  2. CONSULTAS PRÉ-NATAL — By gestante
 // ════════════════════════════════════════════════════════════════
 
-/** Param: $1 = co_seq_cidadao (DW co_fat_cidadao_pec) */
+/** Param: $1 = co_seq_cidadao, $2 = DUM (ISO date, current pregnancy start) */
 export const QUERY_CONSULTAS_BY_GESTANTE = `
 SELECT *
 FROM mae_salvador.vw_consulta_prenatal
 WHERE co_fat_cidadao_pec = $1
+  AND data_consulta >= $2::date
 ORDER BY data_consulta DESC
 `;
 

@@ -107,11 +107,11 @@ ORDER BY co_seq_unidade_saude, dt_auditoria DESC;
 --  DW DOMAIN VIEWS
 -- ────────────────────────────────────────────────────────────────
 
--- 1. GESTANTE — pregnant women from DW star schema (active + recent completed)
+-- 1. GESTANTE — pregnant women with active pregnancies only
 --    Source: tb_fat_rel_op_gestante + tb_fat_cidadao_pec + dims
---    Includes active pregnancies AND completed pregnancies from 2024+
---    so we have clinical data (the DW hasn't ingested encounters for
---    currently-active pregnancies yet in this dump).
+--    Only active pregnancies (dt_inicio_puerperio > today) are included.
+--    Previous/completed pregnancies are excluded entirely.
+--    One row per citizen — no duplicate DPP/IG conflicts.
 CREATE OR REPLACE VIEW mae_salvador.vw_gestante AS
 SELECT
   fcp.co_seq_fat_cidadao_pec        AS co_seq_cidadao,
@@ -123,7 +123,7 @@ SELECT
   ci.no_email                       AS ds_email,
   rc.ds_raca_cor                    AS no_raca_cor,
   NULL::text                        AS no_tipo_sanguineo,
-  CASE WHEN g.dt_inicio_puerperio > CURRENT_DATE THEN 'ativa' ELSE 'concluída' END AS situacao,
+  'ativa'::text                     AS situacao,
   -- Address (not available in DW citizen tables)
   NULL::text AS ds_logradouro,
   NULL::text AS nu_numero,
@@ -209,9 +209,16 @@ SELECT
   -- Team/UBS
   eq.nu_ine                         AS equipe_ine,
   us.nu_cnes                        AS ubs_cnes
-FROM public.tb_fat_rel_op_gestante g
-JOIN public.tb_fat_cidadao_pec fcp
-  ON fcp.co_seq_fat_cidadao_pec = g.co_fat_cidadao_pec
+FROM public.tb_fat_cidadao_pec fcp
+-- Only active pregnancies (puerperio still in the future)
+JOIN LATERAL (
+  SELECT g2.*
+  FROM public.tb_fat_rel_op_gestante g2
+  WHERE g2.co_fat_cidadao_pec = fcp.co_seq_fat_cidadao_pec
+    AND g2.dt_inicio_puerperio > CURRENT_DATE
+  ORDER BY g2.dt_inicio_puerperio DESC
+  LIMIT 1
+) g ON true
 LEFT JOIN public.tb_dim_tempo t_nasc
   ON t_nasc.co_seq_dim_tempo = fcp.co_dim_tempo_nascimento
 LEFT JOIN public.tb_dim_unidade_saude us
@@ -240,8 +247,7 @@ LEFT JOIN LATERAL (
   ORDER BY enc2.co_dim_tempo DESC
   LIMIT 1
 ) oh ON true
-WHERE COALESCE(fcp.st_faleceu, 0) = 0
-  AND g.dt_inicio_puerperio >= '2024-01-01';
+WHERE COALESCE(fcp.st_faleceu, 0) = 0;
 
 
 -- 2. CONSULTA PRÉ-NATAL — DW encounters with vitals + PEC SOAP bridge

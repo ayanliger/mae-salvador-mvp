@@ -1,48 +1,54 @@
 import { NextResponse } from "next/server";
 import {
-  getGestanteById,
-  getConsultasByGestante,
-  getExamesByGestante,
-  getVacinasByGestante,
-  getMedicacoesByGestante,
-  getTranscardByGestante,
-  getAtividadesByGestante,
-  getVisitasByGestante,
-} from "@/lib/data";
+  esusGetGestanteById,
+  esusGetConsultasByGestante,
+  esusGetExamesByGestante,
+  esusGetVacinasByGestante,
+  esusGetMedicacoesByGestante,
+  esusGetFatoresRisco,
+} from "@/lib/esus-data";
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const gestante = await getGestanteById(id);
 
-  if (!gestante) {
+  try {
+    const gestante = await esusGetGestanteById(id);
+
+    if (!gestante) {
+      return NextResponse.json(
+        { error: "Gestante não encontrada" },
+        { status: 404 },
+      );
+    }
+
+    const [consultas, exames, vacinas, medicacoes, fatoresRisco] =
+      await Promise.all([
+        esusGetConsultasByGestante(id, gestante.dum),
+        esusGetExamesByGestante(id, gestante.dum),
+        esusGetVacinasByGestante(id),
+        esusGetMedicacoesByGestante(id),
+        esusGetFatoresRisco(id),
+      ]);
+
+    return NextResponse.json({
+      ...gestante,
+      fatoresRisco,
+      consultas,
+      exames,
+      vacinas,
+      medicacoes,
+      transcard: null,
+      atividades: [],
+      visitas: [],
+    });
+  } catch (e: unknown) {
+    console.error(`[api/gestante/${id}] DB error:`, e);
     return NextResponse.json(
-      { error: "Gestante não encontrada" },
-      { status: 404 },
+      { error: e instanceof Error ? e.message : "Database error" },
+      { status: 500 },
     );
   }
-
-  const [consultas, exames, vacinas, medicacoes, transcard, atividades, visitas] =
-    await Promise.all([
-      getConsultasByGestante(id),
-      getExamesByGestante(id),
-      getVacinasByGestante(id),
-      getMedicacoesByGestante(id),
-      getTranscardByGestante(id),
-      getAtividadesByGestante(id),
-      getVisitasByGestante(id),
-    ]);
-
-  return NextResponse.json({
-    ...gestante,
-    consultas,
-    exames,
-    vacinas,
-    medicacoes,
-    transcard,
-    atividades,
-    visitas,
-  });
 }

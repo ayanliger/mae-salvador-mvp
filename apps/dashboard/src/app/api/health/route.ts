@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getEsusPool, getAppPool } from "@/lib/db";
+import { getEsusPool } from "@/lib/db";
 
 export async function GET() {
   const status: Record<string, unknown> = { timestamp: new Date().toISOString() };
@@ -12,14 +12,19 @@ export async function GET() {
     status.esus = { ok: false, error: e instanceof Error ? e.message : String(e) };
   }
 
-  // Mãe Salvador app DB (read-write)
-  try {
-    const { rows } = await getAppPool().query("SELECT current_database() AS db, current_user AS usr");
-    status.app = { ok: true, ...rows[0] };
-  } catch (e: unknown) {
-    status.app = { ok: false, error: e instanceof Error ? e.message : String(e) };
+  // Mãe Salvador app DB (not available on this network)
+  if (process.env.APP_DATABASE_URL) {
+    const { getAppPool } = await import("@/lib/db");
+    try {
+      const { rows } = await getAppPool().query("SELECT current_database() AS db, current_user AS usr");
+      status.app = { ok: true, ...rows[0] };
+    } catch (e: unknown) {
+      status.app = { ok: false, error: e instanceof Error ? e.message : String(e) };
+    }
+  } else {
+    status.app = { ok: false, error: "APP_DATABASE_URL not configured" };
   }
 
-  const allOk = (status.esus as { ok: boolean }).ok && (status.app as { ok: boolean }).ok;
-  return NextResponse.json(status, { status: allOk ? 200 : 503 });
+  const esusOk = (status.esus as { ok: boolean }).ok;
+  return NextResponse.json(status, { status: esusOk ? 200 : 503 });
 }

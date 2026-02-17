@@ -10,7 +10,7 @@ import { RiskBadge } from "@/components/risk-badge";
 import { MockSection } from "@/components/mock-badge";
 import { ArrowLeft, Calendar, Droplets, Syringe, Pill, User, CreditCard, GraduationCap, Building } from "lucide-react";
 import { TranscardTab } from "@/components/transcard-tab";
-import { MOCK_ATIVIDADES_EDUCATIVAS, MOCK_VISITAS_MATERNIDADE, MOCK_PROFISSIONAIS } from "@mae-salvador/shared";
+import { MOCK_ATIVIDADES_EDUCATIVAS, MOCK_VISITAS_MATERNIDADE } from "@mae-salvador/shared";
 import type { Gestante, ConsultaPreNatal, Exame, Vacina, Medicacao, UBS, TranscardVinculacao } from "@mae-salvador/shared";
 
 interface GestanteDetailClientProps {
@@ -29,9 +29,6 @@ function fmt(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR");
 }
 
-function getProfNome(id: string) {
-  return MOCK_PROFISSIONAIS.find((p) => p.id === id)?.nomeCompleto ?? id;
-}
 
 export default function GestanteDetailClient({
   gestante: g,
@@ -61,7 +58,7 @@ export default function GestanteDetailClient({
     && exames.some((e) => e.nome.toLowerCase().includes("hiv") && e.status === "resultado-disponivel");
   const vacinasAtualizadas = vacinas.filter((v) => v.status === "aplicada").length >= 2;
 
-  const allRisks = fatoresRisco.length > 0 ? fatoresRisco : g.fatoresRisco;
+  const allRisks = [...new Set(fatoresRisco.length > 0 ? fatoresRisco : g.fatoresRisco)];
 
   return (
     <div className="space-y-6">
@@ -211,9 +208,9 @@ export default function GestanteDetailClient({
                         {c.bcf ? `${c.bcf} bpm` : "—"}
                       </TableCell>
                       <TableCell className="hidden lg:table-cell text-sm text-muted-foreground">
-                        {getProfNome(c.profissionalId)}
+                        {c.profissionalId || "—"}
                       </TableCell>
-                      <TableCell className="hidden xl:table-cell text-sm text-muted-foreground max-w-xs truncate">
+                      <TableCell className="hidden xl:table-cell text-sm text-muted-foreground whitespace-pre-line">
                         {c.conduta ?? "—"}
                       </TableCell>
                     </TableRow>
@@ -389,7 +386,7 @@ export default function GestanteDetailClient({
                         <TableRow key={a.id}>
                           <TableCell className="font-medium whitespace-nowrap">{fmt(a.data)}</TableCell>
                           <TableCell className="text-sm">{a.descricao}</TableCell>
-                          <TableCell className="hidden md:table-cell text-sm text-muted-foreground">{getProfNome(a.profissionalId)}</TableCell>
+                          <TableCell className="hidden md:table-cell text-sm text-muted-foreground">{a.profissionalId}</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
@@ -428,7 +425,7 @@ export default function GestanteDetailClient({
                         <TableRow key={v.id}>
                           <TableCell className="font-medium whitespace-nowrap">{fmt(v.data)}</TableCell>
                           <TableCell className="text-sm">{v.maternidade}</TableCell>
-                          <TableCell className="hidden md:table-cell text-sm text-muted-foreground">{getProfNome(v.profissionalId)}</TableCell>
+                          <TableCell className="hidden md:table-cell text-sm text-muted-foreground">{v.profissionalId}</TableCell>
                           <TableCell className="hidden lg:table-cell text-sm text-muted-foreground max-w-xs truncate">{v.observacoes ?? "—"}</TableCell>
                         </TableRow>
                       ))}

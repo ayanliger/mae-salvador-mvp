@@ -473,3 +473,32 @@ SELECT COUNT(*) AS orphan_exames
 FROM mae_salvador.vw_exame ex
 LEFT JOIN mae_salvador.vw_gestante g ON g.co_seq_cidadao = ex.co_fat_cidadao_pec
 WHERE g.co_seq_cidadao IS NULL;
+
+
+-- 11e. Active pregnancies validation — count directly from source table
+--      Should match vw_gestante row count exactly (no completed pregnancies)
+SELECT
+  COUNT(DISTINCT g.co_fat_cidadao_pec) AS active_pregnancies_source
+FROM public.tb_fat_rel_op_gestante g
+JOIN public.tb_fat_cidadao_pec fcp
+  ON fcp.co_seq_fat_cidadao_pec = g.co_fat_cidadao_pec
+WHERE g.dt_inicio_puerperio > CURRENT_DATE
+  AND COALESCE(fcp.st_faleceu, 0) = 0;
+
+
+-- 11f. Cross-check: vw_gestante count must equal 11e
+SELECT COUNT(*) AS vw_gestante_count FROM mae_salvador.vw_gestante;
+
+
+-- 11g. Duplicate check: no citizen should appear more than once
+SELECT co_seq_cidadao, COUNT(*) AS occurrences
+FROM mae_salvador.vw_gestante
+GROUP BY co_seq_cidadao
+HAVING COUNT(*) > 1;
+
+
+-- 11h. Completed pregnancies that should NOT appear in vw_gestante
+--      This should return 0 rows
+SELECT co_seq_cidadao, situacao
+FROM mae_salvador.vw_gestante
+WHERE situacao != 'ativa';

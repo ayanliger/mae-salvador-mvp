@@ -2,11 +2,12 @@ import { esusGetGestantes, esusGetUbsList, esusGetUltimaConsultaPorGestante } fr
 import PainelClient from "./painel-client";
 
 export default async function PainelPage() {
-  const [gestantes, ubsList, ultimaConsultaMap] = await Promise.all([
+  const [allGestantes, ubsList, ultimaConsultaMap] = await Promise.all([
     esusGetGestantes(),
     esusGetUbsList(),
     esusGetUltimaConsultaPorGestante(),
   ]);
+  const gestantes = allGestantes.filter((g) => g.ativa);
 
   return (
     <PainelClient

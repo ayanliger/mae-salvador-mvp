@@ -10,7 +10,8 @@ export function getEsusPool(): Pool {
       connectionString: process.env.ESUS_DATABASE_URL,
       max: 10,
       idleTimeoutMillis: 30_000,
-      connectionTimeoutMillis: 5_000,
+      connectionTimeoutMillis: 10_000,
+      statement_timeout: 120_000,
     });
 
     // Enforce read-only at the session level
@@ -26,6 +27,9 @@ export function getEsusPool(): Pool {
 let _appPool: Pool | null = null;
 
 export function getAppPool(): Pool {
+  if (!process.env.APP_DATABASE_URL) {
+    throw new Error("APP_DATABASE_URL not configured");
+  }
   if (!_appPool) {
     _appPool = new Pool({
       connectionString: process.env.APP_DATABASE_URL,

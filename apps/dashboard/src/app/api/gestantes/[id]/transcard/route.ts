@@ -10,8 +10,13 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   const { id } = await params;
-  const transcard = await appGetTranscardByGestante(id);
-  return NextResponse.json(transcard);
+  try {
+    const transcard = await appGetTranscardByGestante(id);
+    return NextResponse.json(transcard);
+  } catch {
+    // APP_DATABASE_URL not configured — return null gracefully
+    return NextResponse.json(null);
+  }
 }
 
 export async function POST(

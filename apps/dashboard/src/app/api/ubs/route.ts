@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
-import { getUbsList } from "@/lib/data";
+import { esusGetUbsList } from "@/lib/esus-data";
 
 export async function GET() {
-  const ubs = await getUbsList();
-  return NextResponse.json(ubs);
+  try {
+    const ubs = await esusGetUbsList();
+    return NextResponse.json(ubs);
+  } catch (e: unknown) {
+    console.error("[api/ubs] DB error:", e);
+    return NextResponse.json(
+      { error: e instanceof Error ? e.message : "Database error" },
+      { status: 500 },
+    );
+  }
 }
