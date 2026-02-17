@@ -19,7 +19,7 @@ import {
 } from "recharts";
 import {
   MOCK_TENDENCIA_MENSAL, MOCK_DADOS_UBS, MOCK_TRANSCARD, MOCK_GESTANTES,
-  MOCK_INDICADORES_PREVINE, MOCK_CONSULTAS, MOCK_MEDICACOES, MOCK_VACINAS,
+  MOCK_CONSULTAS, MOCK_MEDICACOES, MOCK_VACINAS,
   DISTRITOS_SANITARIOS, EQUIPES, RACAS_CORES, UBS_LIST,
 } from "@mae-salvador/shared";
 import type { Gestante, UBS, CasoSifilis } from "@mae-salvador/shared";
@@ -230,6 +230,7 @@ export default function GestorClient({
 
   const snap = indicadoresSnapshot;
   const snapN = Math.max(snap.totalGestantes, 1);
+  const indMenores14 = gestantes.filter((g) => g.ativa && g.dataNascimento && getIdade(g.dataNascimento) < 14).length;
   const indValues = [
     { label: "Início precoce (≤12 sem)", value: Math.round((snap.inicioPrecoce / snapN) * 100), target: 80 },
     { label: "6+ consultas", value: Math.round((snap.com6Consultas / snapN) * 100), target: 60 },
@@ -238,9 +239,34 @@ export default function GestorClient({
     { label: "Cobertura Influenza", value: Math.round((snap.coberturaInfluenza / snapN) * 100), target: 80 },
   ];
 
-  // Quadrimestre list (mock — for historical chart)
-  const QUADRIMESTRES = MOCK_INDICADORES_PREVINE[0].valores.map((v) => v.quadrimestre);
-  const [quadrimestre, setQuadrimestre] = useState(QUADRIMESTRES[QUADRIMESTRES.length - 1]);
+  const indDetailRows = [
+    { nome: "Início precoce (≤12 sem)", valor: Math.round((snap.inicioPrecoce / snapN) * 100), meta: 80, absoluto: snap.inicioPrecoce },
+    { nome: "6+ consultas", valor: Math.round((snap.com6Consultas / snapN) * 100), meta: 60, absoluto: snap.com6Consultas },
+    { nome: "7+ consultas", valor: Math.round((snap.com7Consultas / snapN) * 100), meta: 70, absoluto: snap.com7Consultas },
+    { nome: "Cobertura dTpa", valor: Math.round((snap.coberturaDtpa / snapN) * 100), meta: 85, absoluto: snap.coberturaDtpa },
+    { nome: "Cobertura Influenza", valor: Math.round((snap.coberturaInfluenza / snapN) * 100), meta: 80, absoluto: snap.coberturaInfluenza },
+    { nome: "Com consulta PN", valor: Math.round((snap.gestantesComConsulta / snapN) * 100), meta: 90, absoluto: snap.gestantesComConsulta },
+  ];
+
+  const indConsultaDist = useMemo(() => {
+    const c = gestantes.filter((g) => g.ativa).map((g) => ultimaConsultaMap[g.id]?.totalConsultas ?? 0);
+    return [
+      { range: "0", count: c.filter((n) => n === 0).length },
+      { range: "1–3", count: c.filter((n) => n >= 1 && n <= 3).length },
+      { range: "4–6", count: c.filter((n) => n >= 4 && n <= 6).length },
+      { range: "7+", count: c.filter((n) => n >= 7).length },
+    ];
+  }, [gestantes, ultimaConsultaMap]);
+
+  const indAgeData = useMemo(() => {
+    const active = gestantes.filter((g) => g.ativa && g.dataNascimento);
+    return [
+      { faixa: "< 14", count: active.filter((g) => getIdade(g.dataNascimento) < 14).length },
+      { faixa: "14–17", count: active.filter((g) => { const a = getIdade(g.dataNascimento); return a >= 14 && a < 18; }).length },
+      { faixa: "18–34", count: active.filter((g) => { const a = getIdade(g.dataNascimento); return a >= 18 && a < 35; }).length },
+      { faixa: "≥ 35", count: active.filter((g) => getIdade(g.dataNascimento) >= 35).length },
+    ];
+  }, [gestantes]);
 
   // ══════════ Sífilis state + computations ══════════
 
@@ -701,81 +727,105 @@ export default function GestorClient({
 
         {/* ══════════ TAB 3: Indicadores MS ══════════ */}
         <TabsContent value="indicadores" className="space-y-6">
+          {/* KPI Cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <KPICard title="Gestantes Ativas" value={snap.totalGestantes.toLocaleString("pt-BR")} subtitle="no e-SUS" icon={Users} />
+            <KPICard title="Gestantes < 14 anos" value={String(indMenores14)} subtitle="menores de 14 anos" icon={Baby} />
+            <KPICard title="Com 7+ Consultas" value={String(snap.com7Consultas)} subtitle={`de ${snap.totalGestantes} gestantes`} icon={ClipboardCheck} />
+            <KPICard title="Com Consulta" value={String(snap.gestantesComConsulta)} subtitle={`${Math.round((snap.gestantesComConsulta / snapN) * 100)}% das gestantes`} icon={Calendar} />
+          </div>
+
           {/* Current snapshot (real) */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {indValues.map((iv) => <Indicator key={iv.label} label={iv.label} value={iv.value} target={iv.target} />)}
           </div>
 
-          {/* Historical evolution chart (mock-tagged) */}
-          <MockSection>
-            <div className="flex flex-wrap gap-3 mb-4">
-              <Select value={quadrimestre} onValueChange={setQuadrimestre}>
-                <SelectTrigger className="w-52 h-9 text-xs"><SelectValue /></SelectTrigger>
-                <SelectContent>
-                  {QUADRIMESTRES.map((q) => <SelectItem key={q} value={q}>{q}</SelectItem>)}
-                </SelectContent>
-              </Select>
-            </div>
+          {/* Indicators vs Targets chart (real) */}
+          <Card>
+            <CardHeader className="pb-2"><CardTitle className="text-sm">Indicadores Atuais vs Meta</CardTitle></CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={280}>
+                <BarChart data={indDetailRows} layout="vertical">
+                  <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.91 0.01 250)" />
+                  <XAxis type="number" fontSize={11} tickLine={false} axisLine={false} unit="%" domain={[0, 100]} />
+                  <YAxis type="category" dataKey="nome" fontSize={10} tickLine={false} axisLine={false} width={170} />
+                  <RechartsTooltip contentStyle={{ borderRadius: "8px", fontSize: "12px" }} />
+                  <Bar dataKey="valor" fill={CHART_COLORS[0]} radius={[0, 4, 4, 0]} name="Atual" />
+                  <Bar dataKey="meta" fill="oklch(0.85 0.05 250)" radius={[0, 4, 4, 0]} name="Meta" />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+
+          {/* Distribution charts (real) */}
+          <div className="grid lg:grid-cols-2 gap-4">
             <Card>
-              <CardHeader className="pb-2"><CardTitle className="text-sm">Evolução dos Indicadores por Quadrimestre</CardTitle></CardHeader>
+              <CardHeader className="pb-2"><CardTitle className="text-sm">Distribuição por N° de Consultas PN</CardTitle></CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={QUADRIMESTRES.map((q) => {
-                    const row: Record<string, string | number> = { quadrimestre: q };
-                    MOCK_INDICADORES_PREVINE.slice(0, 4).forEach((ip) => {
-                      row[ip.nome.slice(0, 25)] = ip.valores.find((v) => v.quadrimestre === q)?.valor ?? 0;
-                    });
-                    return row;
-                  })}>
+                <ResponsiveContainer width="100%" height={220}>
+                  <BarChart data={indConsultaDist}>
                     <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.91 0.01 250)" />
-                    <XAxis dataKey="quadrimestre" fontSize={11} tickLine={false} axisLine={false} />
-                    <YAxis fontSize={12} tickLine={false} axisLine={false} unit="%" />
-                    <RechartsTooltip contentStyle={{ borderRadius: "8px", fontSize: "11px" }} />
-                    {MOCK_INDICADORES_PREVINE.slice(0, 4).map((ip, i) => (
-                      <Bar key={ip.id} dataKey={ip.nome.slice(0, 25)} fill={CHART_COLORS[i]} radius={[3, 3, 0, 0]} />
-                    ))}
+                    <XAxis dataKey="range" fontSize={11} tickLine={false} axisLine={false} />
+                    <YAxis fontSize={11} tickLine={false} axisLine={false} allowDecimals={false} />
+                    <RechartsTooltip contentStyle={{ borderRadius: "8px", fontSize: "12px" }} />
+                    <Bar dataKey="count" fill={CHART_COLORS[1]} radius={[4, 4, 0, 0]} name="Gestantes" />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>
             </Card>
-
-            {/* Detail table */}
-            <Card className="mt-4">
-              <CardHeader className="pb-3"><CardTitle className="text-sm">Detalhamento — {quadrimestre}</CardTitle></CardHeader>
-              <CardContent className="p-0">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>#</TableHead>
-                      <TableHead>Indicador</TableHead>
-                      <TableHead className="text-right">Valor</TableHead>
-                      <TableHead className="text-right">Meta</TableHead>
-                      <TableHead className="text-right">Status</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {MOCK_INDICADORES_PREVINE.map((ip, idx) => {
-                      const val = ip.valores.find((v) => v.quadrimestre === quadrimestre)?.valor ?? 0;
-                      const met = val >= ip.meta;
-                      return (
-                        <TableRow key={ip.id}>
-                          <TableCell className="text-muted-foreground">{idx + 1}</TableCell>
-                          <TableCell className="font-medium text-sm">{ip.nome}</TableCell>
-                          <TableCell className="text-right">
-                            <span className={met ? "text-emerald-700 font-semibold" : "text-amber-700 font-semibold"}>{val}%</span>
-                          </TableCell>
-                          <TableCell className="text-right text-muted-foreground">{ip.meta}%</TableCell>
-                          <TableCell className="text-right">
-                            <Badge variant={met ? "default" : "secondary"} className="text-xs">{met ? "Atingida" : "Abaixo"}</Badge>
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })}
-                  </TableBody>
-                </Table>
+            <Card>
+              <CardHeader className="pb-2"><CardTitle className="text-sm">Faixa Etária das Gestantes</CardTitle></CardHeader>
+              <CardContent>
+                <ResponsiveContainer width="100%" height={220}>
+                  <BarChart data={indAgeData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="oklch(0.91 0.01 250)" />
+                    <XAxis dataKey="faixa" fontSize={11} tickLine={false} axisLine={false} />
+                    <YAxis fontSize={11} tickLine={false} axisLine={false} allowDecimals={false} />
+                    <RechartsTooltip contentStyle={{ borderRadius: "8px", fontSize: "12px" }} />
+                    <Bar dataKey="count" fill={CHART_COLORS[3]} radius={[4, 4, 0, 0]} name="Gestantes" />
+                  </BarChart>
+                </ResponsiveContainer>
               </CardContent>
             </Card>
-          </MockSection>
+          </div>
+
+          {/* Detail table (real) */}
+          <Card>
+            <CardHeader className="pb-3"><CardTitle className="text-sm">Detalhamento dos Indicadores</CardTitle></CardHeader>
+            <CardContent className="p-0">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>#</TableHead>
+                    <TableHead>Indicador</TableHead>
+                    <TableHead className="text-right">Absoluto</TableHead>
+                    <TableHead className="text-right">Valor</TableHead>
+                    <TableHead className="text-right">Meta</TableHead>
+                    <TableHead className="text-right">Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {indDetailRows.map((row, idx) => {
+                    const met = row.valor >= row.meta;
+                    return (
+                      <TableRow key={row.nome}>
+                        <TableCell className="text-muted-foreground">{idx + 1}</TableCell>
+                        <TableCell className="font-medium text-sm">{row.nome}</TableCell>
+                        <TableCell className="text-right text-sm">{row.absoluto} / {snap.totalGestantes}</TableCell>
+                        <TableCell className="text-right">
+                          <span className={met ? "text-emerald-700 font-semibold" : "text-amber-700 font-semibold"}>{row.valor}%</span>
+                        </TableCell>
+                        <TableCell className="text-right text-muted-foreground">{row.meta}%</TableCell>
+                        <TableCell className="text-right">
+                          <Badge variant={met ? "default" : "secondary"} className="text-xs">{met ? "Atingida" : "Abaixo"}</Badge>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
 
           {/* Nominal list (real — simplified) */}
           <Card>

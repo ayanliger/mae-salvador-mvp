@@ -6,9 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
 import { RiskBadge } from "@/components/risk-badge";
-import { Search, ChevronRight } from "lucide-react";
+import { Search, ChevronRight, ArrowUp, ArrowDown, ArrowUpDown } from "lucide-react";
 import type { Gestante, UBS } from "@mae-salvador/shared";
 import type { UltimaConsultaMap } from "@/lib/esus-data";
 
@@ -23,9 +22,49 @@ function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("pt-BR");
 }
 
+function getIdade(dataNascimento: string): number {
+  if (!dataNascimento) return 0;
+  const today = new Date();
+  const birth = new Date(dataNascimento);
+  let age = today.getFullYear() - birth.getFullYear();
+  const m = today.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+  return age;
+}
+
+type SortKey = "nome" | "idade" | "ig" | "dpp" | "risco" | "ubs" | "ultimaConsulta";
+type SortDir = "asc" | "desc";
+
+const RISCO_ORDER: Record<string, number> = { alto: 0, habitual: 1 };
+
+function SortableHead({ label, sortKey, current, dir, onSort, className }: {
+  label: string; sortKey: SortKey; current: SortKey | null; dir: SortDir; onSort: (k: SortKey) => void; className?: string;
+}) {
+  const active = current === sortKey;
+  return (
+    <TableHead className={className}>
+      <button type="button" onClick={() => onSort(sortKey)} className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
+        {label}
+        {active ? (dir === "asc" ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />) : <ArrowUpDown className="w-3 h-3 opacity-40" />}
+      </button>
+    </TableHead>
+  );
+}
+
 export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: PainelClientProps) {
   const [search, setSearch] = useState("");
   const [riscoFilter, setRiscoFilter] = useState<string>("todos");
+  const [sortKey, setSortKey] = useState<SortKey | null>(null);
+  const [sortDir, setSortDir] = useState<SortDir>("asc");
+
+  function handleSort(key: SortKey) {
+    if (sortKey === key) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setSortDir("asc");
+    }
+  }
 
   const filtered = useMemo(() => {
     return gestantes.filter((g) => {
@@ -44,8 +83,45 @@ export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: 
   }
 
   function displayName(g: Gestante) {
-    return g.nomeCompleto || `Cidadão #${g.id}`;
+    const n = g.nomeCompleto;
+    if (!n || /^[0-9a-fA-F]{20,}$/.test(n)) return "";
+    return n;
   }
+
+  /** Compare with empties always last, regardless of sort direction. */
+  function emptyLast(va: string | number | null | undefined, vb: string | number | null | undefined, cmp: (a: NonNullable<typeof va>, b: NonNullable<typeof vb>) => number, m: number): number {
+    const ea = va == null || va === "" || va === 0;
+    const eb = vb == null || vb === "" || vb === 0;
+    if (ea && eb) return 0;
+    if (ea) return 1;
+    if (eb) return -1;
+    return m * cmp(va!, vb!);
+  }
+
+  const sorted = useMemo(() => {
+    if (!sortKey) return filtered;
+    const m = sortDir === "asc" ? 1 : -1;
+    return [...filtered].sort((a, b) => {
+      switch (sortKey) {
+        case "nome":
+          return emptyLast(displayName(a), displayName(b), (x, y) => String(x).localeCompare(String(y), "pt-BR"), m);
+        case "idade":
+          return emptyLast(a.dataNascimento ? getIdade(a.dataNascimento) : null, b.dataNascimento ? getIdade(b.dataNascimento) : null, (x, y) => Number(x) - Number(y), m);
+        case "ig":
+          return emptyLast(a.ativa ? a.idadeGestacionalSemanas : null, b.ativa ? b.idadeGestacionalSemanas : null, (x, y) => Number(x) - Number(y), m);
+        case "dpp":
+          return emptyLast(a.dpp || null, b.dpp || null, (x, y) => String(x).localeCompare(String(y)), m);
+        case "risco":
+          return emptyLast(RISCO_ORDER[a.riscoGestacional] ?? null, RISCO_ORDER[b.riscoGestacional] ?? null, (x, y) => Number(x) - Number(y), m);
+        case "ubs":
+          return emptyLast(getUbsNome(a.ubsId) || null, getUbsNome(b.ubsId) || null, (x, y) => String(x).localeCompare(String(y), "pt-BR"), m);
+        case "ultimaConsulta":
+          return emptyLast(ultimaConsultaMap[a.id]?.ultimaConsulta || null, ultimaConsultaMap[b.id]?.ultimaConsulta || null, (x, y) => String(x).localeCompare(String(y)), m);
+        default: return 0;
+      }
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filtered, sortKey, sortDir, ultimaConsultaMap]);
 
   return (
     <div className="space-y-6">
@@ -85,26 +161,26 @@ export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: 
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Nome</TableHead>
+                <SortableHead label="Nome" sortKey="nome" current={sortKey} dir={sortDir} onSort={handleSort} />
                 <TableHead className="hidden md:table-cell">CPF</TableHead>
                 <TableHead className="hidden md:table-cell">CNS</TableHead>
-                <TableHead>IG (sem)</TableHead>
-                <TableHead className="hidden sm:table-cell">DPP</TableHead>
-                <TableHead>Risco</TableHead>
-                <TableHead className="hidden lg:table-cell">UBS</TableHead>
-                <TableHead className="hidden md:table-cell">Situação</TableHead>
-                <TableHead className="hidden md:table-cell">Última consulta</TableHead>
+                <SortableHead label="Idade" sortKey="idade" current={sortKey} dir={sortDir} onSort={handleSort} className="hidden md:table-cell" />
+                <SortableHead label="IG (sem)" sortKey="ig" current={sortKey} dir={sortDir} onSort={handleSort} />
+                <SortableHead label="DPP" sortKey="dpp" current={sortKey} dir={sortDir} onSort={handleSort} className="hidden sm:table-cell" />
+                <SortableHead label="Risco" sortKey="risco" current={sortKey} dir={sortDir} onSort={handleSort} />
+                <SortableHead label="UBS" sortKey="ubs" current={sortKey} dir={sortDir} onSort={handleSort} className="hidden lg:table-cell" />
+                <SortableHead label="Última consulta" sortKey="ultimaConsulta" current={sortKey} dir={sortDir} onSort={handleSort} className="hidden md:table-cell" />
                 <TableHead className="w-8" />
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filtered.map((g) => {
+              {sorted.map((g) => {
                 const info = ultimaConsultaMap[g.id];
                 return (
                   <TableRow key={g.id} className="group">
                     <TableCell>
                       <Link href={`/gestante/${g.id}`} className="font-medium hover:text-primary transition-colors">
-                        {displayName(g)}
+                        {displayName(g) || <span className="text-muted-foreground font-normal">—</span>}
                       </Link>
                     </TableCell>
                     <TableCell className="hidden md:table-cell text-muted-foreground text-sm font-mono">
@@ -112,6 +188,9 @@ export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: 
                     </TableCell>
                     <TableCell className="hidden md:table-cell text-muted-foreground text-sm font-mono">
                       {g.cns || "—"}
+                    </TableCell>
+                    <TableCell className="hidden md:table-cell text-sm text-muted-foreground">
+                      {g.dataNascimento ? getIdade(g.dataNascimento) : "—"}
                     </TableCell>
                     <TableCell className="font-semibold">{g.ativa ? g.idadeGestacionalSemanas : "—"}</TableCell>
                     <TableCell className="hidden sm:table-cell text-sm text-muted-foreground">
@@ -122,14 +201,6 @@ export default function PainelClient({ gestantes, ubsList, ultimaConsultaMap }: 
                     </TableCell>
                     <TableCell className="hidden lg:table-cell text-sm text-muted-foreground">
                       {getUbsNome(g.ubsId)}
-                    </TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      <Badge
-                        variant="outline"
-                        className={`text-xs ${g.ativa ? "bg-emerald-50 text-emerald-700 border-emerald-200" : "bg-slate-50 text-slate-500 border-slate-200"}`}
-                      >
-                        {g.ativa ? "Ativa" : "Concluída"}
-                      </Badge>
                     </TableCell>
                     <TableCell className="hidden md:table-cell text-sm text-muted-foreground">
                       {info ? formatDate(info.ultimaConsulta) : "—"}
