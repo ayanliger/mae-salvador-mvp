@@ -193,8 +193,8 @@ export default function GestorClient({
   }, [gestantes, vgUnidade, vgTrimestre, vgRaca]);
 
   const vgN = Math.max(vg.length, 1);
-  const vgMenores18 = vg.filter((g) => getIdade(g.dataNascimento) < 18).length;
-  const vg35mais = vg.filter((g) => getIdade(g.dataNascimento) >= 35).length;
+  const vgMenores18 = vg.filter((g) => g.dataNascimento && getIdade(g.dataNascimento) < 18).length;
+  const vg35mais = vg.filter((g) => g.dataNascimento && getIdade(g.dataNascimento) >= 35).length;
   const vgAltoRisco = Math.round((vg.filter((g) => g.riscoGestacional === "alto").length / vgN) * 100);
   const vgCom7 = vg.filter((g) => (ultimaConsultaMap[g.id]?.totalConsultas ?? 0) >= 7).length;
   const vgComConsulta = vg.filter((g) => (ultimaConsultaMap[g.id]?.totalConsultas ?? 0) > 0).length;
@@ -549,7 +549,7 @@ export default function GestorClient({
                       </TableCell>
                       <TableCell className="hidden lg:table-cell text-sm">{getUbsNome(g.ubsId)}</TableCell>
                       <TableCell className="text-sm">{getRacaLabel(g.racaCor)}</TableCell>
-                      <TableCell className="text-sm">{getIdade(g.dataNascimento)}</TableCell>
+                      <TableCell className="text-sm">{g.dataNascimento ? getIdade(g.dataNascimento) : "—"}</TableCell>
                       <TableCell>{g.idadeGestacionalSemanas} sem</TableCell>
                       <TableCell><RiskBadge risco={g.riscoGestacional} /></TableCell>
                       <TableCell className="hidden md:table-cell text-sm text-center">{ultimaConsultaMap[g.id]?.totalConsultas ?? 0}</TableCell>
