@@ -17,20 +17,14 @@ export default async function GestanteDetailPage({ params }: { params: Promise<{
 
   if (!gestante) return notFound();
 
-  let transcard = null;
-  try {
-    transcard = await appGetTranscardByGestante(id);
-  } catch {
-    // APP_DATABASE_URL not configured — skip transcard enrichment
-  }
-
-  const [consultas, exames, vacinas, medicacoes, fatoresRisco, ubsList] = await Promise.all([
+  const [consultas, exames, vacinas, medicacoes, fatoresRisco, ubsList, transcard] = await Promise.all([
     esusGetConsultasByGestante(id, gestante.dum),
     esusGetExamesByGestante(id, gestante.dum),
     esusGetVacinasByGestante(id),
     esusGetMedicacoesByGestante(id),
     esusGetFatoresRisco(id),
     esusGetUbsList(),
+    appGetTranscardByGestante(id).catch(() => null),
   ]);
 
   return (

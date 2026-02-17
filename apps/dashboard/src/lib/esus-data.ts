@@ -315,27 +315,29 @@ export function esusGetGestantes(): Promise<Gestante[]> {
   });
 }
 
-export async function esusGetGestanteById(
+export function esusGetGestanteById(
   id: string,
 ): Promise<Gestante | null> {
-  const { rows } = await getEsusPool().query(QUERY_GESTANTE_BY_ID, [id]);
-  if (rows.length === 0) return null;
-  let programa: ProgramaGestanteRow | null = null;
-  let complementar: DadosComplementaresRow | null = null;
-  try {
-    programa = await appGetProgramaGestante(id);
-    const lookups = [{
-      nome: toStr(rows[0].no_cidadao),
-      dt_nascimento: toISODate(rows[0].dt_nascimento),
-      cpf: parseCpf(rows[0].nu_cpf),
-    }];
-    const map = await appGetDadosComplementares(lookups);
-    const key = `${lookups[0].nome}|${lookups[0].dt_nascimento}`;
-    complementar = map.get(key) || (lookups[0].cpf ? map.get(lookups[0].cpf) ?? null : null);
-  } catch {
-    // APP_DATABASE_URL not configured — skip enrichment
-  }
-  return mapGestante(rows[0], programa, complementar);
+  return cached(`gestante-${id}`, FIVE_MIN, async () => {
+    const { rows } = await getEsusPool().query(QUERY_GESTANTE_BY_ID, [id]);
+    if (rows.length === 0) return null;
+    let programa: ProgramaGestanteRow | null = null;
+    let complementar: DadosComplementaresRow | null = null;
+    try {
+      programa = await appGetProgramaGestante(id);
+      const lookups = [{
+        nome: toStr(rows[0].no_cidadao),
+        dt_nascimento: toISODate(rows[0].dt_nascimento),
+        cpf: parseCpf(rows[0].nu_cpf),
+      }];
+      const map = await appGetDadosComplementares(lookups);
+      const key = `${lookups[0].nome}|${lookups[0].dt_nascimento}`;
+      complementar = map.get(key) || (lookups[0].cpf ? map.get(lookups[0].cpf) ?? null : null);
+    } catch {
+      // APP_DATABASE_URL not configured — skip enrichment
+    }
+    return mapGestante(rows[0], programa, complementar);
+  });
 }
 
 // ── Consultas Pré-Natal ────────────────────────────────
