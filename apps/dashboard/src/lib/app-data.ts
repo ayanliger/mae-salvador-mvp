@@ -39,6 +39,87 @@ function toOptStr(v: unknown): string | undefined {
   return v != null ? String(v) : undefined;
 }
 
+// ── Dados Complementares PEC (spreadsheet enrichment) ──
+
+export interface DadosComplementaresRow {
+  no_usuario: string;
+  no_mae: string | null;
+  dt_nascimento: string | null;
+  nu_cpf: string | null;
+}
+
+interface LookupKey {
+  nome: string;
+  dt_nascimento: string;
+  cpf: string;
+}
+
+/**
+ * Batch-lookup supplemental citizen data from the imported PEC spreadsheet.
+ * Returns a Map keyed by both "NAME|DOB" and by CPF (when available).
+ */
+export async function appGetDadosComplementares(
+  lookups: LookupKey[],
+): Promise<Map<string, DadosComplementaresRow>> {
+  if (lookups.length === 0) return new Map();
+
+  // Collect unique normalised names and CPFs for a single batch query
+  const names = new Set<string>();
+  const cpfs = new Set<string>();
+  for (const l of lookups) {
+    if (l.nome && l.dt_nascimento) names.add(normaliseForMatch(l.nome));
+    if (l.cpf) cpfs.add(l.cpf);
+  }
+
+  const conditions: string[] = [];
+  const params: unknown[] = [];
+  let idx = 1;
+
+  if (names.size > 0) {
+    conditions.push(`no_usuario_normalizado = ANY($${idx})`);
+    params.push([...names]);
+    idx++;
+  }
+  if (cpfs.size > 0) {
+    conditions.push(`nu_cpf = ANY($${idx})`);
+    params.push([...cpfs]);
+    idx++;
+  }
+
+  if (conditions.length === 0) return new Map();
+
+  const { rows } = await getAppPool().query(
+    `SELECT no_usuario, no_mae, dt_nascimento, nu_cpf
+     FROM cidadao_dados_pec
+     WHERE ${conditions.join(" OR ")}`,
+    params,
+  );
+
+  const result = new Map<string, DadosComplementaresRow>();
+  for (const r of rows) {
+    const row = r as DadosComplementaresRow;
+    // Key by original name + DOB
+    if (row.no_usuario && row.dt_nascimento) {
+      const nameKey = `${row.no_usuario}|${toISODate(row.dt_nascimento)}`;
+      result.set(nameKey, row);
+    }
+    // Also key by CPF for direct lookup
+    if (row.nu_cpf) {
+      result.set(row.nu_cpf, row);
+    }
+  }
+  return result;
+}
+
+function normaliseForMatch(name: string): string {
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase()
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 // ── Programa Gestante (enrichment) ─────────────────────
 
 export interface ProgramaGestanteRow {

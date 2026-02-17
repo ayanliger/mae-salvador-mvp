@@ -7,7 +7,7 @@
  */
 
 import { getEsusPool } from "./db";
-import { appGetProgramaGestante, type ProgramaGestanteRow } from "./app-data";
+import { appGetProgramaGestante, appGetDadosComplementares, type ProgramaGestanteRow, type DadosComplementaresRow } from "./app-data";
 
 import type {
   Gestante,
@@ -95,7 +95,7 @@ const QUERY_GESTANTES_LIST = `
 SELECT
   fcp.co_seq_fat_cidadao_pec        AS co_seq_cidadao,
   COALESCE(fcp.no_cidadao, ci.no_nome) AS no_cidadao,
-  COALESCE(fcp.nu_cpf_cidadao, ci.nu_cpf_cidadao) AS nu_cpf,
+  COALESCE(fcp.nu_cpf_cidadao, ci.nu_cpf_cidadao, cid.nu_cpf) AS nu_cpf,
   fcp.nu_cns,
   t_nasc.dt_registro                AS dt_nascimento,
   COALESCE(fcp.nu_telefone_celular, ci.nu_celular) AS nu_telefone_celular,
@@ -109,6 +109,7 @@ SELECT
   eq.nu_ine                         AS equipe_ine,
   us.nu_cnes                        AS ubs_cnes,
   rc.ds_raca_cor                    AS no_raca_cor,
+  cid.no_mae                        AS no_mae,
   '0' AS ds_gestacao, '0' AS ds_parto, '0' AS qt_aborto, '0' AS ds_filho_vivo
 FROM public.tb_fat_cidadao_pec fcp
 -- Only active pregnancies (puerperio still in the future)
@@ -136,6 +137,8 @@ LEFT JOIN LATERAL (
 ) ci ON true
 LEFT JOIN public.tb_dim_raca_cor rc
   ON rc.co_seq_dim_raca_cor = ci.co_dim_raca_cor
+LEFT JOIN mae_salvador.vw_cidadao cid
+  ON cid.co_seq_cidadao = fcp.co_cidadao
 WHERE COALESCE(fcp.st_faleceu, 0) = 0
 ORDER BY COALESCE(fcp.no_cidadao, ci.no_nome)
 `;
@@ -230,14 +233,19 @@ const TIPO_EQUIPE_MAP: Record<number, TipoEquipe> = {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-function mapGestante(row: any, programa?: ProgramaGestanteRow | null): Gestante {
+function mapGestante(
+  row: any,
+  programa?: ProgramaGestanteRow | null,
+  complementar?: DadosComplementaresRow | null,
+): Gestante {
   const dum = toISODate(row.dt_ultima_menstruacao);
+  const cpfFromPec = parseCpf(row.nu_cpf);
   return {
     id: String(row.co_seq_cidadao),
-    nomeCompleto: toStr(row.no_cidadao),
-    cpf: parseCpf(row.nu_cpf),
+    nomeCompleto: toStr(row.no_cidadao) || complementar?.no_usuario || "",
+    cpf: cpfFromPec || complementar?.nu_cpf || "",
     cns: toOptStr(row.nu_cns),
-    dataNascimento: toISODate(row.dt_nascimento),
+    dataNascimento: toISODate(row.dt_nascimento) || (complementar?.dt_nascimento ? toISODate(complementar.dt_nascimento) : ""),
     telefone: toStr(row.nu_telefone_celular),
     email: toOptStr(row.ds_email),
     endereco: {
@@ -271,6 +279,8 @@ function mapGestante(row: any, programa?: ProgramaGestanteRow | null): Gestante 
     // Programa (app DB)
     cartaoMaeSalvador: programa?.cartao_mae_salvador ?? false,
     bolsaFamilia: programa?.bolsa_familia ?? false,
+    // Mother's name: PEC view first, then spreadsheet fallback
+    nomeMae: toOptStr(row.no_mae) || complementar?.no_mae || undefined,
     // Meta
     dataCadastro: programa?.data_cadastro
       ? toISODate(programa.data_cadastro)
@@ -282,7 +292,26 @@ function mapGestante(row: any, programa?: ProgramaGestanteRow | null): Gestante 
 export function esusGetGestantes(): Promise<Gestante[]> {
   return cached("gestantes-list", FIVE_MIN, async () => {
     const { rows } = await getEsusPool().query(QUERY_GESTANTES_LIST);
-    return rows.map((r: any) => mapGestante(r));
+
+    // Batch-enrich from spreadsheet supplemental table
+    let complementarMap = new Map<string, DadosComplementaresRow>();
+    try {
+      const lookups = rows.map((r: any) => ({
+        nome: toStr(r.no_cidadao),
+        dt_nascimento: toISODate(r.dt_nascimento),
+        cpf: parseCpf(r.nu_cpf),
+      }));
+      complementarMap = await appGetDadosComplementares(lookups);
+    } catch {
+      // APP_DATABASE_URL not configured — skip enrichment
+    }
+
+    return rows.map((r: any) => {
+      const key = `${toStr(r.no_cidadao)}|${toISODate(r.dt_nascimento)}`;
+      const cpfKey = parseCpf(r.nu_cpf);
+      const comp = complementarMap.get(key) || (cpfKey ? complementarMap.get(cpfKey) : undefined) || null;
+      return mapGestante(r, null, comp);
+    });
   });
 }
 
@@ -292,12 +321,21 @@ export async function esusGetGestanteById(
   const { rows } = await getEsusPool().query(QUERY_GESTANTE_BY_ID, [id]);
   if (rows.length === 0) return null;
   let programa: ProgramaGestanteRow | null = null;
+  let complementar: DadosComplementaresRow | null = null;
   try {
     programa = await appGetProgramaGestante(id);
+    const lookups = [{
+      nome: toStr(rows[0].no_cidadao),
+      dt_nascimento: toISODate(rows[0].dt_nascimento),
+      cpf: parseCpf(rows[0].nu_cpf),
+    }];
+    const map = await appGetDadosComplementares(lookups);
+    const key = `${lookups[0].nome}|${lookups[0].dt_nascimento}`;
+    complementar = map.get(key) || (lookups[0].cpf ? map.get(lookups[0].cpf) ?? null : null);
   } catch {
     // APP_DATABASE_URL not configured — skip enrichment
   }
-  return mapGestante(rows[0], programa);
+  return mapGestante(rows[0], programa, complementar);
 }
 
 // ── Consultas Pré-Natal ────────────────────────────────

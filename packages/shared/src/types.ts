@@ -46,6 +46,7 @@ export interface Gestante {
   bolsaFamilia: boolean;
   racaCor: RacaCor;
   equipeId: string;
+  nomeMae?: string;
   // Meta
   dataCadastro: string;
   ativa: boolean;

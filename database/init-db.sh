@@ -36,7 +36,7 @@ for f in /dump/migrations/001_*.sql; do
 done
 
 echo "Running migrations on mae_salvador database..."
-for f in /dump/migrations/002_*.sql /dump/migrations/003_*.sql; do
+for f in /dump/migrations/002_*.sql /dump/migrations/003_*.sql /dump/migrations/004_*.sql /dump/migrations/005_*.sql; do
   if [ -f "$f" ]; then
     echo "  Applying $(basename $f) on mae_salvador..."
     psql -U postgres -d mae_salvador -f "$f"

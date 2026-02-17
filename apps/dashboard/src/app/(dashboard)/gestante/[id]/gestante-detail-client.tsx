@@ -134,6 +134,7 @@ export default function GestanteDetailClient({
               <CardHeader className="pb-3"><CardTitle className="text-sm">Dados Pessoais</CardTitle></CardHeader>
               <CardContent className="space-y-2 text-sm">
                 <Row label="Nome" value={displayName()} />
+                <Row label="Nome da mãe" value={g.nomeMae ?? "—"} />
                 <Row label="Data de nascimento" value={g.dataNascimento ? fmt(g.dataNascimento) : "—"} />
                 <Row label="CPF" value={g.cpf || "—"} />
                 <Row label="CNS" value={g.cns ?? "—"} />

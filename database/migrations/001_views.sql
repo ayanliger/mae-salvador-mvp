@@ -84,6 +84,12 @@ FROM public.ta_lotacao
 WHERE co_tipo_auditoria != 'E'
 ORDER BY co_seq_talotacao, dt_auditoria DESC;
 
+CREATE OR REPLACE VIEW mae_salvador.vw_cidadao AS
+SELECT DISTINCT ON (co_seq_cidadao) *
+FROM public.ta_cidadao
+WHERE co_tipo_auditoria != 'E'
+ORDER BY co_seq_cidadao, dt_auditoria DESC;
+
 CREATE OR REPLACE VIEW mae_salvador.vw_prof AS
 SELECT DISTINCT ON (co_seq_prof) *
 FROM public.ta_prof
@@ -116,20 +122,22 @@ CREATE OR REPLACE VIEW mae_salvador.vw_gestante AS
 SELECT
   fcp.co_seq_fat_cidadao_pec        AS co_seq_cidadao,
   COALESCE(fcp.no_cidadao, ci.no_nome) AS no_cidadao,
-  COALESCE(fcp.nu_cpf_cidadao, ci.nu_cpf_cidadao) AS nu_cpf,
+  COALESCE(fcp.nu_cpf_cidadao, ci.nu_cpf_cidadao, cid.nu_cpf) AS nu_cpf,
   fcp.nu_cns,
   t_nasc.dt_registro                AS dt_nascimento,
   COALESCE(fcp.nu_telefone_celular, ci.nu_celular) AS nu_telefone_celular,
   ci.no_email                       AS ds_email,
   rc.ds_raca_cor                    AS no_raca_cor,
-  NULL::text                        AS no_tipo_sanguineo,
+  cid.no_tipo_sanguineo             AS no_tipo_sanguineo,
   'ativa'::text                     AS situacao,
-  -- Address (not available in DW citizen tables)
-  NULL::text AS ds_logradouro,
-  NULL::text AS nu_numero,
-  NULL::text AS ds_complemento,
-  NULL::text AS no_bairro,
-  NULL::text AS ds_cep,
+  -- Address from PEC citizen record
+  cid.ds_logradouro                 AS ds_logradouro,
+  cid.nu_numero                     AS nu_numero,
+  cid.ds_complemento                AS ds_complemento,
+  cid.no_bairro                     AS no_bairro,
+  cid.ds_cep                        AS ds_cep,
+  -- Mother's name from PEC citizen record
+  cid.no_mae                        AS no_mae,
   -- Pregnancy
   COALESCE(g.dt_fai_dum, g.dt_inicio_gestacao) AS dt_ultima_menstruacao,
   -- Alto risco: critérios conforme Manual de Gestação de Alto Risco (MS, 2022)
@@ -237,6 +245,9 @@ LEFT JOIN LATERAL (
 ) ci ON true
 LEFT JOIN public.tb_dim_raca_cor rc
   ON rc.co_seq_dim_raca_cor = ci.co_dim_raca_cor
+-- PEC citizen record for mother's name, address, blood type
+LEFT JOIN mae_salvador.vw_cidadao cid
+  ON cid.co_seq_cidadao = fcp.co_cidadao
 -- Latest prenatal encounter for obstetric history
 LEFT JOIN LATERAL (
   SELECT enc2.nu_gestas_previas, enc2.nu_partos
