@@ -1,87 +1,154 @@
 # Mãe Salvador — Caderneta da Gestante Digital
 
-![Status](https://img.shields.io/badge/status-MVP%20em%20desenvolvimento-yellow)
+![Status](https://img.shields.io/badge/status-sprint%20de%20kickstart%20conclu%C3%ADdo-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=nextdotjs)
 ![Expo](https://img.shields.io/badge/Expo-54-000020?logo=expo)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+> **Estado deste repositório.** Este é o resultado de um sprint de cerca de cinco dias (12 a 17 de fevereiro de 2026), feito como *kickstart* do projeto de caderneta digital do Programa Mãe Salvador. O desenvolvimento teve continuidade em um repositório próprio, criado junto com a equipe integrada do projeto. Este repositório permanece como registro do sprint inicial e da arquitetura de integração validada nele.
 
 ## O que é
 
-Uma solução digital para acompanhamento pré-natal na rede pública de saúde de Salvador. A proposta é dar à gestante uma **caderneta digital** acessível pelo celular — com seus dados pessoais, consultas, exames, vacinas e medicações — e oferecer aos profissionais de saúde e gestores um **painel (dashboard)** com visão integrada das gestantes vinculadas, indicadores de desempenho e ferramentas de registro clínico.
+Uma solução digital para acompanhamento pré-natal na rede pública de saúde de Salvador, com dois produtos:
 
-O projeto nasce no contexto do **Programa Mãe Salvador**, que já cadastrou mais de 32 mil gestantes e oferece benefícios como o Salvador Card (transporte gratuito para consultas). Hoje, o acompanhamento depende de cadernetas em papel — o Ministério da Saúde distribui 3 milhões por ano. A digitalização elimina perdas, centraliza informações e conecta gestantes à equipe de saúde.
+- **App da gestante** — caderneta digital no celular: dados pessoais, consultas, exames, vacinas, medicações, cartão do programa e avisos.
+- **Dashboard do profissional/gestor** — painel com as gestantes vinculadas, ficha clínica completa, classificação de risco, registro de consulta e indicadores de desempenho.
 
-> A pesquisa técnica completa que fundamenta as decisões de arquitetura, integrações com sistemas do SUS (RNDS, e-SUS APS, CADSUS) e stack tecnológico está disponível em [`docs/relatorio_pesquisa_tecnica_mae-salvador.md`](docs/relatorio_pesquisa_tecnica_mae-salvador.md).
+O contexto é o Programa Mãe Salvador, que acompanha mais de 32 mil gestantes e hoje depende de cadernetas em papel. A digitalização elimina perdas, centraliza informação e conecta a gestante à equipe de saúde.
 
-## Escopo atual (MVP)
+## O sprint
 
-Este repositório contém um **MVP funcional** que demonstra a interface dos dois produtos:
+O objetivo não era entregar um produto, e sim tirar o projeto do papel rápido o suficiente para que as decisões seguintes fossem tomadas sobre código rodando, não sobre suposição. Em cinco dias, com desenvolvimento assistido por IA, o sprint precisava responder a três perguntas:
 
-**App mobile (gestante)** — interface da caderneta digital:
-- Login simulado (gov.br mockado)
-- Tela inicial com resumo da gestação, próxima consulta e atalhos rápidos
-- Caderneta com seções: dados pessoais, consultas pré-natal, exames, vacinas, medicações
-- Cartão Mãe Salvador digital
-- Central de avisos e notificações
+1. **Como é a cara do produto?** Quais telas, quais fluxos, o que a gestante vê e o que o profissional precisa registrar.
+2. **Dá para montar a caderneta a partir dos dados que já existem?** Ou seja: o e-SUS APS tem o suficiente para preencher uma caderneta sem redigitação.
+3. **Onde ficam os dados que o e-SUS não modela?** Transcard, kit enxoval, consentimento, encaminhamento ao CRAS, notificações — nada disso existe no e-SUS.
 
-**Dashboard web (profissional/gestor)** — painel de acompanhamento:
-- Login com seleção de perfil (enfermeiro, médico, gestor)
-- Painel de gestantes com busca, filtros e classificação de risco
-- Ficha completa da gestante (5 abas: resumo, consultas, exames, vacinas, medicações)
-- Formulário de registro de consulta pré-natal
-- Dashboard do gestor com KPIs, gráficos e indicadores Previne Brasil
+As três foram respondidas. O trabalho evoluiu em duas etapas, ainda visíveis nas branches: primeiro a interface completa sobre dados simulados, depois a camada real de integração com uma réplica do e-SUS.
 
-> **Nota:** Este MVP utiliza dados mockados. A integração com backend, banco de dados e sistemas do SUS (RNDS, e-SUS APS, gov.br) está fora do escopo atual e será implementada por equipes futuras, seguindo a arquitetura descrita na pesquisa técnica.
+## Arquitetura
+
+### Princípio central: o e-SUS continua sendo o sistema de registro clínico
+
+A decisão mais importante do sprint, e a que sustenta todo o resto: **o sistema não cria dado clínico.** O e-SUS APS PEC é o que os profissionais já usam diariamente e o que alimenta o SISAB — que por sua vez determina o repasse do Previne Brasil. Um registro clínico paralelo levaria a redigitação (e ao abandono do sistema pela equipe) ou a perda de financiamento para o município.
+
+Disso decorre a divisão:
+
+| | Fonte de verdade | Acesso |
+|---|---|---|
+| Dados clínicos e cadastrais | e-SUS APS (réplica) | **somente leitura** |
+| Dados do programa | banco próprio `mae_salvador` | leitura e escrita |
+
+O "dado do programa" é tudo que o e-SUS não representa: vinculação de Transcard, etapas do Mãe Salvador, consentimento LGPD, recusa de benefício, encaminhamento ao CRAS, atividades educativas, visitas à maternidade, notificações e casos de sífilis em acompanhamento.
+
+### Dois bancos, dois pools
+
+`apps/dashboard/src/lib/db.ts` mantém dois pools distintos. A leitura do e-SUS é forçada como somente-leitura em dois níveis — role dedicada (`esus_leitura`, com `GRANT SELECT`) e `SET default_transaction_read_only = ON` em cada conexão — de modo que uma escrita acidental falha no banco, não depende de disciplina do código.
+
+### Views versionadas sobre o schema do PEC
+
+O acesso ao e-SUS nunca é feito direto nas tabelas do PEC. A migration `001_views.sql` cria o schema `mae_salvador` **dentro da réplica**, com 20 views que traduzem o modelo do PEC para o domínio da caderneta (`vw_gestante`, `vw_consulta_prenatal`, `vw_exame`, `vw_vacina_gestante`, `vw_medicacao`, `vw_fator_risco`, entre outras).
+
+A estratégia é **DW-primary**: o grosso vem do star schema do PEC (`tb_fat_*` / `tb_dim_*`), estável e indexado, e as tabelas transacionais são usadas apenas para o que o DW não carrega — dados organizacionais (profissional, UBS, equipe, lotação) e as evoluções SOAP. As views transacionais aplicam `DISTINCT ON` com filtro de auditoria para pegar a versão vigente de cada registro.
+
+O ganho é isolamento: quando o schema do PEC mudar de versão, o reparo é nas views, não espalhado pela aplicação.
+
+### Classificação de risco por CID-10 e CIAP-2
+
+O risco gestacional não é campo preenchido à mão — é derivado dos problemas e condições registrados no prontuário, via CID-10 e CIAP-2, seguindo o *Manual de Gestação de Alto Risco* (MS, 2022) e o Caderno de Atenção Básica nº 32. Cobre síndromes hipertensivas, diabetes, gestação múltipla, placenta prévia, HIV, sífilis, cardiopatias, doença falciforme, doença renal crônica, epilepsia, lúpus, tireoidopatias e transtornos por uso de substâncias.
+
+Essa é a parte de maior densidade de domínio do repositório e fica em `esus-data.ts`, junto às queries.
+
+### Camada de dados intercambiável
+
+Três módulos com a mesma assinatura de funções, o que permitiu substituir mock por dado real uma função por vez, sem tocar em tela:
+
+- `lib/data.ts` — dados simulados
+- `lib/esus-data.ts` — leitura da réplica do e-SUS
+- `lib/app-data.ts` — leitura e escrita do banco do programa
+
+Enquanto a troca não termina, os componentes `MockBadge` e `MockSection` marcam visualmente na interface o que ainda é simulado. Sem isso, uma demonstração com dado misto engana quem assiste.
+
+### API
+
+19 rotas em `apps/dashboard/src/app/api/` cobrem gestantes, consultas, exames, vacinas, medicações, transcard, profissionais, UBS, equipes, indicadores, KPIs, sífilis e cadastro. O app mobile consome as mesmas rotas (`apps/mobile/constants/Api.ts`), o que na prática torna o Next.js o backend dos dois produtos. Há uma rota `/api/health` que reporta a conectividade de cada banco separadamente.
+
+## Estado por branch
+
+O sprint terminou com o trabalho distribuído entre branches, e vale saber onde cada coisa está:
+
+- **`master`** — os dois aplicativos com a interface completa sobre dados simulados. É o que roda sem nenhuma infraestrutura.
+- **`test4`** — o estado mais avançado (17/02). Acrescenta toda a camada de integração: `database/` com Dockerfile, migrations e queries de validação, os pools de conexão, `esus-data.ts`, `app-data.ts`, as rotas de API e o mapeamento do schema do PEC.
+
+As branches `test`, `test2` e `test3` são estados intermediários do mesmo trabalho.
 
 ## Stack
 
 - **Monorepo** com npm workspaces
-- **App mobile:** React Native + Expo (SDK 54), expo-router, Zustand, StyleSheet nativo
+- **App mobile:** React Native + Expo (SDK 54), expo-router, Zustand
 - **Dashboard:** Next.js 16 (App Router), Shadcn/UI, Tailwind CSS v4, Recharts, TanStack Table
-- **Pacote compartilhado:** tipos TypeScript, constantes (12 distritos, 8 UBS, fatores de risco, calendário vacinal) e dados mock
+- **Dados:** PostgreSQL 16 — réplica do e-SUS APS (leitura) + banco do programa (escrita), acesso via `pg` e SQL direto
+- **Pacote compartilhado:** tipos de domínio, constantes (distritos, UBS, fatores de risco, calendário vacinal), queries e mapeamento do schema do PEC
 
-## Estrutura do projeto
+Não há ORM. Como a maior parte do acesso é leitura de um schema que não nos pertence, SQL explícito sobre views versionadas se mostrou mais direto e mais fácil de auditar do que uma camada de abstração.
+
+## Como rodar
+
+**Pré-requisitos:** Node.js ≥ 20, npm. Para a camada de dados, Docker e um dump do e-SUS.
+
+```bash
+npm install
+```
+
+**Interface com dados simulados** (branch `master`, sem infraestrutura):
+
+```bash
+npm run dev --workspace=apps/dashboard
+```
+
+```bash
+npm run web --workspace=apps/mobile
+```
+
+**Com a réplica do e-SUS** (branch `test4`): coloque o dump do PEC em `database/` e suba o container. O `init-db.sh` restaura o dump, cria a role de leitura, cria o banco `mae_salvador` e aplica as migrations nos dois bancos.
+
+```bash
+docker compose up -d
+```
+
+Configure então `ESUS_DATABASE_URL` e `APP_DATABASE_URL` no ambiente do dashboard e confirme em `/api/health`.
+
+`database/validation_queries.sql` reúne as consultas usadas para conferir se as views batem com o que o PEC mostra — é o ponto de partida para validar qualquer réplica nova.
+
+## Limitações conhecidas
+
+Registradas porque são o ponto de partida de qualquer continuidade, não porque sejam surpresa num sprint de cinco dias:
+
+- **Autenticação é simulada.** O login seleciona um perfil; não há gov.br, nem IdP, nem sessão real. Os níveis de acesso (equipe, gerente, distrital, central) existem na interface mas não são aplicados no servidor — qualquer rota de API responde a qualquer chamada.
+- **Não há auditoria de acesso.** Para dado de saúde identificado, isso é requisito de LGPD, não melhoria.
+- **A latência do dado é de um dia.** O DW do PEC é populado por ETL noturno. A consulta de hoje não aparece hoje — restrição de produto, não de implementação.
+- **O mapeamento do schema do PEC é engenharia reversa** e está atrelado à versão do dump usado no sprint. Atualização do PEC exige revalidar as views.
+- **Não há escrita de volta ao e-SUS.** O caminho oficial (LEDI) é orientado a fichas do CDS, em lote, e não foi avaliado.
+- **Não há testes automatizados** nem pipeline de CI.
+- **O dado sensível é tratado como ambiente local.** Não há definição de onde a réplica pode rodar em produção, o que é decisão de infraestrutura e de política, não de engenharia.
+
+## Estrutura
 
 ```
 mae-salvador-mvp/
 ├── apps/
-│   ├── dashboard/         # Next.js — painel do profissional/gestor
+│   ├── dashboard/         # Next.js — painel e API
 │   └── mobile/            # Expo — app da gestante
 ├── packages/
-│   └── shared/            # Tipos, constantes e dados mock compartilhados
-├── docs/
-│   └── relatorio_pesquisa_tecnica_mae-salvador.md
-└── package.json           # Workspaces root
+│   └── shared/            # Tipos, constantes, queries e mapeamento do e-SUS
+├── database/              # (branch test4) Dockerfile, migrations, validação
+└── docs/                  # Referências de domínio
 ```
 
-## Como rodar localmente
-
-**Pré-requisitos:** Node.js ≥ 20, npm
-
-```bash
-# Instalar dependências (raiz do monorepo)
-npm install
-
-# Dashboard (abre em http://localhost:3000)
-npm run dev --workspace=apps/dashboard
-
-# App mobile — web (abre em http://localhost:8081)
-cd apps/mobile
-npx expo start --web
-```
-
-## Próximos passos
-
-O MVP demonstra a interface e o fluxo de uso. As próximas etapas, descritas em detalhe na pesquisa técnica, incluem:
-
-1. **Backend** — API NestJS com HAPI FHIR Server e PostgreSQL
-2. **Autenticação** — Integração real com Login Único gov.br (OAuth 2.0 + PKCE)
-3. **Integração SUS** — Conexão com RNDS (FHIR R4), e-SUS APS (DW PEC + LEDI API) e CADSUS/CNS
-4. **Offline-first** — WatermelonDB no app mobile para operação sem internet nas UBS
-5. **Deploy** — AWS sa-east-1 (EKS + RDS + ElastiCache) conforme arquitetura de referência
+`docs/` guarda as referências de domínio usadas durante o sprint: a Caderneta da Gestante do Ministério da Saúde (8ª edição) e os requisitos do projeto.
 
 ## Licença
 
-Este projeto está licenciado sob a [Licença MIT](LICENSE).
+[MIT](LICENSE).
