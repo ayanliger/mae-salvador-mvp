@@ -18,16 +18,6 @@ Uma solução digital para acompanhamento pré-natal na rede pública de saúde 
 
 O contexto é o Programa Mãe Salvador, que acompanha mais de 32 mil gestantes e hoje depende de cadernetas em papel. A digitalização elimina perdas, centraliza informação e conecta a gestante à equipe de saúde.
 
-## O sprint
-
-O objetivo não era entregar um produto, e sim tirar o projeto do papel rápido o suficiente para que as decisões seguintes fossem tomadas sobre código rodando, não sobre suposição. Em cinco dias, com desenvolvimento assistido por IA, o sprint precisava responder a três perguntas:
-
-1. **Como é a cara do produto?** Quais telas, quais fluxos, o que a gestante vê e o que o profissional precisa registrar.
-2. **Dá para montar a caderneta a partir dos dados que já existem?** Ou seja: o e-SUS APS tem o suficiente para preencher uma caderneta sem redigitação.
-3. **Onde ficam os dados que o e-SUS não modela?** Transcard, kit enxoval, consentimento, encaminhamento ao CRAS, notificações — nada disso existe no e-SUS.
-
-As três foram respondidas. O trabalho evoluiu em duas etapas, ainda visíveis nas branches: primeiro a interface completa sobre dados simulados, depois a camada real de integração com uma réplica do e-SUS.
-
 ## Arquitetura
 
 ### Princípio central: o e-SUS continua sendo o sistema de registro clínico
