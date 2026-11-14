@@ -2,7 +2,10 @@
 
 [![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript&logoColor=white)](package-lock.json) [![Next.js 16.1.6](https://img.shields.io/badge/Next.js-16.1.6-000000?logo=nextdotjs&logoColor=white)](apps/dashboard/package.json) [![Expo SDK 54](https://img.shields.io/badge/Expo-SDK_54-000020?logo=expo&logoColor=white)](apps/mobile/package.json) [![React Native 0.81.5](https://img.shields.io/badge/React_Native-0.81.5-61DAFB?logo=react&logoColor=black)](apps/mobile/package.json) [![PostgreSQL 16 na test4](https://img.shields.io/badge/PostgreSQL-16%20%28test4%29-4169E1?logo=postgresql&logoColor=white)](https://github.com/ayanliger/mae-salvador-mvp/blob/1630273a84a73b00028fb2c28392b00ebf532514/database/Dockerfile) [![Android 7+](https://img.shields.io/badge/Android-7%2B-3DDC84?logo=android&logoColor=black)](https://github.com/facebook/react-native/blob/v0.81.5/packages/react-native/gradle/libs.versions.toml) [![iOS 15.1+](https://img.shields.io/badge/iOS-15.1%2B-000000?logo=apple&logoColor=white)](https://github.com/facebook/react-native/blob/v0.81.5/packages/react-native/scripts/cocoapods/helpers.rb) [![Licença MIT](https://img.shields.io/badge/Licen%C3%A7a-MIT-3DA639?logo=opensourceinitiative&logoColor=white)](LICENSE)
 
-Registro do sprint inicial da caderneta digital do Programa Mãe Salvador (12 a 17 de fevereiro de 2026), com dashboard para profissionais e gestores e aplicativo da gestante. O desenvolvimento posterior seguiu em repositórios privados; este código conserva a demonstração simulada na `master` e os experimentos de integração ao e-SUS APS PEC na `test4`.
+Registro do sprint inicial da caderneta digital do Programa Mãe Salvador, realizado de 12 a 17 de fevereiro de 2026, com dashboard para profissionais e gestores e aplicativo da gestante.
+
+> [!NOTE]
+> O desenvolvimento posterior seguiu em repositórios privados; este código conserva a demonstração simulada na `master` e os experimentos de integração ao e-SUS APS PEC na `test4`.
 
 ## Executar localmente
 
@@ -49,11 +52,11 @@ O monorepo usa npm workspaces e reúne dois aplicativos, um pacote compartilhado
 
 O código do sprint distribui-se pelas branches abaixo:
 
-| Branch | Conteúdo |
-|---|---|
-| [master](https://github.com/ayanliger/mae-salvador-mvp/tree/master) | Interfaces com dados simulados; sem rotas de API, pools de banco ou diretório `database/` |
-| [test4](https://github.com/ayanliger/mae-salvador-mvp/tree/test4) | Integração experimental do dashboard com PostgreSQL, 20 views, 19 rotas de API e cadastro mobile conectado; a caderneta mobile conserva dados simulados |
-| `test`, `test2` e `test3` | Estados intermediários do sprint |
+| Branch | Estado | Conteúdo |
+|---|---|---|
+| [master](https://github.com/ayanliger/mae-salvador-mvp/tree/master) | ![Dados simulados](https://img.shields.io/badge/dados-simulados-64748B?style=flat-square) | Interfaces sem rotas de API, pools de banco ou diretório `database/` |
+| [test4](https://github.com/ayanliger/mae-salvador-mvp/tree/test4) | ![PostgreSQL experimental](https://img.shields.io/badge/PostgreSQL-experimental-2563EB?style=flat-square) | Dashboard com 20 views, 19 rotas de API e cadastro mobile conectado; a caderneta mobile conserva dados simulados |
+| `test`, `test2` e `test3` | ![Sprint intermediário](https://img.shields.io/badge/sprint-intermedi%C3%A1rio-94A3B8?style=flat-square) | Estados intermediários do sprint |
 
 ## Arquitetura na test4
 
@@ -67,6 +70,13 @@ flowchart LR
     API --> Dados
     Dados -->|"Leitura"| PEC["Réplica e-SUS APS PEC"]
     Dados -->|"Leitura e escrita"| Programa["Banco do programa"]
+
+    classDef mock fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef readonly fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e
+    classDef readwrite fill:#dcfce7,stroke:#16a34a,color:#14532d
+    class Mocks mock
+    class PEC readonly
+    class Programa readwrite
 ```
 
 As duas bases separam leitura clínica e escrita do programa:
