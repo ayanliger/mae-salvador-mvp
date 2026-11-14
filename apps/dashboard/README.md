@@ -1,6 +1,6 @@
 # Dashboard Mãe Salvador
 
-[![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript&logoColor=white)](../../package-lock.json) [![Next.js 16.1.6](https://img.shields.io/badge/Next.js-16.1.6-000000?logo=nextdotjs&logoColor=white)](package.json) [![React 19.2.3](https://img.shields.io/badge/React-19.2.3-61DAFB?logo=react&logoColor=black)](package.json) [![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](package.json) [![Licença MIT](https://img.shields.io/badge/Licen%C3%A7a-MIT-3DA639?logo=opensourceinitiative&logoColor=white)](../../LICENSE)
+[![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript&logoColor=white)](../../package-lock.json) [![Next.js 16.1.6](https://img.shields.io/badge/Next.js-16.1.6-000000?logo=nextdotjs&logoColor=white)](package.json) [![React 19.2.3](https://img.shields.io/badge/React-19.2.3-61DAFB?logo=react&logoColor=black)](package.json) [![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](package.json)
 
 Interface do profissional de saúde e do gestor no sprint inicial do Mãe Salvador. Na `master`, utiliza os dados simulados de `@mae-salvador/shared`; na `test4`, acrescenta as rotas de API do protótipo de integração, detalhado no [README da raiz](../../README.md).
 

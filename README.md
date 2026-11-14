@@ -1,11 +1,11 @@
 # Mãe Salvador MVP
 
-[![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript&logoColor=white)](package-lock.json) [![Next.js 16.1.6](https://img.shields.io/badge/Next.js-16.1.6-000000?logo=nextdotjs&logoColor=white)](apps/dashboard/package.json) [![Expo SDK 54](https://img.shields.io/badge/Expo-SDK_54-000020?logo=expo&logoColor=white)](apps/mobile/package.json) [![React Native 0.81.5](https://img.shields.io/badge/React_Native-0.81.5-61DAFB?logo=react&logoColor=black)](apps/mobile/package.json) [![PostgreSQL 16 na test4](https://img.shields.io/badge/PostgreSQL-16%20%28test4%29-4169E1?logo=postgresql&logoColor=white)](https://github.com/ayanliger/mae-salvador-mvp/blob/1630273a84a73b00028fb2c28392b00ebf532514/database/Dockerfile) [![Android 7+](https://img.shields.io/badge/Android-7%2B-3DDC84?logo=android&logoColor=black)](https://github.com/facebook/react-native/blob/v0.81.5/packages/react-native/gradle/libs.versions.toml) [![iOS 15.1+](https://img.shields.io/badge/iOS-15.1%2B-000000?logo=apple&logoColor=white)](https://github.com/facebook/react-native/blob/v0.81.5/packages/react-native/scripts/cocoapods/helpers.rb) [![Licença MIT](https://img.shields.io/badge/Licen%C3%A7a-MIT-3DA639?logo=opensourceinitiative&logoColor=white)](LICENSE)
+[![TypeScript 5.9.3](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?logo=typescript&logoColor=white)](package-lock.json) [![Next.js 16.1.6](https://img.shields.io/badge/Next.js-16.1.6-000000?logo=nextdotjs&logoColor=white)](apps/dashboard/package.json) [![Expo SDK 54](https://img.shields.io/badge/Expo-SDK_54-000020?logo=expo&logoColor=white)](apps/mobile/package.json) [![React Native 0.81.5](https://img.shields.io/badge/React_Native-0.81.5-61DAFB?logo=react&logoColor=black)](apps/mobile/package.json) [![PostgreSQL 16 na test4](https://img.shields.io/badge/PostgreSQL-16%20%28test4%29-4169E1?logo=postgresql&logoColor=white)](https://github.com/ayanliger/mae-salvador-mvp/blob/1630273a84a73b00028fb2c28392b00ebf532514/database/Dockerfile) [![Android 7+](https://img.shields.io/badge/Android-7%2B-3DDC84?logo=android&logoColor=black)](https://github.com/facebook/react-native/blob/v0.81.5/packages/react-native/gradle/libs.versions.toml) [![iOS 15.1+](https://img.shields.io/badge/iOS-15.1%2B-000000?logo=apple&logoColor=white)](https://github.com/facebook/react-native/blob/v0.81.5/packages/react-native/scripts/cocoapods/helpers.rb)
 
 Registro do sprint inicial da caderneta digital do Programa Mãe Salvador, realizado de 12 a 17 de fevereiro de 2026, com dashboard para profissionais e gestores e aplicativo da gestante.
 
 > [!NOTE]
-> O desenvolvimento posterior seguiu em repositórios privados; este código conserva a demonstração simulada na `master` e os experimentos de integração ao e-SUS APS PEC na `test4`.
+> Registro histórico sem licença open-source: o desenvolvimento posterior seguiu em repositórios privados, e este código conserva a demonstração simulada na `master` e os experimentos de integração ao e-SUS APS PEC na `test4`.
 
 ## Executar localmente
 
@@ -102,7 +102,3 @@ Principais mecanismos da arquitetura no snapshot da `test4`:
 - Sem escrita no e-SUS: FHIR, RNDS, LEDI e autenticação gov.br aparecem apenas como possibilidades futuras no [README histórico da test4](https://github.com/ayanliger/mae-salvador-mvp/blob/1630273a84a73b00028fb2c28392b00ebf532514/README.md).
 - Verificação restrita a `@mae-salvador/shared`: `npm run shared:build` compila o pacote compartilhado; há apenas um teste de componente herdado do template Expo sem comando configurado, o `lint` do dashboard possui erro pré-existente em `src/components/ui/sidebar.tsx` e não há pipeline de CI.
 - Escopo local da integração: a configuração da `test4` atende ao estudo local e não define implantação de produção para bancos e registros identificados.
-
-## Licença
-
-[MIT](LICENSE).
